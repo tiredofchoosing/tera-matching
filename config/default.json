@@ -1,0 +1,6 @@
+{
+  "host": "127.0.0.1",
+  "port": 8005,
+  "dungeons": "http://178.250.154.7:8080/dungeons",
+  "battlegrounds": "http://178.250.154.7:8080/battlegrounds"
+}

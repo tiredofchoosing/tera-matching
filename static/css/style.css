@@ -1,0 +1,119 @@
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    font-family: system-ui;
+    display: table-cell;
+    background-color: #b5beda;
+    overflow-y: scroll;
+}
+
+#main {
+    padding: 0 2em;
+    min-width: 600px;
+    width: 650px;
+    max-width: 700px;
+}
+
+.navigation {
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+.navigation-search {
+    margin-bottom: 0.3em;
+    display: flex;
+}
+
+.navigation-search input {
+    flex: 1;
+}
+
+::placeholder {
+    color: #7d8597;
+}
+
+.sort-heading,.search-heading {
+    margin: auto;
+}
+
+input,select,button {
+    color: black;
+    border: none;
+    border-radius: 4px;
+    background-color: #ffffff;
+    outline: none;
+    padding: 0.3em 0.5em;
+    margin: 0.4em;
+}
+
+.toggleDetails,.clearNavigation {
+    float: right;
+}
+
+button:hover {
+    background-color: #dce3f7;
+}
+
+button:active {
+    background-color: #ced8f3;
+}
+
+details {
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+details[open] {
+    margin-bottom: 0.5em;
+}
+
+summary {
+    margin: -0.5em -0.5em 0;
+    padding: 0.5em;
+}
+
+.dungeon-lvl, .dungeon-ilvl {
+    background-color: #c2c8d9;
+    padding: 0 0.3em 0 0.3em;
+    border-radius:0.2em;
+    margin-right: 0.2em;
+}
+
+.dungeon-players {
+    float: right;
+}
+
+.dungeon-details {
+    margin-bottom: 0.25em;
+    padding-bottom: 0.1em;
+    background-color: #818dac;
+    border: none;
+}
+
+.dungeon-summary {
+    color: #000000;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.party-details {
+    border-radius: 0;
+    margin: 0.25em 0;
+    border-top: 1px solid #c2c8d9; 
+    padding: 0.25em 1em 0em 1em;
+}
+
+.party-detailed-content {
+    background-color: #959fbb; 
+    padding: 0.25em 1em;
+    border-radius: 3px;
+    margin: auto;
+}
+
+.empty {
+    text-align: center;
+}
