@@ -1,0 +1,23 @@
+{
+  "emptyContentStr": "Matching queue is empty 😴",
+
+  "searchNameDungeonPlaceholderStr": "Dungeon name",
+  "searchNameBattlegroundPlaceholderStr": "Battlefield name",
+  "searchMinLevelvPlaceholderStr": "Level [ 70 / 65+ / 69- /... ]",
+  "searchMinItemLevelPlaceholderStr": "Item level [ 453+ / 460- / ... ]",
+  "searchMinLevelvTitleStr": "Level [ 70 / 65+ / 69- / 20-40 ]",
+  "searchMinItemLevelTitleStr": "Item level [ 463 / 453+ / 460- / 444-450 ]",
+
+  "minLevelDescContentStr": "Level (descending)",
+  "minLevelAscContentStr": "Level (ascending)",
+  "minItemLevelDescContentStr": "Item level (descending)",
+  "minItemLevelAscContentStr": "Item level (ascending)",
+  "nameDescContentStr": "Name (descending)",
+  "nameAscContentStr": "Name (ascending)",
+  "playersDescContentStr": "Player count (descending)",
+  "playersAscContentStr": "Player count (ascending)",
+  
+  "toggleLangContentStr": "Eng/Rus",
+  "toggleDetailsContentStr": "Collapse / expand list",
+  "clearNavigationContentStr": "Reset all"
+}

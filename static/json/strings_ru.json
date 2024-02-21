@@ -1,0 +1,23 @@
+{
+  "emptyContentStr": "Список подбора пуст 😴",
+
+  "searchNameDungeonPlaceholderStr": "Название подземелья",
+  "searchNameBattlegroundPlaceholderStr": "Название арены",
+  "searchMinLevelvPlaceholderStr": "Уровень [ 70 / 65+ / 69- /... ]",
+  "searchMinItemLevelPlaceholderStr": "Снаряжение [ 453+ / 460- / ... ]",
+  "searchMinLevelvTitleStr": "Уровень [ 70 / 65+ / 69- / 20-40 ]",
+  "searchMinItemLevelTitleStr": "Снаряжение [ 463 / 453+ / 460- / 444-450 ]",
+
+  "minLevelDescContentStr": "Уровень (убывание)",
+  "minLevelAscContentStr": "Уровень (возрастание)",
+  "minItemLevelDescContentStr": "Снаряжение (убывание)",
+  "minItemLevelAscContentStr": "Снаряжение (возрастание)",
+  "nameDescContentStr": "Название (убывание)",
+  "nameAscContentStr": "Название (возрастание)",
+  "playersDescContentStr": "Количество игроков (убывание)",
+  "playersAscContentStr": "Количество игроков (возрастание)",
+  
+  "toggleLangContentStr": "Eng/Rus",
+  "toggleDetailsContentStr": "Свернуть / развернуть список",
+  "clearNavigationContentStr": "Сбросить все"
+}

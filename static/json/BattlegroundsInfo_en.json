@@ -1,0 +1,107 @@
+{
+  "909": {
+    "minLevel": 25,
+    "maxLevel": 70,
+    "name": "Iron Battleground"
+  },
+  "46": {
+    "minLevel": 25,
+    "maxLevel": 70,
+    "name": "Wintera Snowfield"
+  },
+  "47": {
+    "minLevel": 25,
+    "maxLevel": 70,
+    "name": "Wintera Snowfield"
+  },
+  "5": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Kumasylum"
+  },
+  "10": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "[Unified Gear] Corsairs\u0027 Stronghold"
+  },
+  "11": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Corsairs\u0027 Stronghold (20-player raid)"
+  },
+  "26": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Fraywind Canyon"
+  },
+  "27": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Fraywind Canyon (15-player pre-made raid)"
+  },
+  "29": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Fraywind Canyon\u2014Equalized"
+  },
+  "28": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Fraywind Canyon (15-player pre-made raid)"
+  },
+  "37": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "[Personal Gear] Champions\u0027 Skyring"
+  },
+  "38": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "[Unified Gear] Champions\u0027 Skyring (Solo)"
+  },
+  "39": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Champions\u0027 Skyring Mark V (Team)"
+  },
+  "40": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Champions\u0027 Skyring Mark V Equalized (Solo)"
+  },
+  "70": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "[Unified Gear] Gridiron"
+  },
+  "71": {
+    "minLevel": 40,
+    "maxLevel": 64,
+    "name": "Gridiron Academy"
+  },
+  "110": {
+    "minLevel": 50,
+    "maxLevel": 50,
+    "name": "Monkeydrome"
+  },
+  "111": {
+    "minLevel": 60,
+    "maxLevel": 70,
+    "name": "Monkeydrome (Lv. 60-65, Equalized)"
+  },
+  "118": {
+    "minLevel": 20,
+    "maxLevel": 70,
+    "name": "Kumas Royale"
+  },
+  "119": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Kumas Royale"
+  },
+  "30": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "[Personal Gear] Shore Hold"
+  }
+}
