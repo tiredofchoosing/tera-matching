@@ -2,9 +2,8 @@
 <html lang="<%= lang %>">
 <head>
     <meta charset="UTF-8">
-    <title>Dungeon matching</title>
+    <title><%= strings.pageTitleStr %></title>
     <link rel="stylesheet" href="/static/css/style.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <% let isEmpty = Object.values(data).length === 0 %>
@@ -36,6 +35,8 @@
 			<button id="toggleDetails" class="toggleDetails" value="true"><%= strings.toggleDetailsContentStr %></button>
 			<button id="toggleLang" class="toggleLang" value="<%= lang %>"><%= strings.toggleLangContentStr %></button>
 			<button id="clearNavigation" class="clearNavigation"><%= strings.clearNavigationContentStr %></button>
+			<br><input type="checkbox" id="autoupdateCheck" class="autoupdateCheck">
+			<label for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
 		</div>
 		<div class="navigation-toggle">
 		</div>
@@ -94,11 +95,14 @@
 		let toggleLangButton = document.getElementById('toggleLang');
 		let clearNavigationButton = document.getElementById('clearNavigation');
 		let searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
+		let autoupdateCheckbox = document.getElementById("autoupdateCheck");
+		let autoupdateTimerId = -1;
 		const defaultSelectIndex = 2;
 
 		function updateNavigation() {
 			sortSelect.dispatchEvent(new Event('change'));
 			filterDungeons();
+			setAutoupdate();
 		}
 
 		toggleDetailsButton.addEventListener('click', function() {
@@ -114,8 +118,10 @@
 			let lang = toggleLangButton.value === "ru" ? "en" : "ru";
 			toggleLangButton.value = lang;
 
-			document.cookie = `lang=${lang}`
-			location.reload()
+			let date = new Date();
+			date.setFullYear(date.getFullYear() + 1);
+			document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
+			location.reload();
 		});
 
 		clearNavigationButton.addEventListener('click', function() {
@@ -123,8 +129,27 @@
 				element.value = '';
 			});
 			sortSelect.selectedIndex = defaultSelectIndex;
+			autoupdateCheckbox.checked = false;
 			updateNavigation();
 		});
+		
+		autoupdateCheckbox.addEventListener('change', function() {
+			if (window.sessionStorage) {
+				let id = this.getAttribute('id');
+				sessionStorage.setItem(id, this.checked);
+			}
+			setAutoupdate();
+		});
+
+		function setAutoupdate() {
+			if (autoupdateCheckbox.checked) {
+				autoupdateTimerId = setTimeout(() => location.reload(), 5000); //TODO: set up timeout?
+				console.log(autoupdateTimerId);
+			}
+			else if (autoupdateTimerId !== -1) {
+				clearTimeout(autoupdateTimerId);
+			}
+		}
 
 		function filterDungeons() {
 			let searchNameVal = searchNameInput.value.toLowerCase();
@@ -208,22 +233,32 @@
 						return playersA - playersB;
 				}
 			});
+
 			dungeons.forEach(function(dungeon) {
 				dungeonList.appendChild(dungeon);
 			});
 		});
 
+		// restore session data
 		if (window.sessionStorage) {
 			searchInputs.forEach(function(element) {
 				let id = element.getAttribute('id');
-				if (sessionStorage.getItem(id) != undefined && sessionStorage.getItem(id) != null) {
-					element.value = sessionStorage.getItem(id);
+				let val = sessionStorage.getItem(id);
+				if (val != null) {
+					element.value = val;
 				}
 			});
 
 			let sortId = sortSelect.getAttribute('id');
-			if (sessionStorage.getItem(sortId) != undefined && sessionStorage.getItem(sortId) != null) {
-				sortSelect.selectedIndex = sessionStorage.getItem(sortId);
+			let sortVal = sessionStorage.getItem(sortId);
+			if (sortVal != null) {
+				sortSelect.selectedIndex = sortVal;
+			}
+
+			let autoupdateId = autoupdateCheckbox.getAttribute('id');
+			let autoupdateVal = sessionStorage.getItem(autoupdateId);
+			if (autoupdateVal != null) {
+				autoupdateCheckbox.checked = autoupdateVal === 'true';
 			}
 		}
 
