@@ -21,5 +21,6 @@
   "toggleLangContentStr": "Eng/Rus",
   "toggleDetailsContentStr": "Collapse / expand list",
   "clearNavigationContentStr": "Reset all",
-  "autoupdateLabelStr": "Reload the page automatically"
+  "autoupdateLabelStr": "Reload the page automatically",
+  "saveCollapsedLabelStr": "Save collapsed items"
 }

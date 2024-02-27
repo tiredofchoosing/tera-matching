@@ -37,6 +37,8 @@
 			<button id="clearNavigation" class="clearNavigation"><%= strings.clearNavigationContentStr %></button>
 			<br><input type="checkbox" id="autoupdateCheck" class="autoupdateCheck">
 			<label for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
+			<br><input type="checkbox" id="saveCollapsed" class="saveCollapsed">
+			<label for="saveCollapsed"><%= strings.saveCollapsedLabelStr %></label>
 		</div>
 		<div class="navigation-toggle">
 		</div>
@@ -44,7 +46,7 @@
     <div id="dungeon-list">
         <% for(let dungeonId in data) { %>
 			<% let dungeon = data[dungeonId]; dungeonProps = dungeons_info[dungeonId]; %>
-			<details open class="dungeon-details">
+			<details open class="dungeon-details" id="<%= dungeonId %>">
 				<summary class="dungeon-summary">
 					<span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
 					<span class="dungeon-ilvl"><%= dungeonProps.minItemLevel %></span>
@@ -84,6 +86,12 @@
     </div>
 </div>
 <script>
+	let disableToggle = true;
+
+	function isToggleEnabled() {
+		return !disableToggle;
+	}
+
 	document.addEventListener('DOMContentLoaded', function() {
 		let searchNameInput = document.getElementById('searchName');
 		let searchMinLevelInput = document.getElementById('searchMinLevel');
@@ -95,28 +103,35 @@
 		let toggleLangButton = document.getElementById('toggleLang');
 		let clearNavigationButton = document.getElementById('clearNavigation');
 		let searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-		let autoupdateCheckbox = document.getElementById("autoupdateCheck");
+		let autoupdateCheckbox = document.getElementById('autoupdateCheck');
 		let autoupdateTimerId = -1;
+		let saveCollapsedCheckbox = document.getElementById('saveCollapsed');
+
+		const saveCollapsedId = 'detailsCollapsed';
 		const defaultSelectIndex = 2;
 
 		function updateNavigation() {
 			sortSelect.dispatchEvent(new Event('change'));
 			filterDungeons();
-			setAutoupdate();
+			autoupdateCheckbox.dispatchEvent(new Event('change'));
+			saveCollapsedCheckbox.dispatchEvent(new Event('change'));
 		}
 
 		toggleDetailsButton.addEventListener('click', function() {
-			let isOpen = toggleDetailsButton.value === "true";
-			toggleDetailsButton.value = !isOpen;
+			let isOpen = this.value === 'true';
+			this.value = !isOpen;
 
-			dungeons.forEach(function(detail) {
-				detail.open = !isOpen;
+			disableToggle = true;
+			dungeons.forEach(function(dungeon) {
+				dungeon.open = !isOpen;
 			});
+			saveDetailsCollapsed();
+			disableToggle = false;
 		});
 		
 		toggleLangButton.addEventListener('click', function() {
-			let lang = toggleLangButton.value === "ru" ? "en" : "ru";
-			toggleLangButton.value = lang;
+			let lang = this.value === 'ru' ? 'en' : 'ru';
+			this.value = lang;
 
 			let date = new Date();
 			date.setFullYear(date.getFullYear() + 1);
@@ -130,6 +145,12 @@
 			});
 			sortSelect.selectedIndex = defaultSelectIndex;
 			autoupdateCheckbox.checked = false;
+			saveCollapsedCheckbox.checked = false;
+			toggleDetailsButton.value = true;
+			
+			disableToggle = true;
+			dungeons.filter(d => !d.open).forEach(d => d.open = true);
+			disableToggle = false;
 			updateNavigation();
 		});
 		
@@ -141,10 +162,37 @@
 			setAutoupdate();
 		});
 
+		saveCollapsedCheckbox.addEventListener('change', function() {
+			if (window.sessionStorage) {
+				let id = this.getAttribute('id');
+				sessionStorage.setItem(id, this.checked);
+			}
+			saveDetailsCollapsed();
+		});
+
+		function saveDetailsCollapsed() {
+			if (saveCollapsedCheckbox.checked) {
+				if (dungeons.every(d => !d.open)) {
+					sessionStorage.setItem(saveCollapsedId, 'all');
+				}
+				else if (dungeons.every(d => d.open)) {
+					sessionStorage.removeItem(saveCollapsedId);
+				}
+				else {
+					sessionStorage.setItem(saveCollapsedId, dungeons.filter(d => !d.open)
+						.map(d => d.getAttribute('id')).join(','));
+				}
+			}
+			else {
+				if (window.sessionStorage) {
+					sessionStorage.removeItem(saveCollapsedId);
+				}
+			}
+		}
+
 		function setAutoupdate() {
 			if (autoupdateCheckbox.checked) {
 				autoupdateTimerId = setTimeout(() => location.reload(), 5000); //TODO: set up timeout?
-				console.log(autoupdateTimerId);
 			}
 			else if (autoupdateTimerId !== -1) {
 				clearTimeout(autoupdateTimerId);
@@ -255,14 +303,46 @@
 				sortSelect.selectedIndex = sortVal;
 			}
 
-			let autoupdateId = autoupdateCheckbox.getAttribute('id');
-			let autoupdateVal = sessionStorage.getItem(autoupdateId);
-			if (autoupdateVal != null) {
-				autoupdateCheckbox.checked = autoupdateVal === 'true';
+			let checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox];
+			checkboxes.forEach(function(element) {
+				let id = element.getAttribute('id');
+				let val = sessionStorage.getItem(id);
+				if (val != null) {
+					element.checked = val === 'true';
+				}
+			});
+
+			let saveCollapsedVal = sessionStorage.getItem(saveCollapsedId);
+			if (saveCollapsedCheckbox.checked && saveCollapsedVal != null) {
+				if (saveCollapsedVal === 'all') {
+					dungeons.forEach(function(dungeon) {
+						dungeon.open = false;
+					});
+				}
+				else {
+					let ids = saveCollapsedVal.split(',');
+					dungeons.filter(d => ids.includes(d.getAttribute('id')))
+						.forEach(function(dungeon) {
+							dungeon.open = false;
+						});
+				}
 			}
 		}
 
+		dungeons.forEach(function(dungeon) {
+			dungeon.addEventListener('toggle', function() {
+				if (isToggleEnabled()) {
+					saveDetailsCollapsed();
+				}
+			});
+		});
+
 		updateNavigation();
+	});
+	
+	// to not handle 'toggle' on default open attribute
+    window.addEventListener('load', function() {
+		disableToggle = false;
 	});
 </script>
 <% };%>

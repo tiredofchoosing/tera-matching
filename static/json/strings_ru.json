@@ -21,5 +21,6 @@
   "toggleLangContentStr": "Eng/Rus",
   "toggleDetailsContentStr": "Свернуть / развернуть список",
   "clearNavigationContentStr": "Сбросить все",
-  "autoupdateLabelStr": "Автоматически обновлять страницу"
+  "autoupdateLabelStr": "Автоматически обновлять страницу",
+  "saveCollapsedLabelStr": "Сохранять свернутые элементы"
 }
