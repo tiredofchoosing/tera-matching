@@ -39,6 +39,8 @@
 			<label for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
 			<br><input type="checkbox" id="saveCollapsed" class="saveCollapsed">
 			<label for="saveCollapsed"><%= strings.saveCollapsedLabelStr %></label>
+			<br><input type="checkbox" id="mergeSupportMatching" class="mergeSupportMatching">
+			<label for="mergeSupportMatching"><%= strings.mergeSupportMatchingLabelStr.replace('$', dungeons_info['9999'].name) %></label>
 		</div>
 		<div class="navigation-toggle">
 		</div>
@@ -54,7 +56,11 @@
 					<% let countTank = 0; dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length); %>
 					<% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
 					<% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
-					<span class="dungeon-players"><%=countTank %><%= roles[0] %> | <%=countDmg %><%= roles[1] %> | <%= countHeal %><%= roles[2] %></span>
+					<span class="dungeon-players">
+						<span class="dungeon-role"><%= countTank %><%= roles[0] %></span> | 
+						<span class="dungeon-role"><%= countDmg %><%= roles[1] %></span> | 
+						<span class="dungeon-role"><%= countHeal %><%= roles[2] %></span>
+					</span>
 				</summary>
 				<% dungeon.parties.forEach(party => { %>
 					<details class="party-details">
@@ -70,8 +76,8 @@
 							<% });%>
 						</summary>
 						<% Object.keys(party.players).forEach(id => { %>
-							<p class="party-detailed-content">
-								<% let player = party.players[id]; %>
+							<% let player = party.players[id]; %>
+							<p class="party-detailed-content<%= player.level >= 65 ? ' level65 ' : ''%>">
 								<%= (player.isLeaderRequired) ? '👑' : '' %>
 								[<%= classes[player.class] %>
 								<%= player.level %>
@@ -106,15 +112,25 @@
 		let autoupdateCheckbox = document.getElementById('autoupdateCheck');
 		let autoupdateTimerId = -1;
 		let saveCollapsedCheckbox = document.getElementById('saveCollapsed');
+		let mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
 
+		let dungeonsOld;
+		let merged = false;
+
+		const lowestSupportDungeonLvl = 20;
 		const saveCollapsedId = 'detailsCollapsed';
 		const defaultSelectIndex = 2;
 
 		function updateNavigation() {
-			sortSelect.dispatchEvent(new Event('change'));
-			filterDungeons();
+			merged = false;
+			mergeSupportCheckbox.dispatchEvent(new Event('change'));
+			if (!merged) {
+				sortSelect.dispatchEvent(new Event('change'));
+				filterDungeons();
+			}
 			autoupdateCheckbox.dispatchEvent(new Event('change'));
 			saveCollapsedCheckbox.dispatchEvent(new Event('change'));
+			merged = false;
 		}
 
 		toggleDetailsButton.addEventListener('click', function() {
@@ -146,6 +162,7 @@
 			sortSelect.selectedIndex = defaultSelectIndex;
 			autoupdateCheckbox.checked = false;
 			saveCollapsedCheckbox.checked = false;
+			mergeSupportCheckbox.checked = false;
 			toggleDetailsButton.value = true;
 			
 			disableToggle = true;
@@ -169,6 +186,106 @@
 			}
 			saveDetailsCollapsed();
 		});
+
+		mergeSupportCheckbox.addEventListener('change', function() {
+			if (window.sessionStorage) {
+				let id = this.getAttribute('id');
+				sessionStorage.setItem(id, this.checked);
+			}
+			merged = mergeSupportMatching();
+		});
+
+		function mergeSupportMatching() {
+			if (dungeonsOld != undefined) {
+				let tempArr = dungeons;
+				dungeons = dungeonsOld;
+				dungeonsOld = tempArr;
+
+				dungeonsOld.forEach(d => dungeonList.removeChild(d));
+				dungeons.forEach(d => dungeonList.appendChild(d));
+			}
+			else if (mergeSupportCheckbox.checked) {
+				let lowDungeon = dungeons.find(d => d.querySelector('.dungeon-lvl').innerText == lowestSupportDungeonLvl);
+				if (lowDungeon == null)
+					return false;
+
+				let minSupportPlayerLvl = <%= dungeons_info['9999'].minLevel %>;
+
+				let partyDetails = Array.from(lowDungeon.getElementsByClassName('party-details'));
+				let supporters = partyDetails.filter(pd => pd.querySelector('.party-detailed-content.level65'));
+				if (supporters.length === 0)
+					return false;
+
+				let supportersRoles = [];
+				supporters.forEach(s => {
+					let summaries = Array.from(s.getElementsByClassName('party-summary'));
+					summaries.forEach(ps => ps.innerText.split('|').forEach(player => { 
+						let role = player.trim().split(' ')[0];
+						supportersRoles.push(role);
+					}));
+				});
+
+				let supportDungeons = dungeons.filter(d => d.querySelector('.dungeon-lvl').innerText < minSupportPlayerLvl && d.querySelector('.party-detailed-content.level65') != null)
+				supportDungeons.forEach(function(sup) {
+					dungeonList.removeChild(sup);
+					let newNode = sup.cloneNode(true);
+					let parties = Array.from(newNode.getElementsByClassName('party-details'));
+					if (supporters.length === parties.length)
+						return;
+
+					let roles = Array.from(newNode.getElementsByClassName('dungeon-role'));
+					supportersRoles.forEach(sr => {
+						roles.forEach(r => {
+							let index = r.innerText.indexOf(sr);
+							if (index !== -1) {
+								let newCount = parseInt(r.innerText.slice(0, index)) - 1;
+								r.innerText = newCount + sr;
+							}
+						});
+					});
+
+					parties.filter(p => p.querySelector('.party-detailed-content.level65') != null).forEach(p => newNode.removeChild(p));
+					dungeonList.appendChild(newNode);
+				});
+				
+				let newElem = lowDungeon.cloneNode(true);
+				newElem.setAttribute('id', '9999');
+				newElem.querySelector('.dungeon-lvl').innerText = minSupportPlayerLvl;
+				newElem.querySelector('.dungeon-ilvl').innerText = <%= dungeons_info['9999'].minItemLevel %>;
+				newElem.querySelector('.dungeon-name').innerText = '<%= dungeons_info['9999'].name %>';
+
+				let parties = Array.from(newElem.getElementsByClassName('party-details'));
+				if (supporters.length !== parties.length) {
+					let roles = Array.from(newElem.getElementsByClassName('dungeon-role'));
+					roles.forEach(r => {
+						r.innerText = 0 + r.innerText.slice(-3);
+					});
+
+					supportersRoles.forEach(sr => {
+						roles.forEach(r => {
+							let index = r.innerText.indexOf(sr);
+							if (index !== -1) {
+								let newCount = parseInt(r.innerText.slice(0, index)) - 1;
+								r.innerText = newCount + sr;
+							}
+						});
+					});
+
+					parties.filter(p => p.querySelector('.party-detailed-content.level65') == null).forEach(p => { newElem.removeChild(p) });
+				}
+				dungeonList.appendChild(newElem);
+
+				dungeonsOld = dungeons;
+				dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
+			}
+			else {
+				return false;
+			}
+			
+			sortSelect.dispatchEvent(new Event('change'));
+			filterDungeons();
+			return true;
+		}
 
 		function saveDetailsCollapsed() {
 			if (saveCollapsedCheckbox.checked) {
@@ -248,7 +365,7 @@
 			let sortIndex = this.selectedIndex;
 
 			if (window.sessionStorage) {
-				let id = sortSelect.getAttribute('id');
+				let id = this.getAttribute('id');
 				sessionStorage.setItem(id, sortIndex);
 			}
 
@@ -303,7 +420,7 @@
 				sortSelect.selectedIndex = sortVal;
 			}
 
-			let checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox];
+			let checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox];
 			checkboxes.forEach(function(element) {
 				let id = element.getAttribute('id');
 				let val = sessionStorage.getItem(id);

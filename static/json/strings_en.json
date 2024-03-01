@@ -22,5 +22,6 @@
   "toggleDetailsContentStr": "Collapse / expand list",
   "clearNavigationContentStr": "Reset all",
   "autoupdateLabelStr": "Reload the page automatically",
-  "saveCollapsedLabelStr": "Save collapsed items"
+  "saveCollapsedLabelStr": "Save collapsed items",
+  "mergeSupportMatchingLabelStr": "Show \"$\" as separate item"
 }

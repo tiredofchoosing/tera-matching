@@ -22,5 +22,6 @@
   "toggleDetailsContentStr": "Свернуть / развернуть список",
   "clearNavigationContentStr": "Сбросить все",
   "autoupdateLabelStr": "Автоматически обновлять страницу",
-  "saveCollapsedLabelStr": "Сохранять свернутые элементы"
+  "saveCollapsedLabelStr": "Сохранять свернутые элементы",
+  "mergeSupportMatchingLabelStr": "Показывать \"$\" отдельной строкой"
 }
