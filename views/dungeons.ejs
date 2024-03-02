@@ -236,9 +236,8 @@
 					let roles = Array.from(newNode.getElementsByClassName('dungeon-role'));
 					supportersRoles.forEach(sr => {
 						roles.forEach(r => {
-							let index = r.innerText.indexOf(sr);
-							if (index !== -1) {
-								let newCount = parseInt(r.innerText.slice(0, index)) - 1;
+							if (r.innerText.includes(sr)) {
+								let newCount = parseInt(r.innerText) - 1;
 								r.innerText = newCount + sr;
 							}
 						});
@@ -258,14 +257,14 @@
 				if (supporters.length !== parties.length) {
 					let roles = Array.from(newElem.getElementsByClassName('dungeon-role'));
 					roles.forEach(r => {
-						r.innerText = 0 + r.innerText.slice(-3);
+						let index = parseInt(r.innerText).toString().length;
+						r.innerText = 0 + r.innerText.slice(index);
 					});
 
 					supportersRoles.forEach(sr => {
 						roles.forEach(r => {
-							let index = r.innerText.indexOf(sr);
-							if (index !== -1) {
-								let newCount = parseInt(r.innerText.slice(0, index)) - 1;
+							if (r.innerText.includes(sr)) {
+								let newCount = parseInt(r.innerText) + 1;
 								r.innerText = newCount + sr;
 							}
 						});
