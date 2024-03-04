@@ -93,282 +93,97 @@
 </div>
 <script>
 	let disableToggle = true;
-
 	function isToggleEnabled() {
 		return !disableToggle;
 	}
 
+	// to not handle 'toggle' on default open attribute
+    window.addEventListener('load', () => disableToggle = false);
+
 	document.addEventListener('DOMContentLoaded', function() {
-		let searchNameInput = document.getElementById('searchName');
-		let searchMinLevelInput = document.getElementById('searchMinLevel');
-		let searchMinItemLevelInput = document.getElementById('searchMinItemLevel');
-		let sortSelect = document.getElementById('sort');
-		let dungeonList = document.getElementById('dungeon-list');
-		let dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
-		let toggleDetailsButton = document.getElementById('toggleDetails');
-		let toggleLangButton = document.getElementById('toggleLang');
-		let clearNavigationButton = document.getElementById('clearNavigation');
-		let searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-		let autoupdateCheckbox = document.getElementById('autoupdateCheck');
-		let autoupdateTimerId = -1;
-		let saveCollapsedCheckbox = document.getElementById('saveCollapsed');
-		let mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
+		const dungeonList = document.getElementById('dungeon-list');
+		const searchNameInput = document.getElementById('searchName');
+		const searchMinLevelInput = document.getElementById('searchMinLevel');
+		const searchMinItemLevelInput = document.getElementById('searchMinItemLevel');
+		const sortSelect = document.getElementById('sort');
+		const toggleLangButton = document.getElementById('toggleLang');
+		const toggleDetailsButton = document.getElementById('toggleDetails');
+		const clearNavigationButton = document.getElementById('clearNavigation');
+		const autoupdateCheckbox = document.getElementById('autoupdateCheck');
+		const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
+		const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
+		const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
+		const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox];
 
-		let dungeonsOld;
-		let merged = false;
-
+		const defaultSelectIndex = 2;
+		const autoupdateTimer = 10000;
 		const lowestSupportDungeonLvl = 20;
 		const saveCollapsedId = 'detailsCollapsed';
-		const defaultSelectIndex = 2;
+		const storage = window.sessionStorage; // || window.localStorage;
 
-		function updateNavigation() {
-			merged = false;
-			mergeSupportCheckbox.dispatchEvent(new Event('change'));
-			if (!merged) {
-				sortSelect.dispatchEvent(new Event('change'));
-				filterDungeons();
-			}
-			autoupdateCheckbox.dispatchEvent(new Event('change'));
-			saveCollapsedCheckbox.dispatchEvent(new Event('change'));
-			merged = false;
-		}
+		let dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
+		let autoupdateTimerId = -1;
+		let dungeonsOld;
 
-		toggleDetailsButton.addEventListener('click', function() {
-			let isOpen = this.value === 'true';
-			this.value = !isOpen;
-
-			disableToggle = true;
-			dungeons.forEach(function(dungeon) {
-				dungeon.open = !isOpen;
-			});
-			saveDetailsCollapsed();
-			disableToggle = false;
-		});
-		
-		toggleLangButton.addEventListener('click', function() {
-			let lang = this.value === 'ru' ? 'en' : 'ru';
-			this.value = lang;
-
-			let date = new Date();
-			date.setFullYear(date.getFullYear() + 1);
-			document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
-			location.reload();
-		});
-
-		clearNavigationButton.addEventListener('click', function() {
-			searchInputs.forEach(function(element) {
-				element.value = '';
-			});
-			sortSelect.selectedIndex = defaultSelectIndex;
-			autoupdateCheckbox.checked = false;
-			saveCollapsedCheckbox.checked = false;
-			mergeSupportCheckbox.checked = false;
-			toggleDetailsButton.value = true;
-			
-			disableToggle = true;
-			dungeons.filter(d => !d.open).forEach(d => d.open = true);
-			disableToggle = false;
-			updateNavigation();
-		});
-		
-		autoupdateCheckbox.addEventListener('change', function() {
-			if (window.sessionStorage) {
-				let id = this.getAttribute('id');
-				sessionStorage.setItem(id, this.checked);
-			}
-			setAutoupdate();
-		});
-
-		saveCollapsedCheckbox.addEventListener('change', function() {
-			if (window.sessionStorage) {
-				let id = this.getAttribute('id');
-				sessionStorage.setItem(id, this.checked);
-			}
-			saveDetailsCollapsed();
-		});
-
-		mergeSupportCheckbox.addEventListener('change', function() {
-			if (window.sessionStorage) {
-				let id = this.getAttribute('id');
-				sessionStorage.setItem(id, this.checked);
-			}
-			merged = mergeSupportMatching();
-		});
-
-		function mergeSupportMatching() {
-			if (dungeonsOld != undefined) {
-				let tempArr = dungeons;
-				dungeons = dungeonsOld;
-				dungeonsOld = tempArr;
-
-				dungeonsOld.forEach(d => dungeonList.removeChild(d));
-				dungeons.forEach(d => dungeonList.appendChild(d));
-			}
-			else if (mergeSupportCheckbox.checked) {
-				let lowDungeon = dungeons.find(d => d.querySelector('.dungeon-lvl').innerText == lowestSupportDungeonLvl);
-				if (lowDungeon == null)
-					return false;
-
-				let minSupportPlayerLvl = <%= dungeons_info['9999'].minLevel %>;
-
-				let partyDetails = Array.from(lowDungeon.getElementsByClassName('party-details'));
-				let supporters = partyDetails.filter(pd => pd.querySelector('.party-detailed-content.level65'));
-				if (supporters.length === 0)
-					return false;
-
-				let supportersRoles = [];
-				supporters.forEach(s => {
-					let summaries = Array.from(s.getElementsByClassName('party-summary'));
-					summaries.forEach(ps => ps.innerText.split('|').forEach(player => { 
-						let role = player.trim().split(' ')[0];
-						supportersRoles.push(role);
-					}));
-				});
-
-				let supportDungeons = dungeons.filter(d => d.querySelector('.dungeon-lvl').innerText < minSupportPlayerLvl && d.querySelector('.party-detailed-content.level65') != null)
-				supportDungeons.forEach(function(sup) {
-					dungeonList.removeChild(sup);
-					let newNode = sup.cloneNode(true);
-					let parties = Array.from(newNode.getElementsByClassName('party-details'));
-					if (supporters.length === parties.length)
-						return;
-
-					let roles = Array.from(newNode.getElementsByClassName('dungeon-role'));
-					supportersRoles.forEach(sr => {
-						roles.forEach(r => {
-							if (r.innerText.includes(sr)) {
-								let newCount = parseInt(r.innerText) - 1;
-								r.innerText = newCount + sr;
-							}
-						});
-					});
-
-					parties.filter(p => p.querySelector('.party-detailed-content.level65') != null).forEach(p => newNode.removeChild(p));
-					dungeonList.appendChild(newNode);
-				});
-				
-				let newElem = lowDungeon.cloneNode(true);
-				newElem.setAttribute('id', '9999');
-				newElem.querySelector('.dungeon-lvl').innerText = minSupportPlayerLvl;
-				newElem.querySelector('.dungeon-ilvl').innerText = <%= dungeons_info['9999'].minItemLevel %>;
-				newElem.querySelector('.dungeon-name').innerText = '<%= dungeons_info['9999'].name %>';
-
-				let parties = Array.from(newElem.getElementsByClassName('party-details'));
-				if (supporters.length !== parties.length) {
-					let roles = Array.from(newElem.getElementsByClassName('dungeon-role'));
-					roles.forEach(r => {
-						let index = parseInt(r.innerText).toString().length;
-						r.innerText = 0 + r.innerText.slice(index);
-					});
-
-					supportersRoles.forEach(sr => {
-						roles.forEach(r => {
-							if (r.innerText.includes(sr)) {
-								let newCount = parseInt(r.innerText) + 1;
-								r.innerText = newCount + sr;
-							}
-						});
-					});
-
-					parties.filter(p => p.querySelector('.party-detailed-content.level65') == null).forEach(p => { newElem.removeChild(p) });
-				}
-				dungeonList.appendChild(newElem);
-
-				dungeonsOld = dungeons;
-				dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
-			}
-			else {
-				return false;
-			}
-			
-			sortSelect.dispatchEvent(new Event('change'));
-			filterDungeons();
-			return true;
-		}
-
-		function saveDetailsCollapsed() {
-			if (saveCollapsedCheckbox.checked) {
-				if (dungeons.every(d => !d.open)) {
-					sessionStorage.setItem(saveCollapsedId, 'all');
-				}
-				else if (dungeons.every(d => d.open)) {
-					sessionStorage.removeItem(saveCollapsedId);
-				}
-				else {
-					sessionStorage.setItem(saveCollapsedId, dungeons.filter(d => !d.open)
-						.map(d => d.getAttribute('id')).join(','));
-				}
-			}
-			else {
-				if (window.sessionStorage) {
-					sessionStorage.removeItem(saveCollapsedId);
-				}
+		// functions
+		function saveData(element, value = null) {
+			if (storage) {
+				let id = typeof(element) === "string" ? element : element.getAttribute('id');
+				if (value != null)
+					storage.setItem(id, value);
+				else
+					storage.removeItem(id);
 			}
 		}
 
-		function setAutoupdate() {
-			if (autoupdateCheckbox.checked) {
-				autoupdateTimerId = setTimeout(() => location.reload(), 5000); //TODO: set up timeout?
+		function loadData(element) {
+			if (storage) {
+				let id = typeof(element) === "string" ? element : element.getAttribute('id');
+				return storage.getItem(id);
 			}
-			else if (autoupdateTimerId !== -1) {
-				clearTimeout(autoupdateTimerId);
-			}
+			return null;
 		}
 
-		function filterDungeons() {
+		function filterDungeons(_, save = true) {
+			save && searchInputs.forEach(e => saveData(e, e.value));
+
 			let searchNameVal = searchNameInput.value.toLowerCase();
 			let searchMinLevelVal = searchMinLevelInput.value;
 			let searchMinItemLevelVal = searchMinItemLevelInput.value;
-			
-			if (window.sessionStorage) {
-				searchInputs.forEach(function(element) {
-					let id = element.getAttribute('id');
-					sessionStorage.setItem(id, element.value);
-				});
+
+			function checkLevel(level, searchVal) {
+				if (searchVal === '') {
+					return true;
+				} else if (searchVal.endsWith('+')) {
+					return level >= parseInt(searchVal);
+				} else if (searchVal.endsWith('-')) {
+					return level <= parseInt(searchVal);
+				} else if (searchVal.includes('-')) {
+					let [min, max] = searchVal.split('-').map(Number);
+					return level >= min && level <= max;
+				} else {
+					return level === parseInt(searchVal);
+				}
 			}
 
-			dungeons.forEach(function(dungeon) {
-				let name = dungeon.getElementsByClassName('dungeon-name')[0].textContent;
-				let minLevel = parseInt(dungeon.getElementsByClassName('dungeon-lvl')[0].textContent);
-				let minItemLevel = parseInt(dungeon.getElementsByClassName('dungeon-ilvl')[0].textContent);
+			dungeons.forEach(d => {
+				let name = d.getElementsByClassName('dungeon-name')[0].textContent;
+				let minLevel = parseInt(d.getElementsByClassName('dungeon-lvl')[0].textContent);
+				let minItemLevel = parseInt(d.getElementsByClassName('dungeon-ilvl')[0].textContent);
 
 				let show = name.toLowerCase().includes(searchNameVal) &&
 					checkLevel(minLevel, searchMinLevelVal) &&
 					checkLevel(minItemLevel, searchMinItemLevelVal);
 
-				dungeon.style.display = show ? '' : 'none';
+				d.style.display = show ? '' : 'none';
 			});
 		}
 
-		function checkLevel(level, searchVal) {
-			if (searchVal === '') {
-				return true;
-			} else if (searchVal.endsWith('+')) {
-				return level >= parseInt(searchVal);
-			} else if (searchVal.endsWith('-')) {
-				return level <= parseInt(searchVal);
-			} else if (searchVal.includes('-')) {
-				let [min, max] = searchVal.split('-').map(Number);
-				return level >= min && level <= max;
-			} else {
-				return level === parseInt(searchVal);
-			}
-		}
+		function sortDungeons(_, save = true) {
+			save && saveData(sortSelect, sortSelect.selectedIndex);
 
-		searchNameInput.addEventListener('input', filterDungeons);
-		searchMinLevelInput.addEventListener('input', filterDungeons);
-		searchMinItemLevelInput.addEventListener('input', filterDungeons);
-
-		sortSelect.addEventListener('change', function() {
-			let sortVal = this.value;
-			let sortIndex = this.selectedIndex;
-
-			if (window.sessionStorage) {
-				let id = this.getAttribute('id');
-				sessionStorage.setItem(id, sortIndex);
-			}
-
-			dungeons.sort(function(a, b) {
+			let sortVal = sortSelect.value;
+			dungeons.sort((a, b) => {
 				let minLevelA = parseInt(a.getElementsByClassName('dungeon-lvl')[0].textContent);
 				let minLevelB = parseInt(b.getElementsByClassName('dungeon-lvl')[0].textContent);
 				let minItemLevelA = parseInt(a.getElementsByClassName('dungeon-ilvl')[0].textContent);
@@ -397,68 +212,215 @@
 						return playersA - playersB;
 				}
 			});
+			dungeons.forEach(d => dungeonList.appendChild(d));
+		}
 
-			dungeons.forEach(function(dungeon) {
-				dungeonList.appendChild(dungeon);
-			});
-		});
+		function saveDetailsCollapsed(_, save = true) {
+			save && saveData(saveCollapsedCheckbox, saveCollapsedCheckbox.checked);
 
-		// restore session data
-		if (window.sessionStorage) {
-			searchInputs.forEach(function(element) {
-				let id = element.getAttribute('id');
-				let val = sessionStorage.getItem(id);
-				if (val != null) {
-					element.value = val;
+			if (saveCollapsedCheckbox.checked) {
+				if (dungeons.every(d => !d.open)) {
+					saveData(saveCollapsedId, 'all');
 				}
-			});
-
-			let sortId = sortSelect.getAttribute('id');
-			let sortVal = sessionStorage.getItem(sortId);
-			if (sortVal != null) {
-				sortSelect.selectedIndex = sortVal;
-			}
-
-			let checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox];
-			checkboxes.forEach(function(element) {
-				let id = element.getAttribute('id');
-				let val = sessionStorage.getItem(id);
-				if (val != null) {
-					element.checked = val === 'true';
-				}
-			});
-
-			let saveCollapsedVal = sessionStorage.getItem(saveCollapsedId);
-			if (saveCollapsedCheckbox.checked && saveCollapsedVal != null) {
-				if (saveCollapsedVal === 'all') {
-					dungeons.forEach(function(dungeon) {
-						dungeon.open = false;
-					});
+				else if (dungeons.every(d => d.open)) {
+					saveData(saveCollapsedId, null);
 				}
 				else {
-					let ids = saveCollapsedVal.split(',');
-					dungeons.filter(d => ids.includes(d.getAttribute('id')))
-						.forEach(function(dungeon) {
-							dungeon.open = false;
-						});
+					let ids = dungeons.filter(d => !d.open).map(d => d.getAttribute('id')).join(',')
+					saveData(saveCollapsedId, ids);
 				}
+			}
+			else {
+				saveData(saveCollapsedId, null);
 			}
 		}
 
-		dungeons.forEach(function(dungeon) {
-			dungeon.addEventListener('toggle', function() {
-				if (isToggleEnabled()) {
-					saveDetailsCollapsed();
+		function setAutoupdate(_, save = true) {
+			save && saveData(autoupdateCheckbox, autoupdateCheckbox.checked);
+
+			if (autoupdateCheckbox.checked) {
+				autoupdateTimerId = setTimeout(() => location.reload(), autoupdateTimer); //TODO: set up timeout?
+			}
+			else if (autoupdateTimerId !== -1) {
+				clearTimeout(autoupdateTimerId);
+				autoupdateTimerId = -1;
+			}
+		}
+
+		function mergeSupportMatching(_, save = true) {
+			save && saveData(mergeSupportCheckbox, mergeSupportCheckbox.checked);
+
+			if (dungeonsOld != undefined) {
+				let tempArr = dungeons;
+				dungeons = dungeonsOld;
+				dungeonsOld = tempArr;
+
+				dungeonsOld.forEach(d => dungeonList.removeChild(d));
+				dungeons.forEach(d => dungeonList.appendChild(d));
+			}
+			else if (mergeSupportCheckbox.checked) {
+				let lowDungeon = dungeons.find(d => d.querySelector('.dungeon-lvl').innerText == lowestSupportDungeonLvl);
+				if (lowDungeon == null)
+					return false;
+
+				let minSupportPlayerLvl = <%= dungeons_info['9999'].minLevel %>;
+
+				let partyDetails = Array.from(lowDungeon.getElementsByClassName('party-details'));
+				let supporters = partyDetails.filter(pd => pd.querySelector('.party-detailed-content.level65'));
+				if (supporters.length === 0)
+					return false;
+
+				let supportersRoles = [];
+				supporters.forEach(s => {
+					let summaries = Array.from(s.getElementsByClassName('party-summary'));
+					summaries.forEach(ps => ps.innerText.split('|').forEach(player => {
+						let role = player.trim().split(' ')[0];
+						supportersRoles.push(role);
+					}));
+				});
+
+				let supportDungeons = dungeons.filter(d => d.querySelector('.dungeon-lvl').innerText < minSupportPlayerLvl &&
+					d.querySelector('.party-detailed-content.level65') != null);
+
+				supportDungeons.forEach(function(sup) {
+					dungeonList.removeChild(sup);
+					let newNode = sup.cloneNode(true);
+					let parties = Array.from(newNode.getElementsByClassName('party-details'));
+					if (supporters.length === parties.length)
+						return;
+
+					let roles = Array.from(newNode.getElementsByClassName('dungeon-role'));
+					supportersRoles.forEach(sr => {
+						roles.forEach(r => {
+							if (r.innerText.includes(sr)) {
+								let newCount = parseInt(r.innerText) - 1;
+								r.innerText = newCount + sr;
+							}
+						});
+					});
+
+					parties.filter(p => p.querySelector('.party-detailed-content.level65') != null).forEach(p => newNode.removeChild(p));
+					newNode.addEventListener('toggle', dungeonDetailsToggleHandler);
+					dungeonList.appendChild(newNode);
+				});
+
+				let newElem = lowDungeon.cloneNode(true);
+				newElem.setAttribute('id', '9999');
+				newElem.querySelector('.dungeon-lvl').innerText = minSupportPlayerLvl;
+				newElem.querySelector('.dungeon-ilvl').innerText = <%= dungeons_info['9999'].minItemLevel %>;
+				newElem.querySelector('.dungeon-name').innerText = '<%= dungeons_info['9999'].name %>';
+
+				let parties = Array.from(newElem.getElementsByClassName('party-details'));
+				if (supporters.length !== parties.length) {
+					let roles = Array.from(newElem.getElementsByClassName('dungeon-role'));
+					roles.forEach(r => {
+						let index = parseInt(r.innerText).toString().length;
+						r.innerText = 0 + r.innerText.slice(index);
+					});
+
+					supportersRoles.forEach(sr => {
+						roles.forEach(r => {
+							if (r.innerText.includes(sr)) {
+								let newCount = parseInt(r.innerText) + 1;
+								r.innerText = newCount + sr;
+							}
+						});
+					});
+
+					parties.filter(p => p.querySelector('.party-detailed-content.level65') == null).forEach(p => { newElem.removeChild(p) });
 				}
-			});
+				newElem.addEventListener('toggle', dungeonDetailsToggleHandler);
+				dungeonList.appendChild(newElem);
+
+				dungeonsOld = dungeons;
+				dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
+			}
+			else {
+				return false;
+			}
+
+			save && saveDetailsCollapsed(null, false);
+			sortDungeons(null, false);
+			filterDungeons(null, false);
+			return true;
+		}
+
+		function dungeonDetailsToggleHandler() {
+			if (isToggleEnabled())
+				saveDetailsCollapsed(null, false);
+		}
+
+		// register event handlers
+		sortSelect.addEventListener('change', sortDungeons);
+		searchNameInput.addEventListener('input', filterDungeons);
+		searchMinLevelInput.addEventListener('input', filterDungeons);
+		searchMinItemLevelInput.addEventListener('input', filterDungeons);
+		dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
+		autoupdateCheckbox.addEventListener('change', setAutoupdate);
+		saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
+		mergeSupportCheckbox.addEventListener('change', mergeSupportMatching);
+
+		clearNavigationButton.addEventListener('click', function() {
+			searchInputs.forEach(e => e.value = '');
+			sortSelect.selectedIndex = defaultSelectIndex;
+			// autoupdateCheckbox.checked = false;
+			// saveCollapsedCheckbox.checked = false;
+			// mergeSupportCheckbox.checked = false;
+			// toggleDetailsButton.value = true;
+			
+			// disableToggle = true;
+			// dungeons.filter(d => !d.open).forEach(d => d.open = true);
+			// disableToggle = false;
+
+			sortDungeons(null, true);
+			filterDungeons(null, true);
 		});
 
-		updateNavigation();
-	});
-	
-	// to not handle 'toggle' on default open attribute
-    window.addEventListener('load', function() {
-		disableToggle = false;
+		toggleDetailsButton.addEventListener('click', function() {
+			let isOpen = this.value === 'true';
+			this.value = !isOpen;
+			saveData(this, this.value);
+
+			disableToggle = true;
+			dungeons.forEach(d => d.open = !isOpen);
+			disableToggle = false;
+			saveDetailsCollapsed(null, false);
+		});
+
+		toggleLangButton.addEventListener('click', function() {
+			let lang = this.value === 'ru' ? 'en' : 'ru';
+			this.value = lang;
+
+			let date = new Date();
+			date.setFullYear(date.getFullYear() + 1);
+			document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
+			location.reload();
+		});
+
+		// restore session data
+		searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
+		checkboxes.forEach(e => e.checked = loadData(e) === 'true');
+		sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
+		toggleDetailsButton.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.value;
+
+		if (!mergeSupportMatching(null, false)) {
+			sortDungeons(null, false);
+			filterDungeons(null, false);
+		}
+		setAutoupdate(null, false);
+
+		let saveCollapsedVal = loadData(saveCollapsedId);
+		if (saveCollapsedVal === 'all') {
+			dungeons.forEach(d => d.open = false);
+		}
+		else if (saveCollapsedVal != null) {
+			saveCollapsedVal.split(',').forEach(id => {
+				let d = document.getElementById(id);
+				if (d != null)
+					d.open = false;
+			});
+			saveDetailsCollapsed(null, false);
+		}
 	});
 </script>
 <% };%>
