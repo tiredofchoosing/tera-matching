@@ -37,7 +37,7 @@
 			<button id="clearNavigation" class="clearNavigation"><%= strings.clearNavigationContentStr %></button>
 			<br><input type="checkbox" id="autoupdateCheck" class="autoupdateCheck">
 			<label for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
-			<br><input type="checkbox" id="saveCollapsed" class="saveCollapsed">
+			<br><input type="checkbox" id="saveCollapsed" class="saveCollapsed" checked>
 			<label for="saveCollapsed"><%= strings.saveCollapsedLabelStr %></label>
 			<br><input type="checkbox" id="mergeSupportMatching" class="mergeSupportMatching">
 			<label for="mergeSupportMatching"><%= strings.mergeSupportMatchingLabelStr.replace('$', dungeons_info['9999'].name) %></label>
@@ -229,9 +229,11 @@
 					let ids = dungeons.filter(d => !d.open).map(d => d.getAttribute('id')).join(',')
 					saveData(saveCollapsedId, ids);
 				}
+				saveData(toggleDetailsButton, toggleDetailsButton.value);
 			}
 			else {
 				saveData(saveCollapsedId, null);
+				saveData(toggleDetailsButton, null);
 			}
 		}
 
@@ -379,7 +381,8 @@
 		toggleDetailsButton.addEventListener('click', function() {
 			let isOpen = this.value === 'true';
 			this.value = !isOpen;
-			saveData(this, this.value);
+			if (saveCollapsedCheckbox.checked)
+				saveData(this, this.value);
 
 			disableToggle = true;
 			dungeons.forEach(d => d.open = !isOpen);
