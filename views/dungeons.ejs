@@ -402,7 +402,11 @@
 
 		// restore session data
 		searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
-		checkboxes.forEach(e => e.checked = loadData(e) === 'true');
+		checkboxes.forEach(e => {
+			let checked = loadData(e);
+			if (checked != null)
+				e.checked = checked === 'true';
+		});
 		sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
 		toggleDetailsButton.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.value;
 
