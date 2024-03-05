@@ -2,9 +2,8 @@
 <html lang="<%= lang %>">
 <head>
     <meta charset="UTF-8">
-    <title>Dungeon matching</title>
+    <title><%= strings.pageTitleStr %></title>
     <link rel="stylesheet" href="/static/css/style.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 <% let isEmpty = Object.values(data).length === 0 %>
@@ -36,6 +35,12 @@
 			<button id="toggleDetails" class="toggleDetails" value="true"><%= strings.toggleDetailsContentStr %></button>
 			<button id="toggleLang" class="toggleLang" value="<%= lang %>"><%= strings.toggleLangContentStr %></button>
 			<button id="clearNavigation" class="clearNavigation"><%= strings.clearNavigationContentStr %></button>
+			<br><input type="checkbox" id="autoupdateCheck" class="autoupdateCheck">
+			<label for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
+			<br><input type="checkbox" id="saveCollapsed" class="saveCollapsed" checked>
+			<label for="saveCollapsed"><%= strings.saveCollapsedLabelStr %></label>
+			<br><input type="checkbox" id="mergeSupportMatching" class="mergeSupportMatching">
+			<label for="mergeSupportMatching"><%= strings.mergeSupportMatchingLabelStr.replace('$', dungeons_info['9999'].name) %></label>
 		</div>
 		<div class="navigation-toggle">
 		</div>
@@ -43,7 +48,7 @@
     <div id="dungeon-list">
         <% for(let dungeonId in data) { %>
 			<% let dungeon = data[dungeonId]; dungeonProps = dungeons_info[dungeonId]; %>
-			<details open class="dungeon-details">
+			<details open class="dungeon-details" id="<%= dungeonId %>">
 				<summary class="dungeon-summary">
 					<span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
 					<span class="dungeon-ilvl"><%= dungeonProps.minItemLevel %></span>
@@ -51,7 +56,11 @@
 					<% let countTank = 0; dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length); %>
 					<% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
 					<% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
-					<span class="dungeon-players"><%=countTank %><%= roles[0] %> | <%=countDmg %><%= roles[1] %> | <%= countHeal %><%= roles[2] %></span>
+					<span class="dungeon-players">
+						<span class="dungeon-role"><%= countTank %><%= roles[0] %></span> | 
+						<span class="dungeon-role"><%= countDmg %><%= roles[1] %></span> | 
+						<span class="dungeon-role"><%= countHeal %><%= roles[2] %></span>
+					</span>
 				</summary>
 				<% dungeon.parties.forEach(party => { %>
 					<details class="party-details">
@@ -67,8 +76,8 @@
 							<% });%>
 						</summary>
 						<% Object.keys(party.players).forEach(id => { %>
-							<p class="party-detailed-content">
-								<% let player = party.players[id]; %>
+							<% let player = party.players[id]; %>
+							<p class="party-detailed-content<%= player.level >= 65 ? ' level65 ' : ''%>">
 								<%= (player.isLeaderRequired) ? '👑' : '' %>
 								[<%= classes[player.class] %>
 								<%= player.level %>
@@ -83,103 +92,98 @@
     </div>
 </div>
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-		let searchNameInput = document.getElementById('searchName');
-		let searchMinLevelInput = document.getElementById('searchMinLevel');
-		let searchMinItemLevelInput = document.getElementById('searchMinItemLevel');
-		let sortSelect = document.getElementById('sort');
-		let dungeonList = document.getElementById('dungeon-list');
-		let dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
-		let toggleDetailsButton = document.getElementById('toggleDetails');
-		let toggleLangButton = document.getElementById('toggleLang');
-		let clearNavigationButton = document.getElementById('clearNavigation');
-		let searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-		const defaultSelectIndex = 2;
+	let disableToggle = true;
+	function isToggleEnabled() {
+		return !disableToggle;
+	}
 
-		function updateNavigation() {
-			sortSelect.dispatchEvent(new Event('change'));
-			filterDungeons();
+	// to not handle 'toggle' on default open attribute
+    window.addEventListener('load', () => disableToggle = false);
+
+	document.addEventListener('DOMContentLoaded', function() {
+		const dungeonList = document.getElementById('dungeon-list');
+		const searchNameInput = document.getElementById('searchName');
+		const searchMinLevelInput = document.getElementById('searchMinLevel');
+		const searchMinItemLevelInput = document.getElementById('searchMinItemLevel');
+		const sortSelect = document.getElementById('sort');
+		const toggleLangButton = document.getElementById('toggleLang');
+		const toggleDetailsButton = document.getElementById('toggleDetails');
+		const clearNavigationButton = document.getElementById('clearNavigation');
+		const autoupdateCheckbox = document.getElementById('autoupdateCheck');
+		const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
+		const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
+		const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
+		const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox];
+
+		const defaultSelectIndex = 2;
+		const autoupdateTimer = 10000;
+		const lowestSupportDungeonLvl = 20;
+		const saveCollapsedId = 'detailsCollapsed';
+		const storage = window.sessionStorage; // || window.localStorage;
+
+		let dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
+		let autoupdateTimerId = -1;
+		let dungeonsOld;
+
+		// functions
+		function saveData(element, value = null) {
+			if (storage) {
+				let id = typeof(element) === "string" ? element : element.getAttribute('id');
+				if (value != null)
+					storage.setItem(id, value);
+				else
+					storage.removeItem(id);
+			}
 		}
 
-		toggleDetailsButton.addEventListener('click', function() {
-			let isOpen = toggleDetailsButton.value === "true";
-			toggleDetailsButton.value = !isOpen;
+		function loadData(element) {
+			if (storage) {
+				let id = typeof(element) === "string" ? element : element.getAttribute('id');
+				return storage.getItem(id);
+			}
+			return null;
+		}
 
-			dungeons.forEach(function(detail) {
-				detail.open = !isOpen;
-			});
-		});
-		
-		toggleLangButton.addEventListener('click', function() {
-			let lang = toggleLangButton.value === "ru" ? "en" : "ru";
-			toggleLangButton.value = lang;
+		function filterDungeons(_, save = true) {
+			save && searchInputs.forEach(e => saveData(e, e.value));
 
-			document.cookie = `lang=${lang}`
-			location.reload()
-		});
-
-		clearNavigationButton.addEventListener('click', function() {
-			searchInputs.forEach(function(element) {
-				element.value = '';
-			});
-			sortSelect.selectedIndex = defaultSelectIndex;
-			updateNavigation();
-		});
-
-		function filterDungeons() {
 			let searchNameVal = searchNameInput.value.toLowerCase();
 			let searchMinLevelVal = searchMinLevelInput.value;
 			let searchMinItemLevelVal = searchMinItemLevelInput.value;
-			
-			if (window.sessionStorage) {
-				searchInputs.forEach(function(element) {
-					let id = element.getAttribute('id');
-					sessionStorage.setItem(id, element.value);
-				});
+
+			function checkLevel(level, searchVal) {
+				if (searchVal === '') {
+					return true;
+				} else if (searchVal.endsWith('+')) {
+					return level >= parseInt(searchVal);
+				} else if (searchVal.endsWith('-')) {
+					return level <= parseInt(searchVal);
+				} else if (searchVal.includes('-')) {
+					let [min, max] = searchVal.split('-').map(Number);
+					return level >= min && level <= max;
+				} else {
+					return level === parseInt(searchVal);
+				}
 			}
 
-			dungeons.forEach(function(dungeon) {
-				let name = dungeon.getElementsByClassName('dungeon-name')[0].textContent;
-				let minLevel = parseInt(dungeon.getElementsByClassName('dungeon-lvl')[0].textContent);
-				let minItemLevel = parseInt(dungeon.getElementsByClassName('dungeon-ilvl')[0].textContent);
+			dungeons.forEach(d => {
+				let name = d.getElementsByClassName('dungeon-name')[0].textContent;
+				let minLevel = parseInt(d.getElementsByClassName('dungeon-lvl')[0].textContent);
+				let minItemLevel = parseInt(d.getElementsByClassName('dungeon-ilvl')[0].textContent);
 
 				let show = name.toLowerCase().includes(searchNameVal) &&
 					checkLevel(minLevel, searchMinLevelVal) &&
 					checkLevel(minItemLevel, searchMinItemLevelVal);
 
-				dungeon.style.display = show ? '' : 'none';
+				d.style.display = show ? '' : 'none';
 			});
 		}
 
-		function checkLevel(level, searchVal) {
-			if (searchVal === '') {
-				return true;
-			} else if (searchVal.endsWith('+')) {
-				return level >= parseInt(searchVal);
-			} else if (searchVal.endsWith('-')) {
-				return level <= parseInt(searchVal);
-			} else if (searchVal.includes('-')) {
-				let [min, max] = searchVal.split('-').map(Number);
-				return level >= min && level <= max;
-			} else {
-				return level === parseInt(searchVal);
-			}
-		}
+		function sortDungeons(_, save = true) {
+			save && saveData(sortSelect, sortSelect.selectedIndex);
 
-		searchNameInput.addEventListener('input', filterDungeons);
-		searchMinLevelInput.addEventListener('input', filterDungeons);
-		searchMinItemLevelInput.addEventListener('input', filterDungeons);
-
-		sortSelect.addEventListener('change', function() {
-			let sortVal = this.value;
-			let sortIndex = this.selectedIndex;
-
-			if (window.sessionStorage) {
-				let id = sortSelect.getAttribute('id');
-				sessionStorage.setItem(id, sortIndex);
-			}
-
-			dungeons.sort(function(a, b) {
+			let sortVal = sortSelect.value;
+			dungeons.sort((a, b) => {
 				let minLevelA = parseInt(a.getElementsByClassName('dungeon-lvl')[0].textContent);
 				let minLevelB = parseInt(b.getElementsByClassName('dungeon-lvl')[0].textContent);
 				let minItemLevelA = parseInt(a.getElementsByClassName('dungeon-ilvl')[0].textContent);
@@ -208,26 +212,222 @@
 						return playersA - playersB;
 				}
 			});
-			dungeons.forEach(function(dungeon) {
-				dungeonList.appendChild(dungeon);
-			});
-		});
+			dungeons.forEach(d => dungeonList.appendChild(d));
+		}
 
-		if (window.sessionStorage) {
-			searchInputs.forEach(function(element) {
-				let id = element.getAttribute('id');
-				if (sessionStorage.getItem(id) != undefined && sessionStorage.getItem(id) != null) {
-					element.value = sessionStorage.getItem(id);
+		function saveDetailsCollapsed(_, save = true) {
+			save && saveData(saveCollapsedCheckbox, saveCollapsedCheckbox.checked);
+
+			if (saveCollapsedCheckbox.checked) {
+				if (dungeons.every(d => !d.open)) {
+					saveData(saveCollapsedId, 'all');
 				}
-			});
-
-			let sortId = sortSelect.getAttribute('id');
-			if (sessionStorage.getItem(sortId) != undefined && sessionStorage.getItem(sortId) != null) {
-				sortSelect.selectedIndex = sessionStorage.getItem(sortId);
+				else if (dungeons.every(d => d.open)) {
+					saveData(saveCollapsedId, null);
+				}
+				else {
+					let ids = dungeons.filter(d => !d.open).map(d => d.getAttribute('id')).join(',')
+					saveData(saveCollapsedId, ids);
+				}
+				saveData(toggleDetailsButton, toggleDetailsButton.value);
+			}
+			else {
+				saveData(saveCollapsedId, null);
+				saveData(toggleDetailsButton, null);
 			}
 		}
 
-		updateNavigation();
+		function setAutoupdate(_, save = true) {
+			save && saveData(autoupdateCheckbox, autoupdateCheckbox.checked);
+
+			if (autoupdateCheckbox.checked) {
+				autoupdateTimerId = setTimeout(() => location.reload(), autoupdateTimer); //TODO: set up timeout?
+			}
+			else if (autoupdateTimerId !== -1) {
+				clearTimeout(autoupdateTimerId);
+				autoupdateTimerId = -1;
+			}
+		}
+
+		function mergeSupportMatching(_, save = true) {
+			save && saveData(mergeSupportCheckbox, mergeSupportCheckbox.checked);
+
+			if (dungeonsOld != undefined) {
+				let tempArr = dungeons;
+				dungeons = dungeonsOld;
+				dungeonsOld = tempArr;
+
+				dungeonsOld.forEach(d => dungeonList.removeChild(d));
+				dungeons.forEach(d => dungeonList.appendChild(d));
+			}
+			else if (mergeSupportCheckbox.checked) {
+				let lowDungeon = dungeons.find(d => d.querySelector('.dungeon-lvl').innerText == lowestSupportDungeonLvl);
+				if (lowDungeon == null)
+					return false;
+
+				let minSupportPlayerLvl = <%= dungeons_info['9999'].minLevel %>;
+
+				let partyDetails = Array.from(lowDungeon.getElementsByClassName('party-details'));
+				let supporters = partyDetails.filter(pd => pd.querySelector('.party-detailed-content.level65'));
+				if (supporters.length === 0)
+					return false;
+
+				let supportersRoles = [];
+				supporters.forEach(s => {
+					let summaries = Array.from(s.getElementsByClassName('party-summary'));
+					summaries.forEach(ps => ps.innerText.split('|').forEach(player => {
+						let role = player.trim().split(' ')[0];
+						supportersRoles.push(role);
+					}));
+				});
+
+				let supportDungeons = dungeons.filter(d => d.querySelector('.dungeon-lvl').innerText < minSupportPlayerLvl &&
+					d.querySelector('.party-detailed-content.level65') != null);
+
+				supportDungeons.forEach(function(sup) {
+					dungeonList.removeChild(sup);
+					let newNode = sup.cloneNode(true);
+					let parties = Array.from(newNode.getElementsByClassName('party-details'));
+					if (supporters.length === parties.length)
+						return;
+
+					let roles = Array.from(newNode.getElementsByClassName('dungeon-role'));
+					supportersRoles.forEach(sr => {
+						roles.forEach(r => {
+							if (r.innerText.includes(sr)) {
+								let newCount = parseInt(r.innerText) - 1;
+								r.innerText = newCount + sr;
+							}
+						});
+					});
+
+					parties.filter(p => p.querySelector('.party-detailed-content.level65') != null).forEach(p => newNode.removeChild(p));
+					newNode.addEventListener('toggle', dungeonDetailsToggleHandler);
+					dungeonList.appendChild(newNode);
+				});
+
+				let newElem = lowDungeon.cloneNode(true);
+				newElem.setAttribute('id', '9999');
+				newElem.querySelector('.dungeon-lvl').innerText = minSupportPlayerLvl;
+				newElem.querySelector('.dungeon-ilvl').innerText = <%= dungeons_info['9999'].minItemLevel %>;
+				newElem.querySelector('.dungeon-name').innerText = '<%= dungeons_info['9999'].name %>';
+
+				let parties = Array.from(newElem.getElementsByClassName('party-details'));
+				if (supporters.length !== parties.length) {
+					let roles = Array.from(newElem.getElementsByClassName('dungeon-role'));
+					roles.forEach(r => {
+						let index = parseInt(r.innerText).toString().length;
+						r.innerText = 0 + r.innerText.slice(index);
+					});
+
+					supportersRoles.forEach(sr => {
+						roles.forEach(r => {
+							if (r.innerText.includes(sr)) {
+								let newCount = parseInt(r.innerText) + 1;
+								r.innerText = newCount + sr;
+							}
+						});
+					});
+
+					parties.filter(p => p.querySelector('.party-detailed-content.level65') == null).forEach(p => { newElem.removeChild(p) });
+				}
+				newElem.addEventListener('toggle', dungeonDetailsToggleHandler);
+				dungeonList.appendChild(newElem);
+
+				dungeonsOld = dungeons;
+				dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
+			}
+			else {
+				return false;
+			}
+
+			save && saveDetailsCollapsed(null, false);
+			sortDungeons(null, false);
+			filterDungeons(null, false);
+			return true;
+		}
+
+		function dungeonDetailsToggleHandler() {
+			if (isToggleEnabled())
+				saveDetailsCollapsed(null, false);
+		}
+
+		// register event handlers
+		sortSelect.addEventListener('change', sortDungeons);
+		searchNameInput.addEventListener('input', filterDungeons);
+		searchMinLevelInput.addEventListener('input', filterDungeons);
+		searchMinItemLevelInput.addEventListener('input', filterDungeons);
+		dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
+		autoupdateCheckbox.addEventListener('change', setAutoupdate);
+		saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
+		mergeSupportCheckbox.addEventListener('change', mergeSupportMatching);
+
+		clearNavigationButton.addEventListener('click', function() {
+			searchInputs.forEach(e => e.value = '');
+			sortSelect.selectedIndex = defaultSelectIndex;
+			// autoupdateCheckbox.checked = false;
+			// saveCollapsedCheckbox.checked = false;
+			// mergeSupportCheckbox.checked = false;
+			// toggleDetailsButton.value = true;
+			
+			// disableToggle = true;
+			// dungeons.filter(d => !d.open).forEach(d => d.open = true);
+			// disableToggle = false;
+
+			sortDungeons(null, true);
+			filterDungeons(null, true);
+		});
+
+		toggleDetailsButton.addEventListener('click', function() {
+			let isOpen = this.value === 'true';
+			this.value = !isOpen;
+			if (saveCollapsedCheckbox.checked)
+				saveData(this, this.value);
+
+			disableToggle = true;
+			dungeons.forEach(d => d.open = !isOpen);
+			disableToggle = false;
+			saveDetailsCollapsed(null, false);
+		});
+
+		toggleLangButton.addEventListener('click', function() {
+			let lang = this.value === 'ru' ? 'en' : 'ru';
+			this.value = lang;
+
+			let date = new Date();
+			date.setFullYear(date.getFullYear() + 1);
+			document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
+			location.reload();
+		});
+
+		// restore session data
+		searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
+		checkboxes.forEach(e => {
+			let checked = loadData(e);
+			if (checked != null)
+				e.checked = checked === 'true';
+		});
+		sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
+		toggleDetailsButton.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.value;
+
+		if (!mergeSupportMatching(null, false)) {
+			sortDungeons(null, false);
+			filterDungeons(null, false);
+		}
+		setAutoupdate(null, false);
+
+		let saveCollapsedVal = loadData(saveCollapsedId);
+		if (saveCollapsedVal === 'all') {
+			dungeons.forEach(d => d.open = false);
+		}
+		else if (saveCollapsedVal != null) {
+			saveCollapsedVal.split(',').forEach(id => {
+				let d = document.getElementById(id);
+				if (d != null)
+					d.open = false;
+			});
+			saveDetailsCollapsed(null, false);
+		}
 	});
 </script>
 <% };%>

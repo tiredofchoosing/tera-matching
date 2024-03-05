@@ -1,4 +1,5 @@
 {
+  "pageTitleStr": "Подбор подземелий",
   "emptyContentStr": "Список подбора пуст 😴",
 
   "searchNameDungeonPlaceholderStr": "Название подземелья",
@@ -19,5 +20,8 @@
   
   "toggleLangContentStr": "Eng/Rus",
   "toggleDetailsContentStr": "Свернуть / развернуть список",
-  "clearNavigationContentStr": "Сбросить все"
+  "clearNavigationContentStr": "Сбросить все",
+  "autoupdateLabelStr": "Автоматически обновлять страницу",
+  "saveCollapsedLabelStr": "Сохранять свернутые элементы",
+  "mergeSupportMatchingLabelStr": "Показывать \"$\" отдельной строкой"
 }

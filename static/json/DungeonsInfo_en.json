@@ -316,5 +316,11 @@
     "minLevel": 70,
     "maxLevel": 70,
     "name": "Forbidden Arena"
+  },
+  "9999": {
+    "minItemLevel": 0,
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Blast from the Past"
   }
 }

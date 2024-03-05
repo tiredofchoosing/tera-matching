@@ -1,4 +1,5 @@
 {
+  "pageTitleStr": "Dungeon matching",
   "emptyContentStr": "Matching queue is empty 😴",
 
   "searchNameDungeonPlaceholderStr": "Dungeon name",
@@ -19,5 +20,8 @@
   
   "toggleLangContentStr": "Eng/Rus",
   "toggleDetailsContentStr": "Collapse / expand list",
-  "clearNavigationContentStr": "Reset all"
+  "clearNavigationContentStr": "Reset all",
+  "autoupdateLabelStr": "Reload the page automatically",
+  "saveCollapsedLabelStr": "Save collapsed items",
+  "mergeSupportMatchingLabelStr": "Show \"$\" as separate item"
 }
