@@ -50,3 +50,19 @@ export async function battlegrounds(req, res) {
         lang
     })
 }
+
+export async function online(req, res) {
+    const lang = changeLang(req)
+
+    const response = await fetch(config.get('online'));
+    if (!response)
+        return res.type('txt').send('error')
+
+    res.render('online', {
+        data: await response.json(),
+        strings: globalization[lang],
+        classes: classes[lang],
+        roles,
+        lang
+    })
+}

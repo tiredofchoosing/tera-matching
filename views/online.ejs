@@ -1,0 +1,57 @@
+<%- include('layout_begin.ejs', { page: "online" }) %>
+<%- include('header.ejs') %>
+	<div class="navigation">
+		<div class="navigation-search">
+			<span class="search-heading">🔍</span>
+			<input type="text" id="searchName" class="searchName" placeholder="<%= strings.searchPlayerNamePlaceholderStr %>">
+			<input type="text" id="searchLevel" class="searchLevel" placeholder="<%= strings.searchPlayerLevelPlaceholderStr %>" title="<%= strings.searchPlayerLevelTitleStr %>">
+		</div>
+		<div class="navigation-sort">
+			<span class="sort-heading">🔀</span>
+			<select id="sort" class="sort">
+				<option value="default" selected="selected">Default</option>
+				<option value="levelDesc"><%= strings.playerLevelDescContentStr %></option>
+				<option value="levelAsc"><%= strings.playerLevelAscContentStr %></option>
+				<option value="classDesc"><%= strings.playerClassDescContentStr %></option>
+				<option value="classAsc"><%= strings.playerClassAscContentStr %></option>
+				<option value="nameDesc"><%= strings.playerNameDescContentStr %></option>
+				<option value="nameAsc"><%= strings.playerNameAscContentStr %></option>
+			</select>
+			<!-- <button id="toggleLang" class="toggleLang" value="<%= lang %>"><%= strings.toggleLangContentStr %></button> -->
+			<button id="clearNavigation" class="clearNavigation"><%= strings.clearNavigationContentStr %></button>
+			<br><input type="checkbox" id="autoupdateCheck" class="autoupdateCheck">
+			<label for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
+		</div>
+	</div>
+	
+	<% let isEmpty = data.length === 0 %>
+	<% if (isEmpty) { %>
+	<div id="player-list">
+		<h2 class="empty">empty</h2>
+	</div>
+	<% } else { %>
+	<div id="player-list">
+		<table style="border: 1px solid black; width: 100%;">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>class</th>
+					<th>level</th>
+					<th>name</th>
+				</tr>
+			</thead>
+			<tbody id="player-table">
+				<% let id = 1 %>
+				<% for(let player of data) { %>
+				<tr id="<%= id %>" class="player-details">
+					<td class="player-id"><%= id++ %></td>
+					<td class="player-class"><%= classes[player.class] %></td>
+					<td class="player-lvl"><%= player.level %></td>
+					<td class="player-name"><%= player.name %></td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+	</div>
+	<% } %>
+<%- include('layout_end.ejs') %>
