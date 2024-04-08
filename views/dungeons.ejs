@@ -4,9 +4,9 @@
 	<div class="navigation">
 		<div class="navigation-search">
 			<span class="search-heading">🔍</span>
-			<input type="text" id="searchName" class="searchName" placeholder="<%= strings.searchNameDungeonPlaceholderStr %>">
-			<input type="text" id="searchMinLevel" class="searchMinLevel" placeholder="<%= strings.searchMinLevelPlaceholderStr %>" title="<%= strings.searchMinLevelTitleStr %>">
-			<input type="text" id="searchMinItemLevel" class="searchMinItemLevel" placeholder="<%= strings.searchMinItemLevelPlaceholderStr %>" title="<%= strings.searchMinItemLevelTitleStr %>">
+			<input type="text" id="searchName" class="searchName col col-11" placeholder="<%= strings.searchNameDungeonPlaceholderStr %>">
+			<input type="text" id="searchMinLevel" class="searchMinLevel col col-11" placeholder="<%= strings.searchMinLevelPlaceholderStr %>" title="<%= strings.searchMinLevelTitleStr %>">
+			<input type="text" id="searchMinItemLevel" class="searchMinItemLevel col col-11" placeholder="<%= strings.searchMinItemLevelPlaceholderStr %>" title="<%= strings.searchMinItemLevelTitleStr %>">
 		</div>
 		<div class="navigation-sort">
 			<span class="sort-heading">🔀</span>
@@ -20,9 +20,12 @@
 				<option value="playersDesc"><%= strings.playersDescContentStr %></option>
 				<option value="playersAsc"><%= strings.playersAscContentStr %></option>
 			</select>
-			<button id="toggleDetails" class="toggleDetails" value="true"><%= strings.toggleDetailsContentStr %></button>
-			<!-- <button id="toggleLang" class="toggleLang" value="<%= lang %>"><%= strings.toggleLangContentStr %></button> -->
-			<button id="clearNavigation" class="clearNavigation"><%= strings.clearNavigationContentStr %></button>
+			<button id="toggleDetails" class="toggleDetails" value="true">
+				<img src="./../static/img/icons/collapse.svg" width="17px" height="17px">
+			</button>
+			<button id="clearNavigation" class="clearNavigation">
+				<img src="./../static/img/icons/reset.svg" width="17px" height="17px">
+			</button>
 			<br><input type="checkbox" id="autoupdateCheck" class="autoupdateCheck">
 			<label for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
 			<br><input type="checkbox" id="saveCollapsed" class="saveCollapsed" checked>
@@ -38,45 +41,59 @@
 	</div>
 	<% } else { %>
 	<div id="content">
-		<div id="dungeon-list">
+		<div id="dungeon-list" class="col dungeon-list">
 			<% for(let dungeonId in data) { %>
 			<% let dungeon = data[dungeonId]; dungeonProps = dungeons_info[dungeonId]; %>
 			<details open class="dungeon-details" id="<%= dungeonId %>">
 				<summary class="dungeon-summary">
 					<span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
 					<span class="dungeon-ilvl"><%= dungeonProps.minItemLevel %></span>
-					<span class="dungeon-name"><%= dungeonProps.name %></span>
+					
 					<% let countTank = 0; dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length); %>
 					<% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
 					<% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
 					<span class="dungeon-players">
-						<span class="dungeon-role"><%= countTank %><%= roles[0] %></span> | 
-						<span class="dungeon-role"><%= countDmg %><%= roles[1] %></span> | 
-						<span class="dungeon-role"><%= countHeal %><%= roles[2] %></span>
+						<span class="dungeon-role"><%=countHeal %> <img src="./../static/img/icons/heal.svg" width="20px" height="20px"></span>
+						<span class="dungeon-role"><%=countDmg %> <img src="./../static/img/icons/sword.svg" width="20px" height="20px"></span>
+						<span class="dungeon-role"><%=countTank %> <img src="./../static/img/icons/shield.svg" width="20px" height="20px"></span>
 					</span>
+					<div class="dungeon-name">
+						<span><%= dungeonProps.name %></span>
+					</div>
 				</summary>
 				<% dungeon.parties.forEach(party => { %>
 				<details class="party-details">
-					<summary class="party-summary">
+					<summary class="party-summary row row-cols-auto">
 						<% Object.keys(party.players).forEach(id => { %>
 						<% let player = party.players[id]; %>
-						<span title="<%= classes[player.class] %> - <%= player.level %>">
-							<%= (player.isLeaderRequired) ? '👑' : '' %>
-							<%= roles[player.role] %>
+						<span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>">
+							<img class="party-playerImg" src="./../static/img/icons/<%= roles[player.role] %>.svg" width="15px" height="15px">
 							<%= player.name %>
-							<%= (parseInt(id, 10) + 1 !== party.players.length) ? '|' : '' %>
+							<% if (player.isLeaderRequired) { %>
+							<sup>
+								<img class="party-playerImg" src="./../static/img/icons/leader.svg" width="13px" height="13px">
+							</sup>
+							<% } %>
 						</span>
 						<% });%>
 					</summary>
 					<% Object.keys(party.players).forEach(id => { %>
 					<% let player = party.players[id]; %>
-					<p class="party-detailed-content<%= player.level >= 65 ? ' level65 ' : ''%>">
-						<%= (player.isLeaderRequired) ? '👑' : '' %>
-						[<%= classes[player.class] %>
-						<%= player.level %>
-						<%= roles[player.role] %>]
-						<%= player.name %>
-					</p>
+					<div class="party-detailed-content<%= player.level >= 65 ? ' level65 ' : ''%>">
+						<p>
+							<span class="party-player-summary">
+								<img class="ClassImg" src="./../static/img/class_icons/<%= player.class %>.png" width="15px" height="15px" title="<%= classes[player.class] %>">
+								<%= player.level %>
+							</span>
+							<%= player.name %>
+							<% if (player.isLeaderRequired) { %>
+							<sup>
+								<img class="party-playerImg" src="./../static/img/icons/leader.svg" width="13px" height="13px">
+							</sup>
+							<% } %>
+							<!-- <%= roles[player.role] %>] -->
+						</p>
+					</div>
 					<% });%>
 				</details>
 				<% });%>
