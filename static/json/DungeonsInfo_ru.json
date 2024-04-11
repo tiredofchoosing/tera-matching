@@ -322,5 +322,11 @@
     "minLevel": 65,
     "maxLevel": 70,
     "name": "Грабители подземелий"
+  },
+  "9027": {
+    "minItemLevel": 0,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Обитель Манайи Сложно"
   }
 }

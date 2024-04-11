@@ -1,7 +1,42 @@
-    <header>
-        <span id="header-logo"><img src="" alt="" height="20px" width="20px"></span>
-        <span class="header-page-link"><a href="/dungeons">Dungeons</a></span>
-        <span class="header-page-link"><a href="/battlegrounds">Battlegrounds</a></span>
-        <span class="header-page-link"><a href="/online">Online</a></span>
-        <span><button id="toggleLang" class="toggleLang" value="<%= lang %>"><img src="" height="20px" width="20px"></button></span>
-    </header>
+<header class="sticky-top header">
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-expand-lg navbar-dark d-flex">
+        <div class="container container-fluid ">
+            <!-- Элементы навигационной панели -->
+            <ul class="navbar-nav mx-auto flex-row align-items-center">
+                <!-- Логотип -->
+                <li class="nav-item">
+                    <span id="header-logo"><img src="/static/img/icons/elin.png" alt="" height="35px" width="35px"></span>
+                </li>
+                <!-- Кнопка переключения языка -->
+                <li class="nav-item header-button">
+                    <span><button id="toggleLang" class="toggleLang" value="<%= lang %>"><img src="/static/img/icons/global.svg" height="20px" width="20px"></button></span>
+                </li>
+                <!-- Счетчик онлайн-игроков -->
+                <li class="nav-item">
+                    <span class="CountOnline">В игре: 101</span>
+                </li>
+            </ul>
+
+            <!-- Кнопка для мобильной версии -->
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Ссылки на основные разделы -->
+            <div class="collapse navbar-collapse flex-lg-row justify-content-center" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item header-button">
+                        <span class="header-page-link"><a href="/online">Online</a></span>
+                    </li>
+                    <li class="nav-item header-button">
+                        <span class="header-page-link"><a href="/dungeons">Dungeons</a></span>
+                    </li>
+                    <li class="nav-item header-button">
+                        <span class="header-page-link"><a href="/battlegrounds">Battlegrounds</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
