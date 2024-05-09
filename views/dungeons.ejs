@@ -4,15 +4,15 @@
 	<div class="container">
 		<div class="row justify-content-start">
 			<div class="col-lg-3 col-md-12">
-				<div class=" d-lg-block" id="navigationSearch">
-					<div class="navigation navigation-menu">
-						<div class="navigation-search col col-11">
-							<input type="text" id="searchName" class="searchName col col-11" placeholder="<%= strings.searchNameDungeonPlaceholderStr %>">
-							<input type="text" id="searchMinLevel" class="searchMinLevel col col-11" placeholder="<%= strings.searchMinLevelPlaceholderStr %>" title="<%= strings.searchMinLevelTitleStr %>">
-							<input type="text" id="searchMinItemLevel" class="searchMinItemLevel col col-11" placeholder="<%= strings.searchMinItemLevelPlaceholderStr %>" title="<%= strings.searchMinItemLevelTitleStr %>">
+				<div class="d-lg-block collapse navbar-collapse" id="navigationSearch">
+					<div class="navigation-menu col-12">
+						<div class="navigation-search">
+							<input type="text" id="searchName" class="searchName" placeholder="<%= strings.searchNameDungeonPlaceholderStr %>">
+							<input type="text" id="searchMinLevel" class="searchMinLevel" placeholder="<%= strings.searchMinLevelPlaceholderStr %>" title="<%= strings.searchMinLevelTitleStr %>">
+							<input type="text" id="searchMinItemLevel" class="searchMinItemLevel" placeholder="<%= strings.searchMinItemLevelPlaceholderStr %>" title="<%= strings.searchMinItemLevelTitleStr %>">
 						</div>
-						<div class="navigation-sort col">
-							<select id="sort" class="sort col-11">
+						<div class="navigation-sort">
+							<select id="sort" class="sort">
 								<option value="minLevelDesc"><%= strings.minLevelDescContentStr %></option>
 								<option value="minLevelAsc"><%= strings.minLevelAscContentStr %></option>
 								<option value="minItemLevelDesc" selected="selected"><%= strings.minItemLevelDescContentStr %></option>
@@ -22,64 +22,54 @@
 								<option value="playersDesc"><%= strings.playersDescContentStr %></option>
 								<option value="playersAsc"><%= strings.playersAscContentStr %></option>
 							</select>
-							<div class="col col-11">
-								<div class="d-flex  flex-sm-row">
-									<button id="toggleDetails" class="toggleDetails flex-fill text-center mr-lg-2">
-										<img src="./../static/img/icons/collapse.svg" width="17px" height="17px">
-									</button>
-									<button id="clearNavigation" class="clearNavigation flex-fill text-center ml-lg-2">
-										<img src="./../static/img/icons/reset.svg" width="17px" height="17px">
-									</button>
+						</div>
+						<div class="navigation-sort d-flex flex-sm-row">
+							<button id="toggleDetails" class="toggleDetails flex-fill text-center mr-lg-2" value="true">
+								<img src="./../static/img/icons/collapse.svg" width="17px" height="17px">
+							</button>
+							<button id="clearNavigation" class="clearNavigation flex-fill text-center ml-lg-2">
+								<img src="./../static/img/icons/reset.svg" width="17px" height="17px">
+							</button>
+						</div>
+						<div class="navigation-checkbox">
+							<span>
+								<div class="form-check form-switch">
+									<input class="form-check-input" type="checkbox" id="autoupdateCheck" role="switch">
+									<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
 								</div>
-							</div>
-							<div class="navigationCheckbox col col-11">
-								<br>
-								<span>
-									<div class="form-check form-switch">
-										<input class="form-check-input" type="checkbox" id="autoupdateCheck" role="switch">
-										<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
-									</div>
-								</span>
-								<br>
-								<span>
-									<div class="form-check form-switch">
-										<input type="checkbox" class="form-check-input" id="saveCollapsed" role="switch">
-										<label class="form-check-label" for="saveCollapsed"><%= strings.saveCollapsedLabelStr %></label>
-									</div>
-								</span>
-								<br>
-								<span>
-									<div class="form-check form-switch">
-										<input type="checkbox" class="form-check-input" id="mergeSupportMatching" role="switch">
-										<label class="form-check-label" for="mergeSupportMatching"><%= strings.mergeSupportMatchingLabelStr.replace('$', dungeons_info['9999'].name) %></label>
-									</div>
-								</span>
-							</div>
+							</span>
+							<span>
+								<div class="form-check form-switch">
+									<input type="checkbox" class="form-check-input" id="saveCollapsed" role="switch">
+									<label class="form-check-label" for="saveCollapsed"><%= strings.saveCollapsedLabelStr %></label>
+								</div>
+							</span>
+							<span>
+								<div class="form-check form-switch">
+									<input type="checkbox" class="form-check-input" id="mergeSupportMatching" role="switch">
+									<label class="form-check-label" for="mergeSupportMatching"><%= strings.mergeSupportMatchingLabelStr.replace('$', dungeons_info['9999'].name) %></label>
+								</div>
+							</span>
 						</div>
 					</div>
 				</div>
 			</div>
-			<% let isEmpty = Object.values(data).length === 0 %>
-			<% if (isEmpty) { %>
-			<div id="content" class="EmptyContent content col-lg-6 col-md-12">
-				<h4 class="empty"><%= strings.emptyContentStr %>
-					<br>
-					<br>
-					<img src="/static/img/icons/ElinSlip.png" width="150px" height="150px">
-				</h4>
-			</div>
-			<% } else { %>
 			<div id="content" class="content col-lg-6 col-md-12">
+				<% let isEmpty = Object.values(data).length === 0 %>
+				<% if (isEmpty) { %>
+				<div class="EmptyContent">
+					<h4 class="empty"><%= strings.emptyContentStr %>
+						<br>
+						<br>
+						<img src="/static/img/icons/ElinSlip.png" width="150px" height="150px">
+					</h4>
+				</div>
+				<% }; %>
 				<div id="dungeon-list" class="dungeon-list">
 					<% for(let dungeonId in data) { %>
 					<% let dungeon = data[dungeonId]; dungeonProps = dungeons_info[dungeonId]; %>
 					<details open class="dungeon-details" id="<%= dungeonId %>">
 						<summary class="dungeon-summary">
-							<!-- <% console.log(dungeonId); %>
-							<% console.log(dungeons_info[dungeonId]); %>
-							<% console.log(dungeonProps); %>
-							<% console.log(dungeonProps.minLevel); %> -->
-
 							<span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
 							<span class="dungeon-ilvl"><%= dungeonProps.minItemLevel %></span>
 							<% let countTank = 0; dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length); %>
@@ -94,6 +84,7 @@
 								<span><%= dungeonProps.name %></span>
 							</div>
 						</summary>
+						<% let count = 0; %>
 						<% dungeon.parties.forEach(party => { %>
 						<details class="party-details">
 							<summary class="party-summary row row-cols-auto">
@@ -108,7 +99,7 @@
 									</sup>
 									<% } %>
 								</span>
-								<% });%>
+								<% }); %>
 							</summary>
 							<% Object.keys(party.players).forEach(id => { %>
 							<% let player = party.players[id]; %>
@@ -127,26 +118,26 @@
 									<!-- <%= roles[player.role] %>] -->
 								</p>
 							</div>
-							<% });%>
+							<% }); %>
 						</details>
+						<% if (++count != dungeon.parties.length) { %>
 						<div class="delimiter"></div>
-						<% });%>
+						<% } %>
+						<% }); %>
 					</details>
-					<% };%>
+					<% }; %>
 				</div>
 			</div>
-
-			<script>
-				const supportDungeonProps = {
-					id: 9999,
-					minLevel: <%= dungeons_info['9999'].minLevel %>,
-					minItemLevel: <%= dungeons_info['9999'].minItemLevel %>,
-					name: '<%= dungeons_info['9999'].name %>',
-					lowestDungeonLevel: 20
-				};
-			</script>
-			<% };%>
 		</div>
 	</div>
 </div>
+<script>
+	const supportDungeonProps = {
+		id: 9999,
+		minLevel: <%= dungeons_info['9999'].minLevel %>,
+		minItemLevel: <%= dungeons_info['9999'].minItemLevel %>,
+		name: '<%= dungeons_info['9999'].name %>',
+		lowestDungeonLevel: 20
+	};
+</script>
 <%- include('layout_end.ejs') %>

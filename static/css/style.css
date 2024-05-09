@@ -1,153 +1,124 @@
-html
-{
+/* base */
+html {
     scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
-    font-family: 'Montserrat', sans-serif;
+    overflow-y: scroll;
 }
-
-body
-{
+body {
     font-family: 'Montserrat', sans-serif;
     font-size: 12pt;
-    background-attachment:fixed;
+    line-height: normal;
+    background-attachment: fixed;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url('/static/img/bgs/background.png');
+    backdrop-filter: blur(2px);
 }
 
 /**********************
     Стили для header 
 **********************/
-
-header
-{
+header {
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.075);
-    font-family: 'Montserrat', sans-serif;
 }
-
-.navbar
-{
+.navbar {
     background-color: rgb(23, 24, 32);
 }
-
-.nav-item 
-{
-    margin-right: 1.5em;
-    padding: 0.5em;
+.nav-item {
+    margin-right: 1.5rem;
+    padding: 0.5rem;
     border-radius: 5px;
 }
-
-.header-button:hover
-{
+.header-button {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.25rem;
+    border-color: rgba(255,255,255,.1);
+}
+.header-button:hover {
     background-color: rgb(7, 8, 10);
 }
-
-.toggleLang
-{
+.toggleLang {
     background: none;
     border: none;
 }
-
-.CountOnline
-{ 
-    padding: 0.5em;
+.CountOnline { 
+    padding: 0.5rem;
     border-radius: 5px;
     color: rgb(255, 255, 255);
     background-color: rgb(46, 52, 65);
 }
-
-.nav-item
-{
+.nav-item {
     transition:0.3s;
 }
-
-.nav-item a,.nav-item p
-{
+.nav-item a,.nav-item p {
     text-decoration: none;
     color: rgb(255, 255, 255);
 }
-
-.nav-item a:hover
-{
+.nav-item a:hover {
     color: rgb(255, 255, 255);
 }
-
-.nav-item:visited
-{
+.nav-item:visited {
     color: rgb(255, 255, 255);
 }
-
-.navbar-nav
-{
+.navbar-nav {
     display: flex;
 }
 
 /**********************
     Панель с фильтрами и сортировкой
 **********************/
-
-.toggleDetails:hover, .clearNavigation:hover
-{
+.toggleDetails:hover, .clearNavigation:hover {
     background-color: rgba(23, 24, 32, 0.6)
 }
 
-.toggleDetails, .clearNavigation
-{
+.toggleDetails, .clearNavigation {
     transition: 0.3s;
 }
 
 #searchLevel::placeholder,
 #searchName::placeholder,
 #searchMinLevel::placeholder,
-#searchMinItemLevel::placeholder 
-{ 
-    opacity: 1; 
+#searchMinItemLevel::placeholder {
+    opacity: 1;
     color: rgba(255, 255, 255, 0.6);
-    font-family: 'Montserrat', sans-serif;
 }
 
 #searchLevel:-ms-input-placeholder,
 #searchName:-ms-input-placeholder,
 #searchMinLevel:-ms-input-placeholder,
-#searchMinItemLevel:-ms-input-placeholder
-{
+#searchMinItemLevel:-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.6);
-    font-family: 'Montserrat', sans-serif;
 }
 
 #searchLevel:-ms-input-placeholder,
 #searchName::-ms-input-placeholder,
 #searchMinLevel::-ms-input-placeholder,
-#searchMinItemLevel::-ms-input-placeholder
-{ 
+#searchMinItemLevel::-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.6);
-    font-family: 'Montserrat', sans-serif;
 }
 
-.navigation
-{ 
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 1em;
-    padding: 1em 0 1em 1em;
+.navigation-menu {
+    margin-top: 1rem;
+    padding: 1rem;
     border-radius: 5px;
     background-color: rgba(23, 24, 32, 0.7);
 }
 
-#navigationSearch
-{
+#navigationSearch {
     position: sticky;
     top: 0;
 }
 
-#autoupdateCheck + label, #saveCollapsed +label, #mergeSupportMatching+label
-{
+#autoupdateCheck + label, #saveCollapsed +label, #mergeSupportMatching+label {
     display: inline;
 }
 
 .navigation-search input, .navigation-menu select, .navigation-menu button, .sort, 
 .clearNavigation, .searchName, .searchLevel
 {   
-    margin: 0.5em 0;
-    padding: 0.5em 0.7em;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.7rem;
     border-radius: 4px;
     border: none;
     outline: none;
@@ -159,14 +130,23 @@ select#sort
 {
     background-color: rgb(46, 52, 65); /* Замените #yourColor на цвет, который вы хотите использовать */
 }
-
-.navigationCheckbox input
-{
-    background-color: rgba(255, 255, 255);
+#sort::marker {
+    visibility: hidden;
 }
 
-.navigationCheckbox
+.navigation-checkbox input
 {
+    background-color: rgba(255, 255, 255);
+    margin-top: 0.075rem;
+}
+.navigation-checkbox div
+{
+    margin-top: 0.5rem;
+}
+
+.navigation-checkbox
+{
+    margin-top: 0.5rem;
     border-radius: 5px;
     color: rgb(255, 255, 255);
 }

@@ -2,6 +2,11 @@
   "dungeonsPageTitleStr": "Подбор подземелий",
   "battlegroundsPageTitleStr": "Подбор арен",
   "onlinePageTitleStr": "Список игроков",
+
+  "dungeonsHeaderLink": "Подземелья",
+  "battlegroundsHeaderLink": "Арены",
+  "onlineHeaderLink": "Онлайн",
+
   "emptyContentStr": "Список подбора пуст",
 
   "searchNameDungeonPlaceholderStr": "Название подземелья",

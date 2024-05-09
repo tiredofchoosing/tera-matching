@@ -19,7 +19,7 @@
             </ul>
 
             <!-- Кнопка для мобильной версии -->
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav,#navigationSearch" aria-controls="navbarNav navigationSearch" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -27,13 +27,13 @@
             <div class="collapse navbar-collapse flex-lg-row justify-content-center" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item header-button">
-                        <span class="header-page-link"><a href="/online">Online</a></span>
+                        <span class="header-page-link"><a href="/dungeons"><%= strings.dungeonsHeaderLink %></a></span>
                     </li>
                     <li class="nav-item header-button">
-                        <span class="header-page-link"><a href="/dungeons">Dungeons</a></span>
+                        <span class="header-page-link"><a href="/battlegrounds"><%= strings.battlegroundsHeaderLink %></a></span>
                     </li>
                     <li class="nav-item header-button">
-                        <span class="header-page-link"><a href="/battlegrounds">Battlegrounds</a></span>
+                        <span class="header-page-link"><a href="/online"><%= strings.onlineHeaderLink %></a></span>
                     </li>
                 </ul>
             </div>
