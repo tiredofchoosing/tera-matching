@@ -3,28 +3,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchNameInput = document.getElementById('searchName');
     const searchLevelInput = document.getElementById('searchLevel');
     const sortSelect = document.getElementById('sort');
+    const classSelect = document.getElementById('class-select');
     const toggleLangButton = document.getElementById('toggleLang');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const searchInputs = [searchNameInput, searchLevelInput];
     const checkboxes = [autoupdateCheckbox];
-    const defaultSelectIndex = 0;
+    const defaultSelectIndex = 1;
+    const defaultClassSelectIndex = 0;
 
     let players = Array.from(playerList.getElementsByClassName('player-details'));
 
     // functions
     function filterPlayers(_, save = true) {
         save && searchInputs.forEach(e => saveData(e, e.value));
+        save && saveData(classSelect, classSelect.selectedIndex);
 
         let searchNameVal = searchNameInput.value.toLowerCase();
         let searchLevelVal = searchLevelInput.value;
+        let classSelectVal = classSelect.value;
 
         players.forEach(p => {
             let name = p.getElementsByClassName('player-name')[0].textContent;
             let level = parseInt(p.getElementsByClassName('player-lvl')[0].textContent);
+            let playerClass = p.getElementsByClassName('player-class')[0].dataset.playerClass;
 
             let show = name.toLowerCase().includes(searchNameVal) &&
-                checkLevel(level, searchLevelVal);
+                checkLevel(level, searchLevelVal) &&
+                (classSelectVal === 'default' || classSelectVal == playerClass);
 
             p.style.display = show ? '' : 'none';
         });
@@ -40,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
             let levelB = parseInt(b.getElementsByClassName('player-lvl')[0].textContent);
             let nameA = a.getElementsByClassName('player-name')[0].textContent;
             let nameB = b.getElementsByClassName('player-name')[0].textContent;
-            let classA = a.getElementsByClassName('player-class')[0].textContent;
-            let classB = b.getElementsByClassName('player-class')[0].textContent;
+            let classA = parseInt(a.getElementsByClassName('player-class')[0].dataset.playerClass);
+            let classB = parseInt(b.getElementsByClassName('player-class')[0].dataset.playerClass);
             let idA = parseInt(a.id);
             let idB = parseInt(b.id);
 
@@ -55,14 +61,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 case 'nameAsc':
                     return nameA.localeCompare(nameB);
                 case 'classDesc':
-                    return classB.localeCompare(classA);
+                	return classB - classA;
                 case 'classAsc':
-                    return classA.localeCompare(classB);
-                // case 'classDesc':
-                // 	return classB - classA;
-                // case 'classAsc':
-                // 	return classA - classB;
-                case 'default':
+                	return classA - classB;
+                case 'timeDesc':
+                    return idB - idA;
+                case 'timeAsc':
                     return idA - idB;
             }
         });
@@ -80,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // register event handlers
     sortSelect.addEventListener('change', sortPlayers);
+    classSelect.addEventListener('change', filterPlayers);
     searchNameInput.addEventListener('input', filterPlayers);
     searchLevelInput.addEventListener('input', filterPlayers);
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
@@ -87,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
+        classSelect.selectedIndex = defaultClassSelectIndex;
         // autoupdateCheckbox.checked = false;
 
         filterPlayers(null, true);
@@ -111,8 +117,14 @@ document.addEventListener('DOMContentLoaded', function() {
             e.checked = checked === 'true';
     });
     sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
+    classSelect.selectedIndex = loadData(classSelect) ?? classSelect.selectedIndex;
 
     filterPlayers(null, true);
     sortPlayers(null, true);
     setAutoupdate(null, false, autoupdateCheckbox);
+
+    // let regexp = /android|iphone|ipad/i;
+    // if (regexp.test(navigator.userAgent)) {
+    //     classSelect.setAttribute('multiple', 'multiple');
+    // }
 });

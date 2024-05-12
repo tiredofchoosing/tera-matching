@@ -27,6 +27,8 @@
   "nameAscContentStr": "Название (возрастание)",
   "playersDescContentStr": "Количество игроков (убывание)",
   "playersAscContentStr": "Количество игроков (возрастание)",
+  "loginTimeDescContentStr": "Время входа (убывание)",
+  "loginTimeAscContentStr": "Время входа (возрастание)",
   "playerLevelDescContentStr": "Уровень (убывание)",
   "playerLevelAscContentStr": "Уровень (возрастание)",
   "playerClassDescContentStr": "Класс (убывание)",
@@ -34,6 +36,8 @@
   "playerNameDescContentStr": "Имя персонажа (убывание)",
   "playerNameAscContentStr": "Имя персонажа (возрастание)",
   
+  "classSelectDefaultContentStr": "Все классы",
+
   "toggleLangContentStr": "Eng/Rus",
   "toggleDetailsContentStr": "Свернуть / развернуть список",
   "clearNavigationContentStr": "Сбросить все",

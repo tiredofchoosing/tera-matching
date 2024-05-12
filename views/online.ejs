@@ -5,34 +5,48 @@
 	<div class="container">
 		<div class="row justify-content-start">
 			<div class="col-lg-3 col-md-12">
-				<div class="navigation d-lg-block">
-					<div class="navigation-search col col-11">
-						<input type="text" id="searchName" class="searchName" placeholder="<%= strings.searchPlayerNamePlaceholderStr %>">
-						<input type="text" id="searchLevel" class="searchLevel" placeholder="<%= strings.searchPlayerLevelPlaceholderStr %>" title="<%= strings.searchPlayerLevelTitleStr %>">
-					</div>
-					<select id="sort" class="sort col col-11">
-						<option value="default" selected="selected">Default</option>
-						<option value="levelDesc"><%= strings.playerLevelDescContentStr %></option>
-						<option value="levelAsc"><%= strings.playerLevelAscContentStr %></option>
-						<option value="classDesc"><%= strings.playerClassDescContentStr %></option>
-						<option value="classAsc"><%= strings.playerClassAscContentStr %></option>
-						<option value="nameDesc"><%= strings.playerNameDescContentStr %></option>
-						<option value="nameAsc"><%= strings.playerNameAscContentStr %></option>
-					</select>
-					<div class="col-11 d-flex">
-						<button id="clearNavigation" class="clearNavigation flex-fill">
-							<img src="./../static/img/icons/reset.svg" width="17px" height="17px">
-						</button>
-					</div>
-				
-					<br>
-					<div class="navigationCheckbox col col-11">
-						<span class="SpanAutoupdateCheck">
-							<div class="form-check form-switch">
-								<input class="form-check-input" type="checkbox" id="autoupdateCheck" role="switch">
-								<label  class="form-check-label"for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
-							</div>
-						</span>
+				<div class="d-lg-block collapse navbar-collapse" id="navigationSearch">
+					<div class="navigation-menu col-12">
+						<div class="navigation-search">
+							<input type="text" id="searchName" class="searchName" placeholder="<%= strings.searchPlayerNamePlaceholderStr %>">
+							<input type="text" id="searchLevel" class="searchLevel" placeholder="<%= strings.searchPlayerLevelPlaceholderStr %>" title="<%= strings.searchPlayerLevelTitleStr %>">
+						</div>
+						<div class="navigation-sort">
+							<select id="class-select" class="sort">
+								<option value="default" selected="selected"><%= strings.classSelectDefaultContentStr %></option>
+								<% for(let [i, className] of classes.entries()) { %>
+								<option value="<%= i %>"><%= className %></option>
+								<% } %>
+							</select>
+						</div>
+						<div class="navigation-sort">
+							<select id="sort" class="sort">
+								<option value="timeDesc"><%= strings.loginTimeDescContentStr %></option>
+								<option value="timeAsc" selected="selected"><%= strings.loginTimeAscContentStr %></option>
+								<option value="levelDesc"><%= strings.playerLevelDescContentStr %></option>
+								<option value="levelAsc"><%= strings.playerLevelAscContentStr %></option>
+								<option value="classDesc"><%= strings.playerClassDescContentStr %></option>
+								<option value="classAsc"><%= strings.playerClassAscContentStr %></option>
+								<option value="nameDesc"><%= strings.playerNameDescContentStr %></option>
+								<option value="nameAsc"><%= strings.playerNameAscContentStr %></option>
+							</select>
+						</div>
+						<div class="navigation-sort d-flex flex-sm-row">
+							<!-- <button id="clearNavigation" class="clearNavigation flex-fill text-center ml-lg-2">
+								<img src="./../static/img/icons/reset.svg" width="17px" height="17px">
+							</button> -->
+							<button id="clearNavigation" class="clearNavigation flex-fill">
+								<img src="./../static/img/icons/reset.svg" width="17px" height="17px">
+							</button>
+						</div>
+						<div class="navigation-checkbox">
+							<span>
+								<div class="form-check form-switch">
+									<input class="form-check-input" type="checkbox" id="autoupdateCheck" role="switch">
+									<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
+								</div>
+							</span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -51,7 +65,6 @@
 								<th>level</th>
 								<th>class</th>
 								<th>name</th>
-								
 							</tr>
 						</thead>
 						<tbody id="player-table">
@@ -61,7 +74,7 @@
 								<td class="player-id"><%= id++ %></td>
 								<td class="player-lvl"><%= player.level %></td>
 								<!-- <td class="player-class"><%= classes[player.class] %></td> -->
-								<td class="player-class">
+								<td class="player-class" data-player-class="<%= player.class %>">
 									<!-- <%= classes[player.class] %> -->
 									<!-- <span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>"> -->
 

@@ -302,11 +302,9 @@ details[open]
 **********************/
 
 .TablePlayers table
-
 {
-    font-family: 'Montserrat', sans-serif;
     width: 100%;
-    margin: 1em 0;
+    margin-bottom: 1rem;
     border-radius: 5px; 
     border: none;
     overflow: hidden; 
@@ -332,14 +330,14 @@ details[open]
 
 .TablePlayers td:nth-child(-n+3)
 { 
-    width: 1em;
+    width: 1rem;
 }
 
 /* -n+2 - первые два элем. */
 .TablePlayers table tbody td:nth-child(-n+2), 
 .TablePlayers table thead th:nth-child(-n+2)
 {
-    padding: 0.7em;
+    padding: 0.7rem;
 }
 
 .TablePlayers table tbody tr:nth-child(odd) td
