@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             p.style.display = show ? '' : 'none';
         });
+        sortPlayers(null, false);
     }
 
     function sortPlayers(_, save = true) {
@@ -66,9 +67,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         let i = 1;
-        players.forEach(d => {
-            d.getElementsByClassName('player-id')[0].textContent = i++;
-            playerList.appendChild(d);
+        players.forEach(p => {
+            if (p.style.display !== 'none') {
+                p.getElementsByClassName('player-id')[0].textContent = i++;
+                playerList.appendChild(p);
+            }
+            else if (p.parentElement == playerList) {
+                playerList.removeChild(p);
+            }
         });
     }
 
@@ -83,8 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
         sortSelect.selectedIndex = defaultSelectIndex;
         // autoupdateCheckbox.checked = false;
 
-        sortPlayers(null, true);
         filterPlayers(null, true);
+        sortPlayers(null, true);
     });
 
     toggleLangButton.addEventListener('click', function() {
@@ -106,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
 
-    sortPlayers(null, true);
     filterPlayers(null, true);
+    sortPlayers(null, true);
     setAutoupdate(null, false, autoupdateCheckbox);
 });
