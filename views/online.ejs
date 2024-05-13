@@ -1,6 +1,5 @@
 <%- include('layout_begin.ejs', { page: "online" }) %>
 <%- include('header.ejs') %>
-
 <div id="main">
 	<div class="container">
 		<div class="row justify-content-start">
@@ -8,19 +7,17 @@
 				<div class="d-lg-block collapse navbar-collapse" id="navigationSearch">
 					<div class="navigation-menu col-12">
 						<div class="navigation-search">
-							<input type="text" id="searchName" class="searchName" placeholder="<%= strings.searchPlayerNamePlaceholderStr %>">
-							<input type="text" id="searchLevel" class="searchLevel" placeholder="<%= strings.searchPlayerLevelPlaceholderStr %>" title="<%= strings.searchPlayerLevelTitleStr %>">
+							<input type="text" id="searchPlayerName" placeholder="<%= strings.searchPlayerNamePlaceholderStr %>">
+							<input type="text" id="searchPlayerLevel" placeholder="<%= strings.searchPlayerLevelPlaceholderStr %>" title="<%= strings.searchPlayerLevelTitleStr %>">
 						</div>
-						<div class="navigation-sort">
-							<select id="class-select" class="sort">
+						<div class="navigation-select">
+							<select id="selectPlayerClass">
 								<option value="default" selected="selected"><%= strings.classSelectDefaultContentStr %></option>
 								<% for(let [i, className] of classes.entries()) { %>
 								<option value="<%= i %>"><%= className %></option>
 								<% } %>
 							</select>
-						</div>
-						<div class="navigation-sort">
-							<select id="sort" class="sort">
+							<select id="selectPlayerSort">
 								<option value="timeDesc"><%= strings.loginTimeDescContentStr %></option>
 								<option value="timeAsc" selected="selected"><%= strings.loginTimeAscContentStr %></option>
 								<option value="levelDesc"><%= strings.playerLevelDescContentStr %></option>
@@ -31,21 +28,16 @@
 								<option value="nameAsc"><%= strings.playerNameAscContentStr %></option>
 							</select>
 						</div>
-						<div class="navigation-sort d-flex flex-sm-row">
-							<!-- <button id="clearNavigation" class="clearNavigation flex-fill text-center ml-lg-2">
-								<img src="./../static/img/icons/reset.svg" width="17px" height="17px">
-							</button> -->
-							<button id="clearNavigation" class="clearNavigation flex-fill">
-								<img src="./../static/img/icons/reset.svg" width="17px" height="17px">
+						<div class="navigation-button d-flex flex-sm-row">
+							<button id="clearNavigation" class="flex-fill text-center ml-lg-2">
+								<img src="/static/img/icons/reset.svg" width="17px" height="17px">
 							</button>
 						</div>
 						<div class="navigation-checkbox">
-							<span>
-								<div class="form-check form-switch">
-									<input class="form-check-input" type="checkbox" id="autoupdateCheck" role="switch">
-									<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
-								</div>
-							</span>
+							<div class="form-check form-switch">
+								<input class="form-check-input" type="checkbox" id="autoupdateCheck" role="switch">
+								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -57,28 +49,23 @@
 					<h2 class="empty">empty</h2>
 				</div>
 				<% } else { %>
-				<div id="content" class="TablePlayers">
-					<table>
+				<div id="content">
+					<table class="players-table">
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>level</th>
-								<th>class</th>
-								<th>name</th>
+								<th><%= strings.levelTableHeaderStr %></th>
+								<th colspan="2"><%= strings.playerTableHeaderStr %></th>
 							</tr>
 						</thead>
-						<tbody id="player-table">
+						<tbody id="playersTableBody">
 							<% let id = 1 %>
 							<% for(let player of data) { %>
 							<tr id="<%= id %>" class="player-details">
 								<td class="player-id"><%= id++ %></td>
 								<td class="player-lvl"><%= player.level %></td>
-								<!-- <td class="player-class"><%= classes[player.class] %></td> -->
-								<td class="player-class" data-player-class="<%= player.class %>">
-									<!-- <%= classes[player.class] %> -->
-									<!-- <span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>"> -->
-
-									<img class="party-playerImg" src="./../static/img/class_icons/<%= player.class %>.png" width="25px" height="25px">
+								<td class="player-class" title="<%= classes[player.class] %>" data-player-class="<%= player.class %>">
+									<img src="/static/img/class_icons/<%= player.class %>.png" width="28px" height="28px">
 								</td>
 								<td class="player-name"><%= player.name %></td>
 							</tr>
@@ -88,7 +75,6 @@
 				</div>
 				<% } %>
 			</div>
-	
 		</div>
 	</div>
 </div>

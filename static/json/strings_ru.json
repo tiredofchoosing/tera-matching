@@ -35,7 +35,7 @@
   "playerClassAscContentStr": "Класс (возрастание)",
   "playerNameDescContentStr": "Имя персонажа (убывание)",
   "playerNameAscContentStr": "Имя персонажа (возрастание)",
-  
+
   "classSelectDefaultContentStr": "Все классы",
 
   "toggleLangContentStr": "Eng/Rus",
@@ -43,5 +43,8 @@
   "clearNavigationContentStr": "Сбросить все",
   "autoupdateLabelStr": "Автоматически обновлять страницу",
   "saveCollapsedLabelStr": "Сохранять свернутые элементы",
-  "mergeSupportMatchingLabelStr": "Показывать \"$\" отдельной строкой"
+  "mergeSupportMatchingLabelStr": "Показывать \"$\" отдельной строкой",
+
+  "levelTableHeaderStr": "Ур.",
+  "playerTableHeaderStr": "Персонаж"
 }

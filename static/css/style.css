@@ -300,9 +300,7 @@ details[open]
 /**********************
    Таблица
 **********************/
-
-.TablePlayers table
-{
+.players-table {
     width: 100%;
     margin-bottom: 1rem;
     border-radius: 5px; 
@@ -310,43 +308,38 @@ details[open]
     overflow: hidden; 
     color: white;
 }
-
-.TablePlayers table th
-{ 
+.players-table th { 
     border: none;
     background-color: rgba(23, 24, 32, 0.9);
 }
-
-.TablePlayers td
-{
+.players-table td {
     border: none;
 }
-
-.TablePlayers td:nth-child(1)
-{
+.players-table td:nth-child(1) {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.5);
+    min-width: 2.8rem;
 }
-
-.TablePlayers td:nth-child(-n+3)
-{ 
-    width: 1rem;
+.players-table td:nth-child(2) {
+    min-width: 2.85rem;
 }
-
+.players-table th:nth-child(3),
+.players-table td:nth-child(3),
+.players-table td:nth-child(4) {
+    padding: 0.5rem 0 0.5rem 0.5rem;
+}
 /* -n+2 - первые два элем. */
-.TablePlayers table tbody td:nth-child(-n+2), 
-.TablePlayers table thead th:nth-child(-n+2)
-{
-    padding: 0.7rem;
+.players-table td:nth-child(-n+2), 
+.players-table th:nth-child(-n+2) {
+    padding: 0.6rem 0.3rem 0.6rem 0.7rem
 }
-
-.TablePlayers table tbody tr:nth-child(odd) td
-{
+.players-table td:nth-child(-n+3) { 
+    width: 0;
+}
+.players-table tr:nth-child(odd) {
     background-color: rgba(23, 24, 32, 0.7);
 }
-
-.TablePlayers table tbody tr:nth-child(even) td
-{
+.players-table tr:nth-child(even) {
     background-color: rgba(66, 80, 63, 0.7);
 }
 

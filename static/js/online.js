@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const playerList = document.getElementById('player-table');
-    const searchNameInput = document.getElementById('searchName');
-    const searchLevelInput = document.getElementById('searchLevel');
-    const sortSelect = document.getElementById('sort');
-    const classSelect = document.getElementById('class-select');
+    const playerList = document.getElementById('playersTableBody');
+    const searchNameInput = document.getElementById('searchPlayerName');
+    const searchLevelInput = document.getElementById('searchPlayerLevel');
+    const sortSelect = document.getElementById('selectPlayerSort');
+    const classSelect = document.getElementById('selectPlayerClass');
     const toggleLangButton = document.getElementById('toggleLang');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     searchNameInput.addEventListener('input', filterPlayers);
     searchLevelInput.addEventListener('input', filterPlayers);
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
-
+    toggleLangButton.addEventListener('click', toggleLang);
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
@@ -96,17 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // autoupdateCheckbox.checked = false;
 
         filterPlayers(null, true);
-        sortPlayers(null, true);
-    });
-
-    toggleLangButton.addEventListener('click', function() {
-        let lang = this.value === 'ru' ? 'en' : 'ru';
-        this.value = lang;
-
-        let date = new Date();
-        date.setFullYear(date.getFullYear() + 1);
-        document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
-        location.reload();
+        // sortPlayers(null, true); // called in filter
     });
 
     // restore session data
@@ -120,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
     classSelect.selectedIndex = loadData(classSelect) ?? classSelect.selectedIndex;
 
     filterPlayers(null, true);
-    sortPlayers(null, true);
+    // sortPlayers(null, true); // called in filter
     setAutoupdate(null, false, autoupdateCheckbox);
 
     // let regexp = /android|iphone|ipad/i;

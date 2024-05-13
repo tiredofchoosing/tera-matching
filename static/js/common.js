@@ -5,7 +5,7 @@ let autoupdateTimerId = -1;
 
 function saveData(element, value = null) {
     if (storage) {
-        let id = typeof(element) === "string" ? element : element.getAttribute('id');
+        let id = typeof(element) === 'string' ? element : element.getAttribute('id');
         if (value != null)
             storage.setItem(id, value);
         else
@@ -15,7 +15,7 @@ function saveData(element, value = null) {
 
 function loadData(element) {
     if (storage) {
-        let id = typeof(element) === "string" ? element : element.getAttribute('id');
+        let id = typeof(element) === 'string' ? element : element.getAttribute('id');
         return storage.getItem(id);
     }
     return null;
@@ -47,4 +47,12 @@ function setAutoupdate(_, save = true, elem = null) {
         clearTimeout(autoupdateTimerId);
         autoupdateTimerId = -1;
     }
+}
+
+function toggleLang() {
+    let lang = this.value === 'ru' ? 'en' : 'ru';
+    let date = new Date();
+    date.setFullYear(date.getFullYear() + 1);
+    document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
+    location.reload();
 }
