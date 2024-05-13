@@ -28,11 +28,13 @@ header {
 }
 .navbar {
     background-color: rgb(23, 24, 32);
+    padding: 0.25rem 0;
 }
 .nav-item {
     margin-right: 1.5rem;
     padding: 0.5rem;
     border-radius: 5px;
+    transition:0.3s;
 }
 .header-button {
     border-width: 1px;
@@ -53,9 +55,6 @@ header {
     color: rgb(255, 255, 255);
     background-color: rgb(46, 52, 65);
 }
-.nav-item {
-    transition:0.3s;
-}
 .nav-item a,.nav-item p {
     text-decoration: none;
     color: rgb(255, 255, 255);
@@ -73,36 +72,6 @@ header {
 /**********************
     Панель с фильтрами и сортировкой
 **********************/
-.toggleDetails:hover, .clearNavigation:hover {
-    background-color: rgba(23, 24, 32, 0.6)
-}
-
-.toggleDetails, .clearNavigation {
-    transition: 0.3s;
-}
-
-#searchLevel::placeholder,
-#searchName::placeholder,
-#searchMinLevel::placeholder,
-#searchMinItemLevel::placeholder {
-    opacity: 1;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-#searchLevel:-ms-input-placeholder,
-#searchName:-ms-input-placeholder,
-#searchMinLevel:-ms-input-placeholder,
-#searchMinItemLevel:-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-#searchLevel:-ms-input-placeholder,
-#searchName::-ms-input-placeholder,
-#searchMinLevel::-ms-input-placeholder,
-#searchMinItemLevel::-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
 .navigation-menu {
     margin-top: 1rem;
     padding: 1rem;
@@ -110,18 +79,12 @@ header {
     background-color: rgba(23, 24, 32, 0.7);
 }
 
-#navigationSearch {
+#navigationMenu {
     position: sticky;
-    top: 0;
+    top: 5rem;
 }
 
-#autoupdateCheck + label, #saveCollapsed +label, #mergeSupportMatching+label {
-    display: inline;
-}
-
-.navigation-search input, .navigation-menu select, .navigation-menu button, .sort, 
-.clearNavigation, .searchName, .searchLevel
-{   
+.navigation-search input, .navigation-select select, .navigation-button button {
     margin: 0.5rem 0;
     padding: 0.5rem 0.7rem;
     border-radius: 4px;
@@ -130,46 +93,45 @@ header {
     color: rgb(255, 255, 255);
     background-color: rgb(46, 52, 65,0.75);
 }
+.navigation-search input, .navigation-select select {
+    width: 100%;
+    box-sizing: border-box;
+}
+.navigation-search input::placeholder {
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.6);
+}
+.navigation-search input:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+/* .navigation-search input::-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+} */
 
-select#sort 
-{
-    background-color: rgb(46, 52, 65); /* Замените #yourColor на цвет, который вы хотите использовать */
+.navigation-button button:hover {
+    background-color: rgba(23, 24, 32, 0.6)
 }
-#sort::marker {
-    visibility: hidden;
+.navigation-button button {
+    transition: 0.3s;
 }
-
-.navigation-checkbox input
-{
-    background-color: rgba(255, 255, 255);
-    margin-top: 0.075rem;
-}
-.navigation-checkbox div
-{
-    margin-top: 0.5rem;
+.navigation-button button:not(:last-child) {
+    margin-right: 10px;
 }
 
-.navigation-checkbox
-{
+.navigation-checkbox {
     margin-top: 0.5rem;
     border-radius: 5px;
     color: rgb(255, 255, 255);
 }
-
-.SpanAutoupdateCheck
-{
-    color: white;
+.navigation-checkbox div {
+    margin-top: 0.5rem;
 }
-
-.navigation-search input, .sort
-{
-    width: 100%;
-    box-sizing: border-box;
+.navigation-checkbox input {
+    background-color: rgba(255, 255, 255);
+    margin-top: 0.075rem;
 }
-
-#toggleDetails:not(:last-child), #clearNavigation:not(:last-child)
-{
-    margin-right: 10px;
+.navigation-checkbox label {
+    display: block;
 }
 
 /**********************
