@@ -175,66 +175,55 @@ select#sort
 /**********************
     Основной контент
 **********************/
-
-/* Тело блока */
-details
-{   
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 1em;
-    padding: 0.5em;
-    border-radius: 5px;
-    border: none;
+.content {
+    margin-top: 1rem;
 }
 
-details[open]
-{
-    margin-bottom: 0.5em;
+/* Тело блока */
+details {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
 }
 
 /* Уровень подземелья и снаряжения */
 .dungeon-lvl, .dungeon-ilvl
 {
-    margin-right: 0.2em;
-    padding: 0.2em 0.4em;
+    /* margin-right: 0.2rem; */
+    padding: 0.2rem 0.4rem;
     border-radius: 4px;
     background-color: rgb(18, 18, 18);
 }
 
 /* Счетчик :танк дд хил */
-.dungeon-players
-{
-    margin: 0 0.2em;
-    padding: 0 0.3em;
+.dungeon-players {
+    margin: 0 0.2rem;
+    padding: 0 0.3rem;
     border-radius: 4px;
-    float:right;
-    font-weight:800;
+    float: right;
+    /* font-weight: 800; */
     background-color: rgb(18, 18, 18);
 }
 
 /* Название */
-.dungeon-name
-{
-    margin: 0.3em 1.2em;
+.dungeon-name {
+    margin: 0.3rem 1.2rem;
     word-break:normal;
 }
 
 /* "Шапка" с основной информацией */
-.dungeon-summary
-{
-    margin: -0.5em -0.5em 0;
-    padding: 0.5em;
+.dungeon-summary {
+    margin: -0.5rem -0.5rem 0;
+    padding: 0.6rem 0.5rem 0.1rem 0.5rem;
     border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     color: #ffffff;
     background-image: linear-gradient(to right, rgb(38, 63, 32), rgba(23, 24, 32, 0.7), rgba(23, 24, 32, 0.7), rgba(23, 24, 32, 0.7), rgba(23, 24, 32,0.7), rgba(23, 24, 32, 1));
 }
-    
-.dungeon-details
-{
+.dungeon-details {
     min-width: 350px;
-    margin-bottom: 0.25em;
-    padding-bottom: 0.1em;
+    margin-bottom: 0.35rem;
+    padding-bottom: 0.1rem;
     border: none;
     background-image: linear-gradient(to right, rgba(38, 63, 32, 0.8), rgba(23, 24, 32, 0.6), rgba(23, 24, 32, 0.5), rgba(23, 24, 32, 0.5), rgba(23, 24, 32, 0.6), rgba(23, 24, 32, 0.8));
 }
@@ -242,59 +231,51 @@ details[open]
 /* Содержание */
 .party-details
 { 
-    margin: 0.25em 0;
-    padding: 0.25em 1em 0 1em;
+    margin: 0.5rem 0;
+    padding: 0 1rem;
     border-radius: 0;
     color: #ffffff;
 } 
 
 /* Разделительная линия между группами */
-.delimiter
-{
-    margin: 0.5em 0;
-    border-bottom: solid 1px rgb(255, 255, 255, 0.2);
+.delimiter {
+    margin: 0;
+    border-bottom: solid 1px rgb(255, 255, 255, 0.22);
 }
 
 /* Игрок */
-.party-player
-{
-    margin: 0.1em 0.4em 0.2em 0;
-    padding: 0.2em 0.5em;
+.party-player {
+    margin-right: 0.4rem;
+    padding: 0.2rem 0.5rem;
     border-radius: 3px;
     white-space: nowrap;
-    border: solid 1px rgba(255, 255, 255, 0.5);
+    border: solid 1px rgba(255, 255, 255, 0.2);
 }
 
 /* Группа: Описание состава группы */
 .party-detailed-content
 {
-    margin:0.5em 0;
+    margin:0.5rem 0;
     color: #ffffff;
 } 
 
 .party-detailed-content p
 {
     margin-bottom: 0;
-    margin-left: 0.3em;
+    margin-left: 0.3rem;
 }
 
 /* Группа: Иконки класса и уровень игрока  */
 .party-player-summary
 {
-    margin-right: 0.5em;
-    padding: 0 0.1em;
+    margin-right: 0.5rem;
+    padding: 0 0.1rem;
     border-radius: 2px;
     background-color: rgba(18, 18, 18, 0.6);
 }
 
-.ClassImg,.party-playerIm
-{
-    margin-bottom: 0.2em;
-}
-
-.leader_img
-{
-    float: bottom;
+.party-player-icon {
+    margin-bottom: 0.2rem;
 }
 
 /**********************
@@ -346,20 +327,16 @@ details[open]
 /**********************
     Пустой подбор
 **********************/
-.empty
-{
-    margin-top: 1em;
-    padding: 2em;
+.empty {
+    padding: 2rem;
     border-radius: 5px;
     text-align: center;
     color: white;
     background-color: rgba(23, 24, 32, 0.7);
     
 }
-.EmptyContent
-{
-    /* display: flex; */
+/* .EmptyContent {
+    display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
-}
+} */

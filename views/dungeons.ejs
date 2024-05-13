@@ -4,15 +4,15 @@
 	<div class="container">
 		<div class="row justify-content-start">
 			<div class="col-lg-3 col-md-12">
-				<div class="d-lg-block collapse navbar-collapse" id="navigationSearch">
+				<div class="d-lg-block collapse navbar-collapse" id="navigationMenu">
 					<div class="navigation-menu col-12">
 						<div class="navigation-search">
-							<input type="text" id="searchName" class="searchName" placeholder="<%= strings.searchNameDungeonPlaceholderStr %>">
-							<input type="text" id="searchMinLevel" class="searchMinLevel" placeholder="<%= strings.searchMinLevelPlaceholderStr %>" title="<%= strings.searchMinLevelTitleStr %>">
-							<input type="text" id="searchMinItemLevel" class="searchMinItemLevel" placeholder="<%= strings.searchMinItemLevelPlaceholderStr %>" title="<%= strings.searchMinItemLevelTitleStr %>">
+							<input type="text" id="searchDungeonName" placeholder="<%= strings.searchNameDungeonPlaceholderStr %>">
+							<input type="text" id="searchDungeonLevel" placeholder="<%= strings.searchMinLevelPlaceholderStr %>" title="<%= strings.searchMinLevelTitleStr %>">
+							<input type="text" id="searchDungeonItemLevel" placeholder="<%= strings.searchMinItemLevelPlaceholderStr %>" title="<%= strings.searchMinItemLevelTitleStr %>">
 						</div>
-						<div class="navigation-sort">
-							<select id="sort" class="sort">
+						<div class="navigation-select">
+							<select id="selectDungeonSort">
 								<option value="minLevelDesc"><%= strings.minLevelDescContentStr %></option>
 								<option value="minLevelAsc"><%= strings.minLevelAscContentStr %></option>
 								<option value="minItemLevelDesc" selected="selected"><%= strings.minItemLevelDescContentStr %></option>
@@ -23,33 +23,27 @@
 								<option value="playersAsc"><%= strings.playersAscContentStr %></option>
 							</select>
 						</div>
-						<div class="navigation-sort d-flex flex-sm-row">
-							<button id="toggleDetails" class="toggleDetails flex-fill text-center mr-lg-2" value="true">
-								<img src="./../static/img/icons/collapse.svg" width="17px" height="17px">
+						<div class="navigation-button d-flex flex-sm-row">
+							<button id="toggleDetails" class="flex-fill text-center mr-lg-2" value="true">
+								<img src="/static/img/icons/collapse.svg" width="17px" height="17px">
 							</button>
-							<button id="clearNavigation" class="clearNavigation flex-fill text-center ml-lg-2">
-								<img src="./../static/img/icons/reset.svg" width="17px" height="17px">
+							<button id="clearNavigation" class="flex-fill text-center ml-lg-2">
+								<img src="/static/img/icons/reset.svg" width="17px" height="17px">
 							</button>
 						</div>
 						<div class="navigation-checkbox">
-							<span>
-								<div class="form-check form-switch">
-									<input class="form-check-input" type="checkbox" id="autoupdateCheck" role="switch">
-									<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
-								</div>
-							</span>
-							<span>
-								<div class="form-check form-switch">
-									<input type="checkbox" class="form-check-input" id="saveCollapsed" role="switch">
-									<label class="form-check-label" for="saveCollapsed"><%= strings.saveCollapsedLabelStr %></label>
-								</div>
-							</span>
-							<span>
-								<div class="form-check form-switch">
-									<input type="checkbox" class="form-check-input" id="mergeSupportMatching" role="switch">
-									<label class="form-check-label" for="mergeSupportMatching"><%= strings.mergeSupportMatchingLabelStr.replace('$', dungeons_info['9999'].name) %></label>
-								</div>
-							</span>
+							<div class="form-check form-switch">
+								<input class="form-check-input" type="checkbox" id="autoupdateCheck" role="switch">
+								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
+							</div>
+							<div class="form-check form-switch">
+								<input type="checkbox" class="form-check-input" id="saveCollapsed" role="switch">
+								<label class="form-check-label" for="saveCollapsed"><%= strings.saveCollapsedLabelStr %></label>
+							</div>
+							<div class="form-check form-switch">
+								<input type="checkbox" class="form-check-input" id="mergeSupportMatching" role="switch">
+								<label class="form-check-label" for="mergeSupportMatching"><%= strings.mergeSupportMatchingLabelStr.replace('$', dungeons_info['9999'].name) %></label>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -57,15 +51,13 @@
 			<div id="content" class="content col-lg-6 col-md-12">
 				<% let isEmpty = Object.values(data).length === 0 %>
 				<% if (isEmpty) { %>
-				<div class="EmptyContent">
-					<h4 class="empty"><%= strings.emptyContentStr %>
-						<br>
-						<br>
-						<img src="/static/img/icons/ElinSlip.png" width="150px" height="150px">
-					</h4>
+				<div class="empty">
+					<h4><%= strings.emptyContentStr %></h4>
+					<br><br>
+					<img src="/static/img/icons/ElinSlip.png" width="150px" height="150px">
 				</div>
 				<% }; %>
-				<div id="dungeon-list" class="dungeon-list">
+				<div id="dungeonList" class="dungeon-list">
 					<% for(let dungeonId in data) { %>
 					<% let dungeon = data[dungeonId]; dungeonProps = dungeons_info[dungeonId]; %>
 					<details open class="dungeon-details" id="<%= dungeonId %>">
@@ -76,9 +68,9 @@
 							<% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
 							<% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
 							<span class="dungeon-players">
-								<span class="dungeon-role"><%=countTank %> <img src="./../static/img/icons/shield.svg" width="20px" height="20px"></span>
-								<span class="dungeon-role"><%=countDmg %> <img src="./../static/img/icons/sword.svg" width="20px" height="20px"></span>
-								<span class="dungeon-role"><%=countHeal %> <img src="./../static/img/icons/heal.svg" width="20px" height="20px"></span>
+								<span class="dungeon-role"><%=countTank %> <img src="/static/img/icons/shield.svg" width="20px" height="20px"></span>
+								<span class="dungeon-role"><%=countDmg %> <img src="/static/img/icons/sword.svg" width="20px" height="20px"></span>
+								<span class="dungeon-role"><%=countHeal %> <img src="/static/img/icons/heal.svg" width="20px" height="20px"></span>
 							</span>
 							<div class="dungeon-name">
 								<span><%= dungeonProps.name %></span>
@@ -91,11 +83,11 @@
 								<% Object.keys(party.players).forEach(id => { %>
 								<% let player = party.players[id]; %>
 								<span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>">
-									<img class="party-playerImg" src="./../static/img/icons/<%= roles[player.role] %>.svg" width="15px" height="15px">
+									<img class="party-player-icon" src="/static/img/icons/<%= roles[player.role] %>.svg" width="15px" height="15px">
 									<%= player.name %>
 									<% if (player.isLeaderRequired) { %>
 									<sup>
-										<img class="party-playerImg" src="./../static/img/icons/leader.svg" width="13px" height="13px">
+										<img class="party-player-icon" src="/static/img/icons/leader.svg" width="13px" height="13px">
 									</sup>
 									<% } %>
 								</span>
@@ -106,16 +98,15 @@
 							<div class="party-detailed-content<%= player.level >= 65 ? ' level65 ' : ''%>">
 								<p>
 									<span class="party-player-summary">
-										<img class="ClassImg" src="./../static/img/class_icons/<%= player.class %>.png" width="15px" height="15px" title="<%= classes[player.class] %>">
+										<img class="party-player-icon" src="/static/img/class_icons/<%= player.class %>.png" width="15px" height="15px" title="<%= classes[player.class] %>">
 										<%= player.level %>
 									</span>
 									<%= player.name %>
 									<% if (player.isLeaderRequired) { %>
 									<sup>
-										<img class="party-playerImg" src="./../static/img/icons/leader.svg" width="13px" height="13px">
+										<img class="party-player-icon" src="/static/img/icons/leader.svg" width="13px" height="13px">
 									</sup>
 									<% } %>
-									<!-- <%= roles[player.role] %>] -->
 								</p>
 							</div>
 							<% }); %>

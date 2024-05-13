@@ -7,11 +7,11 @@ function isToggleEnabled() {
 window.addEventListener('load', () => disableToggle = false);
 
 document.addEventListener('DOMContentLoaded', function() {
-    const dungeonList = document.getElementById('dungeon-list');
-    const searchNameInput = document.getElementById('searchName');
-    const searchMinLevelInput = document.getElementById('searchMinLevel');
-    const searchMinItemLevelInput = document.getElementById('searchMinItemLevel');
-    const sortSelect = document.getElementById('sort');
+    const dungeonList = document.getElementById('dungeonList');
+    const searchNameInput = document.getElementById('searchDungeonName');
+    const searchMinLevelInput = document.getElementById('searchDungeonLevel');
+    const searchMinItemLevelInput = document.getElementById('searchDungeonItemLevel');
+    const sortSelect = document.getElementById('selectDungeonSort');
     const toggleLangButton = document.getElementById('toggleLang');
     const toggleDetailsButton = document.getElementById('toggleDetails');
     const clearNavigationButton = document.getElementById('clearNavigation');
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox];
 
     const defaultSelectIndex = 2;
-    const saveCollapsedId = 'detailsCollapsed';
+    const saveCollapsedId = 'dungeonDetailsCollapsed';
     const suppDungeon = supportDungeonProps; // From html body
 
     let dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
@@ -217,6 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     mergeSupportCheckbox.addEventListener('change', mergeSupportMatching);
+    toggleLangButton.addEventListener('click', toggleLang);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
@@ -244,16 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
         dungeons.forEach(d => d.open = !isOpen);
         disableToggle = false;
         saveDetailsCollapsed(null, false);
-    });
-
-    toggleLangButton.addEventListener('click', function() {
-        let lang = this.value === 'ru' ? 'en' : 'ru';
-        this.value = lang;
-
-        let date = new Date();
-        date.setFullYear(date.getFullYear() + 1);
-        document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
-        location.reload();
     });
 
     // restore session data
