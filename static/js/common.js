@@ -56,3 +56,14 @@ function toggleLang() {
     document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
     location.reload();
 }
+
+document.addEventListener("readystatechange", (event) => {
+    if (event.target.readyState === "interactive") {
+        let checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
+        checkboxes.forEach(e => e.classList.add('no-transition'));
+    }
+    else if (event.target.readyState === 'complete') {
+        let checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
+        checkboxes.forEach(e => e.classList.remove('no-transition'));
+    }
+});

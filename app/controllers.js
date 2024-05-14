@@ -24,13 +24,17 @@ export async function dungeons(req, res) {
     if (!response)
         return res.type('txt').send('error')
 
+    const responseOnline = await fetch(config.get('online'));
+    let onlineCount = responseOnline && (await responseOnline.json())?.length || null;
+
     res.render('dungeons', {
         data: await response.json(),
         dungeons_info: dungeons_info[lang],
         strings: globalization[lang],
         classes: classes[lang],
         roles,
-        lang
+        lang,
+        online: onlineCount
     })
 }
 
@@ -41,13 +45,17 @@ export async function battlegrounds(req, res) {
     if (!response)
         return res.type('txt').send('error')
 
+    const responseOnline = await fetch(config.get('online'));
+    let onlineCount = responseOnline && (await responseOnline.json())?.length || null;
+
     res.render('battlegrounds', {
         data: await response.json(),
         battlegrounds_info: battlegrounds_info[lang],
         strings: globalization[lang],
         classes: classes[lang],
         roles,
-        lang
+        lang,
+        online: onlineCount
     })
 }
 
@@ -58,11 +66,13 @@ export async function online(req, res) {
     if (!response)
         return res.type('txt').send('error')
 
+    let respJson = await response.json();
     res.render('online', {
-        data: await response.json(),
+        data: respJson,
         strings: globalization[lang],
         classes: classes[lang],
         roles,
-        lang
+        lang,
+        online: respJson?.length || null
     })
 }

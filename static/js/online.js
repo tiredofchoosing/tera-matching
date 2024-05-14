@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             p.style.display = show ? '' : 'none';
         });
-        sortPlayers(null, false);
+        sortPlayers(null, save);
     }
 
     function sortPlayers(_, save = true) {
@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     searchLevelInput.addEventListener('input', filterPlayers);
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
     toggleLangButton.addEventListener('click', toggleLang);
+
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;

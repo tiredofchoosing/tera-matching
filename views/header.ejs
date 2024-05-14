@@ -8,13 +8,13 @@
                 <li class="nav-item header-logo">
                     <img src="/static/img/icons/elin.png" alt="" height="40px" width="40px">
                 </li>
+                <li class="nav-item header-button">
+                    <% let onlineStr = (typeof online === 'undefined' || online == null) ? '' : ': ' + online %>
+                    <span class="header-page-link"><a href="/online"><%= strings.onlineHeaderLink %><%= onlineStr %></a></span>
+                </li>
                 <!-- Кнопка переключения языка -->
                 <li class="nav-item header-button">
                     <span><button id="toggleLang" class="toggleLang" value="<%= lang %>"><img src="/static/img/icons/global.svg" height="20px" width="20px"></button></span>
-                </li>
-                <!-- Счетчик онлайн-игроков -->
-                <li class="nav-item">
-                    <span class="CountOnline">В игре: 101</span>
                 </li>
             </ul>
 
@@ -32,9 +32,9 @@
                     <li class="nav-item header-button">
                         <span class="header-page-link"><a href="/battlegrounds"><%= strings.battlegroundsHeaderLink %></a></span>
                     </li>
-                    <li class="nav-item header-button">
+                    <!-- <li class="nav-item header-button">
                         <span class="header-page-link"><a href="/online"><%= strings.onlineHeaderLink %></a></span>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

@@ -19,6 +19,9 @@ body {
     width: 100vw;
     z-index: -1;
 }
+summary, select, .navigation-checkbox input, .navigation-checkbox label {
+    cursor: pointer;
+}
 
 /**********************
     Стили для header 
@@ -78,7 +81,6 @@ header {
     border-radius: 5px;
     background-color: rgba(23, 24, 32, 0.7);
 }
-
 #navigationMenu {
     position: sticky;
     top: 5rem;
@@ -104,9 +106,6 @@ header {
 .navigation-search input:-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
-/* .navigation-search input::-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.6);
-} */
 
 .navigation-button button:hover {
     background-color: rgba(23, 24, 32, 0.6)
@@ -132,6 +131,9 @@ header {
 }
 .navigation-checkbox label {
     display: block;
+}
+.no-transition {
+    transition: none !important;
 }
 
 /**********************
