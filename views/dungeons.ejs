@@ -1,4 +1,5 @@
-<%- include('layout_begin.ejs', { page: "dungeons" }) %>
+<% const page = 'dungeons'; %>
+<%- include('layout_begin.ejs', { page }) %>
 <%- include('header.ejs') %>
 <div id="main">
 	<div class="container">
@@ -49,67 +50,11 @@
 				</div>
 			</div>
 			<div id="content" class="content col-lg-6 col-md-12">
-				<%- include('empty.ejs', { page: 'dungeons', isEmpty: Object.values(data).length === 0 }) %>
+				<%- include('empty.ejs', { page, isEmpty: Object.values(data).length === 0 }) %>
 				<div id="dungeonList" class="dungeon-list">
 					<% for(let dungeonId in data) { %>
-					<% let dungeon = data[dungeonId]; dungeonProps = dungeons_info[dungeonId]; %>
-					<details open class="dungeon-details" id="<%= dungeonId %>">
-						<summary class="dungeon-summary">
-							<span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
-							<span class="dungeon-ilvl"><%= dungeonProps.minItemLevel %></span>
-							<% let countTank = 0; dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length); %>
-							<% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
-							<% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
-							<span class="dungeon-players">
-								<span class="dungeon-role"><%=countTank %> <img src="/static/img/icons/shield.svg" width="20px" height="20px"></span>
-								<span class="dungeon-role"><%=countDmg %> <img src="/static/img/icons/sword.svg" width="20px" height="20px"></span>
-								<span class="dungeon-role"><%=countHeal %> <img src="/static/img/icons/heal.svg" width="20px" height="20px"></span>
-							</span>
-							<div class="dungeon-name">
-								<span><%= dungeonProps.name %></span>
-							</div>
-						</summary>
-						<% let count = 0; %>
-						<% dungeon.parties.forEach(party => { %>
-						<details class="party-details">
-							<summary class="party-summary row row-cols-auto">
-								<% Object.keys(party.players).forEach(id => { %>
-								<% let player = party.players[id]; %>
-								<span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>">
-									<img class="party-player-icon" src="/static/img/icons/<%= roles[player.role] %>.svg" width="15px" height="15px">
-									<%= player.name %>
-									<% if (player.isLeaderRequired) { %>
-									<sup>
-										<img class="party-player-icon" src="/static/img/icons/leader.svg" width="13px" height="13px">
-									</sup>
-									<% } %>
-								</span>
-								<% }); %>
-							</summary>
-							<% Object.keys(party.players).forEach(id => { %>
-							<% let player = party.players[id]; %>
-							<div class="party-detailed-content<%= player.level >= 65 ? ' level65 ' : ''%>">
-								<p>
-									<span class="party-player-summary">
-										<img class="party-player-icon" src="/static/img/class_icons/<%= player.class %>.png" width="15px" height="15px" title="<%= classes[player.class] %>">
-										<%= player.level %>
-									</span>
-									<%= player.name %>
-									<% if (player.isLeaderRequired) { %>
-									<sup>
-										<img class="party-player-icon" src="/static/img/icons/leader.svg" width="13px" height="13px">
-									</sup>
-									<% } %>
-								</p>
-							</div>
-							<% }); %>
-						</details>
-						<% if (++count != dungeon.parties.length) { %>
-						<div class="delimiter"></div>
-						<% } %>
-						<% }); %>
-					</details>
-					<% }; %>
+					<%- include('dungeon_details.ejs', { page, dungeonId, data }) %>
+					<% } %>
 				</div>
 			</div>
 		</div>

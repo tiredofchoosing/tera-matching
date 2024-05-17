@@ -1,0 +1,57 @@
+<% let dungeon = data[dungeonId]; dungeonProps = dungeons_info[dungeonId]; %>
+<details open class="dungeon-details" id="<%= dungeonId %>">
+    <summary class="dungeon-summary">
+        <span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
+        <span class="dungeon-ilvl"><%= dungeonProps.minItemLevel %></span>
+        <% let countTank = 0; dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length); %>
+        <% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
+        <% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
+        <span class="dungeon-name"><%= dungeonProps.name %></span>
+        <span class="dungeon-players">
+            <% if (page === 'dungeons') { %>
+            <span class="dungeon-role"><%=countTank %> <img src="/static/img/icons/shield.svg" width="20px" height="20px"></span>
+            <% } %>
+            <span class="dungeon-role"><%=countDmg %> <img src="/static/img/icons/sword.svg" width="20px" height="20px"></span>
+            <span class="dungeon-role"><%=countHeal %> <img src="/static/img/icons/heal.svg" width="20px" height="20px"></span>
+        </span>
+    </summary>
+    <% let count = 0; %>
+    <% dungeon.parties.forEach(party => { %>
+    <details class="party-details">
+        <summary class="party-summary row row-cols-auto">
+            <% Object.keys(party.players).forEach(id => { %>
+            <% let player = party.players[id]; %>
+            <span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>">
+                <img class="party-player-icon" src="/static/img/icons/<%= roles[player.role] %>.svg" width="15px" height="15px">
+                <%= player.name %>
+                <% if (player.isLeaderRequired) { %>
+                <sup>
+                    <img class="party-player-icon" src="/static/img/icons/leader.svg" width="13px" height="13px">
+                </sup>
+                <% } %>
+            </span>
+            <% }); %>
+        </summary>
+        <% Object.keys(party.players).forEach(id => { %>
+        <% let player = party.players[id]; %>
+        <div class="party-detailed-content<%= player.level >= 65 ? ' level65 ' : ''%>">
+            <p>
+                <span class="party-player-summary">
+                    <img class="party-player-icon" src="/static/img/class_icons/<%= player.class %>.png" width="15px" height="15px" title="<%= classes[player.class] %>">
+                    <%= player.level %>
+                </span>
+                <%= player.name %>
+                <% if (player.isLeaderRequired) { %>
+                <sup>
+                    <img class="party-player-icon" src="/static/img/icons/leader.svg" width="13px" height="13px">
+                </sup>
+                <% } %>
+            </p>
+        </div>
+        <% }); %>
+    </details>
+    <% if (++count != dungeon.parties.length) { %>
+    <div class="delimiter"></div>
+    <% } %>
+    <% }); %>
+</details>
