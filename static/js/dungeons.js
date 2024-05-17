@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
+    const emptyContainer = document.getElementById('empty');
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
     const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox];
 
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             d.style.display = show ? '' : 'none';
         });
+        checkIfEmpty();
     }
 
     function sortDungeons(_, save = true) {
@@ -206,6 +208,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function dungeonDetailsToggleHandler() {
         if (isToggleEnabled())
             saveDetailsCollapsed(null, false);
+    }
+
+    function checkIfEmpty() {
+        emptyContainer.hidden = dungeonList.children.length !== 0;
     }
 
     // register event handlers
