@@ -49,14 +49,7 @@
 				</div>
 			</div>
 			<div id="content" class="content col-lg-6 col-md-12">
-				<% let isEmpty = Object.values(data).length === 0 %>
-				<% if (isEmpty) { %>
-				<div class="empty">
-					<h4><%= strings.emptyContentStr %></h4>
-					<br><br>
-					<img src="/static/img/icons/ElinSlip.png" width="150px" height="150px">
-				</div>
-				<% }; %>
+				<%- include('empty.ejs', { page: 'dungeons', isEmpty: Object.values(data).length === 0 }) %>
 				<div id="dungeonList" class="dungeon-list">
 					<% for(let dungeonId in data) { %>
 					<% let dungeon = data[dungeonId]; dungeonProps = dungeons_info[dungeonId]; %>

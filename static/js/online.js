@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const playerList = document.getElementById('playersTableBody');
+    const playersTableRoot = document.getElementById('playersTableRoot');
+    const playersList = document.getElementById('playersTableBody');
     const searchNameInput = document.getElementById('searchPlayerName');
     const searchLevelInput = document.getElementById('searchPlayerLevel');
     const sortSelect = document.getElementById('selectPlayerSort');
@@ -7,12 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const toggleLangButton = document.getElementById('toggleLang');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
+    const emptyContainer = document.getElementById('empty');
     const searchInputs = [searchNameInput, searchLevelInput];
     const checkboxes = [autoupdateCheckbox];
     const defaultSelectIndex = 1;
     const defaultClassSelectIndex = 0;
 
-    let players = Array.from(playerList.getElementsByClassName('player-details'));
+    let players = Array.from(playersList.getElementsByClassName('player-details'));
 
     // functions
     function filterPlayers(_, save = true) {
@@ -35,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             p.style.display = show ? '' : 'none';
         });
         sortPlayers(null, save);
+        checkIfEmpty();
     }
 
     function sortPlayers(_, save = true) {
@@ -74,12 +77,20 @@ document.addEventListener('DOMContentLoaded', function() {
         players.forEach(p => {
             if (p.style.display !== 'none') {
                 p.getElementsByClassName('player-id')[0].textContent = i++;
-                playerList.appendChild(p);
+                playersList.appendChild(p);
             }
-            else if (p.parentElement == playerList) {
-                playerList.removeChild(p);
+            else if (p.parentElement == playersList) {
+                playersList.removeChild(p);
             }
         });
+    }
+
+    function checkIfEmpty() {
+        if (playersTableRoot.children.length === 0)
+            return;
+
+        emptyContainer.hidden = playersList.children.length !== 0;
+        playersTableRoot.hidden = playersList.children.length === 0;
     }
 
     // register event handlers

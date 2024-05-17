@@ -43,37 +43,36 @@
 				</div>
 			</div>
 			<div class="content col-lg-6 col-md-12">
-				<% let isEmpty = data.length === 0 %>
-				<% if (isEmpty) { %>
 				<div id="content">
-					<h2 class="empty">empty</h2>
+					<% let isEmpty = data.length === 0; %>
+					<%- include('empty.ejs', { page: 'online', isEmpty: isEmpty }) %>
+					<div id="playersTableRoot">
+						<% if (!isEmpty) { %>
+						<table class="players-table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th><%= strings.levelTableHeaderStr %></th>
+									<th colspan="2"><%= strings.playerTableHeaderStr %></th>
+								</tr>
+							</thead>
+							<tbody id="playersTableBody">
+								<% let id = 1 %>
+								<% for(let player of data) { %>
+								<tr id="<%= id %>" class="player-details">
+									<td class="player-id"><%= id++ %></td>
+									<td class="player-lvl"><%= player.level %></td>
+									<td class="player-class" title="<%= classes[player.class] %>" data-player-class="<%= player.class %>">
+										<img src="/static/img/class_icons/<%= player.class %>.png" width="28px" height="28px">
+									</td>
+									<td class="player-name"><%= player.name %></td>
+								</tr>
+								<% } %>
+							</tbody>
+						</table>
+						<% } %>
+					</div>
 				</div>
-				<% } else { %>
-				<div id="content">
-					<table class="players-table">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th><%= strings.levelTableHeaderStr %></th>
-								<th colspan="2"><%= strings.playerTableHeaderStr %></th>
-							</tr>
-						</thead>
-						<tbody id="playersTableBody">
-							<% let id = 1 %>
-							<% for(let player of data) { %>
-							<tr id="<%= id %>" class="player-details">
-								<td class="player-id"><%= id++ %></td>
-								<td class="player-lvl"><%= player.level %></td>
-								<td class="player-class" title="<%= classes[player.class] %>" data-player-class="<%= player.class %>">
-									<img src="/static/img/class_icons/<%= player.class %>.png" width="28px" height="28px">
-								</td>
-								<td class="player-name"><%= player.name %></td>
-							</tr>
-							<% } %>
-						</tbody>
-					</table>
-				</div>
-				<% } %>
 			</div>
 		</div>
 	</div>

@@ -7,7 +7,8 @@
   "battlegroundsHeaderLink": "Арены",
   "onlineHeaderLink": "Онлайн",
 
-  "emptyContentStr": "Список подбора пуст",
+  "emptyMatchingContentStr": "Список подбора пуст",
+  "emptyPlayersContentStr": "Список игроков пуст",
 
   "searchNameDungeonPlaceholderStr": "Название подземелья",
   "searchNameBattlegroundPlaceholderStr": "Название арены",
