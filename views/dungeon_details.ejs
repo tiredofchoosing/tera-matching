@@ -1,4 +1,5 @@
 <% let dungeon = data[dungeonId]; dungeonProps = dungeons_info[dungeonId]; %>
+<% if (dungeonProps == undefined) { dungeonProps = { 'minItemLevel': 0, 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' } } %>
 <details open class="dungeon-details" id="<%= dungeonId %>">
     <summary class="dungeon-summary">
         <span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
