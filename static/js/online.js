@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchLevelInput = document.getElementById('searchPlayerLevel');
     const sortSelect = document.getElementById('selectPlayerSort');
     const classSelect = document.getElementById('selectPlayerClass');
-    const toggleLangButton = document.getElementById('toggleLang');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const emptyContainer = document.getElementById('empty');
@@ -99,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
     searchNameInput.addEventListener('input', filterPlayers);
     searchLevelInput.addEventListener('input', filterPlayers);
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
-    toggleLangButton.addEventListener('click', toggleLang);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');

@@ -2,14 +2,14 @@
 html {
     scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
     overflow-y: scroll;
+    font-size: medium;
 }
 body {
     font-family: 'Montserrat', sans-serif;
-    font-size: 12pt;
+    font-size: inherit;
     line-height: normal;
 }
 #background {
-    /* background-attachment: fixed; */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -141,6 +141,14 @@ header {
 **********************/
 .content {
     margin-top: 1rem;
+}
+.dungeon-list {
+    font-size: medium;
+}
+@media (max-width: 550px) {
+    .dungeon-list {
+        font-size: 14px;
+    }
 }
 
 /* Тело блока */

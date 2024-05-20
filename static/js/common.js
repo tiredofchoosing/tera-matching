@@ -59,8 +59,10 @@ function toggleLang() {
 
 document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "interactive") {
-        let checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
+        const checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
         checkboxes.forEach(e => e.classList.add('no-transition'));
+        
+        document.getElementById('toggleLang').addEventListener('click', toggleLang);
     }
     else if (event.target.readyState === 'complete') {
         let checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
