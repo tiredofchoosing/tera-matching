@@ -122,9 +122,4 @@ document.addEventListener('DOMContentLoaded', function() {
     filterPlayers(null, true);
     // sortPlayers(null, true); // called in filter
     setAutoupdate(null, false, autoupdateCheckbox);
-
-    // let regexp = /android|iphone|ipad/i;
-    // if (regexp.test(navigator.userAgent)) {
-    //     classSelect.setAttribute('multiple', 'multiple');
-    // }
 });

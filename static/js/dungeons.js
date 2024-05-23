@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
     const emptyContainer = document.getElementById('empty');
-    const body = document.getElementsByTagName('body')[0];
+    const body = document.body;
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
     const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox];
 
