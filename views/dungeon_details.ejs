@@ -18,16 +18,17 @@
     </summary>
     <% let count = 0; %>
     <% dungeon.parties.forEach(party => { %>
+    <div class="delimiter"></div>
     <details class="party-details">
         <summary class="party-summary row row-cols-auto">
             <% Object.keys(party.players).forEach(id => { %>
             <% let player = party.players[id]; %>
             <span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>">
-                <img class="party-player-icon" src="/static/img/icons/<%= roles[player.role] %>.svg" width="15px" height="15px">
+                <img class="party-player-icon" src="/static/img/icons/<%= roles[player.role] %>.svg" width="20px" height="20px">
                 <%= player.name %>
                 <% if (player.isLeaderRequired) { %>
                 <sup>
-                    <img class="party-player-icon" src="/static/img/icons/leader.svg" width="13px" height="13px">
+                    <img class="party-player-icon" src="/static/img/icons/leader.svg" width="15px" height="15px">
                 </sup>
                 <% } %>
             </span>
@@ -35,24 +36,21 @@
         </summary>
         <% Object.keys(party.players).forEach(id => { %>
         <% let player = party.players[id]; %>
-        <div class="party-detailed-content<%= player.level >= 65 ? ' level65 ' : ''%>">
-            <p>
+        <div class="party-detailed-content<%= player.level >= 65 ? ' level65' : ''%>">
+            <!-- <p> -->
                 <span class="party-player-summary">
-                    <img class="party-player-icon" src="/static/img/class_icons/<%= player.class %>.png" width="15px" height="15px" title="<%= classes[player.class] %>">
                     <%= player.level %>
+                    <img class="party-player-icon" src="/static/img/class_icons/<%= player.class %>.png" width="18px" height="18px" title="<%= classes[player.class] %>">
+                    <%= player.name %>
                 </span>
-                <%= player.name %>
                 <% if (player.isLeaderRequired) { %>
                 <sup>
-                    <img class="party-player-icon" src="/static/img/icons/leader.svg" width="13px" height="13px">
+                    <img class="party-player-icon" src="/static/img/icons/leader.svg" width="15px" height="15px">
                 </sup>
                 <% } %>
-            </p>
+            <!-- </p> -->
         </div>
         <% }); %>
     </details>
-    <% if (++count != dungeon.parties.length) { %>
-    <div class="delimiter"></div>
-    <% } %>
     <% }); %>
 </details>

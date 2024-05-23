@@ -1,0 +1,33 @@
+:root {
+    --font-color-primary: black;
+    --font-color-secondary: rgba(0, 0, 0, 0.5);
+
+    --scrollbar-color: initial;
+    --background: rgb(181, 190, 218);
+
+    --navbar-bg-color: rgb(86, 95, 119);
+    --header-btn-border-color: rgba(255, 255, 255, 0.1);
+    --header-btn-hov-bg-color: rgb(7, 8, 10);
+    --header-shadow-color: rgba(0, 0, 0, 0.075);
+
+    --menu-bg-color: rgb(129, 141, 172);
+    --menu-child-bg-color: white;
+    --menu-input-plh-color: rgb(125, 133, 151);
+    --menu-btn-hov-bg-color: rgb(220, 227, 247);
+    --menu-chk-bg-color: white;
+
+    --dungeon-lvl-bg-color: rgb(194, 200, 217);
+    --dungeon-players-bg-color: rgb(194, 200, 217);
+    --dungeon-dtl-bg: rgb(129, 141, 172);
+    --dungeon-sum-bg: initial;
+
+    --party-sum-span-border-color: rgb(255, 255, 255, 0.3);
+    --party-dtl-content-bg-color: rgb(149, 159, 187);
+    --party-del-color: rgb(194, 200, 217);
+
+    --players-tbl-th-bg-color: rgba(23, 24, 32, 0.9);
+    --players-tbl-tr1-bg-color: rgba(23, 24, 32, 0.7);
+    --players-tbl-tr2-bg-color: rgba(66, 80, 63, 0.7);
+
+    --empty-bg-color: rgb(129, 141, 172);
+}

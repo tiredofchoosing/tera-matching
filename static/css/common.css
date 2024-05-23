@@ -1,0 +1,312 @@
+/* base */
+html {
+    scrollbar-color: var(--scrollbar-color);
+    overflow-y: scroll;
+    font-size: medium;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: inherit;
+    line-height: normal;
+    /* min-width: 400px; */
+}
+#background {
+    background: var(--background);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+}
+summary, select, .navigation-checkbox input, .navigation-checkbox label {
+    cursor: pointer;
+}
+
+/* header */
+header {
+    box-shadow: 0 0.125rem 0.25rem var(--header-shadow-color);
+}
+.navbar {
+    background-color: var(--navbar-bg-color);
+    padding: 0.25rem 0;
+}
+.navbar-nav {
+    display: flex;
+}
+.nav-item {
+    margin-right: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.header-button {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.25rem;
+    border-color: var(--header-btn-border-color);
+}
+.header-button:hover {
+    background-color: var(--header-btn-hov-bg-color);
+}
+.header-button button {
+    background: none;
+    border: none;
+}
+.nav-item a, .nav-item p {
+    text-decoration: none;
+    color: var(--font-color-primary);
+}
+.nav-item a:hover .nav-item:visited {
+    color: var(--font-color-primary);
+}
+
+/* search / sort / settings menu */
+.navigation-menu {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--menu-bg-color);
+}
+#navigationMenu {
+    position: sticky;
+    top: 5rem;
+}
+
+.navigation-search input, .navigation-select select, .navigation-button button {
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.7rem;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    color: var(--font-color-primary);
+    background-color: var(--menu-child-bg-color);
+}
+.navigation-search input, .navigation-select select {
+    width: 100%;
+    box-sizing: border-box;
+}
+.navigation-search input::placeholder {
+    opacity: 1;
+    color: var(--menu-input-plh-color);
+}
+.navigation-search input:-ms-input-placeholder {
+    color: var(--menu-input-plh-color);
+}
+
+.navigation-button button:hover {
+    background-color: var(--menu-btn-hov-bg-color)
+}
+.navigation-button button {
+    transition: 0.3s;
+}
+.navigation-button button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.navigation-checkbox {
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    color: var(--font-color-primary);
+}
+.navigation-checkbox div {
+    margin-top: 0.5rem;
+}
+.navigation-checkbox input {
+    background-color: var(--menu-chk-bg-color);
+    margin-top: 0.075rem;
+}
+.navigation-checkbox label {
+    display: block;
+}
+.no-transition {
+    transition: none !important;
+}
+
+/* matching main content */
+.content {
+    margin-top: 1rem;
+}
+.dungeon-list {
+    font-size: medium;
+}
+@media (max-width: 550px) {
+    .dungeon-list {
+        font-size: 14px;
+    }
+}
+
+/* Тело блока */
+details {
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Уровень подземелья и снаряжения */
+.dungeon-lvl, .dungeon-ilvl {
+    margin-right: 0.2em;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    background-color: var(--dungeon-lvl-bg-color);
+    height: fit-content;
+}
+
+/* Счетчик :танк дд хил */
+.dungeon-players {
+    /* margin: 0 0.2em; */
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    background-color: var(--dungeon-players-bg-color);
+    height: fit-content;
+    text-wrap: nowrap;
+}
+.dungeon-role img {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+/* Название */
+.dungeon-name {
+    margin: 0 0.4em;
+    word-break: break-word;
+    flex-grow: 1;
+    /* font-size: medium; */
+    padding: 0.2em;
+}
+
+/* "Шапка" с основной информацией */
+.dungeon-summary {
+    display: flex;
+    margin: -0.5em -0.5em 0;
+    padding: 0.4em 0.5em 0.4em 0.5em;
+    border-radius: 5px;
+    font-weight: 600;
+    color: var(--font-color-primary);
+    background: var(--dungeon-sum-bg);
+}
+.dungeon-details {
+    min-width: 350px;
+    margin-bottom: 0.35em;
+    padding-bottom: 0em;
+    border: none;
+    background: var(--dungeon-dtl-bg);
+}
+.dungeon-details[open] {
+    padding-bottom: 0.1em;
+}
+
+/* Содержание */
+.party-details { 
+    margin: 0.5em 0;
+    padding: 0 1em;
+    border-radius: 0;
+    color: var(--font-color-primary);
+} 
+
+/* Разделительная линия между группами */
+.delimiter {
+    margin: 0;
+    border-bottom: solid 2px var(--party-del-color);
+}
+
+/* Игрок */
+.party-player {
+    /* margin-right: 0.4em; */
+    padding: 0 0.5em;
+    white-space: nowrap;
+    /* border-radius: 3px; */
+    /* border: solid 1px rgba(255, 255, 255, 0.2); */
+}
+.party-summary span:not(:nth-last-child(1)) {
+    border-right: solid 2px var(--party-sum-span-border-color);
+}
+
+/* Группа: Описание состава группы */
+.party-detailed-content {
+    /* margin-left: 0.5em; */
+    background-color: var(--party-dtl-content-bg-color);
+    padding: 0.2em 0.5em;
+    border-radius: 2px;
+} 
+
+/* .party-detailed-content p {
+    margin: 0;
+} */
+.party-details[open] .party-summary {
+    margin-bottom: 0.4em;
+}
+
+/* Группа: Иконки класса и уровень игрока  */
+.party-player-summary {
+    margin-left: 0.5em;
+    /* padding: 0 0.1em; */
+    /* border-radius: 2px; */
+    /* background-color: rgba(18, 18, 18, 0.6); */
+}
+.party-player-summary img {
+    margin: 0 0.2rem 0 0.5rem;
+}
+
+.party-player-icon {
+    margin-left: 0.2em;
+    vertical-align: bottom;
+    width: 1.125em;
+    height: 1.125em;
+}
+
+/* players table */
+.players-table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 5px; 
+    border: none;
+    overflow: hidden; 
+    color: var(--font-color-primary);
+}
+.players-table th { 
+    border: none;
+    background-color: var(--players-tbl-th-bg-color);
+}
+.players-table td {
+    border: none;
+}
+.players-table td:nth-child(1) {
+    font-size: 0.75rem;
+    color: var(--font-color-secondary);
+    min-width: 2.8rem;
+}
+.players-table td:nth-child(2) {
+    min-width: 2.85rem;
+}
+.players-table th:nth-child(3),
+.players-table td:nth-child(3),
+.players-table td:nth-child(4) {
+    padding: 0.5rem 0 0.5rem 0.5rem;
+}
+/* -n+2 - первые два элем. */
+.players-table td:nth-child(-n+2), 
+.players-table th:nth-child(-n+2) {
+    padding: 0.6rem 0.3rem 0.6rem 0.7rem;
+}
+.players-table td:nth-child(-n+3) { 
+    width: 0;
+}
+.players-table tr:nth-child(odd) {
+    background-color: var(--players-tbl-tr1-bg-color);
+}
+.players-table tr:nth-child(even) {
+    background-color: var(--players-tbl-tr2-bg-color);
+}
+.player-class img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* empty list */
+.empty {
+    padding: 2rem;
+    border-radius: 5px;
+    text-align: center;
+    color: var(--font-color-primary);
+    background-color: var(--empty-bg-color);
+    
+}
