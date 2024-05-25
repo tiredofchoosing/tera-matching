@@ -20,10 +20,15 @@
     --dungeon-players-bg-color: rgb(194, 200, 217);
     --dungeon-dtl-bg: rgb(129, 141, 172);
     --dungeon-sum-bg: initial;
+    --dungeon-role-tank-content: url(/static/img/icons/tank-c.png);
+    --dungeon-role-tank-margin: 0 -0.1em 0 -0.2em;
+    --dungeon-role-dmg-content: url(/static/img/icons/dmg-c.png);
+    --dungeon-role-heal-content: url(/static/img/icons/heal-c.png);
 
     --party-sum-span-border-color: rgb(255, 255, 255, 0.3);
     --party-dtl-content-bg-color: rgb(149, 159, 187);
     --party-del-color: rgb(194, 200, 217);
+    --party-leader-content: url(/static/img/icons/leader-c.png);
 
     --players-tbl-th-bg-color: rgba(23, 24, 32, 0.9);
     --players-tbl-tr1-bg-color: rgba(23, 24, 32, 0.7);

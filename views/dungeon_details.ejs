@@ -11,10 +11,10 @@
         <span class="dungeon-name"><%= dungeonProps.name %></span>
         <span class="dungeon-players">
             <% if (page === 'dungeons') { %>
-            <span class="dungeon-role"><%=countTank %> <img src="/static/img/icons/shield.svg" width="20px" height="20px"></span>
+            <span class="dungeon-role"><%= countTank %> <img class="dungeon-role-tank" width="20px" height="20px"></span>
             <% } %>
-            <span class="dungeon-role"><%=countDmg %> <img src="/static/img/icons/sword.svg" width="20px" height="20px"></span>
-            <span class="dungeon-role"><%=countHeal %> <img src="/static/img/icons/heal.svg" width="20px" height="20px"></span>
+            <span class="dungeon-role"><%= countDmg %> <img class="dungeon-role-dmg" width="20px" height="20px"></span>
+            <span class="dungeon-role"><%= countHeal %> <img class="dungeon-role-heal" width="20px" height="20px"></span>
         </span>
     </summary>
     <% let count = 0; %>
@@ -25,11 +25,11 @@
             <% Object.keys(party.players).forEach(id => { %>
             <% let player = party.players[id]; %>
             <span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>">
-                <img class="party-player-icon" src="/static/img/icons/<%= roles[player.role] %>.svg" width="20px" height="20px">
+                <img class="party-player-icon dungeon-role-<%= roles[player.role] %>" width="20px" height="20px">
                 <%= player.name %>
                 <% if (player.isLeaderRequired) { %>
                 <sup>
-                    <img class="party-player-icon" src="/static/img/icons/leader.svg" width="15px" height="15px">
+                    <img class="party-player-icon party-leader" width="15px" height="15px">
                 </sup>
                 <% } %>
             </span>
@@ -38,18 +38,16 @@
         <% Object.keys(party.players).forEach(id => { %>
         <% let player = party.players[id]; %>
         <div class="party-detailed-content<%= player.level >= 65 ? ' level65' : ''%>">
-            <!-- <p> -->
-                <span class="party-player-summary">
-                    <%= player.level %>
-                    <img class="party-player-icon" src="/static/img/class_icons/<%= player.class %>.png" width="18px" height="18px" title="<%= classes[player.class] %>">
-                    <%= player.name %>
-                </span>
-                <% if (player.isLeaderRequired) { %>
-                <sup>
-                    <img class="party-player-icon" src="/static/img/icons/leader.svg" width="15px" height="15px">
-                </sup>
-                <% } %>
-            <!-- </p> -->
+            <span class="party-player-summary">
+                <%= player.level %>
+                <img class="party-player-icon" src="/static/img/class_icons/<%= player.class %>.png" width="18px" height="18px" title="<%= classes[player.class] %>" draggable="false">
+                <%= player.name %>
+            </span>
+            <% if (player.isLeaderRequired) { %>
+            <sup>
+                <img class="party-player-icon party-leader" width="15px" height="15px">
+            </sup>
+            <% } %>
         </div>
         <% }); %>
     </details>

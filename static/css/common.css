@@ -162,6 +162,20 @@ details {
 .dungeon-role img {
     width: 1.25em;
     height: 1.25em;
+    vertical-align: bottom;
+}
+.dungeon-role-tank {
+    content: var(--dungeon-role-tank-content);
+    margin: var(--dungeon-role-tank-margin);
+}
+.dungeon-role-dmg {
+    content: var(--dungeon-role-dmg-content);
+}
+.dungeon-role-heal {
+    content: var(--dungeon-role-heal-content);
+}
+.party-leader {
+    content: var(--party-leader-content);
 }
 
 /* Название */
