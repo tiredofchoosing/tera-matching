@@ -68,8 +68,8 @@ function toggleStyle() {
 
 document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "interactive") {
-        const checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
-        checkboxes.forEach(e => e.classList.add('no-transition'));
+        // const checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
+        // checkboxes.forEach(e => e.classList.add('no-transition'));
         
         document.getElementById('toggleLang').addEventListener('click', toggleLang);
         document.getElementById('toggleStyle').addEventListener('click', toggleStyle);

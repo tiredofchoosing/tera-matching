@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+//document.addEventListener('DOMContentLoaded', function() {
     const playersTableRoot = document.getElementById('playersTableRoot');
     const playersList = document.getElementById('playersTableBody');
     const searchNameInput = document.getElementById('searchPlayerName');
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const defaultSelectIndex = 1;
     const defaultClassSelectIndex = 0;
 
-    let players = Array.from(playersList.getElementsByClassName('player-details'));
+    let players = playersList != null ? Array.from(playersList.getElementsByClassName('player-details')) : [];
 
     // functions
     function filterPlayers(_, save = true) {
@@ -122,4 +122,4 @@ document.addEventListener('DOMContentLoaded', function() {
     filterPlayers(null, true);
     // sortPlayers(null, true); // called in filter
     setAutoupdate(null, false, autoupdateCheckbox);
-});
+//});

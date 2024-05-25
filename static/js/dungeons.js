@@ -6,7 +6,7 @@ function isToggleEnabled() {
 // to not handle 'toggle' on default open attribute
 window.addEventListener('load', () => disableToggle = false);
 
-document.addEventListener('DOMContentLoaded', function() {
+//document.addEventListener('DOMContentLoaded', function() {
     const dungeonList = document.getElementById('dungeonList');
     const searchNameInput = document.getElementById('searchDungeonName');
     const searchMinLevelInput = document.getElementById('searchDungeonLevel');
@@ -219,6 +219,11 @@ document.addEventListener('DOMContentLoaded', function() {
         emptyContainer.hidden = dungeonList.children.length !== 0;
     }
 
+    function updateCollapseIcon() {
+        let value = toggleDetailsButton.value === 'true';
+        toggleDetailsButton.firstElementChild.src = `/static/img/icons/${value ? 'collapse' : 'expand'}.svg`;
+    }
+
     // register event handlers
     sortSelect.addEventListener('change', sortDungeons);
     searchNameInput.addEventListener('input', filterDungeons);
@@ -255,6 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
         dungeons.forEach(d => d.open = !isOpen);
         disableToggle = false;
         saveDetailsCollapsed(null, false);
+        updateCollapseIcon();
     });
 
     // change font size of dungeon list on touch pinch
@@ -303,6 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
     toggleDetailsButton.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.value;
+    updateCollapseIcon();
 
     if (!mergeSupportMatching(null, false)) {
         sortDungeons(null, false);
@@ -323,6 +330,9 @@ document.addEventListener('DOMContentLoaded', function() {
         saveDetailsCollapsed(null, false);
     }
 
-    pinchCurrentIndex = loadData(pinchSaveId) || pinchCurrentIndex;
-    dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
-});
+    let savedPinchIndex = loadData(pinchSaveId);
+    if (savedPinchIndex != null) {
+        pinchCurrentIndex =  savedPinchIndex;
+        dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
+    }
+//});
