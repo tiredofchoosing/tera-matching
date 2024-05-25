@@ -8,7 +8,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-size: inherit;
     line-height: normal;
-    /* min-width: 400px; */
+    font-weight: 450;
 }
 #background {
     background: var(--background);
@@ -71,14 +71,25 @@ header {
     top: 5rem;
 }
 
+.navigation-search input, .navigation-select select {
+    background: no-repeat calc(100% - 0.6rem) center / 1.125rem;
+    padding: 0.5rem 2.1rem 0.5rem 0.7rem;
+}
+.navigation-select select {
+    appearance: none;
+    background-image: var(--menu-sort-bg-img);
+}
+.navigation-search input, #selectPlayerClass {
+    background-image: var(--menu-search-bg-img);
+}
 .navigation-search input, .navigation-select select, .navigation-button button {
     margin: 0.5rem 0;
-    padding: 0.5rem 0.7rem;
     border-radius: 4px;
     border: none;
     outline: none;
     color: var(--font-color-primary);
     background-color: var(--menu-child-bg-color);
+    font-weight: 450;
 }
 .navigation-search input, .navigation-select select {
     width: 100%;
@@ -92,14 +103,21 @@ header {
     color: var(--menu-input-plh-color);
 }
 
+.navigation-button button {
+    padding: 0.44rem 0.7rem;
+    transition: 0.2s;
+}
 .navigation-button button:hover {
     background-color: var(--menu-btn-hov-bg-color)
 }
-.navigation-button button {
-    transition: 0.3s;
+.navigation-button button:active {
+    background-color: var(--menu-btn-act-bg-color)
 }
 .navigation-button button:not(:last-child) {
     margin-right: 10px;
+}
+.navigation-button img {
+    filter: var(--menu-btn-img-filter);
 }
 
 .navigation-checkbox {
@@ -153,7 +171,7 @@ details {
 /* Счетчик :танк дд хил */
 .dungeon-players {
     /* margin: 0 0.2em; */
-    padding: 0.2em 0.4em;
+    padding: 0.175em 0.4em;
     border-radius: 4px;
     background-color: var(--dungeon-players-bg-color);
     height: fit-content;
@@ -183,7 +201,6 @@ details {
     margin: 0 0.4em;
     word-break: break-word;
     flex-grow: 1;
-    /* font-size: medium; */
     padding: 0.2em;
 }
 
@@ -206,6 +223,7 @@ details {
 }
 .dungeon-details[open] {
     padding-bottom: 0.1em;
+    margin-bottom: 0.5em;
 }
 
 /* Содержание */
@@ -238,13 +256,10 @@ details {
 .party-detailed-content {
     /* margin-left: 0.5em; */
     background-color: var(--party-dtl-content-bg-color);
-    padding: 0.2em 0.5em;
+    padding: 0.3em 0.5em;
     border-radius: 2px;
 } 
 
-/* .party-detailed-content p {
-    margin: 0;
-} */
 .party-details[open] .party-summary {
     margin-bottom: 0.4em;
 }
@@ -258,13 +273,14 @@ details {
 }
 .party-player-summary img {
     margin: 0 0.2rem 0 0.5rem;
+    filter: var(--players-class-img-filter);
 }
 
 .party-player-icon {
     margin-left: 0.2em;
     vertical-align: bottom;
-    width: 1.125em;
-    height: 1.125em;
+    width: 1.25em;
+    height: 1.25em;
 }
 
 /* players table */
@@ -313,6 +329,7 @@ details {
 .player-class img {
     width: 1.5rem;
     height: 1.5rem;
+    filter: var(--players-class-img-filter);
 }
 
 /* empty list */
