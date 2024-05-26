@@ -152,14 +152,34 @@ header {
     }
 }
 
-/* Тело блока */
 details {
     padding: 0.5em;
     border-radius: 5px;
     border: none;
 }
+.dungeon-details {
+    min-width: 350px;
+    margin-bottom: 0.35em;
+    padding-bottom: 0em;
+    border: none;
+    background: var(--dungeon-dtl-bg);
+    backdrop-filter: var(--dungeon-dtl-bg-filter);
+    -webkit-backdrop-filter: var(--dungeon-dtl-bg-filter);
+}
+.dungeon-details[open] {
+    padding-bottom: 0.1em;
+    margin-bottom: 0.5em;
+}
 
-/* Уровень подземелья и снаряжения */
+.dungeon-summary {
+    display: flex;
+    margin: -0.5em -0.5em 0;
+    padding: 0.4em 0.5em 0.4em 0.5em;
+    border-radius: 5px;
+    font-weight: 600;
+    color: var(--font-color-primary);
+    background: var(--dungeon-sum-bg);
+}
 .dungeon-lvl, .dungeon-ilvl {
     margin-right: 0.2em;
     padding: 0.2em 0.4em;
@@ -167,10 +187,13 @@ details {
     background-color: var(--dungeon-lvl-bg-color);
     height: fit-content;
 }
-
-/* Счетчик :танк дд хил */
+.dungeon-name {
+    margin: 0 0.4em;
+    word-break: break-word;
+    flex-grow: 1;
+    padding: 0.2em;
+}
 .dungeon-players {
-    /* margin: 0 0.2em; */
     padding: 0.175em 0.4em;
     border-radius: 4px;
     background-color: var(--dungeon-players-bg-color);
@@ -192,97 +215,49 @@ details {
 .dungeon-role-heal {
     content: var(--dungeon-role-heal-content);
 }
-.party-leader {
-    content: var(--party-leader-content);
-}
 
-/* Название */
-.dungeon-name {
-    margin: 0 0.4em;
-    word-break: break-word;
-    flex-grow: 1;
-    padding: 0.2em;
-}
-
-/* "Шапка" с основной информацией */
-.dungeon-summary {
-    display: flex;
-    margin: -0.5em -0.5em 0;
-    padding: 0.4em 0.5em 0.4em 0.5em;
-    border-radius: 5px;
-    font-weight: 600;
-    color: var(--font-color-primary);
-    background: var(--dungeon-sum-bg);
-}
-.dungeon-details {
-    min-width: 350px;
-    margin-bottom: 0.35em;
-    padding-bottom: 0em;
-    border: none;
-    background: var(--dungeon-dtl-bg);
-    backdrop-filter: var(--dungeon-dtl-bg-filter);
-    -webkit-backdrop-filter: var(--dungeon-dtl-bg-filter);
-}
-.dungeon-details[open] {
-    padding-bottom: 0.1em;
-    margin-bottom: 0.5em;
-}
-
-/* Содержание */
 .party-details { 
     margin: 0.5em 0;
     padding: 0 1em;
     border-radius: 0;
     color: var(--font-color-primary);
-} 
-
-/* Разделительная линия между группами */
-.delimiter {
-    margin: 0;
-    border-bottom: solid 1px var(--party-del-color);
 }
-
-/* Игрок */
-.party-player {
-    /* margin-right: 0.4em; */
-    padding: 0 0.5em;
-    white-space: nowrap;
-    /* border-radius: 3px; */
-    /* border: solid 1px rgba(255, 255, 255, 0.2); */
+.party-details[open] .party-summary {
+    margin-bottom: 0.4em;
 }
 .party-summary span:not(:nth-last-child(1)) {
     border-right: solid 2px var(--party-sum-span-border-color);
 }
-
-/* Группа: Описание состава группы */
-.party-detailed-content {
-    /* margin-left: 0.5em; */
-    background-color: var(--party-dtl-content-bg-color);
-    padding: 0.3em 0.5em;
-    border-radius: 2px;
-} 
-
-.party-details[open] .party-summary {
-    margin-bottom: 0.4em;
+.party-player {
+    padding: 0 0.5em;
+    white-space: nowrap;
 }
-
-/* Группа: Иконки класса и уровень игрока  */
-.party-player-summary {
-    margin-left: 0.5em;
-    /* padding: 0 0.1em; */
-    /* border-radius: 2px; */
-    /* background-color: rgba(18, 18, 18, 0.6); */
-}
-.party-player-summary img {
-    margin: 0 0.2rem 0 0.5rem;
-    filter: var(--players-class-img-filter);
-}
-
 .party-player-icon {
     margin-left: 0.2em;
     vertical-align: bottom;
     width: 1.25em;
     height: 1.25em;
+}
+
+.party-detailed-content {
+    background-color: var(--party-dtl-content-bg-color);
+    padding: 0.3em 0.5em;
+    border-radius: 2px;
+}
+.party-player-info {
+    margin-left: 0.5em;
+}
+.party-player-info img {
+    margin: 0 0.2rem 0 0.5rem;
+    filter: var(--players-class-img-filter);
+}
+.party-leader {
+    content: var(--party-leader-content);
+}
+
+.delimiter {
+    margin: 0;
+    border-bottom: solid 1px var(--party-del-color);
 }
 
 /* players table */
