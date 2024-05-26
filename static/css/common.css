@@ -220,6 +220,8 @@ details {
     padding-bottom: 0em;
     border: none;
     background: var(--dungeon-dtl-bg);
+    backdrop-filter: var(--dungeon-dtl-bg-filter);
+    -webkit-backdrop-filter: var(--dungeon-dtl-bg-filter);
 }
 .dungeon-details[open] {
     padding-bottom: 0.1em;
@@ -237,7 +239,7 @@ details {
 /* Разделительная линия между группами */
 .delimiter {
     margin: 0;
-    border-bottom: solid 2px var(--party-del-color);
+    border-bottom: solid 1px var(--party-del-color);
 }
 
 /* Игрок */
@@ -312,7 +314,6 @@ details {
 .players-table td:nth-child(4) {
     padding: 0.5rem 0 0.5rem 0.5rem;
 }
-/* -n+2 - первые два элем. */
 .players-table td:nth-child(-n+2), 
 .players-table th:nth-child(-n+2) {
     padding: 0.6rem 0.3rem 0.6rem 0.7rem;
@@ -339,5 +340,4 @@ details {
     text-align: center;
     color: var(--font-color-primary);
     background-color: var(--empty-bg-color);
-    
 }
