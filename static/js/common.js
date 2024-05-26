@@ -1,10 +1,10 @@
-const storage = window.sessionStorage; // || window.localStorage;
 const autoupdateTimer = 10000;
 const styleLink = document.getElementById('styleLink');
 
 let autoupdateTimerId = -1;
 
-function saveData(element, value = null) {
+function saveData(element, value = null, forSession = true) {
+    let storage = forSession ? window.sessionStorage : window.localStorage;
     if (storage) {
         let id = typeof(element) === 'string' ? element : element.id;
         if (value != null)
@@ -14,7 +14,8 @@ function saveData(element, value = null) {
     }
 }
 
-function loadData(element) {
+function loadData(element, forSession = true) {
+    let storage = forSession ? window.sessionStorage : window.localStorage;
     if (storage) {
         let id = typeof(element) === 'string' ? element : element.id;
         return storage.getItem(id);
@@ -63,7 +64,7 @@ function toggleStyle() {
     let newStyle = styles[(styles.indexOf(styleLink.dataset.value) - 1 + styles.length) % styles.length];
     styleLink.href = `/static/css/${newStyle}.css`
     styleLink.dataset.value = newStyle;
-    saveData(styleLink, newStyle);
+    saveData(styleLink, newStyle, false);
 }
 
 document.addEventListener("readystatechange", (event) => {
@@ -80,7 +81,7 @@ document.addEventListener("readystatechange", (event) => {
     }
 });
 
-let style = loadData(styleLink);
+let style = loadData(styleLink, false);
 if (style != null) {
     styleLink.href = `/static/css/${style}.css`;
     styleLink.dataset.value = style;

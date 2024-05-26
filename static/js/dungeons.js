@@ -290,7 +290,7 @@ window.addEventListener('load', () => disableToggle = false);
 
             dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
             pinchInitDist = distance;
-            saveData(pinchSaveId, pinchCurrentIndex);
+            saveData(pinchSaveId, pinchCurrentIndex, false);
         }
     });
 
@@ -330,7 +330,7 @@ window.addEventListener('load', () => disableToggle = false);
         saveDetailsCollapsed(null, false);
     }
 
-    let savedPinchIndex = loadData(pinchSaveId);
+    let savedPinchIndex = loadData(pinchSaveId, false);
     if (savedPinchIndex != null) {
         pinchCurrentIndex =  savedPinchIndex;
         dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
