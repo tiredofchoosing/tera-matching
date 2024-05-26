@@ -1,5 +1,6 @@
 const autoupdateTimer = 10000;
 const styleLink = document.getElementById('styleLink');
+const themeColor = document.getElementById('themeColor');
 
 let autoupdateTimerId = -1;
 
@@ -65,13 +66,20 @@ function toggleStyle() {
     styleLink.href = `/static/css/${newStyle}.css`
     styleLink.dataset.value = newStyle;
     saveData(styleLink, newStyle, false);
+
+    updateThemeColor();
+}
+
+function updateThemeColor() {
+    let navbarBgColors = {
+        'dark-green': 'rgb(23, 24, 32)',
+        'classic-light': 'rgb(86, 95, 119)'
+    };
+    themeColor.content = navbarBgColors[styleLink.dataset.value];
 }
 
 document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "interactive") {
-        // const checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
-        // checkboxes.forEach(e => e.classList.add('no-transition'));
-        
         document.getElementById('toggleLang').addEventListener('click', toggleLang);
         document.getElementById('toggleStyle').addEventListener('click', toggleStyle);
     }
@@ -86,3 +94,4 @@ if (style != null) {
     styleLink.href = `/static/css/${style}.css`;
     styleLink.dataset.value = style;
 }
+updateThemeColor();
