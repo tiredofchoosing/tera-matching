@@ -4,7 +4,7 @@
 <div id="main">
 	<div class="container">
 		<div class="row justify-content-start">
-			<div class="col-lg-3 col-md-12">
+			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12">
 				<div class="d-lg-block collapse navbar-collapse" id="navigationMenu">
 					<div class="navigation-menu col-12">
 						<div class="navigation-search">
@@ -49,7 +49,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="content" class="content col-lg-6 col-md-12">
+			<div id="content" class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
 				<%- include('empty.ejs', { page, isEmpty: Object.values(data).length === 0 }) %>
 				<div id="dungeonList" class="dungeon-list">
 					<%- include('dungeon_details.ejs', { page }) %>
