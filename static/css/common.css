@@ -248,11 +248,13 @@ details {
     margin-left: 0.5em;
 }
 .party-player-info img {
-    margin: 0 0.2rem 0 0.5rem;
+    margin: 0 0.2em 0 0.5em;
     filter: var(--players-class-img-filter);
 }
 .party-leader {
     content: var(--party-leader-content);
+    margin: 0;
+    padding: 0 0.1em 0.2em 0.1em;
 }
 
 .delimiter {

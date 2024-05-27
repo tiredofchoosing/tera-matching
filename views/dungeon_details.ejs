@@ -28,9 +28,7 @@
                 <img class="party-player-icon dungeon-role-<%= roles[player.role] %>" width="20px" height="20px">
                 <%= player.name %>
                 <% if (player.isLeaderRequired) { %>
-                <sup>
-                    <img class="party-player-icon party-leader" width="15px" height="15px">
-                </sup>
+                <img class="party-player-icon party-leader" width="20px" height="20px">
                 <% } %>
             </span>
             <% }); %>
@@ -44,9 +42,7 @@
                 <%= player.name %>
             </span>
             <% if (player.isLeaderRequired) { %>
-            <sup>
-                <img class="party-player-icon party-leader" width="15px" height="15px">
-            </sup>
+            <img class="party-player-icon party-leader" width="20px" height="20px">
             <% } %>
         </div>
         <% }); %>
