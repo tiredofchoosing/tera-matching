@@ -8,36 +8,36 @@
 				<div class="d-lg-block collapse navbar-collapse" id="navigationMenu">
 					<div class="navigation-menu col-12">
 						<div class="navigation-search">
-							<input type="text" id="searchPlayerName" placeholder="<%= strings.searchPlayerNamePlaceholderStr %>">
-							<input type="text" id="searchPlayerLevel" placeholder="<%= strings.searchPlayerLevelPlaceholderStr %>" title="<%= strings.searchPlayerLevelTitleStr %>">
+							<input type="text" id="searchPlayerName" placeholder="<%= strings.searchPlayerNamePlaceholder %>">
+							<input type="text" id="searchPlayerLevel" placeholder="<%= strings.searchLevelPlaceholder %>" title="<%= strings.searchLevelTitle %>">
 						</div>
 						<div class="navigation-select">
 							<select id="selectPlayerClass">
-								<option value="default" selected="selected"><%= strings.classSelectDefaultContentStr %></option>
+								<option value="default" selected="selected"><%= strings.classSelectDefaultContent %></option>
 								<% for(let [i, className] of classes.entries()) { %>
 								<option value="<%= i %>"><%= className %></option>
 								<% } %>
 							</select>
 							<select id="selectPlayerSort">
-								<option value="timeDesc"><%= strings.loginTimeDescContentStr %></option>
-								<option value="timeAsc" selected="selected"><%= strings.loginTimeAscContentStr %></option>
-								<option value="levelDesc"><%= strings.playerLevelDescContentStr %></option>
-								<option value="levelAsc"><%= strings.playerLevelAscContentStr %></option>
-								<option value="classDesc"><%= strings.playerClassDescContentStr %></option>
-								<option value="classAsc"><%= strings.playerClassAscContentStr %></option>
-								<option value="nameDesc"><%= strings.playerNameDescContentStr %></option>
-								<option value="nameAsc"><%= strings.playerNameAscContentStr %></option>
+								<option value="timeDesc"><%= strings.loginTimeDescContent %></option>
+								<option value="timeAsc" selected="selected"><%= strings.loginTimeAscContent %></option>
+								<option value="levelDesc"><%= strings.playerLevelDescContent %></option>
+								<option value="levelAsc"><%= strings.playerLevelAscContent %></option>
+								<option value="classDesc"><%= strings.playerClassDescContent %></option>
+								<option value="classAsc"><%= strings.playerClassAscContent %></option>
+								<option value="nameDesc"><%= strings.playerNameDescContent %></option>
+								<option value="nameAsc"><%= strings.playerNameAscContent %></option>
 							</select>
 						</div>
 						<div class="navigation-button d-flex flex-sm-row">
-							<button id="clearNavigation" class="flex-fill text-center ml-lg-2">
+							<button id="clearNavigation" class="flex-fill text-center ml-lg-2" title="<%= strings.clearNavigationTitle %>">
 								<img src="/static/img/icons/reset.svg" width="20px" height="20px" draggable="false">
 							</button>
 						</div>
 						<div class="navigation-checkbox">
 							<div class="form-check form-switch">
 								<input class="form-check-input no-transition" type="checkbox" id="autoupdateCheck" role="switch">
-								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
+								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateCheckLabel %></label>
 							</div>
 						</div>
 					</div>
@@ -53,8 +53,8 @@
 							<thead>
 								<tr>
 									<th>#</th>
-									<th><%= strings.levelTableHeaderStr %></th>
-									<th colspan="2"><%= strings.playerTableHeaderStr %></th>
+									<th><%= strings.playersTableLevelContent %></th>
+									<th colspan="2"><%= strings.playersTableCharacterContent %></th>
 								</tr>
 							</thead>
 							<tbody id="playersTableBody">

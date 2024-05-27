@@ -8,42 +8,42 @@
 				<div class="d-lg-block collapse navbar-collapse" id="navigationMenu">
 					<div class="navigation-menu col-12">
 						<div class="navigation-search">
-							<input type="text" id="searchDungeonName" placeholder="<%= strings.searchNameDungeonPlaceholderStr %>">
-							<input type="text" id="searchDungeonLevel" placeholder="<%= strings.searchMinLevelPlaceholderStr %>" title="<%= strings.searchMinLevelTitleStr %>">
-							<input type="text" id="searchDungeonItemLevel" placeholder="<%= strings.searchMinItemLevelPlaceholderStr %>" title="<%= strings.searchMinItemLevelTitleStr %>">
+							<input type="text" id="searchDungeonName" placeholder="<%= strings.searchDungeonNamePlaceholder %>">
+							<input type="text" id="searchDungeonLevel" placeholder="<%= strings.searchLevelPlaceholder %>" title="<%= strings.searchLevelTitle %>">
+							<input type="text" id="searchDungeonItemLevel" placeholder="<%= strings.searchDungeonItemLevelPlaceholder %>" title="<%= strings.searchDungeonItemLevelTitle %>">
 						</div>
 						<div class="navigation-select">
 							<select id="selectDungeonSort">
-								<option value="minLevelDesc"><%= strings.minLevelDescContentStr %></option>
-								<option value="minLevelAsc"><%= strings.minLevelAscContentStr %></option>
-								<option value="minItemLevelDesc" selected="selected"><%= strings.minItemLevelDescContentStr %></option>
-								<option value="minItemLevelAsc"><%= strings.minItemLevelAscContentStr %></option>
-								<option value="nameDesc"><%= strings.nameDescContentStr %></option>
-								<option value="nameAsc"><%= strings.nameAscContentStr %></option>
-								<option value="playersDesc"><%= strings.playersDescContentStr %></option>
-								<option value="playersAsc"><%= strings.playersAscContentStr %></option>
+								<option value="minLevelDesc"><%= strings.minLevelDescContent %></option>
+								<option value="minLevelAsc"><%= strings.minLevelAscContent %></option>
+								<option value="minItemLevelDesc" selected="selected"><%= strings.minItemLevelDescContent %></option>
+								<option value="minItemLevelAsc"><%= strings.minItemLevelAscContent %></option>
+								<option value="nameDesc"><%= strings.nameDescContent %></option>
+								<option value="nameAsc"><%= strings.nameAscContent %></option>
+								<option value="playersDesc"><%= strings.playersDescContent %></option>
+								<option value="playersAsc"><%= strings.playersAscContent %></option>
 							</select>
 						</div>
 						<div class="navigation-button d-flex flex-sm-row">
-							<button id="toggleDetails" class="flex-fill text-center mr-lg-2" value="true">
+							<button id="toggleDetails" class="flex-fill text-center mr-lg-2" value="true" title="<%= strings.toggleDetailsTitle %>">
 								<img src="/static/img/icons/collapse.svg" width="20px" height="20px" draggable="false">
 							</button>
-							<button id="clearNavigation" class="flex-fill text-center ml-lg-2">
+							<button id="clearNavigation" class="flex-fill text-center ml-lg-2" title="<%= strings.clearNavigationTitle %>">
 								<img src="/static/img/icons/reset.svg" width="20px" height="20px" draggable="false">
 							</button>
 						</div>
 						<div class="navigation-checkbox">
 							<div class="form-check form-switch">
 								<input class="form-check-input no-transition" type="checkbox" id="autoupdateCheck" role="switch">
-								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateLabelStr %></label>
+								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateCheckLabel %></label>
 							</div>
 							<div class="form-check form-switch">
 								<input class="form-check-input no-transition" type="checkbox" id="saveCollapsed" role="switch">
-								<label class="form-check-label" for="saveCollapsed"><%= strings.saveCollapsedLabelStr %></label>
+								<label class="form-check-label" for="saveCollapsed"><%= strings.saveCollapsedLabel %></label>
 							</div>
 							<div class="form-check form-switch">
 								<input class="form-check-input no-transition" type="checkbox" id="mergeSupportMatching" role="switch">
-								<label class="form-check-label" for="mergeSupportMatching"><%= strings.mergeSupportMatchingLabelStr.replace('$', dungeons_info['9999'].name) %></label>
+								<label class="form-check-label" for="mergeSupportMatching"><%= strings.mergeSupportMatchingLabel.replace('$', dungeons_info['9999'].name) %></label>
 							</div>
 						</div>
 					</div>
