@@ -121,8 +121,7 @@ header {
 }
 
 .navigation-checkbox {
-    margin-top: 0.5rem;
-    border-radius: 5px;
+    margin-top: 1rem;
     color: var(--font-color-primary);
 }
 .navigation-checkbox div {
