@@ -240,8 +240,11 @@ details {
 
 .party-detailed-content {
     background-color: var(--party-dtl-content-bg-color);
+    padding: 0.3em 0;
+    border-radius: 4px;
+}
+.party-player-detailed-content {
     padding: 0.3em 0.5em;
-    border-radius: 2px;
 }
 .party-player-info {
     margin-left: 0.5em;

@@ -67,8 +67,8 @@ window.addEventListener('load', () => disableToggle = false);
             let minItemLevelB = parseInt(b.getElementsByClassName('dungeon-ilvl')[0].textContent);
             let nameA = a.getElementsByClassName('dungeon-name')[0].textContent;
             let nameB = b.getElementsByClassName('dungeon-name')[0].textContent;
-            let playersA = a.getElementsByClassName('party-detailed-content').length;
-            let playersB = b.getElementsByClassName('party-detailed-content').length;
+            let playersA = a.getElementsByClassName('party-player-detailed-content').length;
+            let playersB = b.getElementsByClassName('party-player-detailed-content').length;
 
             switch(sortVal) {
                 case 'minLevelDesc':
@@ -131,7 +131,7 @@ window.addEventListener('load', () => disableToggle = false);
                 return false;
 
             let partyDetails = Array.from(lowDungeon.getElementsByClassName('party-details'));
-            let supporters = partyDetails.filter(pd => pd.querySelector('.party-detailed-content.level65'));
+            let supporters = partyDetails.filter(pd => pd.querySelector('.party-player-detailed-content.level65'));
             if (supporters.length === 0)
                 return false;
 
@@ -145,7 +145,7 @@ window.addEventListener('load', () => disableToggle = false);
             });
 
             let supportDungeons = dungeons.filter(d => d.querySelector('.dungeon-lvl').innerText < suppDungeon.minLevel &&
-                d.querySelector('.party-detailed-content.level65') != null);
+                d.querySelector('.party-player-detailed-content.level65') != null);
 
             supportDungeons.forEach(function(sup) {
                 dungeonList.removeChild(sup);
@@ -164,7 +164,7 @@ window.addEventListener('load', () => disableToggle = false);
                     });
                 });
 
-                parties.filter(p => p.querySelector('.party-detailed-content.level65') != null).forEach(p => newNode.removeChild(p));
+                parties.filter(p => p.querySelector('.party-player-detailed-content.level65') != null).forEach(p => newNode.removeChild(p));
                 newNode.addEventListener('toggle', dungeonDetailsToggleHandler);
                 dungeonList.appendChild(newNode);
             });
@@ -192,7 +192,7 @@ window.addEventListener('load', () => disableToggle = false);
                     });
                 });
 
-                parties.filter(p => p.querySelector('.party-detailed-content.level65') == null).forEach(p => { newElem.removeChild(p) });
+                parties.filter(p => p.querySelector('.party-player-detailed-content.level65') == null).forEach(p => { newElem.removeChild(p) });
             }
             newElem.addEventListener('toggle', dungeonDetailsToggleHandler);
             dungeonList.appendChild(newElem);
