@@ -1,46 +1,34 @@
-<header class="sticky-top header">
-    <!-- Навигационная панель -->
-    <nav class="navbar navbar-expand-lg navbar-dark d-flex">
-        <div class="container container-fluid ">
-            <!-- Элементы навигационной панели -->
-            <ul class="navbar-nav mx-auto flex-row align-items-center">
-                <!-- Логотип -->
-                <li class="nav-item header-logo">
+<header class="sticky-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark d-flex">
+            <div class="header container-fluid col-lg-12 col-md-10 col-sm-12">
+                <span class="nav-item header-logo">
                     <img src="/static/img/icons/elin.png" alt="" height="40px" width="40px">
-                </li>
-                <li class="nav-item header-button">
+                </span>
+                <span class="nav-item header-button header-page-link">
                     <% let onlineStr = (typeof online === 'undefined' || online == null) ? '' : ': ' + online %>
-                    <span class="header-page-link"><a href="/online"><%= strings.onlineHeaderLinkContent %><%= onlineStr %></a></span>
-                </li>
-                <!-- Кнопка переключения языка -->
-                <li class="nav-item header-button">
-                    <span><button id="toggleLang" value="<%= lang %>"><img src="/static/img/icons/global.svg" height="20px" width="20px"></button></span>
-                </li>
-                <li class="nav-item header-button">
-                    <!-- TODO заменить на селект -->
-                    <span><button id="toggleStyle"><img src="/static/img/icons/heal.svg" height="20px" width="20px"></button></span>
-                </li>
-            </ul>
+                    <a href="/online"><%= strings.onlineHeaderLinkContent %><%= onlineStr %></a>
+                </span>
 
-            <!-- Кнопка для мобильной версии -->
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav,#navigationMenu" aria-controls="navbarNav navigationMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav,#navigationMenu" aria-controls="navbarNav navigationMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <!-- Ссылки на основные разделы -->
-            <div class="collapse navbar-collapse flex-lg-row justify-content-center" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item header-button">
-                        <span class="header-page-link"><a href="/dungeons"><%= strings.dungeonsHeaderLinkContent %></a></span>
-                    </li>
-                    <li class="nav-item header-button">
-                        <span class="header-page-link"><a href="/battlegrounds"><%= strings.battlegroundsHeaderLinkContent %></a></span>
-                    </li>
-                    <!-- <li class="nav-item header-button">
-                        <span class="header-page-link"><a href="/online"><%= strings.onlineHeaderLinkContent %></a></span>
-                    </li> -->
-                </ul>
+                <div class="collapse navbar-collapse flex-md-row justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item nav-link">
+                            <span class="header-page-link"><a href="/dungeons"><%= strings.dungeonsHeaderLinkContent %></a></span>
+                        </li>
+                        <li class="nav-item nav-link">
+                            <span class="header-page-link"><a href="/battlegrounds"><%= strings.battlegroundsHeaderLinkContent %></a></span>
+                        </li>
+                    </ul>
+                    <div class="navbar-nav header-buttons">
+                        <span class="nav-item header-button"><button id="toggleLang" value="<%= lang %>"><img src="/static/img/icons/global.svg" height="20px" width="20px"></button></span>
+                        <span class="nav-item header-button"><button id="toggleStyle"><img src="/static/img/icons/heal.svg" height="20px" width="20px"></button></span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 </header>
