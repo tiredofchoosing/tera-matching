@@ -4,6 +4,7 @@
 
     --scrollbar-color: initial;
     --background: rgb(181, 190, 218);
+    --bg-backdrop-filter: none;
 
     --navbar-bg-color: rgb(86, 95, 119);
     --header-btn-border-color: rgba(255, 255, 255, 0.1);
@@ -23,7 +24,6 @@
     --dungeon-lvl-bg-color: rgb(194, 200, 217);
     --dungeon-players-bg-color: rgb(194, 200, 217);
     --dungeon-dtl-bg: rgb(129, 141, 172);
-    --dungeon-dtl-bg-filter: none;
     --dungeon-sum-bg: initial;
     --dungeon-role-tank-content: url(/static/img/icons/tank-c.png);
     --dungeon-role-tank-margin: 0 -0.1em 0 -0.2em;
