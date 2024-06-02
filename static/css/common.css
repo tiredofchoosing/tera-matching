@@ -51,19 +51,20 @@ header {
     border-style: solid;
     border-radius: 0.25rem;
     border-color: var(--header-btn-border-color);
+    background-color: transparent;
 }
 .header-button:hover {
     background-color: var(--header-btn-hov-bg-color);
 }
-.header-button button {
+/* .header-button {
     background: none;
     border: none;
-}
-.nav-item a, .nav-item p {
+} */
+.nav-item {
     text-decoration: none;
     color: var(--font-color-primary);
 }
-.nav-item a:hover .nav-item:visited {
+.nav-item:hover, .nav-item:visited {
     color: var(--font-color-primary);
 }
 
