@@ -334,6 +334,11 @@ details {
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
 }
+.empty img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
 
 
 @media (min-width: 992px) {
