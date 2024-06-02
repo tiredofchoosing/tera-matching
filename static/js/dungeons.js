@@ -42,6 +42,7 @@ window.addEventListener('load', () => disableToggle = false);
         let searchMinLevelVal = searchMinLevelInput.value;
         let searchMinItemLevelVal = searchMinItemLevelInput.value;
 
+        let any = false;
         dungeons.forEach(d => {
             let name = d.getElementsByClassName('dungeon-name')[0].textContent;
             let minLevel = parseInt(d.getElementsByClassName('dungeon-lvl')[0].textContent);
@@ -52,8 +53,9 @@ window.addEventListener('load', () => disableToggle = false);
                 checkLevel(minItemLevel, searchMinItemLevelVal);
 
             d.style.display = show ? '' : 'none';
+            any ||= show;
         });
-        checkIfEmpty();
+        checkIfEmpty(any);
     }
 
     function sortDungeons(_, save = true) {
@@ -215,8 +217,8 @@ window.addEventListener('load', () => disableToggle = false);
             saveDetailsCollapsed(null, false);
     }
 
-    function checkIfEmpty() {
-        emptyContainer.hidden = dungeonList.children.length !== 0;
+    function checkIfEmpty(any) {
+        emptyContainer.hidden = any;
     }
 
     function updateCollapseIcon() {
