@@ -12,13 +12,13 @@
 							<input type="text" id="searchPlayerLevel" placeholder="<%= strings.searchLevelPlaceholder %>" title="<%= strings.searchLevelTitle %>">
 						</div>
 						<div class="navigation-select">
-							<select id="selectPlayerClass">
+							<select id="selectPlayerClass" title="<%= strings.selectPlayerClass %>">
 								<option value="default" selected="selected"><%= strings.classSelectDefaultContent %></option>
 								<% for(let [i, className] of classes.entries()) { %>
 								<option value="<%= i %>"><%= className %></option>
 								<% } %>
 							</select>
-							<select id="selectPlayerSort">
+							<select id="selectPlayerSort" title="<%= strings.selectSort %>">
 								<option value="timeDesc"><%= strings.loginTimeDescContent %></option>
 								<option value="timeAsc" selected="selected"><%= strings.loginTimeAscContent %></option>
 								<option value="levelDesc"><%= strings.playerLevelDescContent %></option>

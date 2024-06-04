@@ -20,6 +20,8 @@
   "searchDungeonItemLevelPlaceholder": "Item level",
   "searchDungeonItemLevelTitle": "Item level [ 463 / 453+ / 460- / 444-450 ]",
 
+  "selectSort": "Sorting",
+  "selectPlayerClass": "Filter by character class",
   "minLevelDescContent": "Level (desc)",
   "minLevelAscContent": "Level (asc)",
   "minItemLevelDescContent": "Item level (desc)",

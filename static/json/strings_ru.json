@@ -20,6 +20,8 @@
   "searchDungeonItemLevelPlaceholder": "Уровень снаряжения",
   "searchDungeonItemLevelTitle": "Уровень снаряжения [ 463 / 453+ / 460- / 444-450 ]",
 
+  "selectSort": "Сортировка",
+  "selectPlayerClass": "Фильтр по классу персонажа",
   "minLevelDescContent": "Уровень (убыв.)",
   "minLevelAscContent": "Уровень (возр.)",
   "minItemLevelDescContent": "Снаряжение (убыв.)",
