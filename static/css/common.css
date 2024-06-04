@@ -33,39 +33,33 @@ header {
 .navbar {
     padding: 0.25rem 0;
 }
-.navbar-nav {
-    display: flex;
-}
 .nav-item {
-    margin-right: 1.5rem;
+    display: block;
     padding: 0.5rem;
-    border-radius: 5px;
-    transition: 0.3s;
+    margin-right: 1.5rem;
+    border-radius: 0.25rem;
+    transition: 0.2s;
+}
+.header-page-link {
+    text-decoration: none;
+    color: var(--font-color-primary);
+}
+.header-page-link:hover, .header-page-link:visited {
+    color: var(--font-color-primary);
 }
 .header-buttons {
     margin-right: 0;
     margin-left: auto;
 }
 .header-button {
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 0.25rem;
-    border-color: var(--header-btn-border-color);
+    border: 1px solid var(--header-btn-border-color);
     background-color: transparent;
 }
 .header-button:hover {
     background-color: var(--header-btn-hov-bg-color);
 }
-/* .header-button {
-    background: none;
-    border: none;
-} */
-.nav-item {
-    text-decoration: none;
-    color: var(--font-color-primary);
-}
-.nav-item:hover, .nav-item:visited {
-    color: var(--font-color-primary);
+.header-buttons .nav-item:nth-last-child(1) {
+    margin-right: 0;
 }
 
 #toggleStyle img {

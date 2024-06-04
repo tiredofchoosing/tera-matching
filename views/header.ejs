@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark d-flex">
             <div class="header container-fluid col-lg-12 col-md-10 col-sm-12">
                 <span>
-                    <img class="nav-item header-logo" src="/static/img/icons/icon.ico" alt="" height="56px" width="56px">
+                    <img class="nav-item" src="/static/img/icons/icon.ico" alt="" height="56px" width="56px">
                 </span>
                 <span>
                     <% let onlineStr = (typeof online === 'undefined' || online == null) ? '' : ': ' + online %>
@@ -17,10 +17,10 @@
                 <div class="collapse navbar-collapse flex-md-row justify-content-center" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li>
-                            <a class="nav-item nav-link header-page-link" href="/dungeons"><%= strings.dungeonsHeaderLinkContent %></a>
+                            <a class="nav-item header-page-link" href="/dungeons"><%= strings.dungeonsHeaderLinkContent %></a>
                         </li>
                         <li>
-                            <a class="nav-item nav-link header-page-link" href="/battlegrounds"><%= strings.battlegroundsHeaderLinkContent %></a>
+                            <a class="nav-item header-page-link" href="/battlegrounds"><%= strings.battlegroundsHeaderLinkContent %></a>
                         </li>
                     </ul>
                     <div class="header-buttons d-flex">
