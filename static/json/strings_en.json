@@ -6,6 +6,8 @@
   "dungeonsHeaderLinkContent": "Dungeons",
   "battlegroundsHeaderLinkContent": "Battlefields",
   "onlineHeaderLinkContent": "Online",
+  "toggleLangTitle": "Сменить язык",
+  "toggleStyleTitle": "Switch page theme",
 
   "emptyMatchingContent": "Matching queue is empty",
   "emptyPlayersContent": "Player list is empty",

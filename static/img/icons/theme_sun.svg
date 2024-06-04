@@ -1,0 +1,17 @@
+<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <style type="text/css">
+  .st0{fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+  .st1{fill:none;stroke:white;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+ </style>
+ <g>
+  <circle id="svg_1" r="8.04532" cy="15.0239" cx="15.0239" class="st0" fill="black"/>
+  <line id="svg_2" y2="4.02609" x2="15.0239" y1="2.0239" x1="15.0239" class="st0"/>
+  <line id="svg_3" y2="7.25232" x2="7.25232" y1="5.8339" x1="5.8339" class="st0"/>
+  <line id="svg_4" y2="15.0239" x2="4.02164" y1="15.0239" x1="2.0239" class="st0"/>
+  <line id="svg_5" y2="22.76207" x2="7.28573" y1="24.2139" x1="5.8339" class="st0"/>
+  <line id="svg_6" y2="26.03952" x2="15.0239" y1="28.0239" x1="15.0239" class="st0"/>
+  <line id="svg_7" y2="22.77544" x2="22.77544" y1="24.2139" x1="24.2139" class="st0"/>
+  <line id="svg_8" y2="15.0239" x2="26.05289" y1="15.0239" x1="28.0239" class="st0"/>
+  <line id="svg_9" y2="7.24229" x2="22.8055" y1="5.8339" x1="24.2139" class="st0"/>
+ </g>
+</svg>

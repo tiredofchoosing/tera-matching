@@ -10,6 +10,7 @@
     --header-btn-border-color: rgba(255, 255, 255, 0.1);
     --header-btn-hov-bg-color: rgb(7, 8, 10);
     --header-shadow-color: rgba(0, 0, 0, 0.075);
+    --header-style-btn-content: url(/static/img/icons/theme_sun.svg);
 
     --menu-bg-color: rgba(23, 24, 32, 0.7);
     --menu-child-bg-color: rgb(46, 52, 65, 0.75);

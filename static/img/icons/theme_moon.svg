@@ -1,0 +1,14 @@
+<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <style type="text/css">
+  .st0{fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+  .st1{fill:none;stroke:white;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+ </style>
+ <g>
+  <path id="svg_1" d="m16.04267,3.08534c-0.27,0 -0.54,0.02 -0.8,0.04c2.85,1.51 4.8,4.51 4.8,7.96c0,4.97 -4.03,9 -9,9c-2.74,0 -5.19,-1.23 -6.85,-3.17c0.89,5.76 5.85,10.17 11.85,10.17c6.63,0 12,-5.37 12,-12s-5.37,-12 -12,-12z" class="st0"/>
+  <g id="svg_2">
+   <path id="svg_3" d="m10.04267,7.08534c-2.58,0.62 -3.38,1.42 -4,4c-0.62,-2.58 -1.42,-3.38 -4,-4c2.58,-0.62 3.38,-1.42 4,-4c0.62,2.58 1.42,3.38 4,4z" class="st0"/>
+  </g>
+  <line id="svg_4" y2="14.08534" x2="11.04267" y1="12.08534" x1="11.04267" class="st0"/>
+  <line id="svg_5" y2="13.08534" x2="12.04267" y1="13.08534" x1="10.04267" class="st0"/>
+ </g>
+</svg>

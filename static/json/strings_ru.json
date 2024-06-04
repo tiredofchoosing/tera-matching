@@ -6,6 +6,8 @@
   "dungeonsHeaderLinkContent": "Подземелья",
   "battlegroundsHeaderLinkContent": "Арены",
   "onlineHeaderLinkContent": "Онлайн",
+  "toggleLangTitle": "Switch language",
+  "toggleStyleTitle": "Сменить тему оформления",
 
   "emptyMatchingContent": "Список подбора пуст",
   "emptyPlayersContent": "Список игроков пуст",

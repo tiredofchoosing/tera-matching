@@ -68,6 +68,10 @@ header {
     color: var(--font-color-primary);
 }
 
+#toggleStyle img {
+    content: var(--header-style-btn-content);
+}
+
 /* search / sort / settings menu */
 .navigation-menu {
     margin-top: 1rem;
