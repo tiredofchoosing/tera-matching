@@ -9,7 +9,7 @@ const __dirname = path.resolve(),
     app = express()
 
 app.set('view engine', 'ejs')
-app.use('/static', express.static(__dirname + '/static', { maxAge: 24*60*60*1000 }))
+app.use('/static', express.static(__dirname + '/static'))
 app.use(router)
 
 app.listen(port, host, () => {

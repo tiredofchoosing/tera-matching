@@ -176,17 +176,18 @@ details {
 }
 .dungeon-details[open] {
     padding-bottom: 0.1em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.8em;
 }
 
 .dungeon-summary {
     display: flex;
     margin: -0.5em -0.5em 0;
-    padding: 0.4em 0.5em 0.4em 0.5em;
+    padding: 0.55em 0.5em 0.55em 0.5em;
     border-radius: 5px;
     font-weight: 600;
     color: var(--font-color-primary);
     background: var(--dungeon-sum-bg);
+    
 }
 .dungeon-lvl, .dungeon-ilvl {
     margin-right: 0.2em;
@@ -325,7 +326,7 @@ details {
 
 /* empty list */
 .empty {
-    padding: 2rem;
+    padding: 2rem 2rem 3rem 2rem;
     border-radius: 5px;
     text-align: center;
     color: var(--font-color-primary);
