@@ -5,6 +5,8 @@
     --scrollbar-color: initial;
     --background: rgb(181, 190, 218);
     --bg-backdrop-filter: none;
+    --color-icon: rgb(168, 175, 189);
+    --color-icon-hover: rgb(178, 195, 230);
 
     --navbar-bg-color: rgb(86, 95, 119);
     --header-btn-border-color: rgba(255, 255, 255, 0.1);
