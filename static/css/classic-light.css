@@ -10,7 +10,7 @@
 
     --navbar-bg-color: rgb(86, 95, 119);
     --header-btn-border-color: rgba(255, 255, 255, 0.1);
-    --header-btn-hov-bg-color: rgb(129, 141, 172);
+    --header-btn-hov-bg-color: rgba(49, 58, 83, 0.5);
     --header-shadow-color: rgba(0, 0, 0, 0.075);
     --header-style-btn-content: url(/static/img/icons/theme_moon.svg);
 
@@ -41,7 +41,7 @@
     --players-tbl-th-bg-color: rgb(86, 95, 119);
     --players-tbl-tr1-bg-color: rgb(129, 141, 172);
     --players-tbl-tr2-bg-color: rgb(149, 159, 187);
-    --players-class-img-filter: drop-shadow(1px 1px #313131) drop-shadow(1px -1px #313131) drop-shadow(-1px 1px #313131);
+    --players-class-img-filter: drop-shadow(1px 1px #313131) drop-shadow(-1px -1px #313131) drop-shadow(1px -1px #313131) drop-shadow(-1px 1px #313131);
 
     --empty-bg-color: rgb(129, 141, 172);
 }

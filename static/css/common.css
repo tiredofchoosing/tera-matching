@@ -22,10 +22,6 @@ summary, select, .navigation-checkbox input, .navigation-checkbox label {
 }
 
 /* header */
-.icon-logo
-{
-    opacity: 0.8;
-}
 header {
     background-color: var(--navbar-bg-color);
     box-shadow: 0 0.125rem 0.25rem var(--header-shadow-color);
@@ -33,10 +29,14 @@ header {
 .header {
     max-width: 976px;
     margin: 0 auto 0 0;
+    padding: 0;
 }
-
 .navbar {
-    padding: 0.25rem 0;
+    padding: 0;
+}
+.navbar-toggler {
+    border: none;
+    box-shadow: none !important;
 }
 
 .nav-item {
@@ -44,66 +44,61 @@ header {
     padding: 0.5rem;
     margin-right: 1.5rem;
     transition: 0.2s;
-   
 }
-.navbar-toggler{
-    border: none;
-    box-shadow: none !important;
+.header-logo {
+    opacity: 0.8;
 }
-
 .header-page-link {
+    opacity: 0.8;
     text-decoration: none;
     color: var(--font-color-primary);
 }
-.header-page-link:visited{
-    color:var(--color-icon);
+.header-page-link:visited {
+    color: var(--font-color-primary);
 }
-.header-page-link:hover{
-    color:var(--color-icon-hover);
+.header-page-link:hover, .header-buttons .header-button:hover {
+    opacity: 1;
+    color: var(--font-color-primary);
     background-color: var(--header-btn-hov-bg-color);
-  
 }
 .header-buttons {
     margin-right: 0;
     margin-left: auto;
 }
-
 .header-button {
     border: none;
     background-color: transparent;
 }
-.online-button
-{
+.header-buttons .header-button {
+    margin: 0;
+    opacity: 0.7;
+    padding: 1rem;
+}
+.header-online {
     border: 1px solid var(--header-btn-border-color); 
     border-radius: 0.25rem;
-}
-.header-button:hover {
-    background-color: var(--header-btn-hov-bg-color);
-}
-.header-buttons .nav-item:nth-last-child(1) {
-    margin-right: 0;
-    
 }
 
 #toggleStyle img {
     content: var(--header-style-btn-content);
+}
 
-}
-.icon-global path{
-    fill: var(--color-icon);
-    transition: fill 0.3s ease;
-    
-}
-#toggleLang:hover .icon-global path {
-    fill: var(--color-icon-hover);
-    transition: fill 0.3s ease;
-}
 @media (max-width: 992px) { 
+    .header-online {
+        border: none;
+    }
     .navbar-toggler {
         float: right;
     }
     .header-buttons {
         float: right;
+    }
+    .navbar-nav {
+        border-top: 2px solid var(--header-btn-border-color);
+        border-bottom: 2px solid var(--header-btn-border-color);
+    }
+    .nav-item {
+        margin-right: 0;
     }
 }
 
@@ -119,7 +114,7 @@ header {
 }
 #navigationMenu {
     position: sticky;
-    top: 5rem;
+    top: 4.5rem;
 }
 
 .navigation-search input, .navigation-select select {
@@ -392,11 +387,6 @@ details {
     }
 }
 @media (max-width: 992px) {
-    .online-button
-    {
-        border: none;
-    }
-
     .container {
         max-width: 100%;
     }
