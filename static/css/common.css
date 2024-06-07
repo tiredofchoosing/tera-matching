@@ -27,6 +27,7 @@ header {
     box-shadow: 0 0.125rem 0.25rem var(--header-shadow-color);
 }
 .header {
+   
     max-width: 976px;
     margin: 0 auto 0 0;
     padding: 0;
@@ -64,6 +65,7 @@ header {
 .header-buttons {
     margin-right: 0;
     margin-left: auto;
+   
 }
 .header-button {
     border: none;
@@ -94,11 +96,14 @@ header {
         float: right;
     }
     .navbar-nav {
-        border-top: 2px solid var(--header-btn-border-color);
-        border-bottom: 2px solid var(--header-btn-border-color);
+        border-top: 2px solid var(--header-line-lg);
+        border-bottom: 2px solid var(--header-line-lg);
     }
     .nav-item {
         margin-right: 0;
+    }
+    .header-page-link {
+        padding: 1.25em;
     }
 }
 
@@ -213,7 +218,7 @@ details {
 }
 .dungeon-details[open] {
     padding-bottom: 0.1em;
-    margin-bottom: 0.8em;
+    margin-bottom: 0.55em;
 }
 
 .dungeon-summary {
@@ -284,7 +289,11 @@ details {
     width: 1.25em;
     height: 1.25em;
 }
-
+.player-class
+{
+    width: 1.30em;
+    height: 1.30em;
+}
 .party-detailed-content {
     background-color: var(--party-dtl-content-bg-color);
     padding: 0.3em 0;

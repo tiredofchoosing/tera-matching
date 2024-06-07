@@ -39,7 +39,7 @@
             <div class="party-player-detailed-content<%= player.level >= 65 ? ' level65' : ''%>">
                 <span class="party-player-info">
                     <%= player.level %>
-                    <img class="party-player-icon" src="/static/img/class_icons/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
+                    <img class="party-player-icon player-class" src="/static/img/class_icons/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
                     <%= player.name %>
                 </span>
                 <% if (player.isLeaderRequired) { %>
