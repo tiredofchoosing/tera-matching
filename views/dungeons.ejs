@@ -52,7 +52,7 @@
 			<div id="content" class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
 				<%- include('empty.ejs', { page, isEmpty: Object.values(data).length === 0 }) %>
 				<div id="dungeonList" class="dungeon-list">
-					<%- include('dungeon_details.ejs', { page }) %>
+					<%- include('dungeon_details.ejs', { page, info: dungeons_info }) %>
 				</div>
 			</div>
 		</div>

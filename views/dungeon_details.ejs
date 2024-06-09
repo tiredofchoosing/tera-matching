@@ -1,10 +1,12 @@
 <% for(let dungeonId in data) { %>
-<% let dungeon = data[dungeonId]; dungeonProps = dungeons_info[dungeonId]; %>
-<% if (dungeonProps == undefined) { dungeonProps = { 'minItemLevel': 0, 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' } } %>
+<% let dungeon = data[dungeonId]; dungeonProps = info[dungeonId]; %>
+<% if (dungeonProps == undefined) { dungeonProps = { 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' }; if (page === 'dungeons') { dungeonProps.minItemLevel = 0; } } %>
 <details open class="dungeon-details" id="<%= dungeonId %>">
     <summary class="dungeon-summary">
         <span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
+        <% if (page === 'dungeons') { %>
         <span class="dungeon-ilvl"><%= dungeonProps.minItemLevel %></span>
+        <% } %>
         <% let countTank = 0; dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length); %>
         <% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
         <% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>

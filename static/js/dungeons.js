@@ -1,12 +1,13 @@
-let disableToggle = true;
-function isToggleEnabled() {
-    return !disableToggle;
-}
+(function() {
 
-// to not handle 'toggle' on default open attribute
-window.addEventListener('load', () => disableToggle = false);
+    let disableToggle = true;
+    function isToggleEnabled() {
+        return !disableToggle;
+    }
 
-//document.addEventListener('DOMContentLoaded', function() {
+    // to not handle 'toggle' on default open attribute
+    window.addEventListener('load', () => disableToggle = false);
+
     const dungeonList = document.getElementById('dungeonList');
     const searchNameInput = document.getElementById('searchDungeonName');
     const searchMinLevelInput = document.getElementById('searchDungeonLevel');
@@ -337,4 +338,5 @@ window.addEventListener('load', () => disableToggle = false);
         pinchCurrentIndex =  savedPinchIndex;
         dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
     }
-//});
+
+})();

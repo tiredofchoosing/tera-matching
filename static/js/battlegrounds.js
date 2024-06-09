@@ -1,28 +1,35 @@
-let disableToggle = true;
-function isToggleEnabled() {
-    return !disableToggle;
-}
+(function() {
 
-// to not handle 'toggle' on default open attribute
-window.addEventListener('load', () => disableToggle = false);
+    let disableToggle = true;
+    function isToggleEnabled() {
+        return !disableToggle;
+    }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const dungeonList = document.getElementById('dungeon-list');
-    const searchNameInput = document.getElementById('searchName');
-    const searchMinLevelInput = document.getElementById('searchMinLevel');
-    const sortSelect = document.getElementById('sort');
-    const toggleLangButton = document.getElementById('toggleLang');
+    // to not handle 'toggle' on default open attribute
+    window.addEventListener('load', () => disableToggle = false);
+
+    const dungeonList = document.getElementById('dungeonList');
+    const searchNameInput = document.getElementById('searchBattlegroundName');
+    const searchMinLevelInput = document.getElementById('searchBattlegroundLevel');
+    const sortSelect = document.getElementById('selectBattlegroundSort');
     const toggleDetailsButton = document.getElementById('toggleDetails');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
+    const emptyContainer = document.getElementById('empty');
+    const body = document.body;
     const searchInputs = [searchNameInput, searchMinLevelInput];
     const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox];
 
     const defaultSelectIndex = 4;
-    const saveCollapsedId = 'detailsCollapsed';
+    const saveCollapsedId = 'battlegroundDetailsCollapsed';
+    const pinchFontSizes = [ '13px', '14px', '16px' ];
+    const pinchDelta = 30;
+    const pinchSaveId = 'pinchDungeonList';
 
     let dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
+    let pinchInitDist = 0;
+    let pinchCurrentIndex = pinchFontSizes.indexOf(window.getComputedStyle(dungeonList).fontSize);
 
     // functions
     function filterDungeons(_, save = true) {
@@ -31,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let searchNameVal = searchNameInput.value.toLowerCase();
         let searchMinLevelVal = searchMinLevelInput.value;
 
+        let any = false;
         dungeons.forEach(d => {
             let name = d.getElementsByClassName('dungeon-name')[0].textContent;
             let minLevel = parseInt(d.getElementsByClassName('dungeon-lvl')[0].textContent);
@@ -39,7 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 checkLevel(minLevel, searchMinLevelVal);
 
             d.style.display = show ? '' : 'none';
+            any ||= show;
         });
+        checkIfEmpty(any);
     }
 
     function sortDungeons(_, save = true) {
@@ -51,8 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
             let minLevelB = parseInt(b.getElementsByClassName('dungeon-lvl')[0].textContent);
             let nameA = a.getElementsByClassName('dungeon-name')[0].textContent;
             let nameB = b.getElementsByClassName('dungeon-name')[0].textContent;
-            let playersA = a.getElementsByClassName('party-detailed-content').length;
-            let playersB = b.getElementsByClassName('party-detailed-content').length;
+            let playersA = a.getElementsByClassName('party-player-detailed-content').length;
+            let playersB = b.getElementsByClassName('party-player-detailed-content').length;
 
             switch(sortVal) {
                 case 'minLevelDesc':
@@ -99,6 +109,15 @@ document.addEventListener('DOMContentLoaded', function() {
             saveDetailsCollapsed(null, false);
     }
 
+    function checkIfEmpty(any) {
+        emptyContainer.hidden = any;
+    }
+
+    function updateCollapseIcon() {
+        let value = toggleDetailsButton.value === 'true';
+        toggleDetailsButton.firstElementChild.src = `/static/img/icons/${value ? 'collapse' : 'expand'}.svg`;
+    }
+
     // register event handlers
     sortSelect.addEventListener('change', sortDungeons);
     searchNameInput.addEventListener('input', filterDungeons);
@@ -132,16 +151,44 @@ document.addEventListener('DOMContentLoaded', function() {
         dungeons.forEach(d => d.open = !isOpen);
         disableToggle = false;
         saveDetailsCollapsed(null, false);
+        updateCollapseIcon();
     });
 
-    toggleLangButton.addEventListener('click', function() {
-        let lang = this.value === 'ru' ? 'en' : 'ru';
-        this.value = lang;
+    // change font size of dungeon list on touch pinch
+    body.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 2) {
+            pinchInitDist = Math.hypot(
+                e.touches[0].pageX - e.touches[1].pageX,
+                e.touches[0].pageY - e.touches[1].pageY
+            );
+        }
+    });
 
-        let date = new Date();
-        date.setFullYear(date.getFullYear() + 1);
-        document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
-        location.reload();
+    body.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 2) {
+            let distance = Math.hypot(
+                e.touches[0].pageX - e.touches[1].pageX,
+                e.touches[0].pageY - e.touches[1].pageY
+            );
+            if (distance - pinchInitDist > pinchDelta) {
+                pinchCurrentIndex = Math.min(pinchCurrentIndex + 1, pinchFontSizes.length - 1);
+            }
+            else if (pinchInitDist - distance > pinchDelta) {
+                pinchCurrentIndex = Math.max(pinchCurrentIndex - 1, 0);
+            }
+            else
+                return;
+
+            dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
+            pinchInitDist = distance;
+            saveData(pinchSaveId, pinchCurrentIndex, false);
+        }
+    });
+    
+    body.addEventListener('touchend', function(e) {
+        if (e.touches.length < 2) {
+            pinchInitDist = 0;
+        }
     });
 
     // restore session data
@@ -153,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
     toggleDetailsButton.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.value;
-
+    updateCollapseIcon();
     sortDungeons(null, false);
     filterDungeons(null, false);
     setAutoupdate(null, false, autoupdateCheckbox);
@@ -170,4 +217,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         saveDetailsCollapsed(null, false);
     }
-});
+
+    let savedPinchIndex = loadData(pinchSaveId, false);
+    if (savedPinchIndex != null) {
+        pinchCurrentIndex =  savedPinchIndex;
+        dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
+    }
+
+})();
