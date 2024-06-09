@@ -73,7 +73,7 @@ function toggleStyle() {
 function updateThemeColor() {
     let navbarBgColors = {
         'dark-green': 'rgb(23, 24, 32)',
-        'classic-light': 'rgb(86, 95, 119)'
+        'classic-light': 'rgb(131, 145, 187)'
     };
     themeColor.content = navbarBgColors[styleLink.dataset.value];
 }

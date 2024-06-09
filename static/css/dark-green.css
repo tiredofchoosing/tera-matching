@@ -7,8 +7,12 @@
     --bg-backdrop-filter: blur(7px);
 
     --navbar-bg-color: rgb(23, 24, 32);
-    --header-btn-border-color: rgba(255, 255, 255, 0.2);
+    --header-font-weight: inherit;
+    --header-logo-opacity: 0.8;
+    --header-logo-padding: 0.325rem;
+    --header-logo-content: url(/static/img/icons/icon.svg);
     --header-btn-hov-bg-color: rgb(7, 8, 10);
+    --header-btn-img-filter: none;
     --header-ul-border-color: rgba(0, 0, 0, 0.3);
     --header-shadow-color: rgba(0, 0, 0, 0.075);
     --header-style-btn-content: url(/static/img/icons/theme_sun.svg);

@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark d-flex">
             <div class="header container-fluid col-lg-12 col-md-10 col-sm-12">
                 <span>
-                    <img class="nav-item header-logo" src="/static/img/icons/icon.svg" alt="" height="56px" width="56px" draggable="false">
+                    <img class="nav-item header-logo" alt="" height="56px" width="56px" draggable="false">
                 </span>
                 <span>
                     <% let onlineStr = (typeof online === 'undefined' || online == null) ? '' : ': ' + online %>
@@ -23,10 +23,10 @@
                         </li>
                     </ul>
                     <div class="header-buttons d-flex ml-md-auto">
-                        <button class="nav-item header-button right-button" id="toggleLang" value="<%= lang %>" title="<%= strings.toggleLangTitle %>">
+                        <button class="nav-item header-button" id="toggleLang" value="<%= lang %>" title="<%= strings.toggleLangTitle %>">
                             <img src="/static/img/icons/global.svg" height="26px" width="26px" draggable="false">
                         </button>
-                        <button class="nav-item header-button right-button" id="toggleStyle" title="<%= strings.toggleStyleTitle %>">
+                        <button class="nav-item header-button" id="toggleStyle" title="<%= strings.toggleStyleTitle %>">
                             <img height="26px" width="26px" draggable="false">
                         </button>
                     </div>

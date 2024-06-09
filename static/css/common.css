@@ -8,7 +8,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-size: inherit;
     line-height: normal;
-    font-weight: 450;
+    font-weight: 500;
 }
 #background {
     background: var(--background);
@@ -30,6 +30,7 @@ header {
     max-width: 976px;
     margin: 0 auto 0 0;
     padding: 0;
+    font-weight: var(--header-font-weight);
 }
 .navbar {
     padding: 0;
@@ -44,9 +45,11 @@ header {
     transition: 0.2s;
 }
 .header-logo {
-    opacity: 0.8;
-    padding: 0.5rem;
+    opacity: var(--header-logo-opacity);
+    padding: var(--header-logo-padding);
     margin-right: 1rem;
+    content: var(--header-logo-content);
+    transition: none;
 }
 .header-page-link {
     opacity: 0.8;
@@ -70,12 +73,13 @@ header {
 .header-button {
     border: none;
     background-color: transparent;
-}
-.header-button {
     margin: 0;
     opacity: 0.7;
     padding: 1rem;
     height: 3.5rem;
+}
+.header-button img, .navbar-toggler-icon {
+    filter: var(--header-btn-img-filter);
 }
 
 #toggleStyle img {
@@ -216,18 +220,17 @@ details {
 }
 .dungeon-details[open] {
     padding-bottom: 0.1em;
-    margin-bottom: 0.55em;
+    margin-bottom: 0.5em;
 }
 
 .dungeon-summary {
     display: flex;
     margin: -0.5em -0.5em 0;
-    padding: 0.55em 0.5em 0.55em 0.5em;
+    padding: 0.5em;
     border-radius: 5px;
     font-weight: 600;
     color: var(--font-color-primary);
     background: var(--dungeon-sum-bg);
-    
 }
 .dungeon-lvl, .dungeon-ilvl {
     margin-right: 0.2em;
