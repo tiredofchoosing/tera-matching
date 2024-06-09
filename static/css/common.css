@@ -302,9 +302,9 @@ details {
     margin-left: 0.5em;
 }
 .party-player-class-icon {
-    margin: -0.065em 0.2em -0.065em 0.5em;
+    margin: -0.13em 0.2em -0.13em 0.5em;
     vertical-align: bottom;
-    width: 1.38em;
+    width: 1.5em;
     height: auto;
 }
 .party-leader {
@@ -335,6 +335,7 @@ details {
 .players-table th { 
     border: none;
     background-color: var(--players-tbl-th-bg-color);
+    font-weight: 600;
 }
 .players-table td {
     border: none;

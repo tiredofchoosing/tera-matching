@@ -9,7 +9,7 @@
     --navbar-bg-color: rgb(131, 145, 187);
     --header-font-weight: 550;
     --header-logo-opacity: 1;
-    --header-logo-padding: 0.25rem;
+    --header-logo-padding: 0.325rem;
     --header-logo-content: url(/static/img/icons/icon-d.svg);
     --header-btn-hov-bg-color: rgba(255, 255, 255, 0.3);
     --header-btn-img-filter: invert(0.9);
@@ -37,7 +37,7 @@
     --dungeon-role-heal-content: url(/static/img/icons/heal-c.png);
 
     --party-sum-span-border-color: rgba(0, 0, 0, 0.2);
-    --party-dtl-content-bg-color: rgb(160, 171, 203);
+    --party-dtl-content-bg-color: rgba(255, 255, 255, 0.3);
     --party-del-color: rgba(0, 0, 0, 0.2);
     --party-leader-content: url(/static/img/icons/leader-c.png);
 

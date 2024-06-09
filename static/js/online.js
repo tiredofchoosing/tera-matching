@@ -1,4 +1,5 @@
-//document.addEventListener('DOMContentLoaded', function() {
+(function() {
+
     const playersTableRoot = document.getElementById('playersTableRoot');
     const playersList = document.getElementById('playersTableBody');
     const searchNameInput = document.getElementById('searchPlayerName');
@@ -122,4 +123,5 @@
     filterPlayers(null, true);
     // sortPlayers(null, true); // called in filter
     setAutoupdate(null, false, autoupdateCheckbox);
-//});
+
+})();
