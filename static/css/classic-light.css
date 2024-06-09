@@ -41,9 +41,9 @@
     --party-del-color: rgba(0, 0, 0, 0.2);
     --party-leader-content: url(/static/img/icons/leader-c.png);
 
-    --players-tbl-th-bg-color: rgb(86, 95, 119);
-    --players-tbl-tr1-bg-color: rgb(129, 141, 172);
-    --players-tbl-tr2-bg-color: rgb(149, 159, 187);
+    --players-tbl-th-bg-color: rgb(139, 152, 193);
+    --players-tbl-tr1-bg-color: rgb(193 202 234);
+    --players-tbl-tr2-bg-color: rgb(163, 175, 220);
 
-    --empty-bg-color: rgb(129, 141, 172);
+    --empty-bg-color: rgb(139, 152, 193);
 }
