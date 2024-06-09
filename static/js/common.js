@@ -65,7 +65,7 @@
     function toggleStyle() {
         let styles = [ 'dark-green', 'classic-light' ];
         let newStyle = styles[(styles.indexOf(styleLink.dataset.value) - 1 + styles.length) % styles.length];
-        styleLink.href = `/static/css/${newStyle}.css`
+        styleLink.href = `/static/css/${newStyle}.min.css`
         styleLink.dataset.value = newStyle;
         saveData(styleLink, newStyle, false);
 
@@ -93,7 +93,7 @@
 
     let style = loadData(styleLink, false);
     if (style != null) {
-        styleLink.href = `/static/css/${style}.css`;
+        styleLink.href = `/static/css/${style}.min.css`;
         styleLink.dataset.value = style;
     }
     updateThemeColor();
