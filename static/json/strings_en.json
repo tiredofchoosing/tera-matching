@@ -45,7 +45,7 @@
   "toggleDetailsTitle": "Collapse / expand list",
   "autoupdateCheckLabel": "Reload the page automatically",
   "saveCollapsedLabel": "Save collapsed items",
-  "mergeSupportMatchingLabel": "Show \"$\" as separate item",
+  "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
 
   "playersTableLevelContent": "Lvl",
   "playersTableCharacterContent": "Character"

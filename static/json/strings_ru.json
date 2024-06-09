@@ -45,7 +45,7 @@
   "toggleDetailsTitle": "Свернуть / развернуть список",
   "autoupdateCheckLabel": "Автоматически обновлять страницу",
   "saveCollapsedLabel": "Сохранять свернутые элементы",
-  "mergeSupportMatchingLabel": "Показывать \"$\" отдельной строкой",
+  "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
 
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж"

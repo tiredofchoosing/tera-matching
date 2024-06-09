@@ -180,6 +180,9 @@ header {
 .navigation-checkbox label {
     display: block;
 }
+.navigation-checkbox label b {
+    font-weight: 600;
+}
 .no-transition {
     transition: none !important;
 }
