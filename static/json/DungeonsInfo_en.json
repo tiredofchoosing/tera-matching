@@ -41,12 +41,6 @@
     "maxLevel": 54,
     "name": "Akasha\u0027s Hideout"
   },
-  "9793": {
-    "minItemLevel": 110,
-    "minLevel": 48,
-    "maxLevel": 56,
-    "name": "Akasha\u0027s Hideout (Hard)"
-  },
   "9094": {
     "minItemLevel": 166,
     "minLevel": 53,
@@ -62,7 +56,7 @@
   "9073": {
     "minItemLevel": 200,
     "minLevel": 58,
-    "maxLevel": 60,
+    "maxLevel": 64,
     "name": "Ebon Tower"
   },
   "9075": {
@@ -71,131 +65,29 @@
     "maxLevel": 64,
     "name": "Kelsaik\u0027s Nest"
   },
-  "9080": {
-    "minItemLevel": 134,
-    "minLevel": 60,
-    "maxLevel": 63,
-    "name": "Sigil Adstringo"
-  },
-  "9082": {
-    "minItemLevel": 124,
-    "minLevel": 58,
-    "maxLevel": 63,
-    "name": "Temple of Temerity"
-  },
-  "9773": {
-    "minItemLevel": 131,
-    "minLevel": 64,
-    "maxLevel": 65,
-    "name": "Ebon Tower (Hard)"
-  },
-  "9078": {
-    "minItemLevel": 126,
-    "minLevel": 58,
-    "maxLevel": 63,
-    "name": "Suryati\u0027s Peak"
-  },
   "9025": {
     "minItemLevel": 242,
     "minLevel": 60,
-    "maxLevel": 64,
+    "maxLevel": 70,
     "name": "Balder\u0027s Temple"
   },
   "9026": {
     "minItemLevel": 242,
     "minLevel": 60,
-    "maxLevel": 64,
+    "maxLevel": 70,
     "name": "Argon Corpus"
   },
   "9727": {
     "minItemLevel": 309,
     "minLevel": 64,
-    "maxLevel": 65,
+    "maxLevel": 70,
     "name": "Manaya\u0027s Core"
-  },
-  "9777": {
-    "minItemLevel": 444,
-    "minLevel": 65,
-    "maxLevel": 70,
-    "name": "Channelworks (3-Person)"
-  },
-  "9034": {
-    "minItemLevel": 482,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Dreadspire"
-  },
-  "9766": {
-    "minItemLevel": 452,
-    "minLevel": 65,
-    "maxLevel": 70,
-    "name": "Shattered Fleet"
   },
   "9809": {
     "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
     "name": "Macellarius Catacombs"
-  },
-  "9754": {
-    "minItemLevel": 450,
-    "minLevel": 65,
-    "maxLevel": 70,
-    "name": "Bathysmal Rise"
-  },
-  "9055": {
-    "minItemLevel": 444,
-    "minLevel": 65,
-    "maxLevel": 70,
-    "name": "Ravenous Gorge (3-Person)"
-  },
-  "9916": {
-    "minItemLevel": 479,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Sky Cruiser Endeavor (Hard)"
-  },
-  "9057": {
-    "minItemLevel": 461,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Akeron\u0027s Inferno (Hard)"
-  },
-  "9056": {
-    "minItemLevel": 462,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Timescape (Hard)"
-  },
-  "9759": {
-    "minItemLevel": 462,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Forsaken Island (Hard)"
-  },
-  "9067": {
-    "minItemLevel": 461,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Demokron Factory (Hard)"
-  },
-  "9070": {
-    "minItemLevel": 456,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Manglemire"
-  },
-  "9969": {
-    "minItemLevel": 461,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Lilith\u0027s Keep (Hard)"
-  },
-  "9970": {
-    "minItemLevel": 461,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Ruinous Manor (Hard)"
   },
   "9780": {
     "minItemLevel": 450,
@@ -209,24 +101,6 @@
     "maxLevel": 70,
     "name": "Velik\u0027s Sanctuary"
   },
-  "9066": {
-    "minItemLevel": 460,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Demon\u0027s Wheel"
-  },
-  "9794": {
-    "minItemLevel": 452,
-    "minLevel": 65,
-    "maxLevel": 70,
-    "name": "Thaumetal Refinery"
-  },
-  "9994": {
-    "minItemLevel": 460,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Thaumetal Refinery (Hard)"
-  },
   "9735": {
     "minItemLevel": 452,
     "minLevel": 68,
@@ -238,6 +112,12 @@
     "minLevel": 69,
     "maxLevel": 70,
     "name": "RK-9 Kennel (Hard)"
+  },
+  "9034": {
+    "minItemLevel": 482,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Dreadspire"
   },
   "9739": {
     "minItemLevel": 452,
@@ -257,18 +137,6 @@
     "maxLevel": 70,
     "name": "Antaroth\u0027s Abyss (Hard)"
   },
-  "9983": {
-    "minItemLevel": 461,
-    "minLevel": 70,
-    "maxLevel": 70,
-    "name": "Dark Reach Citadel (Hard)"
-  },
-  "9782": {
-    "minItemLevel": 453,
-    "minLevel": 69,
-    "maxLevel": 70,
-    "name": "Grotto of Lost Souls"
-  },
   "9982": {
     "minItemLevel": 456,
     "minLevel": 70,
@@ -280,12 +148,6 @@
     "minLevel": 70,
     "maxLevel": 70,
     "name": "Bahaar\u0027s Sanctum"
-  },
-  "3101": {
-    "minItemLevel": 453,
-    "minLevel": 69,
-    "maxLevel": 70,
-    "name": "Gossamer Vault"
   },
   "3201": {
     "minItemLevel": 456,
@@ -317,8 +179,158 @@
     "maxLevel": 70,
     "name": "Forbidden Arena"
   },
+  "9754": {
+    "minItemLevel": 450,
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Bathysmal Rise"
+  },
+  "9756": {
+    "minItemLevel": 456,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Timescape"
+  },
+  "9056": {
+    "minItemLevel": 462,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Timescape (Hard)"
+  },
+  "9916": {
+    "minItemLevel": 479,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Sky Cruiser Endeavor (Hard)"
+  },
+  "9760": {
+    "minItemLevel": 444,
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Kalivan\u0027s Dreadnaught"
+  },
+  "9029": {
+    "minItemLevel": 448,
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Vault of Kaprima"
+  },
+  "9794": {
+    "minItemLevel": 452,
+    "minLevel": 68,
+    "maxLevel": 70,
+    "name": "Thaumetal Refinery"
+  },
+  "9770": {
+    "minItemLevel": 456,
+    "minLevel": 68,
+    "maxLevel": 70,
+    "name": "Ruinous Manor"
+  },
+  "9769": {
+    "minItemLevel": 452,
+    "minLevel": 68,
+    "maxLevel": 70,
+    "name": "Lilith\u0027s Keep"
+  },
+  "9777": {
+    "minItemLevel": 444,
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Channelworks (3-Person)"
+  },
+  "9055": {
+    "minItemLevel": 444,
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": "Ravenous Gorge (3-Person)"
+  },
+  "9994": {
+    "minItemLevel": 460,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Thaumetal Refinery (Hard)"
+  },
+  "9759": {
+    "minItemLevel": 462,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Forsaken Island (Hard)"
+  },
+  "9078": {
+    "minItemLevel": 126,
+    "minLevel": 58,
+    "maxLevel": 63,
+    "name": "Suryati\u0027s Peak"
+  },
+  "9057": {
+    "minItemLevel": 461,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Akeron\u0027s Inferno (Hard)"
+  },
+  "9067": {
+    "minItemLevel": 461,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Demokron Factory (Hard)"
+  },
+  "9969": {
+    "minItemLevel": 461,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Lilith\u0027s Keep (Hard)"
+  },
+  "9970": {
+    "minItemLevel": 461,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Ruinous Manor (Hard)"
+  },
+  "9066": {
+    "minItemLevel": 460,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Demon\u0027s Wheel"
+  },
+  "9070": {
+    "minItemLevel": 456,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Manglemire"
+  },
+  "9983": {
+    "minItemLevel": 461,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Dark Reach Citadel (Hard)"
+  },
+  "9782": {
+    "minItemLevel": 453,
+    "minLevel": 69,
+    "maxLevel": 70,
+    "name": "Grotto of Lost Souls"
+  },
+  "3101": {
+    "minItemLevel": 453,
+    "minLevel": 69,
+    "maxLevel": 70,
+    "name": "Gossamer Vault"
+  },
+  "9027": {
+    "minItemLevel": 495,
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": "Manaya\u0027s Core (Hard)"
+  },
+  "9766": {
+    "minItemLevel": 452,
+    "minLevel": 68,
+    "maxLevel": 70,
+    "name": "Shattered Fleet"
+  },
   "9999": {
-    "minItemLevel": 0,
+    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
     "name": "Blast from the Past"
