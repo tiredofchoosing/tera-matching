@@ -5,8 +5,7 @@ import {classes, roles, dungeons_info, battlegrounds_info, globalization} from '
 const lang_default = 'ru'
 function changeLang(req) {
     let clientAcceptLang = req.headers['accept-language']?.split(',')[0].split('-')[0]
-    let cookieLang = req.headers.cookie?.split(';').find(c => c.startsWith('lang='))?.split('=')[1]
-    let lang = cookieLang ?? clientAcceptLang
+    let lang = req.cookies.lang ?? clientAcceptLang
 
     if (lang === 'en') {
         return 'en'

@@ -1,5 +1,6 @@
 import path from 'node:path'
 import express from 'express'
+import cookieParser  from 'cookie-parser'
 import config from 'config'
 import router from './router.js'
 
@@ -9,7 +10,8 @@ const __dirname = path.resolve(),
     app = express()
 
 app.set('view engine', 'ejs')
-app.use('/static', express.static(__dirname + '/static'))
+app.use('/static', express.static(__dirname + '/static', { maxAge: 24*60*60*1000 }))
+app.use(cookieParser());
 app.use(router)
 
 app.listen(port, host, () => {
