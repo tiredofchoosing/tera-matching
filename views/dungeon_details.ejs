@@ -13,10 +13,10 @@
         <span class="dungeon-name"><%= dungeonProps.name %></span>
         <span class="dungeon-players">
             <% if (page === 'dungeons') { %>
-            <span class="dungeon-role"><%= countTank %> <img class="dungeon-role-tank" width="20px" height="20px"></span>
+            <span class="dungeon-role"><img class="dungeon-role-tank" width="20px" height="20px"> <%= countTank %></span>
             <% } %>
-            <span class="dungeon-role"><%= countDmg %> <img class="dungeon-role-dmg" width="20px" height="20px"></span>
-            <span class="dungeon-role"><%= countHeal %> <img class="dungeon-role-heal" width="20px" height="20px"></span>
+            <span class="dungeon-role"><img class="dungeon-role-dmg" width="20px" height="20px"> <%= countDmg %></span>
+            <span class="dungeon-role"><img class="dungeon-role-heal" width="20px" height="20px"> <%= countHeal %></span>
         </span>
     </summary>
     <% let count = 0; %>
