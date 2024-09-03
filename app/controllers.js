@@ -75,3 +75,21 @@ export async function online(req, res) {
         online: respJson?.length || null
     })
 }
+
+export async function stats(req, res) {
+    const lang = changeLang(req)
+
+    const response = await fetch(config.get('online'));
+    if (!response)
+        return res.type('txt').send('error')
+
+    let respJson = await response.json();
+    res.render('stats', {
+        data: respJson,
+        strings: globalization[lang],
+        classes: classes[lang],
+        roles,
+        lang,
+        online: respJson?.length || null
+    })
+}

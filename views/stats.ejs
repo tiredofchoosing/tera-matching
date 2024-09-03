@@ -1,0 +1,38 @@
+<% const page = 'stats'; %>
+<%- include('layout_begin.ejs', { page }) %>
+<%- include('header.ejs') %>
+<div id="main">
+	<div class="container">
+		<div class="row justify-content-start">
+			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12">
+				<div class="d-lg-block collapse navbar-collapse" id="navigationMenu">
+					<div class="navigation-menu col-12">
+						<div class="navigation-checkbox">
+							<div class="form-check form-switch">
+								<input class="form-check-input no-transition" type="checkbox" id="autoupdateCheck" role="switch">
+								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateCheckLabel %></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
+				<div id="content">
+					<% let isEmpty = data.length === 0; %>
+					<% if (isEmpty) { %>
+					<%- include('empty.ejs', { page, isEmpty }) %>
+					<% } else { %>
+					<div class="card chart-container">
+						<% let count = Array(classes.length).fill(0); %>
+						<% let list = data.map((e) => e.class); %>
+						<% list.forEach(e => { count[e] += 1; }); %>
+						<canvas id="chart" height="500px" data-labels="<%= classes.join(',') %>" data-values="<%= count.join(',') %>"></canvas>
+					</div>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<%- include('layout_end.ejs', { page }) %>

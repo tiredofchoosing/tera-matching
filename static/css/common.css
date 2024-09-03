@@ -390,6 +390,13 @@ details {
     margin: 0 auto;
 }
 
+/* chart */
+.card {
+    background-color: var(--empty-bg-color);
+    backdrop-filter: var(--bg-backdrop-filter);
+    padding: 1.5rem 1rem;
+}
+
 
 @media (min-width: 992px) {
     .menu-content {
