@@ -5,57 +5,67 @@
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const checkboxes = [autoupdateCheckbox];
 
-	const fontSize = 14;
-	const fontColor = 'rgba(255, 255, 255, 0.7)';
+	// TODO: move to CSS?
+	const fontSize = 16;
+	const fontFamily = "'Montserrat', sans-serif";
+	const fontColor = 'rgba(255, 255, 255, 0.8)';
 	const axisColor = 'rgba(255, 255, 255, 0.2)';
 	const gridColor = 'rgba(255, 255, 255, 0.1)';
+	const barBgColor = 'rgba(86, 136, 92, 0.5)';
+	const barBorderColor = 'rgba(255, 255, 255, 0.3)';
+	const title = canvas.dataset.title;
+	const labels = canvas.dataset.labels.split(',');
+	const values = canvas.dataset.values.split(',');
 
-	const myChart = new Chart(ctx, {
-		type: 'horizontalBar',
-		data: {
-			labels: canvas.dataset.labels.split(','),
-			datasets: [{
-				label: 'Players',
-				backgroundColor: 'rgba(64, 106, 76, 0.7)',
-				borderColor: 'rgba(255, 255, 255, 0.5)',
-				data: canvas.dataset.values.split(',')
-			}]
-		},
-		options: {
-			legend: {
-				labels: {
-					fontColor: fontColor,
-					fontSize: fontSize
-				}
-			},
-			scales: {
-				xAxes: [{
-					ticks: {
-						beginAtZero: true,
-						fontColor: fontColor,
-						fontSize: fontSize
-                	},
-					gridLines:{
-						color: gridColor,
-						zeroLineColor: axisColor
-					}
-				}],
-				yAxes: [{
-					ticks: {
-						fontColor: fontColor,
-						fontSize: fontSize
-                	},
-					gridLines:{
-						color: gridColor,
-						zeroLineColor: axisColor
-					}
+	Chart.defaults.color = fontColor;
+	Chart.defaults.font.size = fontSize;
+	Chart.defaults.font.family = fontFamily;
+
+	document.fonts.ready.then(function() {
+		new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: labels,
+				datasets: [{
+					label: title,
+					backgroundColor: barBgColor,
+					borderColor: barBorderColor,
+					borderWidth: 1,
+					data: values
 				}]
 			},
-			maintainAspectRatio: false,
-			animation: {
-				duration: 0
+			options: {
+				indexAxis: 'y',
+				maintainAspectRatio: false,
+				scales: {
+					x: {
+						beginAtZero: true,
+						grid: {
+							color: gridColor
+						},
+						border: {
+							color: axisColor
+						}
+					},
+					y: {
+						grid: {
+							color: gridColor
+						},
+						border: {
+							color: axisColor
+						}
+					}
+				},
+				animation: {
+					duration: 0
+				},
+				plugins: {
+					legend: {
+						display: false
+					},
+				},
 			}
-		}
+		});
 	});
 
     // register event handlers

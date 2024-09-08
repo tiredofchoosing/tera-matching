@@ -2,6 +2,7 @@
   "dungeonsPageTitle": "Подбор подземелий",
   "battlegroundsPageTitle": "Подбор арен",
   "onlinePageTitle": "Список игроков",
+  "statsPageTitle": "Статистика по классам",
 
   "dungeonsHeaderLinkContent": "Подземелья",
   "battlegroundsHeaderLinkContent": "Арены",
@@ -48,5 +49,7 @@
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
 
   "playersTableLevelContent": "Ур.",
-  "playersTableCharacterContent": "Персонаж"
+  "playersTableCharacterContent": "Персонаж",
+
+  "chartTitle": " Игроков"
 }
