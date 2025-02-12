@@ -62,18 +62,17 @@
     function sortDungeons(_, save = true) {
         save && saveData(sortSelect, sortSelect.selectedIndex);
 
-        let sortVal = sortSelect.value;
-        dungeons.sort((a, b) => {
-            let minLevelA = parseInt(a.getElementsByClassName('dungeon-lvl')[0].textContent);
-            let minLevelB = parseInt(b.getElementsByClassName('dungeon-lvl')[0].textContent);
-            let minItemLevelA = parseInt(a.getElementsByClassName('dungeon-ilvl')[0].textContent);
-            let minItemLevelB = parseInt(b.getElementsByClassName('dungeon-ilvl')[0].textContent);
-            let nameA = a.getElementsByClassName('dungeon-name')[0].textContent;
-            let nameB = b.getElementsByClassName('dungeon-name')[0].textContent;
-            let playersA = a.getElementsByClassName('party-player-detailed-content').length;
-            let playersB = b.getElementsByClassName('party-player-detailed-content').length;
+        function sortFunc(a, b, mode) {
+            const minLevelA = parseInt(a.getElementsByClassName('dungeon-lvl')[0].textContent);
+            const minLevelB = parseInt(b.getElementsByClassName('dungeon-lvl')[0].textContent);
+            const minItemLevelA = parseInt(a.getElementsByClassName('dungeon-ilvl')[0].textContent);
+            const minItemLevelB = parseInt(b.getElementsByClassName('dungeon-ilvl')[0].textContent);
+            const nameA = a.getElementsByClassName('dungeon-name')[0].textContent;
+            const nameB = b.getElementsByClassName('dungeon-name')[0].textContent;
+            const playersA = a.getElementsByClassName('party-player-detailed-content').length;
+            const playersB = b.getElementsByClassName('party-player-detailed-content').length;
 
-            switch(sortVal) {
+            switch(mode) {
                 case 'minLevelDesc':
                     return minLevelB - minLevelA;
                 case 'minLevelAsc':
@@ -91,7 +90,15 @@
                 case 'playersAsc':
                     return playersA - playersB;
             }
-        });
+        }
+
+        const sortVal = sortSelect.value;
+        const sortValDefaut = sortSelect.options[defaultSelectIndex].value;
+        if (sortVal !== sortValDefaut) {
+            // secondary sorting by default value
+            dungeons.sort((a, b) => sortFunc(a, b, sortValDefaut));
+        }
+        dungeons.sort((a, b) => sortFunc(a, b, sortVal));
         dungeons.forEach(d => dungeonList.appendChild(d));
     }
 
