@@ -45,6 +45,10 @@
 						},
 						border: {
 							color: axisColor
+						},
+						ticks: {
+							precision: 0,
+							stepSize: 1
 						}
 					},
 					y: {
