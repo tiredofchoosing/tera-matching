@@ -14,3 +14,4 @@ export const classes = {
     en: ['Warrior', 'Lancer', 'Slayer', 'Berserk', 'Sorcerer', 'Archer', 'Priest', 'Mystic', 'Reaper', 'Gunner', 'Brawler', 'Ninja', 'Valkyrie']
 }
 export const roles = ['tank', 'dmg', 'heal']
+export const teralogs_provider = 'https://teralogs.com/asura/search/'

@@ -373,6 +373,16 @@ details {
     height: auto;
     margin: auto;
 }
+.players-table tr a {
+    color: var(--font-color-primary);
+    text-decoration: none;
+}
+.players-table tr a:hover {
+    color: var(--font-color-secondary);
+}
+.players-table tr a:visited {
+    color: var(--font-color-primary);
+}
 
 /* empty list */
 .empty {

@@ -66,7 +66,7 @@
 									<td class="player-class" title="<%= classes[player.class] %>" data-player-class="<%= player.class %>">
 										<img src="/static/img/icons/class/<%= player.class %>.png" width="24px" height="24px" draggable="false">
 									</td>
-									<td class="player-name"><%= player.name %></td>
+									<td class="player-name"><a title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank"><%= player.name %></a></td>
 								</tr>
 								<% } %>
 							</tbody>
