@@ -46,6 +46,7 @@
   "autoupdateCheckLabel": "Автоматически обновлять страницу",
   "saveCollapsedLabel": "Сохранять свернутые элементы",
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
+  "showShortNamesLabel": "Сокращенные названия подземелий",
 
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж"

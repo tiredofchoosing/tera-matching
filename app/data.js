@@ -4,6 +4,11 @@ import bg_ru from './data/BattlegroundsInfo_ru.json' assert { type: 'json' }
 import bg_en from './data/BattlegroundsInfo_en.json' assert { type: 'json' }
 import str_ru from './data/strings_ru.json' assert { type: 'json' }
 import str_en from './data/strings_en.json' assert { type: 'json' }
+import dgShort_ru from './data/DungeonsInfoShort_ru.json' assert { type: 'json' }
+import dgShort_en from './data/DungeonsInfoShort_en.json' assert { type: 'json' }
+
+for (var dg in dg_ru) { if (dgShort_ru.hasOwnProperty(dg)) { dg_ru[dg] = Object.assign(dg_ru[dg], dgShort_ru[dg]) } }
+for (var dg in dg_en) { if (dgShort_en.hasOwnProperty(dg)) { dg_en[dg] = Object.assign(dg_en[dg], dgShort_en[dg]) } }
 
 export const dungeons_info = { ru: dg_ru, en: dg_en }
 export const battlegrounds_info = { ru: bg_ru, en: bg_en }

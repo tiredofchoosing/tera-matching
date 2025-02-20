@@ -18,10 +18,11 @@
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
+    const showShortNamesCheckbox = document.getElementById('showShortNames');
     const emptyContainer = document.getElementById('empty');
     const body = document.body;
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-    const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox];
+    const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox, showShortNamesCheckbox];
 
     const defaultSelectIndex = 2;
     const saveCollapsedId = 'dungeonDetailsCollapsed';
@@ -234,6 +235,15 @@
         toggleDetailsButton.firstElementChild.src = `/static/img/icons/${value ? 'collapse' : 'expand'}.svg`;
     }
 
+    function toggleShortNames(_, save = true) {
+        save && saveData(showShortNamesCheckbox, showShortNamesCheckbox.checked);
+
+        const dungeonNames = dungeonList.getElementsByClassName('dungeon-name');
+        for (const name of dungeonNames) {
+            name.textContent = showShortNamesCheckbox.checked ? name.dataset.dungeonShortName : name.dataset.dungeonName;
+        }
+    }
+
     // register event handlers
     sortSelect.addEventListener('change', sortDungeons);
     searchNameInput.addEventListener('input', filterDungeons);
@@ -243,6 +253,7 @@
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     mergeSupportCheckbox.addEventListener('change', mergeSupportMatching);
+    showShortNamesCheckbox.addEventListener('change', toggleShortNames);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
@@ -320,6 +331,7 @@
     sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
     toggleDetailsButton.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.value;
     updateCollapseIcon();
+    toggleShortNames(null, false);
 
     if (!mergeSupportMatching(null, false)) {
         sortDungeons(null, false);

@@ -46,6 +46,7 @@
   "autoupdateCheckLabel": "Reload the page automatically",
   "saveCollapsedLabel": "Save collapsed items",
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
+  "showShortNamesLabel": "Short dungeon names",
 
   "playersTableLevelContent": "Lvl",
   "playersTableCharacterContent": "Character"
