@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 import config from 'config'
-import {classes, roles, dungeons_info, battlegrounds_info, globalization} from './data.js'
+import {classes, roles, dungeons_info, battlegrounds_info, globalization, teralogs_provider} from './data.js'
 
 const lang_default = 'ru'
 function changeLang(req) {
@@ -72,6 +72,7 @@ export async function online(req, res) {
         classes: classes[lang],
         roles,
         lang,
-        online: respJson?.length || null
+        online: respJson?.length || null,
+        teralogs_url: teralogs_provider
     })
 }
