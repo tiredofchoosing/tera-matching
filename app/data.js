@@ -1,9 +1,9 @@
-import dg_ru from './data/DungeonsInfo_ru.json' assert { type: 'json' }
-import dg_en from './data/DungeonsInfo_en.json' assert { type: 'json' }
-import bg_ru from './data/BattlegroundsInfo_ru.json' assert { type: 'json' }
-import bg_en from './data/BattlegroundsInfo_en.json' assert { type: 'json' }
-import str_ru from './data/strings_ru.json' assert { type: 'json' }
-import str_en from './data/strings_en.json' assert { type: 'json' }
+import dg_ru from './data/DungeonsInfo_ru.json' with { type: 'json' }
+import dg_en from './data/DungeonsInfo_en.json' with { type: 'json' }
+import bg_ru from './data/BattlegroundsInfo_ru.json' with { type: 'json' }
+import bg_en from './data/BattlegroundsInfo_en.json' with { type: 'json' }
+import str_ru from './data/strings_ru.json' with { type: 'json' }
+import str_en from './data/strings_en.json' with { type: 'json' }
 
 export const dungeons_info = { ru: dg_ru, en: dg_en }
 export const battlegrounds_info = { ru: bg_ru, en: bg_en }
