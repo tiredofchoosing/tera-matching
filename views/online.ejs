@@ -48,29 +48,41 @@
 					<% let isEmpty = data.length === 0; %>
 					<%- include('empty.ejs', { page, isEmpty }) %>
 					<div id="playersTableRoot">
+						<div class="tabs">
+							<button class="tablink" id="onlineTabButton">Online</button>
+							<button class="tablink" id="statTabButton">Stats</button>
+						</div>
 						<% if (!isEmpty) { %>
-						<table class="players-table">
+						<table id="playersTable" class="players-table">
 							<thead>
 								<tr>
 									<th>#</th>
 									<th><%= strings.playersTableLevelContent %></th>
 									<th colspan="2"><%= strings.playersTableCharacterContent %></th>
+									<th style="right: 0;"><button id="showStat">stat</button></th>
 								</tr>
 							</thead>
 							<tbody id="playersTableBody">
 								<% let id = 1 %>
 								<% for(let player of data) { %>
-								<tr id="<%= id %>" class="player-details">
+								<tr id="<%= player.playerId %>" class="player-details" data-id="<%= id %>" style="scroll-margin-top: 5rem;">
 									<td class="player-id"><%= id++ %></td>
 									<td class="player-lvl"><%= player.level %></td>
 									<td class="player-class" title="<%= classes[player.class] %>" data-player-class="<%= player.class %>">
 										<img src="/static/img/icons/class/<%= player.class %>.png" width="24px" height="24px" draggable="false">
 									</td>
-									<td class="player-name"><a title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank"><%= player.name %></a></td>
+									<td colspan="2" class="player-name"><a title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank"><%= player.name %></a></td>
 								</tr>
 								<% } %>
 							</tbody>
 						</table>
+						<div id="statContainer" class="card chart-container" hidden>
+							<button id="hideStat" style="position: absolute; right: 0;">stat</button>
+							<% let count = Array(classes.length).fill(0); %>
+							<% let list = data.map((e) => e.class); %>
+							<% list.forEach(e => { count[e] += 1; }); %>
+							<canvas id="chart" height="500px" data-labels="<%= classes.join(',') %>" data-values="<%= count.join(',') %>" data-title="<%= strings.chartTitle %>"></canvas>
+						</div>
 						<% } %>
 					</div>
 				</div>
@@ -78,4 +90,5 @@
 		</div>
 	</div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <%- include('layout_end.ejs', { page }) %>

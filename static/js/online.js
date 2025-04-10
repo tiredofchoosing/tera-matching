@@ -9,11 +9,34 @@
     const clearNavigationButton = document.getElementById('clearNavigation');
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const emptyContainer = document.getElementById('empty');
+    const canvas = document.getElementById('chart');
+    const ctx = canvas.getContext('2d');
+    const showStatButton = document.getElementById('showStat');
+    const hideStatButton = document.getElementById('hideStat');
+    const playersTable = document.getElementById('playersTable');
+    const statContainer = document.getElementById('statContainer');
     const searchInputs = [searchNameInput, searchLevelInput];
     const checkboxes = [autoupdateCheckbox];
     const defaultSelectIndex = 1;
     const defaultClassSelectIndex = 0;
+    
+    // TODO: move to CSS?
+    const fontSize = 16;
+    const fontFamily = "'Montserrat', sans-serif";
+    const fontColor = 'rgba(255, 255, 255, 0.8)';
+    const axisColor = 'rgba(255, 255, 255, 0.2)';
+    const gridColor = 'rgba(255, 255, 255, 0.1)';
+    const barBgColor = 'rgba(86, 136, 92, 0.5)';
+    const barBorderColor = 'rgba(255, 255, 255, 0.3)';
+    const title = canvas.dataset.title;
+    const labels = canvas.dataset.labels.split(',');
+    const values = canvas.dataset.values.split(',');
 
+    Chart.defaults.color = fontColor;
+    Chart.defaults.font.size = fontSize;
+    Chart.defaults.font.family = fontFamily;
+
+    let playersChart = null;
     let players = playersList != null ? Array.from(playersList.getElementsByClassName('player-details')) : [];
 
     // functions
@@ -51,8 +74,8 @@
             let nameB = b.getElementsByClassName('player-name')[0].textContent;
             let classA = parseInt(a.getElementsByClassName('player-class')[0].dataset.playerClass);
             let classB = parseInt(b.getElementsByClassName('player-class')[0].dataset.playerClass);
-            let idA = parseInt(a.id);
-            let idB = parseInt(b.id);
+            let idA = parseInt(a.dataset.id);
+            let idB = parseInt(b.dataset.id);
 
             switch(sortVal) {
                 case 'levelDesc':
@@ -64,9 +87,9 @@
                 case 'nameAsc':
                     return nameA.localeCompare(nameB);
                 case 'classDesc':
-                	return classB - classA;
+                    return classB - classA;
                 case 'classAsc':
-                	return classA - classB;
+                    return classA - classB;
                 case 'timeDesc':
                     return idB - idA;
                 case 'timeAsc':
@@ -93,12 +116,80 @@
         playersTableRoot.hidden = playersList.children.length === 0;
     }
 
+    function switchStat() {
+        if (playersChart !== null) {
+            let stat = statContainer.hidden;
+            playersTable.hidden = stat;
+            statContainer.hidden = !stat;
+
+            // let mode = stat === true ? 'show' : 'hide';
+            // playersChart.update(mode);
+            if (stat === true) {
+                playersChart.resize(null, 500);
+            }
+        }
+    }
+    
+    document.fonts.ready.then(function() {
+        playersChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: title,
+                    backgroundColor: barBgColor,
+                    borderColor: barBorderColor,
+                    borderWidth: 1,
+                    data: values
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            color: gridColor
+                        },
+                        border: {
+                            color: axisColor
+                        },
+                        ticks: {
+                            precision: 0,
+                            stepSize: 1
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: gridColor
+                        },
+                        border: {
+                            color: axisColor
+                        }
+                    }
+                },
+                animation: {
+                    duration: 0
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                },
+            }
+        });
+        
+    });
+
     // register event handlers
     sortSelect.addEventListener('change', sortPlayers);
     classSelect.addEventListener('change', filterPlayers);
     searchNameInput.addEventListener('input', filterPlayers);
     searchLevelInput.addEventListener('input', filterPlayers);
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
+    showStatButton.addEventListener('click', switchStat);
+    hideStatButton.addEventListener('click', switchStat);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
