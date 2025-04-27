@@ -2,15 +2,18 @@
   "dungeonsPageTitle": "Подбор подземелий",
   "battlegroundsPageTitle": "Подбор арен",
   "onlinePageTitle": "Список игроков",
+  "lfgPageTitle": "Список лфг",
 
   "dungeonsHeaderLinkContent": "Подземелья",
   "battlegroundsHeaderLinkContent": "Арены",
   "onlineHeaderLinkContent": "Онлайн",
+  "lfgHeaderLinkContent": "Поиск группы",
   "toggleLangTitle": "Switch language",
   "toggleStyleTitle": "Сменить тему оформления",
 
   "emptyMatchingContent": "Список подбора пуст",
   "emptyPlayersContent": "Список игроков пуст",
+  "emptyLfgContent": "Список лфг пуст",
 
   "searchDungeonNamePlaceholder": "Название подземелья",
   "searchBattlegroundNamePlaceholder": "Название арены",
@@ -48,5 +51,9 @@
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
 
   "playersTableLevelContent": "Ур.",
-  "playersTableCharacterContent": "Персонаж"
+  "playersTableCharacterContent": "Персонаж",
+
+  "lfgTableCharacterContent": "Персонаж",
+  "lfgTablePlayerCountContent": "Группа",
+  "lfgTableMessageContent": "Сообщение"
 }

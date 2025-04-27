@@ -384,6 +384,12 @@ details {
     color: var(--font-color-primary);
 }
 
+/* lfg table */
+.lfg-table th,
+.lfg-table td {
+    padding-left: 0.6rem;
+}
+
 /* empty list */
 .empty {
     padding: 2rem 2rem 3rem 2rem;

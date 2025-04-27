@@ -2,15 +2,18 @@
   "dungeonsPageTitle": "Dungeon matching",
   "battlegroundsPageTitle": "Battlefield matching",
   "onlinePageTitle": "Player list",
+  "lfgPageTitle": "LFG list",
 
   "dungeonsHeaderLinkContent": "Dungeons",
   "battlegroundsHeaderLinkContent": "Battlefields",
   "onlineHeaderLinkContent": "Online",
+  "lfgHeaderLinkContent": "LFG",
   "toggleLangTitle": "Сменить язык",
   "toggleStyleTitle": "Switch page theme",
 
   "emptyMatchingContent": "Matching queue is empty",
   "emptyPlayersContent": "Player list is empty",
+  "emptyLfgContent": "LFG list is empty",
 
   "searchDungeonNamePlaceholder": "Dungeon name",
   "searchBattlegroundNamePlaceholder": "Battlefield name",
@@ -48,5 +51,9 @@
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
 
   "playersTableLevelContent": "Lvl",
-  "playersTableCharacterContent": "Character"
+  "playersTableCharacterContent": "Character",
+
+  "lfgTableCharacterContent": "Character",
+  "lfgTablePlayerCountContent": "Party",
+  "lfgTableMessageContent": "Message"
 }

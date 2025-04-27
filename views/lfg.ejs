@@ -1,0 +1,53 @@
+<% const page = 'lfg'; %>
+<%- include('layout_begin.ejs', { page }) %>
+<%- include('header.ejs') %>
+<div id="main">
+	<div class="container">
+		<div class="row justify-content-start">
+			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12">
+				<div class="d-lg-block collapse navbar-collapse" id="navigationMenu">
+					<div class="navigation-menu col-12">
+						<div class="navigation-checkbox">
+							<div class="form-check form-switch">
+								<input class="form-check-input no-transition" type="checkbox" id="autoupdateCheck" role="switch">
+								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateCheckLabel %></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
+				<div id="content">
+					<% let isEmpty = Object.values(data).length === 0; %>
+					<%- include('empty.ejs', { page, isEmpty }) %>
+					<div id="lfgTableRoot">
+						<% if (!isEmpty) { %>
+						<table id="lfgTable" class="lfg-table players-table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th><%= strings.lfgTableCharacterContent %></th>
+									<th><%= strings.lfgTablePlayerCountContent %></th>
+									<th><%= strings.lfgTableMessageContent %></th>
+								</tr>
+							</thead>
+							<tbody id="lfgTableBody">
+								<% let id = 1 %>
+								<% for (let key in data) { if (data[key].hasOwnProperty('messages')) { data[key].messages.forEach(msg => { %>
+								<tr id="<%= id %>" class="lfg-details player-details">
+									<td class="lfg-id"><%= id++ %></td>
+									<td class="lfg-leader-name"><%= msg.leaderName %></td>
+									<td class="lfg-player-count"><%= msg.playerCount %> / <%= msg.maxPlayers %></td>
+									<td class="lfg-message"><%= msg.message %></td>
+								</tr>
+								<% }); } } %>
+							</tbody>
+						</table>
+						<% } %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<%- include('layout_end.ejs', { page }) %>

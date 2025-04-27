@@ -76,3 +76,22 @@ export async function online(req, res) {
         teralogs_url: teralogs_provider
     })
 }
+
+export async function lfg(req, res) {
+    const lang = changeLang(req)
+
+    const response = await fetch(config.get('lfg'));
+    if (!response)
+        return res.type('txt').send('error')
+
+    const responseOnline = await fetch(config.get('online'));
+    let onlineCount = responseOnline && (await responseOnline.json())?.length || null;
+
+    res.render('lfg', {
+        data: await response.json(),
+        strings: globalization[lang],
+        classes: classes[lang],
+        lang,
+        online: onlineCount
+    })
+}
