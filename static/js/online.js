@@ -21,17 +21,17 @@
         save && searchInputs.forEach(e => saveData(e, e.value));
         save && saveData(classSelect, classSelect.selectedIndex);
 
-        let searchNameVal = searchNameInput.value.toLowerCase();
-        let searchLevelVal = searchLevelInput.value;
+        let searchNameVal = searchNameInput.value.customSplitFilter(',');
+        let searchLevelVal = searchLevelInput.value.customSplitFilter(',');
         let classSelectVal = classSelect.value;
 
         players.forEach(p => {
-            let name = p.getElementsByClassName('player-name')[0].textContent;
+            let name = p.getElementsByClassName('player-name')[0].textContent.toLowerCase();
             let level = parseInt(p.getElementsByClassName('player-lvl')[0].textContent);
             let playerClass = p.getElementsByClassName('player-class')[0].dataset.playerClass;
 
-            let show = name.toLowerCase().includes(searchNameVal) &&
-                checkLevel(level, searchLevelVal) &&
+            let show = searchNameVal.customSomeFilter(s => name.includes(s)) &&
+                searchLevelVal.customSomeFilter(s => checkLevel(level, s)) &&
                 (classSelectVal === 'default' || classSelectVal == playerClass);
 
             p.style.display = show ? '' : 'none';
@@ -54,7 +54,7 @@
             let idA = parseInt(a.id);
             let idB = parseInt(b.id);
 
-            switch(sortVal) {
+            switch (sortVal) {
                 case 'levelDesc':
                     return levelB - levelA;
                 case 'levelAsc':

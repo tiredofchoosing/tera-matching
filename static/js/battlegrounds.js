@@ -35,16 +35,16 @@
     function filterDungeons(_, save = true) {
         save && searchInputs.forEach(e => saveData(e, e.value));
 
-        let searchNameVal = searchNameInput.value.toLowerCase();
-        let searchMinLevelVal = searchMinLevelInput.value;
+        let searchNameVal = searchNameInput.value.customSplitFilter(',');
+        let searchMinLevelVal = searchMinLevelInput.value.customSplitFilter(',');
 
         let any = false;
         dungeons.forEach(d => {
-            let name = d.getElementsByClassName('dungeon-name')[0].textContent;
+            let name = d.getElementsByClassName('dungeon-name')[0].textContent.toLowerCase();
             let minLevel = parseInt(d.getElementsByClassName('dungeon-lvl')[0].textContent);
 
-            let show = name.toLowerCase().includes(searchNameVal) &&
-                checkLevel(minLevel, searchMinLevelVal);
+            let show = searchNameVal.customSomeFilter(s => name.includes(s)) &&
+                searchMinLevelVal.customSomeFilter(s => checkLevel(minLevel, s));
 
             d.style.display = show ? '' : 'none';
             any ||= show;
@@ -64,7 +64,7 @@
             let playersA = a.getElementsByClassName('party-player-detailed-content').length;
             let playersB = b.getElementsByClassName('party-player-detailed-content').length;
 
-            switch(sortVal) {
+            switch (sortVal) {
                 case 'minLevelDesc':
                     return minLevelB - minLevelA;
                 case 'minLevelAsc':
