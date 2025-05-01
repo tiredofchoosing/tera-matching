@@ -48,5 +48,7 @@
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
 
   "playersTableLevelContent": "Ур.",
-  "playersTableCharacterContent": "Персонаж"
+  "playersTableCharacterContent": "Персонаж",
+  "playersTableGuildContent": "Гильдия"
+
 }

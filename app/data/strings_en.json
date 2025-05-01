@@ -48,5 +48,6 @@
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
 
   "playersTableLevelContent": "Lvl",
-  "playersTableCharacterContent": "Character"
+  "playersTableCharacterContent": "Character",
+  "playersTableGuildContent": "Guild"
 }
