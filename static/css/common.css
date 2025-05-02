@@ -129,7 +129,7 @@ header {
     appearance: none;
     background-image: var(--menu-sort-bg-img);
 }
-.navigation-search input, #selectPlayerClass {
+.navigation-search input, #selectPlayerClass, #selectDungeonRank {
     background-image: var(--menu-search-bg-img);
 }
 .navigation-search input, .navigation-select select, .navigation-button button {

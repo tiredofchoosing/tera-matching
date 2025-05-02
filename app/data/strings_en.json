@@ -23,6 +23,7 @@
 
   "selectSort": "Sorting",
   "selectPlayerClass": "Filter by character class",
+  "selectDungeonRankTitle": "Filter by difficulty",
   "minLevelDescContent": "Level (desc)",
   "minLevelAscContent": "Level (asc)",
   "minItemLevelDescContent": "Item level (desc)",
@@ -41,8 +42,11 @@
   "playerNameAscContent": "Name (asc)",
   "playerGuildDescContent": "Guild (desc)",
   "playerGuildAscContent": "Guild (asc)",
+  "dungeonRankDescContent": "Difficulty (desc)",
+  "dungeonRankAscContent": "Difficulty (asc)",
 
   "classSelectDefaultContent": "All classes",
+  "selectDungeonRankDefaultContent": "Any difficulty",
 
   "clearNavigationTitle": "Reset all",
   "toggleDetailsTitle": "Collapse / expand list",

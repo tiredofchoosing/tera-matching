@@ -13,6 +13,13 @@
 							<input type="text" id="searchDungeonItemLevel" placeholder="<%= strings.searchDungeonItemLevelPlaceholder %>" title="<%= strings.searchDungeonItemLevelTitle %>">
 						</div>
 						<div class="navigation-select">
+							<select id="selectDungeonRank" title="<%= strings.selectDungeonRankTitle %>">
+								<option value="default" selected="selected"><%= strings.selectDungeonRankDefaultContent %></option>
+								<% const maxRank = Math.max(...(Object.values(dungeons_info).map(d => d.rank))) %>
+								<% for(let i = 1; i <= maxRank; i++) { %>
+								<option value="<%= i %>"><%= '⭐'.repeat(i) %></option>
+								<% } %>
+							</select>
 							<select id="selectDungeonSort" title="<%= strings.selectSort %>">
 								<option value="minLevelDesc"><%= strings.minLevelDescContent %></option>
 								<option value="minLevelAsc"><%= strings.minLevelAscContent %></option>
@@ -22,6 +29,8 @@
 								<option value="nameAsc"><%= strings.nameAscContent %></option>
 								<option value="playersDesc"><%= strings.playersDescContent %></option>
 								<option value="playersAsc"><%= strings.playersAscContent %></option>
+								<option value="rankDesc"><%= strings.dungeonRankDescContent %></option>
+								<option value="rankAsc"><%= strings.dungeonRankAscContent %></option>
 							</select>
 						</div>
 						<div class="navigation-button d-flex flex-sm-row">
