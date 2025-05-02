@@ -1,338 +1,429 @@
-{
+﻿{
   "9087": {
-    "minItemLevel": 51,
     "minLevel": 20,
     "maxLevel": 25,
+    "minItemLevel": 51,
+    "rank": 1,
     "name": "Бастион Лока"
   },
   "9088": {
-    "minItemLevel": 66,
     "minLevel": 26,
     "maxLevel": 31,
+    "minItemLevel": 66,
+    "rank": 1,
     "name": "Зловещий Особняк"
   },
   "9979": {
-    "minItemLevel": 77,
     "minLevel": 32,
     "maxLevel": 36,
+    "minItemLevel": 77,
+    "rank": 1,
     "name": "Логово Сараваша"
   },
   "9089": {
-    "minItemLevel": 96,
     "minLevel": 35,
     "maxLevel": 42,
+    "minItemLevel": 96,
+    "rank": 1,
     "name": "Убежище Культистов"
   },
   "9071": {
-    "minItemLevel": 118,
     "minLevel": 41,
     "maxLevel": 47,
+    "minItemLevel": 118,
+    "rank": 1,
     "name": "Гробница Некроманта"
   },
   "9072": {
-    "minItemLevel": 146,
     "minLevel": 48,
     "maxLevel": 53,
+    "minItemLevel": 146,
+    "rank": 1,
     "name": "Золотой Лабиринт"
   },
   "9093": {
-    "minItemLevel": 146,
     "minLevel": 48,
     "maxLevel": 54,
+    "minItemLevel": 146,
+    "rank": 1,
     "name": "Убежище Акаши"
   },
   "9094": {
-    "minItemLevel": 166,
     "minLevel": 53,
     "maxLevel": 57,
+    "minItemLevel": 166,
+    "rank": 1,
     "name": "Небесный сад Салерона"
   },
   "9076": {
-    "minItemLevel": 200,
     "minLevel": 56,
     "maxLevel": 58,
+    "minItemLevel": 200,
+    "rank": 1,
     "name": "Лабиринт Ужаса"
   },
   "9073": {
-    "minItemLevel": 200,
     "minLevel": 58,
     "maxLevel": 64,
+    "minItemLevel": 200,
+    "rank": 1,
     "name": "Эбеновая Башня"
   },
   "9075": {
-    "minItemLevel": 200,
     "minLevel": 58,
     "maxLevel": 64,
+    "minItemLevel": 200,
+    "rank": 1,
     "name": "Гнездо Келсаика"
   },
   "9025": {
-    "minItemLevel": 242,
     "minLevel": 60,
     "maxLevel": 70,
+    "minItemLevel": 242,
+    "rank": 1,
     "name": "Храм Балдера"
   },
   "9026": {
-    "minItemLevel": 242,
     "minLevel": 60,
     "maxLevel": 70,
+    "minItemLevel": 242,
+    "rank": 1,
     "name": "Аргонские Залы"
   },
   "9727": {
-    "minItemLevel": 309,
     "minLevel": 64,
     "maxLevel": 70,
+    "minItemLevel": 309,
+    "rank": 1,
     "name": "Обитель Манайи"
   },
   "9809": {
-    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 444,
+    "rank": 1,
     "name": "Мясницкие Катакомбы"
   },
-  "9780": {
-    "minItemLevel": 450,
-    "minLevel": 68,
+  "9710": {
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
+    "name": "Разрушенный алтарь Лакана"
+  },
+  "9981": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": "Разрушенное Святилище Велики"
+  },
+  "9780": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
     "name": "Вход в катакомбы Велики"
   },
   "9781": {
-    "minItemLevel": 451,
-    "minLevel": 68,
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
     "name": "Святилище Велики"
   },
   "9735": {
-    "minItemLevel": 452,
-    "minLevel": 68,
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
     "name": "Ангар RK-9"
   },
   "9935": {
-    "minItemLevel": 460,
     "minLevel": 69,
     "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
     "name": "Ангар совершенного RK-9"
   },
   "9034": {
-    "minItemLevel": 482,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
     "name": "Жуткий шпиль страха"
   },
   "9739": {
-    "minItemLevel": 452,
     "minLevel": 68,
     "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
     "name": "Лагерь повстанцев"
   },
   "9939": {
-    "minItemLevel": 460,
     "minLevel": 69,
     "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
     "name": "Секретный лагерь повстанцев"
   },
   "9920": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
     "name": "Омут Бездушного Антароса"
   },
   "9982": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Заброшенная мастерская Леандра"
   },
   "9044": {
-    "minItemLevel": 463,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
     "name": "Святилище Бахаара"
   },
   "3201": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Гнездо сверкающей Паркин"
   },
   "3023": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Секретное подземелье крепости Берарк"
   },
   "3026": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 461,
+    "rank": 4,
     "name": "Логово Келсаика"
   },
-  "3126": {
-    "minItemLevel": 480,
+  "3202": {
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": "Командный центр (сложно)"
+  },
+  "3102": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
+    "name": "Командный центр"
+  },
+  "3126": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 480,
+    "rank": 5,
     "name": "Логово Бессмертного Келсаика"
   },
   "3027": {
-    "minItemLevel": 463,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 463,
+    "rank": 4,
     "name": "Арена безумия"
   },
   "9754": {
-    "minItemLevel": 450,
-    "minLevel": 65,
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
     "name": "Глубинный Храм"
   },
   "9756": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 456,
+    "rank": 2,
     "name": "Хроноплоскость"
   },
   "9056": {
-    "minItemLevel": 462,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Хроноплоскость (сложно)"
   },
   "9916": {
-    "minItemLevel": 479,
     "minLevel": 70,
     "maxLevel": 70,
-    "name": "Крейсер \u0022Стремление\u0022 (Сложно)"
+    "minItemLevel": 479,
+    "rank": 5,
+    "name": "Крейсер \"Стремление\" (Сложно)"
   },
   "9760": {
-    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 444,
+    "rank": 1,
     "name": "Корабль Келивана"
   },
   "9029": {
-    "minItemLevel": 448,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 448,
+    "rank": 1,
     "name": "Сокровищница Капримы"
   },
   "9794": {
-    "minItemLevel": 452,
     "minLevel": 68,
     "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 2,
     "name": "Лаборатория Сайрекса"
   },
   "9770": {
-    "minItemLevel": 456,
     "minLevel": 68,
     "maxLevel": 70,
+    "minItemLevel": 456,
+    "rank": 3,
     "name": "Руины Абнукты"
   },
   "9769": {
-    "minItemLevel": 452,
     "minLevel": 68,
     "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 3,
     "name": "Замок Лилит"
   },
   "9777": {
-    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 490,
+    "rank": 1,
     "name": "Каналы (3 игрока)"
   },
   "9055": {
-    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 490,
+    "rank": 1,
     "name": "Алчное Ущелье (3 игрока)"
   },
   "9994": {
-    "minItemLevel": 460,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
     "name": "Лаборатория Альфа-сайрекса"
   },
   "9759": {
-    "minItemLevel": 462,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 462,
+    "rank": 4,
     "name": "Остров Мертвых (сложно)"
   },
   "9078": {
-    "minItemLevel": 126,
     "minLevel": 58,
     "maxLevel": 63,
+    "minItemLevel": 126,
+    "rank": 1,
     "name": "Пик Сурьяти"
   },
   "9057": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 461,
+    "rank": 4,
     "name": "Акероново пекло (сложно)"
   },
   "9067": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 461,
+    "rank": 4,
     "name": "Лаборатория Берна (сложно)"
   },
   "9969": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Замок Кошмарной Лилит"
   },
   "9970": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
     "name": "Руины Кошмарной Абнукты"
   },
   "9066": {
-    "minItemLevel": 460,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
     "name": "Рулетка Демороса"
   },
   "9070": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 456,
+    "rank": 4,
     "name": "Замок Парадоксов"
   },
   "9983": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Крепость Темного Тенебриса"
   },
   "9782": {
-    "minItemLevel": 453,
-    "minLevel": 69,
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
     "name": "Мастерская Леандра"
   },
   "3101": {
-    "minItemLevel": 453,
-    "minLevel": 69,
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
     "name": "Гнездо Паркин"
   },
   "9027": {
-    "minItemLevel": 495,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 5,
     "name": "Обитель Манайи (сложно)"
   },
   "9766": {
-    "minItemLevel": 452,
     "minLevel": 68,
     "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 3,
     "name": "Погибший Флот"
   },
   "9999": {
-    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 444,
+    "rank": 1,
     "name": "Грабители подземелий"
+  },
+  "3034": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": "Ангар обезумевшего RK-9"
   }
 }

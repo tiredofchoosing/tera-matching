@@ -80,6 +80,14 @@
         themeColor.content = navbarBgColors[styleLink.dataset.value];
     }
 
+    function customSplitFilter(splitChar) {
+        return this.toLowerCase().split(splitChar).map(s => s.trim()).filter(Boolean)
+    }
+
+    function customSomeFilter(filterFunc) {
+        return this.length === 0 || this.some(filterFunc)
+    }
+
     document.addEventListener("readystatechange", (event) => {
         if (event.target.readyState === "interactive") {
             document.getElementById('toggleLang').addEventListener('click', toggleLang);
@@ -103,4 +111,6 @@
     window.setAutoupdate = setAutoupdate;
     window.checkLevel = checkLevel;
 
+    window.String.prototype.customSplitFilter = customSplitFilter;
+    window.Array.prototype.customSomeFilter = customSomeFilter;
 })();

@@ -10,6 +10,7 @@
 						<div class="navigation-search">
 							<input type="text" id="searchPlayerName" placeholder="<%= strings.searchPlayerNamePlaceholder %>">
 							<input type="text" id="searchPlayerLevel" placeholder="<%= strings.searchLevelPlaceholder %>" title="<%= strings.searchLevelTitle %>">
+							<input type="text" id="searchPlayerGuild" placeholder="<%= strings.searchPlayerGuildPlaceholder %>">
 						</div>
 						<div class="navigation-select">
 							<select id="selectPlayerClass" title="<%= strings.selectPlayerClass %>">
@@ -27,6 +28,8 @@
 								<option value="classAsc"><%= strings.playerClassAscContent %></option>
 								<option value="nameDesc"><%= strings.playerNameDescContent %></option>
 								<option value="nameAsc"><%= strings.playerNameAscContent %></option>
+								<option value="guildDesc"><%= strings.playerGuildDescContent %></option>
+								<option value="guildAsc"><%= strings.playerGuildAscContent %></option>
 							</select>
 						</div>
 						<div class="navigation-button d-flex flex-sm-row">
@@ -55,6 +58,7 @@
 									<th>#</th>
 									<th><%= strings.playersTableLevelContent %></th>
 									<th colspan="2"><%= strings.playersTableCharacterContent %></th>
+									<th><%= strings.playersTableGuildContent %></th>
 								</tr>
 							</thead>
 							<tbody id="playersTableBody">
@@ -67,6 +71,11 @@
 										<img src="/static/img/icons/class/<%= player.class %>.png" width="24px" height="24px" draggable="false">
 									</td>
 									<td class="player-name"><a title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank"><%= player.name %></a></td>
+									<td class="player-guild">
+										<% if (player.guildName != null) { %>
+											<span class="table-guild-text"><%= player.guildName %></span>
+										<% } %>
+									</td>
 								</tr>
 								<% } %>
 							</tbody>
