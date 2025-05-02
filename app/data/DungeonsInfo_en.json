@@ -1,338 +1,429 @@
-{
+﻿{
   "9087": {
-    "minItemLevel": 51,
     "minLevel": 20,
     "maxLevel": 25,
+    "minItemLevel": 51,
+    "rank": 1,
     "name": "Bastion of Lok"
   },
   "9088": {
-    "minItemLevel": 66,
     "minLevel": 26,
     "maxLevel": 31,
+    "minItemLevel": 66,
+    "rank": 1,
     "name": "Sinestral Manor"
   },
   "9979": {
-    "minItemLevel": 77,
     "minLevel": 32,
     "maxLevel": 36,
+    "minItemLevel": 77,
+    "rank": 1,
     "name": "Saravash\u0027s Ascent"
   },
   "9089": {
-    "minItemLevel": 96,
     "minLevel": 35,
     "maxLevel": 42,
+    "minItemLevel": 96,
+    "rank": 1,
     "name": "Cultists\u0027 Refuge"
   },
   "9071": {
-    "minItemLevel": 118,
     "minLevel": 41,
     "maxLevel": 47,
+    "minItemLevel": 118,
+    "rank": 1,
     "name": "Necromancer Tomb"
   },
   "9072": {
-    "minItemLevel": 146,
     "minLevel": 48,
     "maxLevel": 53,
+    "minItemLevel": 146,
+    "rank": 1,
     "name": "Golden Labyrinth"
   },
   "9093": {
-    "minItemLevel": 146,
     "minLevel": 48,
     "maxLevel": 54,
+    "minItemLevel": 146,
+    "rank": 1,
     "name": "Akasha\u0027s Hideout"
   },
   "9094": {
-    "minItemLevel": 166,
     "minLevel": 53,
     "maxLevel": 57,
+    "minItemLevel": 166,
+    "rank": 1,
     "name": "Saleron\u0027s Sky Garden"
   },
   "9076": {
-    "minItemLevel": 200,
     "minLevel": 56,
     "maxLevel": 58,
+    "minItemLevel": 200,
+    "rank": 1,
     "name": "Labyrinth of Terror"
   },
   "9073": {
-    "minItemLevel": 200,
     "minLevel": 58,
     "maxLevel": 64,
+    "minItemLevel": 200,
+    "rank": 1,
     "name": "Ebon Tower"
   },
   "9075": {
-    "minItemLevel": 200,
     "minLevel": 58,
     "maxLevel": 64,
+    "minItemLevel": 200,
+    "rank": 1,
     "name": "Kelsaik\u0027s Nest"
   },
   "9025": {
-    "minItemLevel": 242,
     "minLevel": 60,
     "maxLevel": 70,
+    "minItemLevel": 242,
+    "rank": 1,
     "name": "Balder\u0027s Temple"
   },
   "9026": {
-    "minItemLevel": 242,
     "minLevel": 60,
     "maxLevel": 70,
+    "minItemLevel": 242,
+    "rank": 1,
     "name": "Argon Corpus"
   },
   "9727": {
-    "minItemLevel": 309,
     "minLevel": 64,
     "maxLevel": 70,
+    "minItemLevel": 309,
+    "rank": 1,
     "name": "Manaya\u0027s Core"
   },
   "9809": {
-    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 444,
+    "rank": 1,
     "name": "Macellarius Catacombs"
   },
-  "9780": {
-    "minItemLevel": 450,
-    "minLevel": 68,
+  "9710": {
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
+    "name": "Broken Prison"
+  },
+  "9981": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": "Velik\u0027s Sanctuary (Hard)"
+  },
+  "9780": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
     "name": "Velik\u0027s Hold (7-Person)"
   },
   "9781": {
-    "minItemLevel": 451,
-    "minLevel": 68,
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
     "name": "Velik\u0027s Sanctuary"
   },
   "9735": {
-    "minItemLevel": 452,
-    "minLevel": 68,
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
     "name": "RK-9 Kennel"
   },
   "9935": {
-    "minItemLevel": 460,
     "minLevel": 69,
     "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
     "name": "RK-9 Kennel (Hard)"
   },
   "9034": {
-    "minItemLevel": 482,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
     "name": "Dreadspire"
   },
   "9739": {
-    "minItemLevel": 452,
     "minLevel": 68,
     "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
     "name": "Red Refuge"
   },
   "9939": {
-    "minItemLevel": 460,
     "minLevel": 69,
     "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
     "name": "Red Refuge (Hard)"
   },
   "9920": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
     "name": "Antaroth\u0027s Abyss (Hard)"
   },
   "9982": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Grotto of Lost Souls (Hard)"
   },
   "9044": {
-    "minItemLevel": 463,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
     "name": "Bahaar\u0027s Sanctum"
   },
   "3201": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Gossamer Vault (Hard)"
   },
   "3023": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Akalath Quarantine"
   },
   "3026": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 461,
+    "rank": 4,
     "name": "Corrupted Skynest"
   },
-  "3126": {
-    "minItemLevel": 480,
+  "3202": {
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": "Draakon Arena (Hard)"
+  },
+  "3102": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
+    "name": "Draakon Arena"
+  },
+  "3126": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 480,
+    "rank": 5,
     "name": "Corrupted Skynest (Hard) Entrance"
   },
   "3027": {
-    "minItemLevel": 463,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 463,
+    "rank": 4,
     "name": "Forbidden Arena"
   },
   "9754": {
-    "minItemLevel": 450,
-    "minLevel": 65,
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
     "name": "Bathysmal Rise"
   },
   "9756": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 456,
+    "rank": 2,
     "name": "Timescape"
   },
   "9056": {
-    "minItemLevel": 462,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Timescape (Hard)"
   },
   "9916": {
-    "minItemLevel": 479,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 479,
+    "rank": 5,
     "name": "Sky Cruiser Endeavor (Hard)"
   },
   "9760": {
-    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 444,
+    "rank": 1,
     "name": "Kalivan\u0027s Dreadnaught"
   },
   "9029": {
-    "minItemLevel": 448,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 448,
+    "rank": 1,
     "name": "Vault of Kaprima"
   },
   "9794": {
-    "minItemLevel": 452,
     "minLevel": 68,
     "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 2,
     "name": "Thaumetal Refinery"
   },
   "9770": {
-    "minItemLevel": 456,
     "minLevel": 68,
     "maxLevel": 70,
+    "minItemLevel": 456,
+    "rank": 3,
     "name": "Ruinous Manor"
   },
   "9769": {
-    "minItemLevel": 452,
     "minLevel": 68,
     "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 3,
     "name": "Lilith\u0027s Keep"
   },
   "9777": {
-    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 490,
+    "rank": 1,
     "name": "Channelworks (3-Person)"
   },
   "9055": {
-    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 490,
+    "rank": 1,
     "name": "Ravenous Gorge (3-Person)"
   },
   "9994": {
-    "minItemLevel": 460,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
     "name": "Thaumetal Refinery (Hard)"
   },
   "9759": {
-    "minItemLevel": 462,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 462,
+    "rank": 4,
     "name": "Forsaken Island (Hard)"
   },
   "9078": {
-    "minItemLevel": 126,
     "minLevel": 58,
     "maxLevel": 63,
+    "minItemLevel": 126,
+    "rank": 1,
     "name": "Suryati\u0027s Peak"
   },
   "9057": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 461,
+    "rank": 4,
     "name": "Akeron\u0027s Inferno (Hard)"
   },
   "9067": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 461,
+    "rank": 4,
     "name": "Demokron Factory (Hard)"
   },
   "9969": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Lilith\u0027s Keep (Hard)"
   },
   "9970": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
     "name": "Ruinous Manor (Hard)"
   },
   "9066": {
-    "minItemLevel": 460,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
     "name": "Demon\u0027s Wheel"
   },
   "9070": {
-    "minItemLevel": 456,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 456,
+    "rank": 4,
     "name": "Manglemire"
   },
   "9983": {
-    "minItemLevel": 461,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Dark Reach Citadel (Hard)"
   },
   "9782": {
-    "minItemLevel": 453,
-    "minLevel": 69,
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
     "name": "Grotto of Lost Souls"
   },
   "3101": {
-    "minItemLevel": 453,
-    "minLevel": 69,
+    "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
     "name": "Gossamer Vault"
   },
   "9027": {
-    "minItemLevel": 495,
     "minLevel": 70,
     "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 5,
     "name": "Manaya\u0027s Core (Hard)"
   },
   "9766": {
-    "minItemLevel": 452,
     "minLevel": 68,
     "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 3,
     "name": "Shattered Fleet"
   },
   "9999": {
-    "minItemLevel": 444,
     "minLevel": 65,
     "maxLevel": 70,
+    "minItemLevel": 444,
+    "rank": 1,
     "name": "Blast from the Past"
+  },
+  "3034": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": "Rampaging RK-9"
   }
 }
