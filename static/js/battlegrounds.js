@@ -16,10 +16,11 @@
     const clearNavigationButton = document.getElementById('clearNavigation');
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
+    const hideLevelCheckbox = document.getElementById('hideLevel');
     const emptyContainer = document.getElementById('empty');
     const body = document.body;
     const searchInputs = [searchNameInput, searchMinLevelInput];
-    const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox];
+    const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, hideLevelCheckbox];
 
     const defaultSelectIndex = 4;
     const saveCollapsedId = 'battlegroundDetailsCollapsed';
@@ -118,6 +119,20 @@
         toggleDetailsButton.firstElementChild.src = `/static/img/icons/${value ? 'collapse' : 'expand'}.svg`;
     }
 
+    function hideLevel(_, save = true) {
+        save && saveData(hideLevelCheckbox, hideLevelCheckbox.checked);
+
+        hideLevelLabels(hideLevelCheckbox.checked);
+    }
+
+    function hideLevelLabels(flag, isItemLevel = false) {
+        const className = isItemLevel ? 'dungeon-ilvl' : 'dungeon-lvl';
+        const labels = dungeonList.getElementsByClassName(className);
+        for (const lbl of labels) {
+            lbl.hidden = flag;
+        }
+    }
+
     // register event handlers
     sortSelect.addEventListener('change', sortDungeons);
     searchNameInput.addEventListener('input', filterDungeons);
@@ -125,6 +140,7 @@
     dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
+    hideLevelCheckbox.addEventListener('change', hideLevel);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
@@ -223,5 +239,7 @@
         pinchCurrentIndex =  savedPinchIndex;
         dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
     }
+
+    hideLevel(null, false);
 
 })();

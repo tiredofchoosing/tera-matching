@@ -18,10 +18,12 @@
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
+    const hideLevelCheckbox = document.getElementById('hideLevel');
+    const hideItemLevelCheckbox = document.getElementById('hideItemLevel');
     const emptyContainer = document.getElementById('empty');
     const body = document.body;
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-    const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox];
+    const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox];
 
     const defaultSelectIndex = 2;
     const saveCollapsedId = 'dungeonDetailsCollapsed';
@@ -234,6 +236,26 @@
         toggleDetailsButton.firstElementChild.src = `/static/img/icons/${value ? 'collapse' : 'expand'}.svg`;
     }
 
+    function hideLevel(_, save = true) {
+        save && saveData(hideLevelCheckbox, hideLevelCheckbox.checked);
+
+        hideLevelLabels(hideLevelCheckbox.checked);
+    }
+
+    function hideItemLevel(_, save = true) {
+        save && saveData(hideItemLevelCheckbox, hideItemLevelCheckbox.checked);
+
+        hideLevelLabels(hideItemLevelCheckbox.checked, true);
+    }
+
+    function hideLevelLabels(flag, isItemLevel = false) {
+        const className = isItemLevel ? 'dungeon-ilvl' : 'dungeon-lvl';
+        const labels = dungeonList.getElementsByClassName(className);
+        for (const lbl of labels) {
+            lbl.hidden = flag;
+        }
+    }
+
     // register event handlers
     sortSelect.addEventListener('change', sortDungeons);
     searchNameInput.addEventListener('input', filterDungeons);
@@ -243,6 +265,8 @@
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     mergeSupportCheckbox.addEventListener('change', mergeSupportMatching);
+    hideLevelCheckbox.addEventListener('change', hideLevel);
+    hideItemLevelCheckbox.addEventListener('change', hideItemLevel);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
@@ -345,5 +369,8 @@
         pinchCurrentIndex =  savedPinchIndex;
         dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
     }
+
+    hideLevel(null, false);
+    hideItemLevel(null, false);
 
 })();
