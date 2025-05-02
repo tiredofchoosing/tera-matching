@@ -12,6 +12,7 @@
     const emptyContainer = document.getElementById('empty');
     const searchInputs = [searchNameInput, searchLevelInput, searchGuildInput];
     const checkboxes = [autoupdateCheckbox];
+    const selects = [sortSelect, classSelect];
     const defaultSelectIndex = 1;
     const defaultClassSelectIndex = 0;
 
@@ -124,12 +125,11 @@
     // restore session data
     searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
     checkboxes.forEach(e => {
-        let checked = loadData(e);
+        const checked = loadData(e);
         if (checked != null)
             e.checked = checked === 'true';
     });
-    sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
-    classSelect.selectedIndex = loadData(classSelect) ?? classSelect.selectedIndex;
+    selects.forEach(e => e.selectedIndex = loadData(e) ?? e.selectedIndex);
 
     filterPlayers(null, true);
     // sortPlayers(null, true); // called in filter
