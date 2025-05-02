@@ -16,6 +16,7 @@
   "searchBattlegroundNamePlaceholder": "Название арены",
   "searchPlayerNamePlaceholder": "Имя персонажа",
   "searchLevelPlaceholder": "Уровень",
+  "searchPlayerGuildPlaceholder": "Гильдия",
   "searchLevelTitle": "Уровень [ 70 / 65+ / 69- / 20-40 ]",
   "searchDungeonItemLevelPlaceholder": "Уровень снаряжения",
   "searchDungeonItemLevelTitle": "Уровень снаряжения [ 463 / 453+ / 460- / 444-450 ]",
@@ -38,6 +39,8 @@
   "playerClassAscContent": "Класс (возр.)",
   "playerNameDescContent": "Имя персонажа (убыв.)",
   "playerNameAscContent": "Имя персонажа (возр.)",
+  "playerGuildDescContent": "Гильдия (убыв.)",
+  "playerGuildAscContent": "Гильдия (возр.)",
 
   "classSelectDefaultContent": "Все классы",
 
