@@ -49,8 +49,8 @@
   "autoupdateCheckLabel": "Автоматически обновлять страницу",
   "saveCollapsedLabel": "Сохранять свернутые элементы",
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
-  "hideLevelLabel": "Скрыть уровень подземелий",
-  "hideItemLevelLabel": "Скрыть уровень снаряжения",
+  "hideLevelLabel": "Скрыть требуемый уровень",
+  "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
 
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж",

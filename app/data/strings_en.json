@@ -49,7 +49,7 @@
   "autoupdateCheckLabel": "Reload the page automatically",
   "saveCollapsedLabel": "Save collapsed items",
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
-  "hideLevelLabel": "Hide dungeons level",
+  "hideLevelLabel": "Hide required level",
   "hideItemLevelLabel": "Hide required item level",
 
   "playersTableLevelContent": "Lvl",
