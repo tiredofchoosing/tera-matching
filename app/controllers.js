@@ -18,7 +18,7 @@ function changeLang(req) {
 
 function render(res, data, page, partialContent) {
     if (partialContent) {
-        res.render(page + '_content', data);
+        res.render('partial_content', data);
     } else {
         res.render(page, data);
     }

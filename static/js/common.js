@@ -1,11 +1,9 @@
 (function() {
 
     const autoupdateTimer = 10000;
-    const contentId = 'content';
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
 
-    let mainContent = null;
     let autoupdateTimerId = -1;
 
     function saveData(element, value = null, forSession = true) {
@@ -51,20 +49,26 @@
             if (!response.ok)
                 throw new Error('Update failed');
 
-            if (!mainContent) {
-                mainContent = document.getElementById(contentId);
-            }
-
             const html = await response.text();
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = html;
-            if (tempDiv.firstChild) {
-                mainContent.innerHTML = tempDiv.innerHTML;
+
+            let success = false;
+            tempDiv.childNodes.forEach(e => {
+                if (e.firstChild) {
+                    const mainContent = document.getElementById(e.id);
+                    mainContent.innerHTML = e.innerHTML;
+                    success = true;
+                }
+            });
+            
+            if (success)
                 return true;
-            }
-            console.warn('Partial update failed: No main content found in response');
+
+            console.warn('Partial update failed: no items have been updated.');
             return false;
-        } catch (err) {
+        }
+        catch (err) {
             console.warn('Partial update failed:', err);
             return false;
         }
