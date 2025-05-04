@@ -1,7 +1,7 @@
 :root {
     --font-color-primary: rgb(225, 225, 225);
     --font-color-secondary: rgba(255, 255, 255, 0.5);
-
+   
     --scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
     --background: center/cover no-repeat url('/static/img/bgs/background.png');
     --bg-backdrop-filter: blur(7px);
@@ -13,7 +13,8 @@
     --header-logo-content: url(/static/img/icons/icon.svg);
     --header-btn-hov-bg-color: rgb(7, 8, 10);
     --header-btn-img-filter: none;
-    --header-ul-border-color: rgba(0, 0, 0, 0.3);
+    /* --header-ul-border-color: rgba(0, 0, 0, 0.3); */
+    --header-ul-border-color: rgba(116, 116, 116, 0.1);
     --header-shadow-color: rgba(0, 0, 0, 0.075);
     --header-style-btn-content: url(/static/img/icons/theme_sun.svg);
 
@@ -44,6 +45,9 @@
     --players-tbl-th-bg-color: rgba(23, 24, 32, 0.9);
     --players-tbl-tr1-bg-color: rgba(23, 24, 32, 0.7);
     --players-tbl-tr2-bg-color: rgba(66, 80, 63, 0.7);
+    --players-tbl-guild-background-color: rgb(23, 24, 32);
 
+    --lang-title: rgb(105, 150, 93);
+    
     --empty-bg-color: rgba(23, 24, 32, 0.7);
 }

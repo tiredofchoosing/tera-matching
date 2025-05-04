@@ -113,4 +113,19 @@
 
     window.String.prototype.customSplitFilter = customSplitFilter;
     window.Array.prototype.customSomeFilter = customSomeFilter;
+
+/////////////////////////////////////////////////////////////////
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const offcanvasElement = document.getElementById('offcanvasRight');
+        const offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
+
+        function maybeCloseOffcanvas() {
+            if (window.innerWidth >= 992 && offcanvasElement.classList.contains('show')) {
+                offcanvasInstance.hide();
+            }
+        }
+
+        window.addEventListener('resize', maybeCloseOffcanvas);
+    });
 })();

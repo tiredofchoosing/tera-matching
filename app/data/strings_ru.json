@@ -52,6 +52,15 @@
   "hideLevelLabel": "Скрыть требуемый уровень",
   "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
 
+  "changeInterfaceLanguage": "сменить язык на",
+  "changeInterfaceLanguageTitle": "english",
+  "ModalSwitchInterfaceTheme": "Сменить тему",
+  "ModalTitleGeneral": "Общее",
+  "ModalTitleTheme": "Тема",
+  "ModalTitleThemeSettings": "Настройки",
+  "ModalTitleCurrentList": "Текущий список",
+  "CheckBoxDisableBackground": "Отключить фон",
+
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж",
   "playersTableGuildContent": "Гильдия"

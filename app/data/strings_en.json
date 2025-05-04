@@ -52,6 +52,15 @@
   "hideLevelLabel": "Hide required level",
   "hideItemLevelLabel": "Hide required item level",
 
+  "changeInterfaceLanguage": "change language to",
+  "changeInterfaceLanguageTitle": "русский",
+  "ModalSwitchInterfaceTheme": "Change theme",
+  "ModalTitleGeneral": "General",
+  "ModalTitleTheme": "Theme",
+  "ModalTitleThemeSettings": "Settings",
+  "ModalTitleCurrentList": "Current list",
+  "CheckBoxDisableBackground": "Disable background",
+  
   "playersTableLevelContent": "Lvl",
   "playersTableCharacterContent": "Character",
   "playersTableGuildContent": "Guild"

@@ -44,6 +44,9 @@
     --players-tbl-th-bg-color: rgb(139, 152, 193);
     --players-tbl-tr1-bg-color: rgb(193 202 234);
     --players-tbl-tr2-bg-color: rgb(163, 175, 220);
+    --players-tbl-guild-background-color: rgb(131, 145, 187);
+
+    --lang-title:rgb(224, 227, 235);
 
     --empty-bg-color: rgb(139, 152, 193);
 }
