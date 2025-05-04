@@ -1,5 +1,4 @@
-<% const page = 'dungeons'; %>
-<%- include('layout_begin.ejs', { page }) %>
+<%- include('layout_begin.ejs') %>
 <%- include('header.ejs') %>
 <div id="main">
 	<div class="container">
@@ -43,7 +42,7 @@
 							</div>
 							<div class="form-check form-switch">
 								<input class="form-check-input no-transition" type="checkbox" id="mergeSupportMatching" role="switch">
-								<label class="form-check-label" for="mergeSupportMatching"><%- strings.mergeSupportMatchingLabel.replace('$', dungeons_info['9999'].name) %></label>
+								<label class="form-check-label" for="mergeSupportMatching"><%- strings.mergeSupportMatchingLabel.replace('$', instances_info['9999'].name) %></label>
 							</div>
 							<div class="form-check form-switch">
 								<input class="form-check-input no-transition" type="checkbox" id="hideLevel" role="switch">
@@ -58,10 +57,7 @@
 				</div>
 			</div>
 			<div id="content" class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
-				<%- include('empty.ejs', { page, isEmpty: Object.values(data).length === 0 }) %>
-				<div id="dungeonList" class="dungeon-list">
-					<%- include('dungeon_details.ejs', { page, info: dungeons_info }) %>
-				</div>
+				<%- include(page + '_content.ejs') %>
 			</div>
 		</div>
 	</div>
@@ -69,10 +65,10 @@
 <script>
 	const supportDungeonProps = {
 		id: 9999,
-		minLevel: <%= dungeons_info['9999'].minLevel %>,
-		minItemLevel: <%= dungeons_info['9999'].minItemLevel %>,
-		name: '<%= dungeons_info['9999'].name %>',
+		minLevel: <%= instances_info['9999'].minLevel %>,
+		minItemLevel: <%= instances_info['9999'].minItemLevel %>,
+		name: '<%= instances_info['9999'].name %>',
 		lowestDungeonLevel: 20
 	};
 </script>
-<%- include('layout_end.ejs', { page }) %>
+<%- include('layout_end.ejs') %>

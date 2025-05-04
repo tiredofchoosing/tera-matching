@@ -1,9 +1,11 @@
 (function() {
 
     const autoupdateTimer = 10000;
+    const contentId = 'content';
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
 
+    let mainContent = null;
     let autoupdateTimerId = -1;
 
     function saveData(element, value = null, forSession = true) {
@@ -41,12 +43,45 @@
         }
     }
 
+    async function updatePageContent() {
+        try {
+            const path = window.location.pathname;
+            const partialPath = '/partial' + path;
+            const response = await fetch(partialPath);
+            if (!response.ok)
+                throw new Error('Update failed');
+
+            if (!mainContent) {
+                mainContent = document.getElementById(contentId);
+            }
+
+            const html = await response.text();
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            if (tempDiv.firstChild) {
+                mainContent.innerHTML = tempDiv.innerHTML;
+                return true;
+            }
+            console.warn('Partial update failed: No main content found in response');
+            return false;
+        } catch (err) {
+            console.warn('Partial update failed:', err);
+            return false;
+        }
+    }
+
     function setAutoupdate(_, save = true, elem = null) {
         elem = elem ?? this;
         save && saveData(elem, elem.checked);
 
         if (elem.checked) {
-            autoupdateTimerId = setTimeout(() => location.reload(), autoupdateTimer);
+            autoupdateTimerId = setTimeout(async () => {
+                const success = await updatePageContent();
+                if (!success) {
+                    // location.reload();
+                }
+                setAutoupdate(null, false, elem);
+            }, autoupdateTimer);
         }
         else if (autoupdateTimerId !== -1) {
             clearTimeout(autoupdateTimerId);
@@ -81,11 +116,11 @@
     }
 
     function customSplitFilter(splitChar) {
-        return this.toLowerCase().split(splitChar).map(s => s.trim()).filter(Boolean)
+        return this.toLowerCase().split(splitChar).map(s => s.trim()).filter(Boolean);
     }
 
     function customSomeFilter(filterFunc) {
-        return this.length === 0 || this.some(filterFunc)
+        return this.length === 0 || this.some(filterFunc);
     }
 
     document.addEventListener("readystatechange", (event) => {

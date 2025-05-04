@@ -1,5 +1,5 @@
 <% for(let dungeonId in data) { %>
-<% let dungeon = data[dungeonId]; dungeonProps = info[dungeonId]; %>
+<% let dungeon = data[dungeonId]; dungeonProps = instances_info[dungeonId]; %>
 <% if (dungeonProps == undefined) { dungeonProps = { 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' }; if (page === 'dungeons') { dungeonProps.minItemLevel = 0; } } %>
 <details open class="dungeon-details" id="<%= dungeonId %>">
     <summary class="dungeon-summary">
