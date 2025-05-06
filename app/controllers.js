@@ -96,21 +96,25 @@ export async function online(req, res, partialContent = false) {
     render(res, data, page, partialContent);
 }
 
-export async function lfg(req, res) {
-    const lang = changeLang(req)
+export async function lfg(req, res, partialContent = false) {
+    const lang = changeLang(req);
+    const page = 'lfg';
 
-    const response = await fetch(config.get('lfg'));
+    const response = await fetch(config.get(page));
     if (!response)
-        return res.type('txt').send('error')
+        return res.type('txt').send('error');
 
     const responseOnline = await fetch(config.get('online'));
     let onlineCount = responseOnline && (await responseOnline.json())?.length || null;
 
-    res.render('lfg', {
+    const data = {
         data: await response.json(),
         strings: globalization[lang],
         classes: classes[lang],
         lang,
-        online: onlineCount
-    })
+        online: onlineCount,
+        page
+    };
+
+    render(res, data, page, partialContent);
 }

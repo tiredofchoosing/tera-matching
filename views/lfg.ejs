@@ -1,5 +1,4 @@
-<% const page = 'lfg'; %>
-<%- include('layout_begin.ejs', { page }) %>
+<%- include('layout_begin.ejs') %>
 <%- include('header.ejs') %>
 <div id="main">
 	<div class="container">
@@ -16,38 +15,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
-				<div id="content">
-					<% let isEmpty = Object.values(data).length === 0; %>
-					<%- include('empty.ejs', { page, isEmpty }) %>
-					<div id="lfgTableRoot">
-						<% if (!isEmpty) { %>
-						<table id="lfgTable" class="lfg-table players-table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th><%= strings.lfgTableCharacterContent %></th>
-									<th><%= strings.lfgTablePlayerCountContent %></th>
-									<th><%= strings.lfgTableMessageContent %></th>
-								</tr>
-							</thead>
-							<tbody id="lfgTableBody">
-								<% let id = 1 %>
-								<% for (let key in data) { if (data[key].hasOwnProperty('messages')) { data[key].messages.forEach(msg => { %>
-								<tr id="<%= id %>" class="lfg-details player-details">
-									<td class="lfg-id"><%= id++ %></td>
-									<td class="lfg-leader-name"><%= msg.leaderName %></td>
-									<td class="lfg-player-count"><%= msg.playerCount %> / <%= msg.maxPlayers %></td>
-									<td class="lfg-message"><%= msg.message %></td>
-								</tr>
-								<% }); } } %>
-							</tbody>
-						</table>
-						<% } %>
-					</div>
-				</div>
+			<div id="content" class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
+				<%- include(page + '_content.ejs') %>
 			</div>
 		</div>
 	</div>
 </div>
-<%- include('layout_end.ejs', { page }) %>
+<%- include('layout_end.ejs') %>
