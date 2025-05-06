@@ -1,5 +1,5 @@
 <% for(let dungeonId in data) { %>
-<% let dungeon = data[dungeonId]; dungeonProps = info[dungeonId]; %>
+<% let dungeon = data[dungeonId]; dungeonProps = instances_info[dungeonId]; %>
 <% if (dungeonProps == undefined) { dungeonProps = { 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' }; if (page === 'dungeons') { dungeonProps.minItemLevel = 0; } } %>
 <details open class="dungeon-details" id="<%= dungeonId %>">
     <summary class="dungeon-summary">
@@ -22,7 +22,7 @@
     <% let count = 0; %>
     <% dungeon.parties.forEach(party => { %>
     <div class="delimiter"></div>
-    <details class="party-details">
+    <details class="party-details" data-party-id="<%= dungeonId + '_' + party.players[0].playerId %>">
         <summary class="party-summary row row-cols-auto">
             <% Object.keys(party.players).forEach(id => { %>
             <% let player = party.players[id]; %>

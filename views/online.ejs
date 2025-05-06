@@ -1,5 +1,4 @@
-<% const page = 'online'; %>
-<%- include('layout_begin.ejs', { page }) %>
+<%- include('layout_begin.ejs') %>
 <%- include('header.ejs') %>
 <div id="main">
 	<div class="container">
@@ -10,6 +9,7 @@
 						<div class="navigation-search">
 							<input type="text" id="searchPlayerName" placeholder="<%= strings.searchPlayerNamePlaceholder %>">
 							<input type="text" id="searchPlayerLevel" placeholder="<%= strings.searchLevelPlaceholder %>" title="<%= strings.searchLevelTitle %>">
+							<input type="text" id="searchPlayerGuild" placeholder="<%= strings.searchPlayerGuildPlaceholder %>">
 						</div>
 						<div class="navigation-select">
 							<select id="selectPlayerClass" title="<%= strings.selectPlayerClass %>">
@@ -27,6 +27,8 @@
 								<option value="classAsc"><%= strings.playerClassAscContent %></option>
 								<option value="nameDesc"><%= strings.playerNameDescContent %></option>
 								<option value="nameAsc"><%= strings.playerNameAscContent %></option>
+								<option value="guildDesc"><%= strings.playerGuildDescContent %></option>
+								<option value="guildAsc"><%= strings.playerGuildAscContent %></option>
 							</select>
 						</div>
 						<div class="navigation-button d-flex flex-sm-row">
@@ -43,39 +45,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
-				<div id="content">
-					<% let isEmpty = data.length === 0; %>
-					<%- include('empty.ejs', { page, isEmpty }) %>
-					<div id="playersTableRoot">
-						<% if (!isEmpty) { %>
-						<table class="players-table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th><%= strings.playersTableLevelContent %></th>
-									<th colspan="2"><%= strings.playersTableCharacterContent %></th>
-								</tr>
-							</thead>
-							<tbody id="playersTableBody">
-								<% let id = 1 %>
-								<% for(let player of data) { %>
-								<tr id="<%= id %>" class="player-details">
-									<td class="player-id"><%= id++ %></td>
-									<td class="player-lvl"><%= player.level %></td>
-									<td class="player-class" title="<%= classes[player.class] %>" data-player-class="<%= player.class %>">
-										<img src="/static/img/icons/class/<%= player.class %>.png" width="24px" height="24px" draggable="false">
-									</td>
-									<td class="player-name"><a title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank"><%= player.name %></a></td>
-								</tr>
-								<% } %>
-							</tbody>
-						</table>
-						<% } %>
-					</div>
-				</div>
+			<div id="content" class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
+				<%- include(page + '_content.ejs') %>
 			</div>
 		</div>
 	</div>
 </div>
-<%- include('layout_end.ejs', { page }) %>
+<%- include('layout_end.ejs') %>

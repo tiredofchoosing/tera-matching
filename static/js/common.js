@@ -1,8 +1,9 @@
 (function() {
 
-    const autoupdateTimer = 10000;
+    const autoupdateTimer = 5000;
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
+    const updateEvent = new CustomEvent('contentUpdated');
 
     let autoupdateTimerId = -1;
 
@@ -41,12 +42,51 @@
         }
     }
 
+    async function updatePageContent() {
+        try {
+            const path = window.location.pathname;
+            const partialPath = '/partial' + path;
+            const response = await fetch(partialPath);
+            if (!response.ok)
+                throw new Error('Update failed');
+
+            const html = await response.text();
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+
+            const updated = [];
+            tempDiv.childNodes.forEach(e => {
+                if (e.firstChild) {
+                    const mainContent = document.getElementById(e.id);
+                    mainContent.innerHTML = e.innerHTML;
+                    updated.push(mainContent);
+                }
+            });
+            
+            if (updated.length > 0)
+                return updated;
+
+            console.warn('Partial update failed: no items have been updated.');
+            return null;
+        }
+        catch (err) {
+            console.warn('Partial update failed:', err);
+            return null;
+        }
+    }
+
     function setAutoupdate(_, save = true, elem = null) {
         elem = elem ?? this;
         save && saveData(elem, elem.checked);
 
         if (elem.checked) {
-            autoupdateTimerId = setTimeout(() => location.reload(), autoupdateTimer);
+            autoupdateTimerId = setTimeout(async () => {
+                const updated = await updatePageContent();
+                if (updated && updated.length > 0) {
+                    updated.forEach(e => e.dispatchEvent(updateEvent));
+                }
+                setAutoupdate(null, false, elem);
+            }, autoupdateTimer);
         }
         else if (autoupdateTimerId !== -1) {
             clearTimeout(autoupdateTimerId);
@@ -80,6 +120,14 @@
         themeColor.content = navbarBgColors[styleLink.dataset.value];
     }
 
+    function customSplitFilter(splitChar) {
+        return this.toLowerCase().split(splitChar).map(s => s.trim()).filter(Boolean);
+    }
+
+    function customSomeFilter(filterFunc) {
+        return this.length === 0 || this.some(filterFunc);
+    }
+
     document.addEventListener("readystatechange", (event) => {
         if (event.target.readyState === "interactive") {
             document.getElementById('toggleLang').addEventListener('click', toggleLang);
@@ -103,4 +151,6 @@
     window.setAutoupdate = setAutoupdate;
     window.checkLevel = checkLevel;
 
+    window.String.prototype.customSplitFilter = customSplitFilter;
+    window.Array.prototype.customSomeFilter = customSomeFilter;
 })();

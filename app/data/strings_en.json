@@ -19,6 +19,7 @@
   "searchBattlegroundNamePlaceholder": "Battlefield name",
   "searchPlayerNamePlaceholder": "Character name",
   "searchLevelPlaceholder": "Level",
+  "searchPlayerGuildPlaceholder": "Guild",
   "searchLevelTitle": "Level [ 70 / 65+ / 69- / 20-40 ]",
   "searchDungeonItemLevelPlaceholder": "Item level",
   "searchDungeonItemLevelTitle": "Item level [ 463 / 453+ / 460- / 444-450 ]",
@@ -41,6 +42,8 @@
   "playerClassAscContent": "Class (asc)",
   "playerNameDescContent": "Name (desc)",
   "playerNameAscContent": "Name (asc)",
+  "playerGuildDescContent": "Guild (desc)",
+  "playerGuildAscContent": "Guild (asc)",
 
   "classSelectDefaultContent": "All classes",
 
@@ -49,9 +52,12 @@
   "autoupdateCheckLabel": "Reload the page automatically",
   "saveCollapsedLabel": "Save collapsed items",
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
+  "hideLevelLabel": "Hide required level",
+  "hideItemLevelLabel": "Hide required item level",
 
   "playersTableLevelContent": "Lvl",
   "playersTableCharacterContent": "Character",
+  "playersTableGuildContent": "Guild",
 
   "lfgTableCharacterContent": "Character",
   "lfgTablePlayerCountContent": "Party",
