@@ -1,8 +1,9 @@
 (function() {
 
-    const autoupdateTimer = 10000;
+    const autoupdateTimer = 5000;
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
+    const updateEvent = new CustomEvent('contentUpdated');
 
     let autoupdateTimerId = -1;
 
@@ -53,24 +54,24 @@
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = html;
 
-            let success = false;
+            const updated = [];
             tempDiv.childNodes.forEach(e => {
                 if (e.firstChild) {
                     const mainContent = document.getElementById(e.id);
                     mainContent.innerHTML = e.innerHTML;
-                    success = true;
+                    updated.push(mainContent);
                 }
             });
             
-            if (success)
-                return true;
+            if (updated.length > 0)
+                return updated;
 
             console.warn('Partial update failed: no items have been updated.');
-            return false;
+            return null;
         }
         catch (err) {
             console.warn('Partial update failed:', err);
-            return false;
+            return null;
         }
     }
 
@@ -80,9 +81,9 @@
 
         if (elem.checked) {
             autoupdateTimerId = setTimeout(async () => {
-                const success = await updatePageContent();
-                if (!success) {
-                    // location.reload();
+                const updated = await updatePageContent();
+                if (updated && updated.length > 0) {
+                    updated.forEach(e => e.dispatchEvent(updateEvent));
                 }
                 setAutoupdate(null, false, elem);
             }, autoupdateTimer);

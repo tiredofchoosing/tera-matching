@@ -1,6 +1,6 @@
 <div>
-	<% let isEmpty = data.length === 0; %>
-	<%- include('empty.ejs', { page, isEmpty }) %>
+	<% const isEmpty = data.length === 0; %>
+	<%- include('empty.ejs', { isEmpty }) %>
 	<div id="playersTableRoot">
 		<% if (!isEmpty) { %>
 		<table class="players-table">

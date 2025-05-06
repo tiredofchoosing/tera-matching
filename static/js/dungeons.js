@@ -8,7 +8,6 @@
     // to not handle 'toggle' on default open attribute
     window.addEventListener('load', () => disableToggle = false);
 
-    const dungeonList = document.getElementById('dungeonList');
     const searchNameInput = document.getElementById('searchDungeonName');
     const searchMinLevelInput = document.getElementById('searchDungeonLevel');
     const searchMinItemLevelInput = document.getElementById('searchDungeonItemLevel');
@@ -20,8 +19,8 @@
     const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
     const hideLevelCheckbox = document.getElementById('hideLevel');
     const hideItemLevelCheckbox = document.getElementById('hideItemLevel');
-    const emptyContainer = document.getElementById('empty');
     const body = document.body;
+    const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
     const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox];
 
@@ -32,12 +31,21 @@
     const pinchDelta = 30;
     const pinchSaveId = 'pinchDungeonList';
 
-    let dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
-    let dungeonsOld;
+    let dungeonList, emptyContainer, dungeons, dungeonsOld;
+    initVariables();
+
+    let collapsedElements = null;
     let pinchInitDist = 0;
     let pinchCurrentIndex = pinchFontSizes.indexOf(window.getComputedStyle(dungeonList).fontSize);
 
     // functions
+    function initVariables() {
+        dungeonList = document.getElementById('dungeonList');
+        emptyContainer = document.getElementById('empty');
+        dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
+        dungeonsOld = null;
+    }
+
     function filterDungeons(_, save = true) {
         save && searchInputs.forEach(e => saveData(e, e.value));
 
@@ -109,18 +117,20 @@
 
         if (saveCollapsedCheckbox.checked) {
             if (dungeons.every(d => !d.open)) {
-                saveData(saveCollapsedId, 'all');
+                collapsedElements = 'all';
             }
             else if (dungeons.every(d => d.open)) {
-                saveData(saveCollapsedId, null);
+                collapsedElements = null;
             }
             else {
-                let ids = dungeons.filter(d => !d.open).map(d => d.getAttribute('id')).join(',')
-                saveData(saveCollapsedId, ids);
+                let ids = dungeons.filter(d => !d.open).map(d => d.getAttribute('id')).join(',');
+                collapsedElements = ids;
             }
+            saveData(saveCollapsedId, collapsedElements);
             saveData(toggleDetailsButton, toggleDetailsButton.value);
         }
         else {
+            collapsedElements = null;
             saveData(saveCollapsedId, null);
             saveData(toggleDetailsButton, null);
         }
@@ -129,7 +139,7 @@
     function mergeSupportMatching(_, save = true) {
         save && saveData(mergeSupportCheckbox, mergeSupportCheckbox.checked);
 
-        if (dungeonsOld != undefined) {
+        if (dungeonsOld != null) {
             let tempArr = dungeons;
             dungeons = dungeonsOld;
             dungeonsOld = tempArr;
@@ -256,6 +266,39 @@
         }
     }
 
+    function refresh() {
+        initVariables();
+        loadState();
+
+        disableToggle = true;
+        dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
+        setTimeout(() => { disableToggle = false }, 0);
+    }
+
+    function loadState() {
+        if (!mergeSupportMatching(null, false)) {
+            sortDungeons(null, false);
+            filterDungeons(null, false);
+        }
+
+        dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
+
+        if (collapsedElements === 'all') {
+            dungeons.forEach(d => d.open = false);
+        }
+        else if (collapsedElements != null) {
+            collapsedElements.split(',').forEach(id => {
+                let d = document.getElementById(id);
+                if (d != null)
+                    d.open = false;
+            });
+            saveDetailsCollapsed(null, false);
+        }
+
+        hideLevel(null, false);
+        hideItemLevel(null, false);
+    }
+
     // register event handlers
     sortSelect.addEventListener('change', sortDungeons);
     searchNameInput.addEventListener('input', filterDungeons);
@@ -267,6 +310,7 @@
     mergeSupportCheckbox.addEventListener('change', mergeSupportMatching);
     hideLevelCheckbox.addEventListener('change', hideLevel);
     hideItemLevelCheckbox.addEventListener('change', hideItemLevel);
+    content.addEventListener('contentUpdated', refresh);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
@@ -343,34 +387,12 @@
     });
     sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
     toggleDetailsButton.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.value;
+
+    collapsedElements = loadData(saveCollapsedId);
+    pinchCurrentIndex = loadData(pinchSaveId, false) ?? pinchCurrentIndex;
+
+    loadState();
     updateCollapseIcon();
-
-    if (!mergeSupportMatching(null, false)) {
-        sortDungeons(null, false);
-        filterDungeons(null, false);
-    }
     setAutoupdate(null, false, autoupdateCheckbox);
-
-    let saveCollapsedVal = loadData(saveCollapsedId);
-    if (saveCollapsedVal === 'all') {
-        dungeons.forEach(d => d.open = false);
-    }
-    else if (saveCollapsedVal != null) {
-        saveCollapsedVal.split(',').forEach(id => {
-            let d = document.getElementById(id);
-            if (d != null)
-                d.open = false;
-        });
-        saveDetailsCollapsed(null, false);
-    }
-
-    let savedPinchIndex = loadData(pinchSaveId, false);
-    if (savedPinchIndex != null) {
-        pinchCurrentIndex =  savedPinchIndex;
-        dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
-    }
-
-    hideLevel(null, false);
-    hideItemLevel(null, false);
 
 })();
