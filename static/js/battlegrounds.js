@@ -26,8 +26,9 @@
     const pinchFontSizes = [ '13px', '14px', '16px' ];
     const pinchDelta = 30;
     const pinchSaveId = 'pinchDungeonList';
+    const openedParties = [];
 
-    let dungeonList, emptyContainer, dungeons;
+    let dungeonList, emptyContainer, dungeons, parties;
     initVariables();
 
     let collapsedElements = null;
@@ -39,6 +40,7 @@
         dungeonList = document.getElementById('dungeonList');
         emptyContainer = document.getElementById('empty');
         dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
+        parties = Array.from(dungeonList.getElementsByClassName('party-details'));
     }
 
     function filterDungeons(_, save = true) {
@@ -120,6 +122,17 @@
             saveDetailsCollapsed(null, false);
     }
 
+    function partyDetailsToggleHandler() {
+        const partyId = this.dataset.partyId;
+        const index = openedParties.indexOf(partyId);
+        if (this.open && index === -1) {
+            openedParties.push(partyId);
+        }
+        else if (!this.open && index !== -1) {
+            openedParties.splice(index, 1);
+        }
+    }
+
     function checkIfEmpty(any) {
         emptyContainer.hidden = any;
     }
@@ -150,6 +163,8 @@
         disableToggle = true;
         dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
         setTimeout(() => { disableToggle = false }, 0);
+
+        parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
     }
 
     function loadState() {
@@ -163,7 +178,7 @@
         }
         else if (collapsedElements != null) {
             collapsedElements.split(',').forEach(id => {
-                let d = document.getElementById(id);
+                const d = document.getElementById(id);
                 if (d != null)
                     d.open = false;
             });
@@ -171,6 +186,7 @@
         }
 
         hideLevel(null, false);
+        parties.forEach(p => p.open = openedParties.indexOf(p.dataset.partyId) !== -1);
     }
 
     // register event handlers
@@ -178,6 +194,7 @@
     searchNameInput.addEventListener('input', filterDungeons);
     searchMinLevelInput.addEventListener('input', filterDungeons);
     dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
+    parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     hideLevelCheckbox.addEventListener('change', hideLevel);

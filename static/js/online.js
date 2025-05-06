@@ -78,9 +78,9 @@
                 case 'nameAsc':
                     return nameA.localeCompare(nameB);
                 case 'classDesc':
-                	return classB - classA;
+                    return classB - classA;
                 case 'classAsc':
-                	return classA - classB;
+                    return classA - classB;
                 case 'timeDesc':
                     return idB - idA;
                 case 'timeAsc':
