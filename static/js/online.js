@@ -1,7 +1,5 @@
 (function() {
 
-    const playersTableRoot = document.getElementById('playersTableRoot');
-    const playersList = document.getElementById('playersTableBody');
     const searchNameInput = document.getElementById('searchPlayerName');
     const searchLevelInput = document.getElementById('searchPlayerLevel');
     const searchGuildInput = document.getElementById('searchPlayerGuild');
@@ -9,15 +7,25 @@
     const classSelect = document.getElementById('selectPlayerClass');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
-    const emptyContainer = document.getElementById('empty');
+    const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchLevelInput, searchGuildInput];
     const checkboxes = [autoupdateCheckbox];
+    const selects = [sortSelect, classSelect];
+
     const defaultSelectIndex = 1;
     const defaultClassSelectIndex = 0;
 
-    let players = playersList != null ? Array.from(playersList.getElementsByClassName('player-details')) : [];
+    let playersTableRoot, playersList, emptyContainer, players;
+    initVariables();
 
     // functions
+    function initVariables() {
+        playersTableRoot = document.getElementById('playersTableRoot');
+        playersList = document.getElementById('playersTableBody');
+        emptyContainer = document.getElementById('empty');
+        players = playersList != null ? Array.from(playersList.getElementsByClassName('player-details')) : [];
+    }
+
     function filterPlayers(_, save = true) {
         save && searchInputs.forEach(e => saveData(e, e.value));
         save && saveData(classSelect, classSelect.selectedIndex);
@@ -70,9 +78,9 @@
                 case 'nameAsc':
                     return nameA.localeCompare(nameB);
                 case 'classDesc':
-                	return classB - classA;
+                    return classB - classA;
                 case 'classAsc':
-                	return classA - classB;
+                    return classA - classB;
                 case 'timeDesc':
                     return idB - idA;
                 case 'timeAsc':
@@ -103,6 +111,16 @@
         playersTableRoot.hidden = playersList.children.length === 0;
     }
 
+    function refresh() {
+        initVariables();
+        loadState();
+    }
+
+    function loadState() {
+        filterPlayers(null, true);
+        // sortPlayers(null, true); // called in filter
+    }
+
     // register event handlers
     sortSelect.addEventListener('change', sortPlayers);
     classSelect.addEventListener('change', filterPlayers);
@@ -110,6 +128,7 @@
     searchLevelInput.addEventListener('input', filterPlayers);
     searchGuildInput.addEventListener('input', filterPlayers);
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
+    content.addEventListener('contentUpdated', refresh);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
@@ -124,15 +143,13 @@
     // restore session data
     searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
     checkboxes.forEach(e => {
-        let checked = loadData(e);
+        const checked = loadData(e);
         if (checked != null)
             e.checked = checked === 'true';
     });
-    sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
-    classSelect.selectedIndex = loadData(classSelect) ?? classSelect.selectedIndex;
+    selects.forEach(e => e.selectedIndex = loadData(e) ?? e.selectedIndex);
 
-    filterPlayers(null, true);
-    // sortPlayers(null, true); // called in filter
+    loadState();
     setAutoupdate(null, false, autoupdateCheckbox);
 
 })();
