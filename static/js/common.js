@@ -88,8 +88,8 @@
         return this.length === 0 || this.some(filterFunc)
     }
 
-    document.addEventListener("readystatechange", (event) => {
-        if (event.target.readyState === "interactive") {
+    document.addEventListener('readystatechange', (event) => {
+        if (event.target.readyState === 'interactive') {
             document.getElementById('toggleLang').addEventListener('click', toggleLang);
             document.getElementById('toggleStyle').addEventListener('click', toggleStyle);
         }
@@ -97,6 +97,43 @@
             let checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
             checkboxes.forEach(e => e.classList.remove('no-transition'));
         }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const offcanvasElement = document.getElementById('offcanvasRight');
+        const offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
+
+        const filter = document.getElementById('filterContent');
+        const filterContainer = document.getElementById('filterContainer');
+        const offcanvasFilterContainer = offcanvasElement.querySelector('#offcanvasFilterContainer');
+
+        function checkCloseOffcanvas() {
+            if (window.innerWidth >= 992 && offcanvasElement.classList.contains('show')) {
+                // disable closing animation on resize
+                offcanvasElement.classList.add('no-transition');
+                offcanvasInstance.hide();
+                setTimeout(() => offcanvasElement.classList.remove('no-transition'), 0);
+            }
+        }
+
+        function checkMoveFilter() {
+            const isMobile = window.innerWidth < 992;
+
+            if (isMobile && filter.parentNode !== offcanvasFilterContainer) {
+                offcanvasFilterContainer.appendChild(filter);
+            }
+            else if (!isMobile && filter.parentNode === offcanvasFilterContainer) {
+                filterContainer.appendChild(filter);
+            }
+        }
+
+        function resizeHandler() {
+            checkCloseOffcanvas();
+            checkMoveFilter();
+        }
+
+        checkMoveFilter();
+        window.addEventListener('resize', resizeHandler);
     });
 
     let style = loadData(styleLink, false);
@@ -114,18 +151,4 @@
     window.String.prototype.customSplitFilter = customSplitFilter;
     window.Array.prototype.customSomeFilter = customSomeFilter;
 
-/////////////////////////////////////////////////////////////////
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const offcanvasElement = document.getElementById('offcanvasRight');
-        const offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
-
-        function maybeCloseOffcanvas() {
-            if (window.innerWidth >= 992 && offcanvasElement.classList.contains('show')) {
-                offcanvasInstance.hide();
-            }
-        }
-
-        window.addEventListener('resize', maybeCloseOffcanvas);
-    });
 })();

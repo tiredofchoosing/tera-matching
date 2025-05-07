@@ -158,8 +158,11 @@ header {
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
 }
+.offcanvas-body .navigation-menu {
+    padding: 0;
+}
 
-#navigationMenu {
+#filterContent {
     position: sticky;
     top: 4.5rem;
 }

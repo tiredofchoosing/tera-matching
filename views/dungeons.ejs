@@ -4,8 +4,8 @@
 <div id="main">
 	<div class="container">
 		<div class="row justify-content-start">
-			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12">
-				<div class="d-lg-block collapse navbar-collapse" id="navigationMenu">
+			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12" id="filterContainer">
+				<div class="d-lg-block" id="filterContent">
 					<div class="navigation-menu col-12">
 						<div class="navigation-search">
 							<input type="text" id="searchDungeonName" placeholder="<%= strings.searchDungeonNamePlaceholder %>">
@@ -32,28 +32,13 @@
 								<img src="/static/img/icons/reset.svg" width="20px" height="20px" draggable="false">
 							</button>
 						</div>
-						<div class="navigation-checkbox">
-							<div class="form-check form-switch">
-								<input class="form-check-input no-transition" type="checkbox" id="autoupdateCheck" role="switch">
-								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateCheckLabel %></label>
-							</div>
-							<div class="form-check form-switch">
-								<input class="form-check-input no-transition" type="checkbox" id="saveCollapsed" role="switch">
-								<label class="form-check-label" for="saveCollapsed"><%= strings.saveCollapsedLabel %></label>
-							</div>
-							<div class="form-check form-switch">
-								<input class="form-check-input no-transition" type="checkbox" id="mergeSupportMatching" role="switch">
-								<label class="form-check-label" for="mergeSupportMatching"><%- strings.mergeSupportMatchingLabel.replace('$', dungeons_info['9999'].name) %></label>
-							</div>
-							<div class="form-check form-switch">
-								<input class="form-check-input no-transition" type="checkbox" id="hideLevel" role="switch">
-								<label class="form-check-label" for="hideLevel"><%= strings.hideLevelLabel %></label>
-							</div>
-							<div class="form-check form-switch">
-								<input class="form-check-input no-transition" type="checkbox" id="hideItemLevel" role="switch">
-								<label class="form-check-label" for="hideItemLevel"><%= strings.hideItemLevelLabel %></label>
-							</div>
-						</div>
+						<!-- <div class="navigation-checkbox">
+							<%- include('checkbox.ejs', { name: 'autoupdateCheck' }) %>
+							<%- include('checkbox.ejs', { name: 'saveCollapsed' }) %>
+							<%- include('checkbox.ejs', { name: 'mergeSupportMatching', label: strings.mergeSupportMatchingLabel.replace('$', dungeons_info['9999'].name) }) %>
+							<%- include('checkbox.ejs', { name: 'hideLevel' }) %>
+							<%- include('checkbox.ejs', { name: 'hideItemLevel' }) %>
+						</div> -->
 					</div>
 				</div>
 			</div>
