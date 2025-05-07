@@ -59,7 +59,7 @@
   "ModalTitleTheme": "Theme",
   "ModalTitleThemeSettings": "Settings",
   "ModalTitleCurrentList": "Current list",
-  "CheckBoxDisableBackground": "Disable background",
+  "settingsDisableBackgroundLabel": "Disable background",
   
   "playersTableLevelContent": "Lvl",
   "playersTableCharacterContent": "Character",

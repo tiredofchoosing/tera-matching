@@ -59,7 +59,7 @@
   "ModalTitleTheme": "Тема",
   "ModalTitleThemeSettings": "Настройки",
   "ModalTitleCurrentList": "Текущий список",
-  "CheckBoxDisableBackground": "Отключить фон",
+  "settingsDisableBackgroundLabel": "Отключить фон",
 
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж",
