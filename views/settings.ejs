@@ -16,7 +16,7 @@
                             <span class="lang-title"><%= strings.changeInterfaceLanguageTitle %></span>
                             <!-- <img src="/static/img/icons/global.svg" height="20px" width="20px" draggable="false"> -->
                         </button>
-                        <%- include('checkbox.ejs', { name: 'autoupdateCheck' }) %>
+                        <%- include('checkbox', { name: 'autoupdateCheck' }) %>
                     </div>
                 </div>
                 <div class="row modal-delimiter modal-sections">
@@ -26,14 +26,14 @@
                             <img height="26px" width="26px" draggable="false">
                             <%= strings.ModalSwitchInterfaceTheme %>
                         </button>
-                        <%- include('checkbox.ejs', { name: 'settingsDisableBackground' }) %>
+                        <%- include('checkbox', { name: 'settingsDisableBackground' }) %>
                     </div>
                 </div>
                 <% if (page === 'dungeons' || page === 'battlegrounds') { %>
                 <div class="row modal-sections">
                     <div class="col-4 modal-sections-title"><%= strings.ModalTitleCurrentList %></div>
                     <div class="col modal-sections-body">
-                        <%- include(page + '_settings.ejs') %>
+                        <%- include(page + '_settings') %>
                     </div>
                 </div>
                 <% } %>
