@@ -14,7 +14,6 @@
     const sortSelect = document.getElementById('selectDungeonSort');
     const toggleDetailsButton = document.getElementById('toggleDetails');
     const clearNavigationButton = document.getElementById('clearNavigation');
-    const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
     const hideLevelCheckbox = document.getElementById('hideLevel');
@@ -22,7 +21,7 @@
     const body = document.body;
     const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-    const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox];
+    const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox];
 
     const defaultSelectIndex = 2;
     const saveCollapsedId = 'dungeonDetailsCollapsed';
@@ -322,7 +321,6 @@
     searchMinItemLevelInput.addEventListener('input', filterDungeons);
     dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
     parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
-    autoupdateCheckbox.addEventListener('change', setAutoupdate);
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     mergeSupportCheckbox.addEventListener('change', mergeSupportMatching);
     hideLevelCheckbox.addEventListener('change', hideLevel);
@@ -332,7 +330,6 @@
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
-        // autoupdateCheckbox.checked = false;
         // saveCollapsedCheckbox.checked = false;
         // mergeSupportCheckbox.checked = false;
         // toggleDetailsButton.value = true;
@@ -410,6 +407,5 @@
 
     loadState();
     updateCollapseIcon();
-    setAutoupdate(null, false, autoupdateCheckbox);
 
 })();

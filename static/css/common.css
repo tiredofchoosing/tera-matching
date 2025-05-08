@@ -20,6 +20,10 @@ body {
     z-index: -1;
 }
 
+#background.disabled {
+    background: var(--background-disabled);
+}
+
 summary,
 select,
 .settings-checkbox input,

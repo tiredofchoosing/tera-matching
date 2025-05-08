@@ -13,13 +13,12 @@
     const sortSelect = document.getElementById('selectBattlegroundSort');
     const toggleDetailsButton = document.getElementById('toggleDetails');
     const clearNavigationButton = document.getElementById('clearNavigation');
-    const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const hideLevelCheckbox = document.getElementById('hideLevel');
     const body = document.body;
     const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchMinLevelInput];
-    const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, hideLevelCheckbox];
+    const checkboxes = [saveCollapsedCheckbox, hideLevelCheckbox];
 
     const defaultSelectIndex = 4;
     const saveCollapsedId = 'battlegroundDetailsCollapsed';
@@ -195,7 +194,6 @@
     searchMinLevelInput.addEventListener('input', filterDungeons);
     dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
     parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
-    autoupdateCheckbox.addEventListener('change', setAutoupdate);
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     hideLevelCheckbox.addEventListener('change', hideLevel);
     content.addEventListener('contentUpdated', refresh);
@@ -203,7 +201,6 @@
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
-        // autoupdateCheckbox.checked = false;
         // saveCollapsedCheckbox.checked = false;
         // toggleDetailsButton.value = true;
         
@@ -280,6 +277,5 @@
 
     loadState();
     updateCollapseIcon();
-    setAutoupdate(null, false, autoupdateCheckbox);
 
 })();

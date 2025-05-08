@@ -1,11 +1,7 @@
 (function() {
 
-    const autoupdateTimer = 5000;
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
-    const updateEvent = new CustomEvent('contentUpdated');
-
-    let autoupdateTimerId = -1;
 
     function saveData(element, value = null, forSession = true) {
         let storage = forSession ? window.sessionStorage : window.localStorage;
@@ -39,58 +35,6 @@
             return level >= min && level <= max;
         } else {
             return level === parseInt(searchVal);
-        }
-    }
-
-    async function updatePageContent() {
-        try {
-            const path = window.location.pathname;
-            const partialPath = '/partial' + path;
-            const response = await fetch(partialPath);
-            if (!response.ok)
-                throw new Error('Update failed');
-
-            const html = await response.text();
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = html;
-
-            const updated = [];
-            tempDiv.childNodes.forEach(e => {
-                if (e.firstChild) {
-                    const mainContent = document.getElementById(e.id);
-                    mainContent.innerHTML = e.innerHTML;
-                    updated.push(mainContent);
-                }
-            });
-            
-            if (updated.length > 0)
-                return updated;
-
-            console.warn('Partial update failed: no items have been updated.');
-            return null;
-        }
-        catch (err) {
-            console.warn('Partial update failed:', err);
-            return null;
-        }
-    }
-
-    function setAutoupdate(_, save = true, elem = null) {
-        elem = elem ?? this;
-        save && saveData(elem, elem.checked);
-
-        if (elem.checked) {
-            autoupdateTimerId = setTimeout(async () => {
-                const updated = await updatePageContent();
-                if (updated && updated.length > 0) {
-                    updated.forEach(e => e.dispatchEvent(updateEvent));
-                }
-                setAutoupdate(null, false, elem);
-            }, autoupdateTimer);
-        }
-        else if (autoupdateTimerId !== -1) {
-            clearTimeout(autoupdateTimerId);
-            autoupdateTimerId = -1;
         }
     }
 
@@ -185,7 +129,6 @@
 
     window.saveData = saveData;
     window.loadData = loadData;
-    window.setAutoupdate = setAutoupdate;
     window.checkLevel = checkLevel;
 
     window.String.prototype.customSplitFilter = customSplitFilter;
