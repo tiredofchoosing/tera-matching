@@ -22,8 +22,8 @@ body {
 
 summary,
 select,
-.navigation-checkbox input,
-.navigation-checkbox label {
+.settings-checkbox input,
+.settings-checkbox label {
     cursor: pointer;
 }
 
@@ -149,6 +149,23 @@ header {
     }
 }
 
+/* settings */
+.settings-checkbox {
+    color: var(--font-color-primary);
+}
+
+.settings-checkbox input {
+    margin-top: 0.075rem;
+}
+
+.settings-checkbox label {
+    display: block;
+}
+
+.settings-checkbox label b {
+    font-weight: 600;
+}
+
 /* search / sort / settings menu */
 .navigation-menu {
     margin-top: 1rem;
@@ -229,28 +246,6 @@ header {
 
 .navigation-button img {
     filter: var(--menu-btn-img-filter);
-}
-
-.navigation-checkbox {
-    margin-top: 1rem;
-    color: var(--font-color-primary);
-}
-
-.navigation-checkbox div {
-    margin-top: 0.5rem;
-}
-
-.navigation-checkbox input {
-    background-color: var(--menu-chk-bg-color);
-    margin-top: 0.075rem;
-}
-
-.navigation-checkbox label {
-    display: block;
-}
-
-.navigation-checkbox label b {
-    font-weight: 600;
 }
 
 .no-transition {

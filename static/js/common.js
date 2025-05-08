@@ -93,10 +93,10 @@
             document.getElementById('toggleLang').addEventListener('click', toggleLang);
             document.getElementById('toggleStyle').addEventListener('click', toggleStyle);
         }
-        else if (event.target.readyState === 'complete') {
-            let checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
-            checkboxes.forEach(e => e.classList.remove('no-transition'));
-        }
+        // else if (event.target.readyState === 'complete') {
+        //     let checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
+        //     checkboxes.forEach(e => e.classList.remove('no-transition'));
+        // }
     });
 
     document.addEventListener('DOMContentLoaded', function () {
