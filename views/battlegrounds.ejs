@@ -1,5 +1,4 @@
-<% const page = 'battlegrounds'; %>
-<%- include('layout_begin.ejs', { page }) %>
+<%- include('layout_begin.ejs') %>
 <%- include('header.ejs') %>
 <div id="main">
 	<div class="container">
@@ -33,12 +32,9 @@
 				</div>
 			</div>
 			<div id="content" class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
-				<%- include('empty.ejs', { page, isEmpty: Object.values(data).length === 0 }) %>
-				<div id="dungeonList" class="dungeon-list">
-					<%- include('dungeon_details.ejs', { page, info: battlegrounds_info }) %>
-				</div>
+				<%- include(page + '_content.ejs') %>
 			</div>
 		</div>
 	</div>
 </div>
-<%- include('layout_end.ejs', { page }) %>
+<%- include('layout_end.ejs') %>

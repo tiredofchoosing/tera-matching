@@ -5,9 +5,8 @@
                 <span>
                     <img class="nav-item header-logo" alt="" height="56px" width="56px" draggable="false">
                 </span>
-                <span>
-                    <% let onlineStr=(typeof online==='undefined' || online==null) ? '' : ': ' + online %>
-                    <a class="nav-item header-online header-page-link" href="/online"><%= strings.onlineHeaderLinkContent %><%= onlineStr %></a>
+                <span id="headerOnline">
+                    <%- include('header_online_content.ejs') %>
                 </span>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

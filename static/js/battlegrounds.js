@@ -8,7 +8,6 @@
     // to not handle 'toggle' on default open attribute
     window.addEventListener('load', () => disableToggle = false);
 
-    const dungeonList = document.getElementById('dungeonList');
     const searchNameInput = document.getElementById('searchBattlegroundName');
     const searchMinLevelInput = document.getElementById('searchBattlegroundLevel');
     const sortSelect = document.getElementById('selectBattlegroundSort');
@@ -17,8 +16,8 @@
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const hideLevelCheckbox = document.getElementById('hideLevel');
-    const emptyContainer = document.getElementById('empty');
     const body = document.body;
+    const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchMinLevelInput];
     const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, hideLevelCheckbox];
 
@@ -27,12 +26,23 @@
     const pinchFontSizes = [ '13px', '14px', '16px' ];
     const pinchDelta = 30;
     const pinchSaveId = 'pinchDungeonList';
+    const openedParties = [];
 
-    let dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
+    let dungeonList, emptyContainer, dungeons, parties;
+    initVariables();
+
+    let collapsedElements = null;
     let pinchInitDist = 0;
     let pinchCurrentIndex = pinchFontSizes.indexOf(window.getComputedStyle(dungeonList).fontSize);
 
     // functions
+    function initVariables() {
+        dungeonList = document.getElementById('dungeonList');
+        emptyContainer = document.getElementById('empty');
+        dungeons = Array.from(dungeonList.getElementsByClassName('dungeon-details'));
+        parties = Array.from(dungeonList.getElementsByClassName('party-details'));
+    }
+
     function filterDungeons(_, save = true) {
         save && searchInputs.forEach(e => saveData(e, e.value));
 
@@ -88,18 +98,20 @@
 
         if (saveCollapsedCheckbox.checked) {
             if (dungeons.every(d => !d.open)) {
-                saveData(saveCollapsedId, 'all');
+                collapsedElements = 'all';
             }
             else if (dungeons.every(d => d.open)) {
-                saveData(saveCollapsedId, null);
+                collapsedElements = null;
             }
             else {
-                const ids = dungeons.filter(d => !d.open).map(d => d.getAttribute('id')).join(',');
-                saveData(saveCollapsedId, ids);
+                let ids = dungeons.filter(d => !d.open).map(d => d.getAttribute('id')).join(',');
+                collapsedElements = ids;
             }
+            saveData(saveCollapsedId, collapsedElements);
             saveData(toggleDetailsButton, toggleDetailsButton.value);
         }
         else {
+            collapsedElements = null;
             saveData(saveCollapsedId, null);
             saveData(toggleDetailsButton, null);
         }
@@ -108,6 +120,17 @@
     function dungeonDetailsToggleHandler() {
         if (isToggleEnabled())
             saveDetailsCollapsed(null, false);
+    }
+
+    function partyDetailsToggleHandler() {
+        const partyId = this.dataset.partyId;
+        const index = openedParties.indexOf(partyId);
+        if (this.open && index === -1) {
+            openedParties.push(partyId);
+        }
+        else if (!this.open && index !== -1) {
+            openedParties.splice(index, 1);
+        }
     }
 
     function checkIfEmpty(any) {
@@ -133,14 +156,49 @@
         }
     }
 
+    function refresh() {
+        initVariables();
+        loadState();
+
+        disableToggle = true;
+        dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
+        setTimeout(() => { disableToggle = false }, 0);
+
+        parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
+    }
+
+    function loadState() {
+        sortDungeons(null, false);
+        filterDungeons(null, false);
+
+        dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
+
+        if (collapsedElements === 'all') {
+            dungeons.forEach(d => d.open = false);
+        }
+        else if (collapsedElements != null) {
+            collapsedElements.split(',').forEach(id => {
+                const d = document.getElementById(id);
+                if (d != null)
+                    d.open = false;
+            });
+            saveDetailsCollapsed(null, false);
+        }
+
+        hideLevel(null, false);
+        parties.forEach(p => p.open = openedParties.indexOf(p.dataset.partyId) !== -1);
+    }
+
     // register event handlers
     sortSelect.addEventListener('change', sortDungeons);
     searchNameInput.addEventListener('input', filterDungeons);
     searchMinLevelInput.addEventListener('input', filterDungeons);
     dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
+    parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     hideLevelCheckbox.addEventListener('change', hideLevel);
+    content.addEventListener('contentUpdated', refresh);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
@@ -216,30 +274,12 @@
     });
     sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
     toggleDetailsButton.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.value;
+
+    collapsedElements = loadData(saveCollapsedId);
+    pinchCurrentIndex = loadData(pinchSaveId, false) ?? pinchCurrentIndex;
+
+    loadState();
     updateCollapseIcon();
-    sortDungeons(null, false);
-    filterDungeons(null, false);
     setAutoupdate(null, false, autoupdateCheckbox);
-
-    const saveCollapsedVal = loadData(saveCollapsedId);
-    if (saveCollapsedVal === 'all') {
-        dungeons.forEach(d => d.open = false);
-    }
-    else if (saveCollapsedVal != null) {
-        saveCollapsedVal.split(',').forEach(id => {
-            const d = document.getElementById(id);
-            if (d != null)
-                d.open = false;
-        });
-        saveDetailsCollapsed(null, false);
-    }
-
-    const savedPinchIndex = loadData(pinchSaveId, false);
-    if (savedPinchIndex != null) {
-        pinchCurrentIndex =  savedPinchIndex;
-        dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
-    }
-
-    hideLevel(null, false);
 
 })();
