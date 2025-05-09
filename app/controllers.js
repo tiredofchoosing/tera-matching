@@ -101,18 +101,27 @@ export async function lfg(req, res, partialContent = false) {
     const page = 'lfg';
 
     const response = await fetch(config.get(page));
-    if (!response)
+    const responseOnline = await fetch(config.get('online'));
+    if (!response || !responseOnline)
         return res.type('txt').send('error');
 
-    const responseOnline = await fetch(config.get('online'));
-    let onlineCount = responseOnline && (await responseOnline.json())?.length || null;
+    const respJson = await response.json();
+    const respOnlineJson = await responseOnline.json();
+    for (const key in respJson) {
+        if (respJson[key].hasOwnProperty('messages')) {
+            respJson[key].messages.forEach(msg => {
+                const player = respOnlineJson.find(p => p.playerId === msg.leaderId);
+                msg.player = player;
+            });
+        }
+    }
 
     const data = {
-        data: await response.json(),
+        data: respJson,
         strings: globalization[lang],
         classes: classes[lang],
         lang,
-        online: onlineCount,
+        online: respOnlineJson?.length || null,
         page
     };
 
