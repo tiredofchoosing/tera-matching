@@ -33,7 +33,8 @@ export async function dungeons(req, res) {
         classes: classes[lang],
         roles,
         lang,
-        online: onlineCount
+        online: onlineCount,
+        teralogs_url: teralogs_provider
     })
 }
 
@@ -54,7 +55,8 @@ export async function battlegrounds(req, res) {
         classes: classes[lang],
         roles,
         lang,
-        online: onlineCount
+        online: onlineCount,
+        teralogs_url: teralogs_provider
     })
 }
 
