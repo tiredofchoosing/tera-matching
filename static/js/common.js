@@ -30,12 +30,12 @@
     function checkLevel(level, searchVal) {
         if (searchVal === '') {
             return true;
-        } else if (searchVal.endsWith('+')) {
+        } else if (searchVal.match(/^[\d]+[\s]*[\+]$/g)) {
             return level >= parseInt(searchVal);
-        } else if (searchVal.endsWith('-')) {
+        } else if (searchVal.match(/^[\d]+[\s]*[\-]$/g)) {
             return level <= parseInt(searchVal);
-        } else if (searchVal.includes('-')) {
-            let [min, max] = searchVal.split('-').map(Number);
+        } else if (searchVal.match(/^[\d]+[\s]*[\-][\s]*[\d]+$/g)) {
+            const [min, max] = searchVal.split('-').map(Number);
             return level >= min && level <= max;
         } else {
             return level === parseInt(searchVal);
