@@ -2,14 +2,17 @@
   "dungeonsPageTitle": "Подбор подземелий",
   "battlegroundsPageTitle": "Подбор арен",
   "onlinePageTitle": "Список игроков",
+  "lfgPageTitle": "Поиск группы",
 
   "dungeonsHeaderLinkContent": "Подземелья",
   "battlegroundsHeaderLinkContent": "Арены",
   "onlineHeaderLinkContent": "Онлайн",
+  "lfgHeaderLinkContent": "Поиск группы",
   "toggleStyleTitle": "Сменить тему оформления",
 
   "emptyMatchingContent": "Список подбора пуст",
   "emptyPlayersContent": "Список игроков пуст",
+  "emptyLfgContent": "Список поиска группы пуст",
 
   "searchDungeonNamePlaceholder": "Название подземелья",
   "searchBattlegroundNamePlaceholder": "Название арены",
@@ -19,6 +22,7 @@
   "searchLevelTitle": "Уровень [ 70 / 65+ / 69- / 20-40 ]",
   "searchDungeonItemLevelPlaceholder": "Уровень снаряжения",
   "searchDungeonItemLevelTitle": "Уровень снаряжения [ 463 / 453+ / 460- / 444-450 ]",
+  "searchLfgMessagePlaceholder": "Сообщение группы",
 
   "selectSort": "Сортировка",
   "selectPlayerClass": "Фильтр по классу персонажа",
@@ -67,5 +71,11 @@
 
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж",
-  "playersTableGuildContent": "Гильдия"
+  "playersTableGuildContent": "Гильдия",
+
+  "lfgLastUpdateContent": "Последнее обновление данных: ",
+  "lfgLastUpdateHourAgo": " ч. назад",
+  "lfgLastUpdateMinuteAgo": " мин. назад",
+  "lfgLastUpdateLessThanMinuteAgo": "меньше минуты назад",
+  "lfgWarningContent": "*Страница может содержать устаревшие или некорректные данные."
 }

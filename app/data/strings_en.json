@@ -2,14 +2,17 @@
   "dungeonsPageTitle": "Dungeon matching",
   "battlegroundsPageTitle": "Battlefield matching",
   "onlinePageTitle": "Player list",
+  "lfgPageTitle": "LFG list",
 
   "dungeonsHeaderLinkContent": "Dungeons",
   "battlegroundsHeaderLinkContent": "Battlefields",
   "onlineHeaderLinkContent": "Online",
+  "lfgHeaderLinkContent": "LFG",
   "toggleStyleTitle": "Switch page theme",
 
   "emptyMatchingContent": "Matching queue is empty",
   "emptyPlayersContent": "Player list is empty",
+  "emptyLfgContent": "LFG list is empty",
 
   "searchDungeonNamePlaceholder": "Dungeon name",
   "searchBattlegroundNamePlaceholder": "Battlefield name",
@@ -19,6 +22,7 @@
   "searchLevelTitle": "Level [ 70 / 65+ / 69- / 20-40 ]",
   "searchDungeonItemLevelPlaceholder": "Item level",
   "searchDungeonItemLevelTitle": "Item level [ 463 / 453+ / 460- / 444-450 ]",
+  "searchLfgMessagePlaceholder": "LFG message",
 
   "selectSort": "Sorting",
   "selectPlayerClass": "Filter by character class",
@@ -67,5 +71,11 @@
 
   "playersTableLevelContent": "Lvl",
   "playersTableCharacterContent": "Character",
-  "playersTableGuildContent": "Guild"
+  "playersTableGuildContent": "Guild",
+
+  "lfgLastUpdateContent": "Last data update: ",
+  "lfgLastUpdateHourAgo": " h ago",
+  "lfgLastUpdateMinuteAgo": " min ago",
+  "lfgLastUpdateLessThanMinuteAgo": "less than 1 min ago",
+  "lfgWarningContent": "*This page may contain outdated or incorrect data."
 }
