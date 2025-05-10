@@ -6,7 +6,6 @@
   "dungeonsHeaderLinkContent": "Подземелья",
   "battlegroundsHeaderLinkContent": "Арены",
   "onlineHeaderLinkContent": "Онлайн",
-  "toggleLangTitle": "Switch language",
   "toggleStyleTitle": "Сменить тему оформления",
 
   "emptyMatchingContent": "Список подбора пуст",
@@ -46,7 +45,21 @@
 
   "clearNavigationTitle": "Сбросить все",
   "toggleDetailsTitle": "Свернуть / развернуть список",
-  "autoupdateCheckLabel": "Автоматически обновлять страницу",
+
+  "menuTitle": "Меню",
+  "settingsTitle": "Настройки",
+  "settingsGeneralTitle": "Общее",
+  "settingsThemeTitle": "Тема",
+  "settingsCurrentListTitle": "Текущий список",
+
+  "changeLanguageTitle": "Язык: ",
+  "changeLanguageContent": "switch to <b>English</b>",
+  "changeThemeTitle": "Сменить тему",
+  "darkGreenThemeLabel": "Темно-зеленая",
+  "classicLightThemeLabel": "Классическая светлая",
+
+  "autoupdateCheckLabel": "Автоматически обновлять список",
+  "disableBackgroundLabel": "Отключить фоновое изображение",
   "saveCollapsedLabel": "Сохранять свернутые элементы",
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
   "hideLevelLabel": "Скрыть требуемый уровень",
@@ -55,5 +68,4 @@
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж",
   "playersTableGuildContent": "Гильдия"
-
 }

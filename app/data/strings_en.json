@@ -6,7 +6,6 @@
   "dungeonsHeaderLinkContent": "Dungeons",
   "battlegroundsHeaderLinkContent": "Battlefields",
   "onlineHeaderLinkContent": "Online",
-  "toggleLangTitle": "Сменить язык",
   "toggleStyleTitle": "Switch page theme",
 
   "emptyMatchingContent": "Matching queue is empty",
@@ -46,7 +45,21 @@
 
   "clearNavigationTitle": "Reset all",
   "toggleDetailsTitle": "Collapse / expand list",
-  "autoupdateCheckLabel": "Reload the page automatically",
+
+  "menuTitle": "Menu",
+  "settingsTitle": "Settings",
+  "settingsGeneralTitle": "General",
+  "settingsThemeTitle": "Theme",
+  "settingsCurrentListTitle": "Current list",
+
+  "changeLanguageTitle": "Language: ",
+  "changeLanguageContent": "переключить на <b>Русский</b>",
+  "changeThemeTitle": "Change theme",
+  "darkGreenThemeLabel": "Dark green",
+  "classicLightThemeLabel": "Classic light",
+
+  "autoupdateCheckLabel": "Refresh the list automatically",
+  "disableBackgroundLabel": "Disable background image",
   "saveCollapsedLabel": "Save collapsed items",
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
   "hideLevelLabel": "Hide required level",

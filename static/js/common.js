@@ -1,11 +1,11 @@
 (function() {
 
-    const autoupdateTimer = 5000;
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
-    const updateEvent = new CustomEvent('contentUpdated');
-
-    let autoupdateTimerId = -1;
+    const navbarBgColors = {
+        'dark-green': 'rgb(23, 24, 32)',
+        'classic-light': 'rgb(131, 145, 187)'
+    };
 
     function saveData(element, value = null, forSession = true) {
         let storage = forSession ? window.sessionStorage : window.localStorage;
@@ -42,82 +42,12 @@
         }
     }
 
-    async function updatePageContent() {
-        try {
-            const path = window.location.pathname;
-            const partialPath = '/partial' + path;
-            const response = await fetch(partialPath);
-            if (!response.ok)
-                throw new Error('Update failed');
+    function updateTheme(save = true) {
+        const theme = styleLink.dataset.value;
+        save && saveData(styleLink, theme, false);
 
-            const html = await response.text();
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = html;
-
-            const updated = [];
-            tempDiv.childNodes.forEach(e => {
-                if (e.firstChild) {
-                    const mainContent = document.getElementById(e.id);
-                    mainContent.innerHTML = e.innerHTML;
-                    updated.push(mainContent);
-                }
-            });
-            
-            if (updated.length > 0)
-                return updated;
-
-            console.warn('Partial update failed: no items have been updated.');
-            return null;
-        }
-        catch (err) {
-            console.warn('Partial update failed:', err);
-            return null;
-        }
-    }
-
-    function setAutoupdate(_, save = true, elem = null) {
-        elem = elem ?? this;
-        save && saveData(elem, elem.checked);
-
-        if (elem.checked) {
-            autoupdateTimerId = setTimeout(async () => {
-                const updated = await updatePageContent();
-                if (updated && updated.length > 0) {
-                    updated.forEach(e => e.dispatchEvent(updateEvent));
-                }
-                setAutoupdate(null, false, elem);
-            }, autoupdateTimer);
-        }
-        else if (autoupdateTimerId !== -1) {
-            clearTimeout(autoupdateTimerId);
-            autoupdateTimerId = -1;
-        }
-    }
-
-    function toggleLang() {
-        let lang = this.value === 'ru' ? 'en' : 'ru';
-        let date = new Date();
-        date.setFullYear(date.getFullYear() + 1);
-        document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
-        location.reload();
-    }
-
-    function toggleStyle() {
-        let styles = [ 'dark-green', 'classic-light' ];
-        let newStyle = styles[(styles.indexOf(styleLink.dataset.value) - 1 + styles.length) % styles.length];
-        styleLink.href = `/static/css/${newStyle}.css`
-        styleLink.dataset.value = newStyle;
-        saveData(styleLink, newStyle, false);
-
-        updateThemeColor();
-    }
-
-    function updateThemeColor() {
-        let navbarBgColors = {
-            'dark-green': 'rgb(23, 24, 32)',
-            'classic-light': 'rgb(131, 145, 187)'
-        };
-        themeColor.content = navbarBgColors[styleLink.dataset.value];
+        styleLink.href = `/static/css/${theme}.css`
+        themeColor.content = navbarBgColors[theme];
     }
 
     function customSplitFilter(splitChar) {
@@ -128,29 +58,25 @@
         return this.length === 0 || this.some(filterFunc);
     }
 
-    document.addEventListener("readystatechange", (event) => {
-        if (event.target.readyState === "interactive") {
-            document.getElementById('toggleLang').addEventListener('click', toggleLang);
-            document.getElementById('toggleStyle').addEventListener('click', toggleStyle);
-        }
-        else if (event.target.readyState === 'complete') {
-            let checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
-            checkboxes.forEach(e => e.classList.remove('no-transition'));
-        }
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeSelectForm = document.getElementById('themeSelect');
+        themeSelectForm.elements['themeOption'].value = styleLink.dataset.value;
+
+        themeSelectForm.addEventListener('change', function () {
+            const theme = this.elements['themeOption'].value;
+            styleLink.dataset.value = theme;
+            updateTheme();
+        });
     });
 
-    let style = loadData(styleLink, false);
-    if (style != null) {
-        styleLink.href = `/static/css/${style}.css`;
-        styleLink.dataset.value = style;
-    }
-    updateThemeColor();
+    styleLink.dataset.value = loadData(styleLink, false) ?? styleLink.dataset.value;
+    updateTheme(false);
 
     window.saveData = saveData;
     window.loadData = loadData;
-    window.setAutoupdate = setAutoupdate;
     window.checkLevel = checkLevel;
 
     window.String.prototype.customSplitFilter = customSplitFilter;
     window.Array.prototype.customSomeFilter = customSomeFilter;
+
 })();
