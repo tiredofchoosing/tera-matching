@@ -2,6 +2,10 @@
 
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
+    const navbarBgColors = {
+        'dark-green': 'rgb(23, 24, 32)',
+        'classic-light': 'rgb(131, 145, 187)'
+    };
 
     function saveData(element, value = null, forSession = true) {
         let storage = forSession ? window.sessionStorage : window.localStorage;
@@ -38,30 +42,12 @@
         }
     }
 
-    function toggleLang() {
-        let lang = this.value === 'ru' ? 'en' : 'ru';
-        let date = new Date();
-        date.setFullYear(date.getFullYear() + 1);
-        document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
-        location.reload();
-    }
+    function updateTheme(save = true) {
+        const theme = styleLink.dataset.value;
+        save && saveData(styleLink, theme, false);
 
-    function toggleStyle() {
-        let styles = [ 'dark-green', 'classic-light' ];
-        let newStyle = styles[(styles.indexOf(styleLink.dataset.value) - 1 + styles.length) % styles.length];
-        styleLink.href = `/static/css/${newStyle}.css`
-        styleLink.dataset.value = newStyle;
-        saveData(styleLink, newStyle, false);
-
-        updateThemeColor();
-    }
-
-    function updateThemeColor() {
-        let navbarBgColors = {
-            'dark-green': 'rgb(23, 24, 32)',
-            'classic-light': 'rgb(131, 145, 187)'
-        };
-        themeColor.content = navbarBgColors[styleLink.dataset.value];
+        styleLink.href = `/static/css/${theme}.css`
+        themeColor.content = navbarBgColors[theme];
     }
 
     function customSplitFilter(splitChar) {
@@ -72,60 +58,19 @@
         return this.length === 0 || this.some(filterFunc);
     }
 
-    document.addEventListener('readystatechange', (event) => {
-        if (event.target.readyState === 'interactive') {
-            document.getElementById('toggleLang').addEventListener('click', toggleLang);
-            document.getElementById('toggleStyle').addEventListener('click', toggleStyle);
-        }
-        // else if (event.target.readyState === 'complete') {
-        //     let checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
-        //     checkboxes.forEach(e => e.classList.remove('no-transition'));
-        // }
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeSelectForm = document.getElementById('themeSelect');
+        themeSelectForm.elements['themeOption'].value = styleLink.dataset.value;
+
+        themeSelectForm.addEventListener('change', function () {
+            const theme = this.elements['themeOption'].value;
+            styleLink.dataset.value = theme;
+            updateTheme();
+        });
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const offcanvasElement = document.getElementById('offcanvasRight');
-        const offcanvasInstance = bootstrap.Offcanvas.getOrCreateInstance(offcanvasElement);
-
-        const filter = document.getElementById('filterContent');
-        const filterContainer = document.getElementById('filterContainer');
-        const offcanvasFilterContainer = offcanvasElement.querySelector('#offcanvasFilterContainer');
-
-        function checkCloseOffcanvas() {
-            if (window.innerWidth >= 992 && offcanvasElement.classList.contains('show')) {
-                // disable closing animation on resize
-                offcanvasElement.classList.add('no-transition');
-                offcanvasInstance.hide();
-                setTimeout(() => offcanvasElement.classList.remove('no-transition'), 0);
-            }
-        }
-
-        function checkMoveFilter() {
-            const isMobile = window.innerWidth < 992;
-
-            if (isMobile && filter.parentNode !== offcanvasFilterContainer) {
-                offcanvasFilterContainer.appendChild(filter);
-            }
-            else if (!isMobile && filter.parentNode === offcanvasFilterContainer) {
-                filterContainer.appendChild(filter);
-            }
-        }
-
-        function resizeHandler() {
-            checkCloseOffcanvas();
-            checkMoveFilter();
-        }
-
-        checkMoveFilter();
-        window.addEventListener('resize', resizeHandler);
-    });
-
-    let style = loadData(styleLink, false);
-    if (style != null) {
-        styleLink.href = `/static/css/${style}.css`;
-        styleLink.dataset.value = style;
-    }
-    updateThemeColor();
+    styleLink.dataset.value = loadData(styleLink, false) ?? styleLink.dataset.value;
+    updateTheme(false);
 
     window.saveData = saveData;
     window.loadData = loadData;

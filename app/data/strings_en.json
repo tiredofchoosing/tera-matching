@@ -53,8 +53,10 @@
   "settingsCurrentListTitle": "Current list",
 
   "changeLanguageTitle": "Language: ",
-  "changeLanguageContent": "сменить на <b>Русский</b>",
+  "changeLanguageContent": "переключить на <b>Русский</b>",
   "changeThemeTitle": "Change theme",
+  "darkGreenThemeLabel": "Dark green",
+  "classicLightThemeLabel": "Classic light",
 
   "autoupdateCheckLabel": "Refresh the list automatically",
   "disableBackgroundLabel": "Disable background image",

@@ -53,8 +53,10 @@
   "settingsCurrentListTitle": "Текущий список",
 
   "changeLanguageTitle": "Язык: ",
-  "changeLanguageContent": "change to <b>English</b>",
+  "changeLanguageContent": "switch to <b>English</b>",
   "changeThemeTitle": "Сменить тему",
+  "darkGreenThemeLabel": "Темно-зеленая",
+  "classicLightThemeLabel": "Классическая светлая",
 
   "autoupdateCheckLabel": "Автоматически обновлять список",
   "disableBackgroundLabel": "Отключить фоновое изображение",

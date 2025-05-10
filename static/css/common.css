@@ -173,6 +173,31 @@ header {
     font-weight: 600;
 }
 
+.theme-radio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.25rem;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+    border-radius: 4px;
+    font-size: small;
+}
+
+.theme-radio-container img {
+    width: 100px;
+    height: auto;
+}
+
+.theme-radio-option {
+    display: none;
+}
+
+.theme-radio-option:checked+.theme-radio-container {
+    border-color: #007bff;
+}
+
 /* search / sort / settings menu */
 .navigation-menu {
     margin-top: 1rem;
