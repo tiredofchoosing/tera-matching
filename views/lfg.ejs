@@ -1,5 +1,4 @@
-<%- include('layout_begin.ejs') %>
-<%- include('header.ejs') %>
+<%- include('layout_begin') %>
 <div id="main">
 	<div class="container">
 		<div class="row justify-content-start">
@@ -22,19 +21,13 @@
 								<img src="/static/img/icons/reset.svg" width="20px" height="20px" draggable="false">
 							</button>
 						</div>
-						<div class="navigation-checkbox">
-							<div class="form-check form-switch">
-								<input class="form-check-input no-transition" type="checkbox" id="autoupdateCheck" role="switch">
-								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateCheckLabel %></label>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 			<div id="content" class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
-				<%- include(page + '_content.ejs') %>
+				<%- include(page + '_content') %>
 			</div>
 		</div>
 	</div>
 </div>
-<%- include('layout_end.ejs') %>
+<%- include('layout_end') %>

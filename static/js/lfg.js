@@ -1,12 +1,10 @@
 (function() {
 
     const searchMessageInput = document.getElementById('searchLfgMessage');
-    const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const sortSelect = document.getElementById('selectLfgSort');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const content = document.getElementById('content');
     const searchInputs = [searchMessageInput];
-    const checkboxes = [autoupdateCheckbox];
 
     const defaultSelectIndex = 0;
 
@@ -93,7 +91,6 @@
     }
 
     // register event handlers
-    autoupdateCheckbox.addEventListener('change', setAutoupdate);
     sortSelect.addEventListener('change', sortLfgs);
     searchMessageInput.addEventListener('input', filterLfgs);
     lfgs.forEach(l => l.addEventListener('toggle', lfgDetailsToggleHandler));
@@ -109,14 +106,8 @@
 
     // restore session data
     searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
-    checkboxes.forEach(e => {
-        const checked = loadData(e);
-        if (checked != null)
-            e.checked = checked === 'true';
-    });
     sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
 
     loadState();
-    setAutoupdate(null, false, autoupdateCheckbox);
 
 })();
