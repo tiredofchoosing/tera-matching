@@ -53,7 +53,8 @@
                         </span>
                         <span class="player-name">
                             <img class="party-player-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
-                            <a class="party-content-player-name" title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>"><%= player.name %></a>
+                            <a class="party-content-player-name" title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank"><%= player.name %></a>
+                            
                             <% if (player.isLeaderRequired) { %>
                             <img class="party-player-icon party-leader" width="20px" height="20px">
                             <% } %>
