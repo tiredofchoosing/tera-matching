@@ -11,6 +11,8 @@ body {
     line-height: normal;
     font-weight: 500;
     padding-right: 0 !important; /* fix bootstrap modal shit */
+    padding-right: 0 !important;
+    overflow: unset !important;
 }
 
 #background {
@@ -36,6 +38,8 @@ select,
 header {
     background-color: var(--navbar-bg-color);
     box-shadow: 0 0.125rem 0.25rem var(--header-shadow-color);
+    padding-right: 0 !important;  /* fix bootstrap modal shit */
+    margin-right: 0 !important;
 }
 
 .header {
