@@ -59,9 +59,6 @@
   "playersTableCharacterContent": "Character",
   "playersTableGuildContent": "Guild",
 
-  "lfgTableCharacterContent": "Character",
-  "lfgTablePlayerCountContent": "Party",
-  "lfgTableMessageContent": "Message",
   "lfgLastUpdateContent": "Last data update: ",
   "lfgLastUpdateHourAgo": " h ago",
   "lfgLastUpdateMinuteAgo": " min ago",
