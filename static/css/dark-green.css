@@ -46,11 +46,15 @@
     --party-leader-content: url(/static/img/icons/leader.svg);
 
     --players-tbl-th-bg-color: rgba(23, 24, 32, 0.9);
-    --players-tbl-tr1-bg-color: rgba(23, 24, 32, 0.7);
-    --players-tbl-tr2-bg-color: rgba(66, 80, 63, 0.7);
+    /* --players-tbl-tr1-bg-color: rgba(23, 24, 32, 0.7); */
+    --players-tbl-tr1-bg-color: rgba(23, 24, 32, 0.6);
+    /* --players-tbl-tr2-bg-color: rgba(66, 80, 63, 0.7); */
+    --players-tbl-tr2-bg-color: rgba(0, 0, 0, 0.4);
     --players-tbl-guild-background-color: rgb(23, 24, 32);
 
-    --lang-title: rgb(105, 150, 93);
-    
+    --accent-text-color: rgb(105, 150, 93);
+    --accent-background-color: rgba(63, 88, 56, 0.445);
+
+    --players-tbl-delimiter: rgba(0, 0, 0, 0.2);
     --empty-bg-color: rgba(23, 24, 32, 0.7);
 }
