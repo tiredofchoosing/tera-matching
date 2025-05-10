@@ -93,5 +93,6 @@ export async function online(req, res, partialContent = false) {
         teralogs_url: teralogs_provider,
         page
     };
+
     render(res, data, page, partialContent);
 }
