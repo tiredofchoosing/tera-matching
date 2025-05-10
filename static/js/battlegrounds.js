@@ -93,7 +93,7 @@
     }
 
     function saveDetailsCollapsed(_, save = true) {
-        save && saveData(saveCollapsedCheckbox, saveCollapsedCheckbox.checked);
+        save && saveData(saveCollapsedCheckbox, saveCollapsedCheckbox.checked, false);
 
         if (saveCollapsedCheckbox.checked) {
             if (dungeons.every(d => !d.open)) {
@@ -142,7 +142,7 @@
     }
 
     function hideLevel(_, save = true) {
-        save && saveData(hideLevelCheckbox, hideLevelCheckbox.checked);
+        save && saveData(hideLevelCheckbox, hideLevelCheckbox.checked, false);
 
         hideLevelLabels(hideLevelCheckbox.checked);
     }
@@ -201,12 +201,6 @@
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
-        // saveCollapsedCheckbox.checked = false;
-        // toggleDetailsButton.value = true;
-        
-        // disableToggle = true;
-        // dungeons.filter(d => !d.open).forEach(d => d.open = true);
-        // disableToggle = false;
 
         sortDungeons(null, true);
         filterDungeons(null, true);
@@ -265,7 +259,7 @@
     // restore session data
     searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
     checkboxes.forEach(e => {
-        const checked = loadData(e);
+        const checked = loadData(e, false);
         if (checked != null)
             e.checked = checked === 'true';
     });

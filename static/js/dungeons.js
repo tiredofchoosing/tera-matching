@@ -114,7 +114,7 @@
     }
 
     function saveDetailsCollapsed(_, save = true) {
-        save && saveData(saveCollapsedCheckbox, saveCollapsedCheckbox.checked);
+        save && saveData(saveCollapsedCheckbox, saveCollapsedCheckbox.checked, false);
 
         if (saveCollapsedCheckbox.checked) {
             if (dungeons.every(d => !d.open)) {
@@ -138,7 +138,7 @@
     }
 
     function mergeSupportMatching(_, save = true) {
-        save && saveData(mergeSupportCheckbox, mergeSupportCheckbox.checked);
+        save && saveData(mergeSupportCheckbox, mergeSupportCheckbox.checked, false);
 
         if (dungeonsOld != null) {
             let tempArr = dungeons;
@@ -259,13 +259,13 @@
     }
 
     function hideLevel(_, save = true) {
-        save && saveData(hideLevelCheckbox, hideLevelCheckbox.checked);
+        save && saveData(hideLevelCheckbox, hideLevelCheckbox.checked, false);
 
         hideLevelLabels(hideLevelCheckbox.checked);
     }
 
     function hideItemLevel(_, save = true) {
-        save && saveData(hideItemLevelCheckbox, hideItemLevelCheckbox.checked);
+        save && saveData(hideItemLevelCheckbox, hideItemLevelCheckbox.checked, false);
 
         hideLevelLabels(hideItemLevelCheckbox.checked, true);
     }
@@ -330,13 +330,6 @@
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
-        // saveCollapsedCheckbox.checked = false;
-        // mergeSupportCheckbox.checked = false;
-        // toggleDetailsButton.value = true;
-        
-        // disableToggle = true;
-        // dungeons.filter(d => !d.open).forEach(d => d.open = true);
-        // disableToggle = false;
 
         sortDungeons(null, true);
         filterDungeons(null, true);
@@ -392,10 +385,10 @@
         }
     });
 
-    // restore session data
+    // restore saved data
     searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
     checkboxes.forEach(e => {
-        let checked = loadData(e);
+        const checked = loadData(e, false);
         if (checked != null)
             e.checked = checked === 'true';
     });

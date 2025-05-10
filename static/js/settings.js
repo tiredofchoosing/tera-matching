@@ -46,7 +46,7 @@
 
     function setAutoupdate(_, save = true) {
         const elem = autoupdateCheckbox;
-        save && saveData(elem, elem.checked);
+        save && saveData(elem, elem.checked, false);
 
         if (elem.checked) {
             autoupdateTimerId = setTimeout(async () => {
@@ -65,7 +65,7 @@
 
     function disableBackground(_, save = true) {
         const elem = disableBackgroundCheckbox;
-        save && saveData(elem, elem.checked);
+        save && saveData(elem, elem.checked, false);
 
         const className = 'disabled';
         if (elem.checked && !background.classList.contains(className)) {
@@ -82,7 +82,7 @@
 
     // restore session data
     checkboxes.forEach(e => {
-        const checked = loadData(e);
+        const checked = loadData(e, false);
         if (checked != null)
             e.checked = checked === 'true';
     });
