@@ -6,6 +6,22 @@
 			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12">
 				<div class="d-lg-block collapse navbar-collapse" id="navigationMenu">
 					<div class="navigation-menu col-12">
+						<div class="navigation-search">
+							<input type="text" id="searchLfgMessage" placeholder="<%= strings.searchLfgMessagePlaceholder %>">
+						</div>
+						<div class="navigation-select">
+							<select id="selectLfgSort" title="<%= strings.selectSort %>">
+								<option value="playersDesc" selected="selected"><%= strings.playersDescContent %></option>
+								<option value="playersAsc"><%= strings.playersAscContent %></option>
+								<option value="nameDesc"><%= strings.playerNameDescContent %></option>
+								<option value="nameAsc"><%= strings.playerNameAscContent %></option>
+							</select>
+						</div>
+						<div class="navigation-button d-flex flex-sm-row">
+							<button id="clearNavigation" class="flex-fill text-center ml-lg-2" title="<%= strings.clearNavigationTitle %>">
+								<img src="/static/img/icons/reset.svg" width="20px" height="20px" draggable="false">
+							</button>
+						</div>
 						<div class="navigation-checkbox">
 							<div class="form-check form-switch">
 								<input class="form-check-input no-transition" type="checkbox" id="autoupdateCheck" role="switch">

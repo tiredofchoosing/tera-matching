@@ -195,11 +195,13 @@ header {
 .content {
     margin-top: 1rem;
 }
-.dungeon-list {
+.dungeon-list,
+.lfg-list {
     font-size: medium;
 }
 @media (max-width: 550px) {
-    .dungeon-list {
+    .dungeon-list,
+    .lfg-list {
         font-size: 14px;
     }
 }
@@ -430,6 +432,7 @@ details {
 .lfg-details {
     padding: 0.5em;
     background: var(--dungeon-dtl-bg);
+    margin-bottom: 0.5em;
 }
 
 .lfg-message {
@@ -443,10 +446,6 @@ details {
     background-color: var(--dungeon-lvl-bg-color);
     min-width: 2ch;
     text-align: center;
-}
-
-.lfg-entry {
-    margin-bottom: 0.5em;
 }
 
 .lfg-summary {
