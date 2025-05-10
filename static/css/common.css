@@ -595,11 +595,15 @@ details {
     padding: 0 1.5rem;
 }
 
-.but-close {
+.close-button {
     background: none;
     border: none;
     padding: 0;
     opacity: 50%;
+}
+
+.close-button img {
+    content: var(--close-button-content);
 }
 
 .modal-delimiter {

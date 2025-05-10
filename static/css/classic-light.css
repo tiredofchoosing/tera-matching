@@ -18,6 +18,8 @@
     --header-shadow-color: rgba(0, 0, 0, 0.075);
     --header-style-btn-content: url(/static/img/icons/theme_moon.svg);
 
+    --close-button-content: url(/static/img/icons/close-d.svg);
+
     --menu-bg-color: rgb(139, 152, 193);
     --menu-child-bg-color: rgb(224, 227, 235);
     --menu-input-plh-color: rgb(125, 133, 151);

@@ -19,6 +19,8 @@
     --header-shadow-color: rgba(0, 0, 0, 0.075);
     --header-style-btn-content: url(/static/img/icons/theme_sun.svg);
 
+    --close-button-content: url(/static/img/icons/close-l.svg);
+
     --menu-bg-color: rgba(23, 24, 32, 0.7);
     --menu-child-bg-color: rgb(46, 52, 65, 0.75);
     --menu-input-plh-color: rgba(255, 255, 255, 0.6);
