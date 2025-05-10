@@ -108,6 +108,23 @@ header {
     height: 3.5rem;
 }
 
+@media (max-width: 991px) {
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    #headerOnline {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+}
+
+
 .header-button img,
 .navbar-toggler-icon {
     filter: var(--header-btn-img-filter);
