@@ -31,32 +31,25 @@
 		<div class="lfg-entry">
 			<details class="lfg-details flex-wrap justify-content-between align-items-center">
 				<summary class="d-flex flex-wrap justify-content-between align-items-center w-100">
-					<span class="lfg-message">
-						<%= msg.message %>
-					</span>
+					<span class="lfg-message"><%= msg.message %></span>
 					<span class="lfg-player-count ms-auto text-end">
 						<%= msg.playerCount %> / <%= msg.maxPlayers %>
 					</span>
 					<div class="lfg-summary">
-						<span class="lfg-leader-name">
-							<%= msg.leaderName %>
-						</span>
+						<span class="lfg-leader-name"><%= msg.leaderName %></span>
 					</div>
 				</summary>
+				<% if (msg.player != null) { %>
 				<div class="party-detailed-content detailed-player">
-					<span class="player-level">
-						<%= msg.player.level %>
-					</span>
-					<span class="player-itemLevel">
-						<%= Math.trunc(msg.player.itemLevel) %>
-					</span>
-					<img class="party-player-class-icon" src="/static/img/icons/class/<%= msg.player.class %>.png"
-						title="<%= classes[msg.player.class] %>" draggable="false">
+					<span class="player-level"><%= msg.player.level %></span>
+					<span class="player-itemLevel"><%= Math.trunc(msg.player.itemLevel) %></span>
+					<img class="party-player-class-icon" src="/static/img/icons/class/<%= msg.player.class %>.png" title="<%= classes[msg.player.class] %>" draggable="false">
 					<%= msg.leaderName %>
 					<% if (msg.player.guildName != null) { %>
 					<span class="party-content-guild-text"><%= msg.player.guildName %></span>
 					<% } %>
 				</div>
+				<% } %>
 			</details>
 		</div>
 		<% }); } } %>
