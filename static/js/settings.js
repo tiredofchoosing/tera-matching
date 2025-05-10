@@ -1,7 +1,7 @@
 (function() {
 
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
-    const disableBackgroundCheckbox = document.getElementById('settingsDisableBackground');
+    const disableBackgroundCheckbox = document.getElementById('disableBackground');
     const background = document.getElementById('background');
 
     const checkboxes = [autoupdateCheckbox, disableBackgroundCheckbox];

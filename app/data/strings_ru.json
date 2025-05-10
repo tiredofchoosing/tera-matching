@@ -6,7 +6,6 @@
   "dungeonsHeaderLinkContent": "Подземелья",
   "battlegroundsHeaderLinkContent": "Арены",
   "onlineHeaderLinkContent": "Онлайн",
-  "toggleLangTitle": "Switch language",
   "toggleStyleTitle": "Сменить тему оформления",
 
   "emptyMatchingContent": "Список подбора пуст",
@@ -46,24 +45,25 @@
 
   "clearNavigationTitle": "Сбросить все",
   "toggleDetailsTitle": "Свернуть / развернуть список",
-  "autoupdateCheckLabel": "Автоматически обновлять страницу",
+
+  "menuTitle": "Меню",
+  "settingsTitle": "Настройки",
+  "settingsGeneralTitle": "Общее",
+  "settingsThemeTitle": "Тема",
+  "settingsCurrentListTitle": "Текущий список",
+
+  "changeLanguageTitle": "Язык: ",
+  "changeLanguageContent": "change to <b>English</b>",
+  "changeThemeTitle": "Сменить тему",
+
+  "autoupdateCheckLabel": "Автоматически обновлять список",
+  "disableBackgroundLabel": "Отключить фоновое изображение",
   "saveCollapsedLabel": "Сохранять свернутые элементы",
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
   "hideLevelLabel": "Скрыть требуемый уровень",
   "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
 
-  "settingsTitle": "Настройки",
-  "changeInterfaceLanguage": "сменить язык на",
-  "changeInterfaceLanguageTitle": "english",
-  "ModalSwitchInterfaceTheme": "Сменить тему",
-  "ModalTitleGeneral": "Общее",
-  "ModalTitleTheme": "Тема",
-  "ModalTitleThemeSettings": "Настройки",
-  "ModalTitleCurrentList": "Текущий список",
-  "settingsDisableBackgroundLabel": "Отключить фон",
-
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж",
   "playersTableGuildContent": "Гильдия"
-
 }

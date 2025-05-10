@@ -9,29 +9,31 @@
             </div>
             <div class="modal-body">
                 <div class="row modal-delimiter modal-sections">
-                    <div class="col-4 modal-sections-title"><%= strings.ModalTitleGeneral %></div>
+                    <div class="col-4 modal-sections-title"><%= strings.settingsGeneralTitle %></div>
                     <div class="col modal-sections-body">
-                        <button class="modal-button" id="toggleLang" value="<%= lang %>" title="<%= strings.toggleLangTitle %>">
-                            <%= strings.changeInterfaceLanguage %>
-                            <span class="lang-title"><%= strings.changeInterfaceLanguageTitle %></span>
-                            <!-- <img src="/static/img/icons/global.svg" height="20px" width="20px" draggable="false"> -->
-                        </button>
+                        <div>
+                            <%= strings.changeLanguageTitle %>
+                            <button class="modal-button" id="toggleLang" value="<%= lang %>" title="<%= strings.toggleLangTitle %>">
+                                <span class="lang-title"><%- strings.changeLanguageContent %></span>
+                                <!-- <img src="/static/img/icons/global.svg" height="20px" width="20px" draggable="false"> -->
+                            </button>
+                        </div>
                         <%- include('checkbox', { name: 'autoupdateCheck' }) %>
                     </div>
                 </div>
                 <div class="row modal-delimiter modal-sections">
-                    <div class="col-4 modal-sections-title"><%= strings.ModalTitleTheme %></div>
+                    <div class="col-4 modal-sections-title"><%= strings.settingsThemeTitle %></div>
                     <div class="col modal-sections-body">
                         <button class="modal-button" id="toggleStyle" title="<%= strings.toggleStyleTitle %>">
                             <img height="26px" width="26px" draggable="false">
-                            <%= strings.ModalSwitchInterfaceTheme %>
+                            <%= strings.changeThemeTitle %>
                         </button>
-                        <%- include('checkbox', { name: 'settingsDisableBackground' }) %>
+                        <%- include('checkbox', { name: 'disableBackground' }) %>
                     </div>
                 </div>
                 <% if (page === 'dungeons' || page === 'battlegrounds') { %>
                 <div class="row modal-sections">
-                    <div class="col-4 modal-sections-title"><%= strings.ModalTitleCurrentList %></div>
+                    <div class="col-4 modal-sections-title"><%= strings.settingsCurrentListTitle %></div>
                     <div class="col modal-sections-body">
                         <%- include(page + '_settings') %>
                     </div>

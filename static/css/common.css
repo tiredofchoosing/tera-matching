@@ -116,6 +116,7 @@ header {
 .dropdown-menu {
     background-color: var(--navbar-bg-color);
     color: var(--font-color-primary);
+    padding: 0;
 }
 
 .dropdown-item {
@@ -165,6 +166,7 @@ header {
 
 .settings-checkbox label {
     display: block;
+    font-weight: 400;
 }
 
 .settings-checkbox label b {
@@ -545,6 +547,10 @@ details {
 }
 
 /* modal */
+.modal {
+    padding-right: 0 !important; /* fix bootstrap modal shit */
+}
+
 .modal-dialog {
     margin-top: 4em;
     /* border: 1px solid rgba(255, 255, 255, 0.212); */
@@ -553,6 +559,15 @@ details {
 
 .modal-header {
     border-bottom: 2px solid var(--header-ul-border-color);
+    padding: 1rem 1.5rem;
+}
+
+.modal-header h5 {
+    margin: 0;
+}
+
+.modal-body {
+    padding: 0 1.5rem;
 }
 
 .but-close {
@@ -567,11 +582,15 @@ details {
 }
 
 .modal-sections {
-    padding: 0.7em 0 1.5em;
+    padding: 1rem 0;
 }
 
 .modal-sections-title {
     opacity: 60%;
+}
+
+.modal-sections-body > * {
+    margin-bottom: 10px;
 }
 
 .modal-button {
@@ -581,16 +600,8 @@ details {
     color: var(--font-color-primary);
 }
 
-.modal-sections-body .form-check {
-    margin-top: 10px;
-}
-
 .lang-title {
     color: var(--lang-title);
-}
-
-.form-check-label {
-    font-weight: 400;
 }
 
 @media (max-width: 992px) {
