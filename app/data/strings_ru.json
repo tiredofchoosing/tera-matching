@@ -61,5 +61,10 @@
 
   "lfgTableCharacterContent": "Персонаж",
   "lfgTablePlayerCountContent": "Группа",
-  "lfgTableMessageContent": "Сообщение"
+  "lfgTableMessageContent": "Сообщение",
+  "lfgLastUpdateContent": "Последнее обновление данных: ",
+  "lfgLastUpdateHourAgo": " ч. назад",
+  "lfgLastUpdateMinuteAgo": " мин. назад",
+  "lfgLastUpdateLessThanMinuteAgo": "меньше минуты назад",
+  "lfgWarningContent": "*Страница может содержать устаревшие или некорректные данные."
 }

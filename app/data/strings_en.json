@@ -61,5 +61,10 @@
 
   "lfgTableCharacterContent": "Character",
   "lfgTablePlayerCountContent": "Party",
-  "lfgTableMessageContent": "Message"
+  "lfgTableMessageContent": "Message",
+  "lfgLastUpdateContent": "Last data update: ",
+  "lfgLastUpdateHourAgo": " h ago",
+  "lfgLastUpdateMinuteAgo": " min ago",
+  "lfgLastUpdateLessThanMinuteAgo": "less than 1 min ago",
+  "lfgWarningContent": "*This page may contain outdated or incorrect data."
 }

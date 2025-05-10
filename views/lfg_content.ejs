@@ -1,37 +1,33 @@
-<% const isEmpty = Object.values(data).length === 0; %>
+<%
+	const isEmpty = Object.values(data).length === 0;
+	const lastUp = data[0]?.lastUpdate || null;
+	let time = '';
 
-<% 
-  let lastUp = data[0]?.lastUpdate || null;
-  let time = '';
+	if (lastUp) {
+		let lastUpDate = new Date(lastUp);
+		let timeNow = new Date();
+		let diffMs = timeNow - lastUpDate;
+		let diffSec = Math.floor(diffMs / 1000);
+		let minutes = Math.floor(diffSec / 60);
+		let hours = Math.floor(minutes / 60);
+		let seconds = diffSec % 60;
 
-  if (lastUp) {
-    let lastUpDate = new Date(lastUp);
-    let timeNow = new Date();
-    let diffMs = timeNow - lastUpDate;
-    let diffSec = Math.floor(diffMs / 1000);
-    let minutes = Math.floor(diffSec / 60);
-    let hours = Math.floor(minutes / 60);
-    let seconds = diffSec % 60;
-
-    if (hours >= 1) {
-      time = `${hours} ${hours === 1 ? 'час' : (hours < 5 ? 'часа' : 'часов')} назад`;
-    } else if (minutes >= 1) {
-      time = `${minutes} ${minutes === 1 ? 'минута' : (minutes < 5 ? 'минуты' : 'минут')} назад`;
-    } else {
-      time = `меньше минуты назад`;
-    }
-	
-  }
+		if (hours >= 1) {
+			time = hours + strings.lfgLastUpdateHourAgo;
+		} else if (minutes >= 1) {
+			time = minutes + strings.lfgLastUpdateMinuteAgo;
+		} else {
+			time = strings.lfgLastUpdateLessThanMinuteAgo;
+		}
+	}
 %>
-
 <div id="lfgTableRoot">
 	<% if (!isEmpty) { %>
 	<div id="lfgTable" class="lfg-table">
 		<% let id = 1 %>
 		<% for (let key in data) {
-      if (data[key].hasOwnProperty('messages')) {
-        data[key].messages.forEach(msg => { %>
-
+			if (data[key].hasOwnProperty('messages')) {
+				data[key].messages.forEach(msg => { %>
 		<div class="lfg-entry">
 			<details class="lfg-details flex-wrap justify-content-between align-items-center">
 				<summary class="d-flex flex-wrap justify-content-between align-items-center w-100">
@@ -47,7 +43,6 @@
 						</span>
 					</div>
 				</summary>
-
 				<div class="party-detailed-content detailed-player">
 					<span class="player-level">
 						<%= msg.player.level %>
@@ -64,25 +59,19 @@
 				</div>
 			</details>
 		</div>
-
 		<% }); } } %>
 	</div>
 	<% } %>
 </div>
-
 <div class="last-update">
 	<% if (data['0'] != null) { %>
-	<div class="out_update-time">
-		<span class="update-text">
-			Последнее обновление данных:
-		</span>
-		<span class="update-time">
-			<%= time %>
-		</span>
+	<div class="out-update-time">
+		<span class="update-text"><%= strings.lfgLastUpdateContent %></span>
+		<span class="update-time"><%= time %></span>
 	</div>
 	<% } %>
 	<div class="warning-update">
-		*Страница может содержать устаревшие или некорректные данные.
+		<span><%= strings.lfgWarningContent %></span>
 	</div>
 </div>
 </div>
