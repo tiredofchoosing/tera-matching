@@ -15,7 +15,6 @@
     const rankSelect = document.getElementById('selectDungeonRank');
     const toggleDetailsButton = document.getElementById('toggleDetails');
     const clearNavigationButton = document.getElementById('clearNavigation');
-    const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
     const hideLevelCheckbox = document.getElementById('hideLevel');
@@ -23,7 +22,7 @@
     const body = document.body;
     const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-    const checkboxes = [autoupdateCheckbox, saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox];
+    const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox];
     const selects = [sortSelect, rankSelect];
 
     const defaultSelectIndex = 2;
@@ -128,7 +127,7 @@
     }
 
     function saveDetailsCollapsed(_, save = true) {
-        save && saveData(saveCollapsedCheckbox, saveCollapsedCheckbox.checked);
+        save && saveData(saveCollapsedCheckbox, saveCollapsedCheckbox.checked, false);
 
         if (saveCollapsedCheckbox.checked) {
             if (dungeons.every(d => !d.open)) {
@@ -152,7 +151,7 @@
     }
 
     function mergeSupportMatching(_, save = true) {
-        save && saveData(mergeSupportCheckbox, mergeSupportCheckbox.checked);
+        save && saveData(mergeSupportCheckbox, mergeSupportCheckbox.checked, false);
 
         if (dungeonsOld != null) {
             let tempArr = dungeons;
@@ -273,13 +272,13 @@
     }
 
     function hideLevel(_, save = true) {
-        save && saveData(hideLevelCheckbox, hideLevelCheckbox.checked);
+        save && saveData(hideLevelCheckbox, hideLevelCheckbox.checked, false);
 
         hideLevelLabels(hideLevelCheckbox.checked);
     }
 
     function hideItemLevel(_, save = true) {
-        save && saveData(hideItemLevelCheckbox, hideItemLevelCheckbox.checked);
+        save && saveData(hideItemLevelCheckbox, hideItemLevelCheckbox.checked, false);
 
         hideLevelLabels(hideItemLevelCheckbox.checked, true);
     }
@@ -336,7 +335,6 @@
     rankSelect.addEventListener('change', filterDungeons);
     dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
     parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
-    autoupdateCheckbox.addEventListener('change', setAutoupdate);
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     mergeSupportCheckbox.addEventListener('change', mergeSupportMatching);
     hideLevelCheckbox.addEventListener('change', hideLevel);
@@ -347,14 +345,6 @@
         searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
         rankSelect.selectedIndex = defaultRankSelectIndex;
-        // autoupdateCheckbox.checked = false;
-        // saveCollapsedCheckbox.checked = false;
-        // mergeSupportCheckbox.checked = false;
-        // toggleDetailsButton.value = true;
-        
-        // disableToggle = true;
-        // dungeons.filter(d => !d.open).forEach(d => d.open = true);
-        // disableToggle = false;
 
         sortDungeons(null, true);
         filterDungeons(null, true);
@@ -410,10 +400,10 @@
         }
     });
 
-    // restore session data
+    // restore saved data
     searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
     checkboxes.forEach(e => {
-        let checked = loadData(e);
+        const checked = loadData(e, false);
         if (checked != null)
             e.checked = checked === 'true';
     });
@@ -425,6 +415,5 @@
 
     loadState();
     updateCollapseIcon();
-    setAutoupdate(null, false, autoupdateCheckbox);
 
 })();

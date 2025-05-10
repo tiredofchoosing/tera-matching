@@ -43,6 +43,7 @@ export async function dungeons(req, res, partialContent = false) {
         roles,
         lang,
         online: onlineCount,
+        teralogs_url: teralogs_provider,
         page
     };
 
@@ -68,6 +69,7 @@ export async function battlegrounds(req, res, partialContent = false) {
         roles,
         lang,
         online: onlineCount,
+        teralogs_url: teralogs_provider,
         page
     };
 
@@ -93,5 +95,38 @@ export async function online(req, res, partialContent = false) {
         teralogs_url: teralogs_provider,
         page
     };
+
+    render(res, data, page, partialContent);
+}
+
+export async function lfg(req, res, partialContent = false) {
+    const lang = changeLang(req);
+    const page = 'lfg';
+
+    const response = await fetch(config.get(page));
+    const responseOnline = await fetch(config.get('online'));
+    if (!response || !responseOnline)
+        return res.type('txt').send('error');
+
+    const respJson = await response.json();
+    const respOnlineJson = await responseOnline.json();
+    for (const key in respJson) {
+        if (respJson[key].hasOwnProperty('messages')) {
+            respJson[key].messages.forEach(msg => {
+                const player = respOnlineJson.find(p => p.playerId === msg.leaderId);
+                msg.player = player;
+            });
+        }
+    }
+
+    const data = {
+        data: respJson,
+        strings: globalization[lang],
+        classes: classes[lang],
+        lang,
+        online: respOnlineJson?.length || null,
+        page
+    };
+
     render(res, data, page, partialContent);
 }

@@ -6,10 +6,8 @@
     const sortSelect = document.getElementById('selectPlayerSort');
     const classSelect = document.getElementById('selectPlayerClass');
     const clearNavigationButton = document.getElementById('clearNavigation');
-    const autoupdateCheckbox = document.getElementById('autoupdateCheck');
     const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchLevelInput, searchGuildInput];
-    const checkboxes = [autoupdateCheckbox];
     const selects = [sortSelect, classSelect];
 
     const defaultSelectIndex = 1;
@@ -127,14 +125,12 @@
     searchNameInput.addEventListener('input', filterPlayers);
     searchLevelInput.addEventListener('input', filterPlayers);
     searchGuildInput.addEventListener('input', filterPlayers);
-    autoupdateCheckbox.addEventListener('change', setAutoupdate);
     content.addEventListener('contentUpdated', refresh);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
         classSelect.selectedIndex = defaultClassSelectIndex;
-        // autoupdateCheckbox.checked = false;
 
         filterPlayers(null, true);
         // sortPlayers(null, true); // called in filter
@@ -142,14 +138,8 @@
 
     // restore session data
     searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
-    checkboxes.forEach(e => {
-        const checked = loadData(e);
-        if (checked != null)
-            e.checked = checked === 'true';
-    });
     selects.forEach(e => e.selectedIndex = loadData(e) ?? e.selectedIndex);
 
     loadState();
-    setAutoupdate(null, false, autoupdateCheckbox);
 
 })();

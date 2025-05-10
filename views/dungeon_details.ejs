@@ -42,14 +42,33 @@
             <% Object.keys(party.players).forEach(id => { %>
             <% let player = party.players[id]; %>
             <div class="party-player-detailed-content<%= player.level >= 65 ? ' level65' : ''%>">
-                <span class="party-player-info">
-                    <%= player.level %>
-                    <img class="party-player-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
-                    <%= player.name %>
-                </span>
-                <% if (player.isLeaderRequired) { %>
-                <img class="party-player-icon party-leader" width="20px" height="20px">
-                <% } %>
+                <div class="party-player-info">
+
+                    <div class="party-content-scroll">
+                        <!-- <div class="fixed-content"> -->
+                        <span class="player-level">
+                            <!-- <span class="span-content-description">lvl</span> -->
+                            <%= player.level %>
+                        </span>
+                        <span class="player-itemLevel">
+                            <!-- <span class="span-content-description">gear</span> -->
+                            <%= Math.trunc(player.itemLevel) %>
+                        </span>
+                        <span class="player-name">
+                            <img class="party-player-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
+                            <a class="party-content-player-name" title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank"><%= player.name %></a>
+                            
+                            <% if (player.isLeaderRequired) { %>
+                            <img class="party-player-icon party-leader" width="20px" height="20px">
+                            <% } %>
+                        </span>
+                        <!-- </div> -->
+                        <!-- <div class="party-content-scroll"> -->
+                        <% if (player.guildName != null) { %>
+                        <span class="party-content-guild-text"><%= player.guildName %></span>
+                        <% } %>
+                    </div>
+                </div>
             </div>
             <% }); %>
         </div>
