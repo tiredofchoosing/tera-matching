@@ -43,6 +43,7 @@ export async function dungeons(req, res, partialContent = false) {
         roles,
         lang,
         online: onlineCount,
+        teralogs_url: teralogs_provider,
         page
     };
 
@@ -68,6 +69,7 @@ export async function battlegrounds(req, res, partialContent = false) {
         roles,
         lang,
         online: onlineCount,
+        teralogs_url: teralogs_provider,
         page
     };
 
@@ -93,6 +95,7 @@ export async function online(req, res, partialContent = false) {
         teralogs_url: teralogs_provider,
         page
     };
+
     render(res, data, page, partialContent);
 }
 

@@ -6,31 +6,49 @@
                     <img class="nav-item header-logo" alt="" height="56px" width="56px" draggable="false">
                 </span>
                 <span id="headerOnline">
-                    <%- include('header_online_content.ejs') %>
+                    <%- include('header_online_content') %>
                 </span>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav,#navigationMenu" aria-controls="navbarNav navigationMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="header-buttons-mobile d-flex d-lg-none ms-auto">
+                    <a class="nav-link header-button" href="#" role="button" aria-expanded="false" title="<%= strings.settingsTitle %>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <img src="/static/img/icons/settings-l.svg" height="26px" width="26px" draggable="false">
+                    </a>
+                </div>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse flex-md-row justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li>
-                            <a class="nav-item header-page-link" href="/dungeons"><%= strings.dungeonsHeaderLinkContent %></a>
-                        </li>
-                        <li>
-                            <a class="nav-item header-page-link" href="/battlegrounds"><%= strings.battlegroundsHeaderLinkContent %></a>
-                        </li>
-                        <li>
-                            <a class="nav-item header-page-link" href="/lfg"><%= strings.lfgHeaderLinkContent %></a>
-                        </li>
-                    </ul>
-                    <div class="header-buttons d-flex ml-md-auto">
-                        <button class="nav-item header-button" id="toggleLang" value="<%= lang %>" title="<%= strings.toggleLangTitle %>">
-                            <img src="/static/img/icons/global.svg" height="26px" width="26px" draggable="false">
+                <ul class="navbar-nav ml-auto d-none d-lg-flex">
+                    <li>
+                        <a class="nav-item header-page-link" href="/dungeons"><%= strings.dungeonsHeaderLinkContent %></a>
+                    </li>
+                    <li>
+                        <a class="nav-item header-page-link" href="/battlegrounds"><%= strings.battlegroundsHeaderLinkContent %></a>
+                    </li>
+                    <li>
+                        <a class="nav-item header-page-link" href="/lfg"><%= strings.lfgHeaderLinkContent %></a>
+                    </li>
+                </ul>
+                <div class="header-buttons d-none d-lg-flex">
+                    <a class="nav-link header-button" href="#" role="button" aria-expanded="false" title="<%= strings.settingsTitle %>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <img src="/static/img/icons/settings-l.svg" height="26px" width="26px" draggable="false">
+                    </a>
+                </div>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel"><%= strings.menuTitle %></h5>
+                        <button class="navbar-toggler" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+                            <span class="navbar-toggler-icon"></span>
                         </button>
-                        <button class="nav-item header-button" id="toggleStyle" title="<%= strings.toggleStyleTitle %>">
-                            <img height="26px" width="26px" draggable="false">
-                        </button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav ml-auto">
+                            <li>
+                                <a class="nav-item header-page-link" href="/dungeons"><%= strings.dungeonsHeaderLinkContent %></a>
+                            </li>
+                            <li>
+                                <a class="nav-item header-page-link" href="/battlegrounds"><%= strings.battlegroundsHeaderLinkContent %></a>
+                            </li>
+                        </ul>
+                        <div id="offcanvasFilterContainer"></div>
                     </div>
                 </div>
             </div>
