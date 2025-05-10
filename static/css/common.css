@@ -763,6 +763,7 @@ details {
     background-color: var(--accent-background-color);
     padding: 2px 5px;
     border-radius: 6px;
+    line-height: 2em;
 }
 
 @media (max-width: 992px) {
