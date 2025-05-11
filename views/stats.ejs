@@ -18,15 +18,31 @@
 			</div>
 			<div class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
 				<div id="content">
-					<% let isEmpty = data.length === 0; %>
-					<% if (isEmpty) { %>
+					<%
+						const isEmpty = data.length === 0;
+						if (isEmpty) {
+					%>
 					<%- include('empty.ejs', { page, isEmpty }) %>
 					<% } else { %>
 					<div class="card chart-container">
-						<% let count = Array(classes.length).fill(0); %>
-						<% let list = data.map((e) => e.class); %>
-						<% list.forEach(e => { count[e] += 1; }); %>
-						<canvas id="chart" height="500px" data-labels="<%= classes.join(',') %>" data-values="<%= count.join(',') %>" data-title="<%= strings.chartTitle %>"></canvas>
+						<%
+							const count = Array(classes.length).fill(0);
+							const list = data.map((e) => e.class);
+							list.forEach(e => { count[e] += 1; });
+						%>
+						<canvas id="chart_class" height="<%= 34 * (classes.length + 1) %>px" data-labels="<%= classes.join(',') %>" data-values="<%= count.join(',') %>" data-title="<%= strings.chartTitle %>"></canvas>
+					</div>
+					<div class="card chart-container">
+						<%
+							const guilds = [];
+							data.forEach(p => { if (p.guildName && guilds.indexOf(p.guildName) === -1) { guilds.push(p.guildName) } });
+							guilds.sort();
+							guilds.unshift('No guild');
+							const guildCount = Array(guilds.length).fill(0);
+							const guildList = data.map(p => p.guildName ?? 'No guild');
+							guildList.forEach(g => guildCount[guilds.indexOf(g)] += 1);
+						%>
+						<canvas id="chart_guild" height="<%= 34 * (guilds.length + 1) %>px" data-labels="<%= guilds.join(',') %>" data-values="<%= guildCount.join(',') %>" data-title="<%= strings.chartTitle %>"></canvas>
 					</div>
 					<% } %>
 				</div>
