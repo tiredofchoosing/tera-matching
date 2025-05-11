@@ -1,6 +1,9 @@
-<% for(let dungeonId in data) { %>
+<% for (let dungeonId in data) { %>
 <% let dungeon = data[dungeonId]; dungeonProps = instances_info[dungeonId]; %>
-<% if (dungeonProps == undefined) { dungeonProps = { 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' }; if (page === 'dungeons') { dungeonProps.minItemLevel = 0; } } %>
+<% if (dungeonProps == undefined) { 
+        dungeonProps = { 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' }; 
+        if (page === 'dungeons') { dungeonProps.minItemLevel = 0; } 
+    } %>
 <details open class="dungeon-details" id="<%= dungeonId %>">
     <summary class="dungeon-summary">
         <span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
@@ -19,10 +22,17 @@
             <span class="dungeon-role"><img class="dungeon-role-heal" width="20px" height="20px"> <%= countHeal %></span>
         </span>
     </summary>
-    <% let count = 0; %>
+
     <% dungeon.parties.forEach(party => { %>
+    <% const playerCount = Object.keys(party.players).length; %>
+    <% let maxNameLength = 0; %>
+    <% if (playerCount > 1) { %>
+    <% const playerNames = Object.values(party.players).map(p => p.name.length + (p.isLeaderRequired ? 3 : 0)); %>
+    <% maxNameLength = Math.max(...playerNames); %>
+    <% } %>
+
     <div class="delimiter"></div>
-    <details class="party-details" data-party-id="<%= dungeonId + '_' + party.players[0].playerId %>">
+    <details class="party-details" data-party-id="<%= dungeonId + '_' + party.players[0].playerId %>" style="<%= playerCount > 1 ? '--name-width: ' + (maxNameLength) + 'ch;' : '' %>">
         <summary class="party-summary row row-cols-auto">
             <% Object.keys(party.players).forEach(id => { %>
             <% let player = party.players[id]; %>
@@ -40,30 +50,27 @@
             <% let player = party.players[id]; %>
             <div class="party-player-detailed-content<%= player.level >= 65 ? ' level65' : ''%>">
                 <div class="party-player-info">
-
                     <div class="party-content-scroll">
-                        <!-- <div class="fixed-content"> -->
                         <span class="player-level">
-                            <!-- <span class="span-content-description">lvl</span> -->
                             <%= player.level %>
                         </span>
                         <span class="player-itemLevel">
-                            <!-- <span class="span-content-description">gear</span> -->
                             <%= Math.trunc(player.itemLevel) %>
                         </span>
                         <span class="player-name">
                             <img class="party-player-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
-                            <a class="party-content-player-name" title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank"><%= player.name %></a>
-                            
-                            <% if (player.isLeaderRequired) { %>
-                            <img class="party-player-icon party-leader" width="20px" height="20px">
+                            <a class="party-content-player-name <%= playerCount > 1 ? 'party-multiplayer' : '' %>" title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank">
+                                <%= player.name %>
+                                <% if (player.isLeaderRequired) { %>
+                                <img class="party-player-icon party-leader" width="20px" height="20px">
+                                <% } %>
+                            </a>
+                            <% if (player.guildName != null) { %>
+                            <span class="party-content-guild-text">
+                                <%= player.guildName %>
+                            </span>
                             <% } %>
                         </span>
-                        <!-- </div> -->
-                        <!-- <div class="party-content-scroll"> -->
-                        <% if (player.guildName != null) { %>
-                        <span class="party-content-guild-text"><%= player.guildName %></span>
-                        <% } %>
                     </div>
                 </div>
             </div>

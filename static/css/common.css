@@ -646,6 +646,8 @@ details {
     color: var(--font-color-primary);
     text-decoration: none;
     padding: 0 3px 0 0;
+    display: inline-block;
+    min-width: var(--name-width);
 }
 
 .party-content-player-name:hover {
