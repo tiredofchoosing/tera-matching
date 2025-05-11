@@ -26,7 +26,7 @@
 
   "selectSort": "Сортировка",
   "selectPlayerClass": "Фильтр по классу персонажа",
-  "selectDungeonRankTitle": "Фильтр по сложности",
+  "selectDungeonRankTitle": "Фильтр по рангу",
   "minLevelDescContent": "Уровень (убыв.)",
   "minLevelAscContent": "Уровень (возр.)",
   "minItemLevelDescContent": "Снаряжение (убыв.)",
@@ -45,11 +45,11 @@
   "playerNameAscContent": "Имя персонажа (возр.)",
   "playerGuildDescContent": "Гильдия (убыв.)",
   "playerGuildAscContent": "Гильдия (возр.)",
-  "dungeonRankDescContent": "Сложность (убыв.)",
-  "dungeonRankAscContent": "Сложность (возр.)",
+  "dungeonRankDescContent": "Ранг (убыв.)",
+  "dungeonRankAscContent": "Ранг (возр.)",
 
   "classSelectDefaultContent": "Все классы",
-  "selectDungeonRankDefaultContent": "Любая сложность",
+  "selectDungeonRankDefaultContent": "Любой ранг",
 
   "clearNavigationTitle": "Сбросить все",
   "toggleDetailsTitle": "Свернуть / развернуть список",
