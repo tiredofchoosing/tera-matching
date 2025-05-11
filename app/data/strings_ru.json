@@ -72,6 +72,7 @@
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
   "hideLevelLabel": "Скрыть требуемый уровень",
   "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
+  "hideRankLabel": "Скрыть ранг",
 
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж",

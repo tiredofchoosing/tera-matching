@@ -19,10 +19,11 @@
     const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
     const hideLevelCheckbox = document.getElementById('hideLevel');
     const hideItemLevelCheckbox = document.getElementById('hideItemLevel');
+    const hideRankCheckbox = document.getElementById('hideRank');
     const body = document.body;
     const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-    const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox];
+    const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox, hideRankCheckbox];
     const selects = [sortSelect, rankSelect];
 
     const defaultSelectIndex = 2;
@@ -291,6 +292,15 @@
         }
     }
 
+    function hideRank(_, save = true) {
+        save && saveData(hideRankCheckbox, hideRankCheckbox.checked, false);
+
+        const ranks = dungeonList.getElementsByClassName('dungeon-rank');
+        for (const rank of ranks) {
+            rank.hidden = hideRankCheckbox.checked;
+        }
+    }
+
     function refresh() {
         initVariables();
         loadState();
@@ -324,6 +334,7 @@
 
         hideLevel(null, false);
         hideItemLevel(null, false);
+        hideRank(null, false);
         parties.forEach(p => p.open = openedParties.indexOf(p.dataset.partyId) !== -1);
     }
 
@@ -339,6 +350,7 @@
     mergeSupportCheckbox.addEventListener('change', mergeSupportMatching);
     hideLevelCheckbox.addEventListener('change', hideLevel);
     hideItemLevelCheckbox.addEventListener('change', hideItemLevel);
+    hideRankCheckbox.addEventListener('change', hideRank);
     content.addEventListener('contentUpdated', refresh);
 
     clearNavigationButton.addEventListener('click', function() {

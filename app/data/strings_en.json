@@ -72,6 +72,7 @@
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
   "hideLevelLabel": "Hide required level",
   "hideItemLevelLabel": "Hide required item level",
+  "hideRankLabel": "Hide rank",
 
   "playersTableLevelContent": "Lvl",
   "playersTableCharacterContent": "Character",
