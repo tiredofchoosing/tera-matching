@@ -25,7 +25,6 @@
     const pinchFontSizes = [ '13px', '14px', '16px' ];
     const pinchDelta = 30;
     const pinchSaveId = 'pinchDungeonList';
-    const openedParties = [];
 
     let dungeonList, emptyContainer, dungeons, parties;
     initVariables();
@@ -33,6 +32,7 @@
     let collapsedElements = null;
     let pinchInitDist = 0;
     let pinchCurrentIndex = pinchFontSizes.indexOf(window.getComputedStyle(dungeonList).fontSize);
+    let openedParties = [];
 
     // functions
     function initVariables() {
@@ -186,6 +186,7 @@
 
         hideLevel(null, false);
         parties.forEach(p => p.open = openedParties.indexOf(p.dataset.partyId) !== -1);
+        openedParties = openedParties.filter(o => parties.some(p => p.dataset.partyId === o));
     }
 
     // register event handlers
