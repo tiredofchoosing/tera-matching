@@ -14,6 +14,9 @@
         <% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
         <% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
         <span class="dungeon-name"><%= dungeonProps.name %></span>
+        <% if (page === 'dungeons') { %>
+        <span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>"><%= '⭐'.repeat(dungeonProps.rank) %></span>
+        <% } %>
         <span class="dungeon-players">
             <% if (page === 'dungeons') { %>
             <span class="dungeon-role"><img class="dungeon-role-tank" width="20px" height="20px"> <%= countTank %></span>

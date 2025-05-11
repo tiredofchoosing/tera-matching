@@ -26,6 +26,7 @@
 
   "selectSort": "Сортировка",
   "selectPlayerClass": "Фильтр по классу персонажа",
+  "selectDungeonRankTitle": "Фильтр по рангу",
   "minLevelDescContent": "Уровень (убыв.)",
   "minLevelAscContent": "Уровень (возр.)",
   "minItemLevelDescContent": "Снаряжение (убыв.)",
@@ -44,8 +45,11 @@
   "playerNameAscContent": "Имя персонажа (возр.)",
   "playerGuildDescContent": "Гильдия (убыв.)",
   "playerGuildAscContent": "Гильдия (возр.)",
+  "dungeonRankDescContent": "Ранг (убыв.)",
+  "dungeonRankAscContent": "Ранг (возр.)",
 
   "classSelectDefaultContent": "Все классы",
+  "selectDungeonRankDefaultContent": "Любой ранг",
 
   "clearNavigationTitle": "Сбросить все",
   "toggleDetailsTitle": "Свернуть / развернуть список",
@@ -68,6 +72,7 @@
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
   "hideLevelLabel": "Скрыть требуемый уровень",
   "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
+  "hideRankLabel": "Скрыть ранг",
 
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж",

@@ -252,7 +252,8 @@ header {
 }
 
 .navigation-search input,
-#selectPlayerClass {
+#selectPlayerClass,
+#selectDungeonRank {
     background-image: var(--menu-search-bg-img);
 }
 

@@ -12,18 +12,22 @@
     const searchMinLevelInput = document.getElementById('searchDungeonLevel');
     const searchMinItemLevelInput = document.getElementById('searchDungeonItemLevel');
     const sortSelect = document.getElementById('selectDungeonSort');
+    const rankSelect = document.getElementById('selectDungeonRank');
     const toggleDetailsButton = document.getElementById('toggleDetails');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
     const hideLevelCheckbox = document.getElementById('hideLevel');
     const hideItemLevelCheckbox = document.getElementById('hideItemLevel');
+    const hideRankCheckbox = document.getElementById('hideRank');
     const body = document.body;
     const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-    const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox];
+    const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox, hideRankCheckbox];
+    const selects = [sortSelect, rankSelect];
 
     const defaultSelectIndex = 2;
+    const defaultRankSelectIndex = 0;
     const saveCollapsedId = 'dungeonDetailsCollapsed';
     const suppDungeon = supportDungeonProps; // From html body
     const pinchFontSizes = [ '13px', '14px', '16px' ];
@@ -49,20 +53,24 @@
 
     function filterDungeons(_, save = true) {
         save && searchInputs.forEach(e => saveData(e, e.value));
+        save && saveData(rankSelect, rankSelect.selectedIndex);
 
-        let searchNameVal = searchNameInput.value.customSplitFilter(',');
-        let searchMinLevelVal = searchMinLevelInput.value.customSplitFilter(',');
-        let searchMinItemLevelVal = searchMinItemLevelInput.value.customSplitFilter(',');
+        const searchNameVal = searchNameInput.value.customSplitFilter(',');
+        const searchMinLevelVal = searchMinLevelInput.value.customSplitFilter(',');
+        const searchMinItemLevelVal = searchMinItemLevelInput.value.customSplitFilter(',');
+        const rankSelectVal = rankSelect.value;
 
         let any = false;
         dungeons.forEach(d => {
-            let name = d.getElementsByClassName('dungeon-name')[0].textContent.toLowerCase();
-            let minLevel = parseInt(d.getElementsByClassName('dungeon-lvl')[0].textContent);
-            let minItemLevel = parseInt(d.getElementsByClassName('dungeon-ilvl')[0].textContent);
+            const name = d.getElementsByClassName('dungeon-name')[0].textContent.toLowerCase();
+            const minLevel = parseInt(d.getElementsByClassName('dungeon-lvl')[0].textContent);
+            const minItemLevel = parseInt(d.getElementsByClassName('dungeon-ilvl')[0].textContent);
+            const dungeonRank = d.getElementsByClassName('dungeon-rank')[0].dataset.dungeonRank;
 
-            let show = searchNameVal.customSomeFilter(s => name.includes(s)) &&
+            const show = searchNameVal.customSomeFilter(s => name.includes(s)) &&
                 searchMinLevelVal.customSomeFilter(s => checkLevel(minLevel, s)) &&
-                searchMinItemLevelVal.customSomeFilter(s => checkLevel(minItemLevel, s));
+                searchMinItemLevelVal.customSomeFilter(s => checkLevel(minItemLevel, s)) &&
+                (rankSelectVal === 'default' || rankSelectVal == dungeonRank);
 
             d.style.display = show ? '' : 'none';
             any ||= show;
@@ -82,6 +90,8 @@
             const nameB = b.getElementsByClassName('dungeon-name')[0].textContent;
             const playersA = a.getElementsByClassName('party-player-detailed-content').length;
             const playersB = b.getElementsByClassName('party-player-detailed-content').length;
+            const rankA = parseInt(a.getElementsByClassName('dungeon-rank')[0].dataset.dungeonRank);
+            const rankB = parseInt(b.getElementsByClassName('dungeon-rank')[0].dataset.dungeonRank);
 
             switch (mode) {
                 case 'minLevelDesc':
@@ -100,6 +110,10 @@
                     return playersB - playersA;
                 case 'playersAsc':
                     return playersA - playersB;
+                case 'rankDesc':
+                    return rankB - rankA;
+                case 'rankAsc':
+                    return rankA - rankB;
             }
         }
 
@@ -278,6 +292,15 @@
         }
     }
 
+    function hideRank(_, save = true) {
+        save && saveData(hideRankCheckbox, hideRankCheckbox.checked, false);
+
+        const ranks = dungeonList.getElementsByClassName('dungeon-rank');
+        for (const rank of ranks) {
+            rank.hidden = hideRankCheckbox.checked;
+        }
+    }
+
     function refresh() {
         initVariables();
         loadState();
@@ -311,6 +334,7 @@
 
         hideLevel(null, false);
         hideItemLevel(null, false);
+        hideRank(null, false);
         parties.forEach(p => p.open = openedParties.indexOf(p.dataset.partyId) !== -1);
     }
 
@@ -319,17 +343,20 @@
     searchNameInput.addEventListener('input', filterDungeons);
     searchMinLevelInput.addEventListener('input', filterDungeons);
     searchMinItemLevelInput.addEventListener('input', filterDungeons);
+    rankSelect.addEventListener('change', filterDungeons);
     dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
     parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     mergeSupportCheckbox.addEventListener('change', mergeSupportMatching);
     hideLevelCheckbox.addEventListener('change', hideLevel);
     hideItemLevelCheckbox.addEventListener('change', hideItemLevel);
+    hideRankCheckbox.addEventListener('change', hideRank);
     content.addEventListener('contentUpdated', refresh);
 
     clearNavigationButton.addEventListener('click', function() {
         searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
+        rankSelect.selectedIndex = defaultRankSelectIndex;
 
         sortDungeons(null, true);
         filterDungeons(null, true);
@@ -392,7 +419,7 @@
         if (checked != null)
             e.checked = checked === 'true';
     });
-    sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
+    selects.forEach(e => e.selectedIndex = loadData(e) ?? e.selectedIndex);
     toggleDetailsButton.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.value;
 
     collapsedElements = loadData(saveCollapsedId);

@@ -26,6 +26,7 @@
 
   "selectSort": "Sorting",
   "selectPlayerClass": "Filter by character class",
+  "selectDungeonRankTitle": "Filter by rank",
   "minLevelDescContent": "Level (desc)",
   "minLevelAscContent": "Level (asc)",
   "minItemLevelDescContent": "Item level (desc)",
@@ -44,8 +45,11 @@
   "playerNameAscContent": "Name (asc)",
   "playerGuildDescContent": "Guild (desc)",
   "playerGuildAscContent": "Guild (asc)",
+  "dungeonRankDescContent": "Rank (desc)",
+  "dungeonRankAscContent": "Rank (asc)",
 
   "classSelectDefaultContent": "All classes",
+  "selectDungeonRankDefaultContent": "Any rank",
 
   "clearNavigationTitle": "Reset all",
   "toggleDetailsTitle": "Collapse / expand list",
@@ -68,6 +72,7 @@
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
   "hideLevelLabel": "Hide required level",
   "hideItemLevelLabel": "Hide required item level",
+  "hideRankLabel": "Hide rank",
 
   "playersTableLevelContent": "Lvl",
   "playersTableCharacterContent": "Character",
