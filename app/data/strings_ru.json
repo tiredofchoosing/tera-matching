@@ -2,27 +2,32 @@
   "dungeonsPageTitle": "Подбор подземелий",
   "battlegroundsPageTitle": "Подбор арен",
   "onlinePageTitle": "Список игроков",
+  "lfgPageTitle": "Поиск группы",
   "statsPageTitle": "Статистика по классам",
 
   "dungeonsHeaderLinkContent": "Подземелья",
   "battlegroundsHeaderLinkContent": "Арены",
   "onlineHeaderLinkContent": "Онлайн",
-  "toggleLangTitle": "Switch language",
+  "lfgHeaderLinkContent": "Поиск группы",
   "toggleStyleTitle": "Сменить тему оформления",
 
   "emptyMatchingContent": "Список подбора пуст",
   "emptyPlayersContent": "Список игроков пуст",
+  "emptyLfgContent": "Список поиска группы пуст",
 
   "searchDungeonNamePlaceholder": "Название подземелья",
   "searchBattlegroundNamePlaceholder": "Название арены",
   "searchPlayerNamePlaceholder": "Имя персонажа",
   "searchLevelPlaceholder": "Уровень",
+  "searchPlayerGuildPlaceholder": "Гильдия",
   "searchLevelTitle": "Уровень [ 70 / 65+ / 69- / 20-40 ]",
   "searchDungeonItemLevelPlaceholder": "Уровень снаряжения",
   "searchDungeonItemLevelTitle": "Уровень снаряжения [ 463 / 453+ / 460- / 444-450 ]",
+  "searchLfgMessagePlaceholder": "Сообщение группы",
 
   "selectSort": "Сортировка",
   "selectPlayerClass": "Фильтр по классу персонажа",
+  "selectDungeonRankTitle": "Фильтр по рангу",
   "minLevelDescContent": "Уровень (убыв.)",
   "minLevelAscContent": "Уровень (возр.)",
   "minItemLevelDescContent": "Снаряжение (убыв.)",
@@ -39,17 +44,46 @@
   "playerClassAscContent": "Класс (возр.)",
   "playerNameDescContent": "Имя персонажа (убыв.)",
   "playerNameAscContent": "Имя персонажа (возр.)",
+  "playerGuildDescContent": "Гильдия (убыв.)",
+  "playerGuildAscContent": "Гильдия (возр.)",
+  "dungeonRankDescContent": "Ранг (убыв.)",
+  "dungeonRankAscContent": "Ранг (возр.)",
 
   "classSelectDefaultContent": "Все классы",
+  "selectDungeonRankDefaultContent": "Любой ранг",
 
   "clearNavigationTitle": "Сбросить все",
   "toggleDetailsTitle": "Свернуть / развернуть список",
-  "autoupdateCheckLabel": "Автоматически обновлять страницу",
+
+  "menuTitle": "Меню",
+  "settingsTitle": "Настройки",
+  "settingsGeneralTitle": "Общее",
+  "settingsThemeTitle": "Тема",
+  "settingsCurrentListTitle": "Текущий список",
+
+  "changeLanguageTitle": "Язык: ",
+  "changeLanguageContent": "switch to <b>English</b>",
+  "changeThemeTitle": "Сменить тему",
+  "darkGreenThemeLabel": "Темно-зеленая",
+  "classicLightThemeLabel": "Классическая светлая",
+
+  "autoupdateCheckLabel": "Автоматически обновлять список",
+  "disableBackgroundLabel": "Отключить фоновое изображение",
   "saveCollapsedLabel": "Сохранять свернутые элементы",
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
+  "hideLevelLabel": "Скрыть требуемый уровень",
+  "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
+  "hideRankLabel": "Скрыть ранг",
 
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж",
+  "playersTableGuildContent": "Гильдия",
+
+  "lfgLastUpdateContent": "Последнее обновление данных: ",
+  "lfgLastUpdateHourAgo": " ч. назад",
+  "lfgLastUpdateMinuteAgo": " мин. назад",
+  "lfgLastUpdateLessThanMinuteAgo": "меньше минуты назад",
+  "lfgWarningContent": "*Страница может содержать устаревшие или некорректные данные.",
 
   "chartTitle": " Игроков"
 }

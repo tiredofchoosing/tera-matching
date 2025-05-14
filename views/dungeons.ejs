@@ -1,11 +1,9 @@
-<% const page = 'dungeons'; %>
-<%- include('layout_begin.ejs', { page }) %>
-<%- include('header.ejs') %>
+<%- include('layout_begin') %>
 <div id="main">
 	<div class="container">
 		<div class="row justify-content-start">
-			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12">
-				<div class="d-lg-block collapse navbar-collapse" id="navigationMenu">
+			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12" id="filterContainer">
+				<div class="d-lg-block" id="filterContent">
 					<div class="navigation-menu col-12">
 						<div class="navigation-search">
 							<input type="text" id="searchDungeonName" placeholder="<%= strings.searchDungeonNamePlaceholder %>">
@@ -13,6 +11,13 @@
 							<input type="text" id="searchDungeonItemLevel" placeholder="<%= strings.searchDungeonItemLevelPlaceholder %>" title="<%= strings.searchDungeonItemLevelTitle %>">
 						</div>
 						<div class="navigation-select">
+							<select id="selectDungeonRank" title="<%= strings.selectDungeonRankTitle %>">
+								<option value="default" selected="selected"><%= strings.selectDungeonRankDefaultContent %></option>
+								<% const maxRank = Math.max(...(Object.values(instances_info).map(d => d.rank))) %>
+								<% for(let i = 1; i <= maxRank; i++) { %>
+								<option value="<%= i %>"><%= '⭐'.repeat(i) %></option>
+								<% } %>
+							</select>
 							<select id="selectDungeonSort" title="<%= strings.selectSort %>">
 								<option value="minLevelDesc"><%= strings.minLevelDescContent %></option>
 								<option value="minLevelAsc"><%= strings.minLevelAscContent %></option>
@@ -22,6 +27,8 @@
 								<option value="nameAsc"><%= strings.nameAscContent %></option>
 								<option value="playersDesc"><%= strings.playersDescContent %></option>
 								<option value="playersAsc"><%= strings.playersAscContent %></option>
+								<option value="rankDesc"><%= strings.dungeonRankDescContent %></option>
+								<option value="rankAsc"><%= strings.dungeonRankAscContent %></option>
 							</select>
 						</div>
 						<div class="navigation-button d-flex flex-sm-row">
@@ -32,28 +39,11 @@
 								<img src="/static/img/icons/reset.svg" width="20px" height="20px" draggable="false">
 							</button>
 						</div>
-						<div class="navigation-checkbox">
-							<div class="form-check form-switch">
-								<input class="form-check-input no-transition" type="checkbox" id="autoupdateCheck" role="switch">
-								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateCheckLabel %></label>
-							</div>
-							<div class="form-check form-switch">
-								<input class="form-check-input no-transition" type="checkbox" id="saveCollapsed" role="switch">
-								<label class="form-check-label" for="saveCollapsed"><%= strings.saveCollapsedLabel %></label>
-							</div>
-							<div class="form-check form-switch">
-								<input class="form-check-input no-transition" type="checkbox" id="mergeSupportMatching" role="switch">
-								<label class="form-check-label" for="mergeSupportMatching"><%- strings.mergeSupportMatchingLabel.replace('$', dungeons_info['9999'].name) %></label>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
 			<div id="content" class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
-				<%- include('empty.ejs', { page, isEmpty: Object.values(data).length === 0 }) %>
-				<div id="dungeonList" class="dungeon-list">
-					<%- include('dungeon_details.ejs', { page, info: dungeons_info }) %>
-				</div>
+				<%- include(page + '_content') %>
 			</div>
 		</div>
 	</div>
@@ -61,10 +51,10 @@
 <script>
 	const supportDungeonProps = {
 		id: 9999,
-		minLevel: <%= dungeons_info['9999'].minLevel %>,
-		minItemLevel: <%= dungeons_info['9999'].minItemLevel %>,
-		name: '<%= dungeons_info['9999'].name %>',
+		minLevel: <%= instances_info['9999'].minLevel %>,
+		minItemLevel: <%= instances_info['9999'].minItemLevel %>,
+		name: '<%= instances_info['9999'].name %>',
 		lowestDungeonLevel: 20
 	};
 </script>
-<%- include('layout_end.ejs', { page }) %>
+<%- include('layout_end') %>

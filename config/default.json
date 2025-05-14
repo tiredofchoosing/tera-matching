@@ -3,5 +3,6 @@
   "port": 8005,
   "dungeons": "http://178.250.154.7:8080/dungeons",
   "battlegrounds": "http://178.250.154.7:8080/battlegrounds",
-  "online": "http://178.250.154.7:8080/online"
+  "online": "http://178.250.154.7:8080/online",
+  "lfg": "http://178.250.154.7:8080/lfg"
 }

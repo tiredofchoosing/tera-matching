@@ -2,27 +2,32 @@
   "dungeonsPageTitle": "Dungeon matching",
   "battlegroundsPageTitle": "Battlefield matching",
   "onlinePageTitle": "Player list",
+  "lfgPageTitle": "LFG list",
   "statsPageTitle": "Stats by classes",
 
   "dungeonsHeaderLinkContent": "Dungeons",
   "battlegroundsHeaderLinkContent": "Battlefields",
   "onlineHeaderLinkContent": "Online",
-  "toggleLangTitle": "Сменить язык",
+  "lfgHeaderLinkContent": "LFG",
   "toggleStyleTitle": "Switch page theme",
 
   "emptyMatchingContent": "Matching queue is empty",
   "emptyPlayersContent": "Player list is empty",
+  "emptyLfgContent": "LFG list is empty",
 
   "searchDungeonNamePlaceholder": "Dungeon name",
   "searchBattlegroundNamePlaceholder": "Battlefield name",
   "searchPlayerNamePlaceholder": "Character name",
   "searchLevelPlaceholder": "Level",
+  "searchPlayerGuildPlaceholder": "Guild",
   "searchLevelTitle": "Level [ 70 / 65+ / 69- / 20-40 ]",
   "searchDungeonItemLevelPlaceholder": "Item level",
   "searchDungeonItemLevelTitle": "Item level [ 463 / 453+ / 460- / 444-450 ]",
+  "searchLfgMessagePlaceholder": "LFG message",
 
   "selectSort": "Sorting",
   "selectPlayerClass": "Filter by character class",
+  "selectDungeonRankTitle": "Filter by rank",
   "minLevelDescContent": "Level (desc)",
   "minLevelAscContent": "Level (asc)",
   "minItemLevelDescContent": "Item level (desc)",
@@ -39,17 +44,46 @@
   "playerClassAscContent": "Class (asc)",
   "playerNameDescContent": "Name (desc)",
   "playerNameAscContent": "Name (asc)",
+  "playerGuildDescContent": "Guild (desc)",
+  "playerGuildAscContent": "Guild (asc)",
+  "dungeonRankDescContent": "Rank (desc)",
+  "dungeonRankAscContent": "Rank (asc)",
 
   "classSelectDefaultContent": "All classes",
+  "selectDungeonRankDefaultContent": "Any rank",
 
   "clearNavigationTitle": "Reset all",
   "toggleDetailsTitle": "Collapse / expand list",
-  "autoupdateCheckLabel": "Reload the page automatically",
+
+  "menuTitle": "Menu",
+  "settingsTitle": "Settings",
+  "settingsGeneralTitle": "General",
+  "settingsThemeTitle": "Theme",
+  "settingsCurrentListTitle": "Current list",
+
+  "changeLanguageTitle": "Language: ",
+  "changeLanguageContent": "переключить на <b>Русский</b>",
+  "changeThemeTitle": "Change theme",
+  "darkGreenThemeLabel": "Dark green",
+  "classicLightThemeLabel": "Classic light",
+
+  "autoupdateCheckLabel": "Refresh the list automatically",
+  "disableBackgroundLabel": "Disable background image",
   "saveCollapsedLabel": "Save collapsed items",
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
+  "hideLevelLabel": "Hide required level",
+  "hideItemLevelLabel": "Hide required item level",
+  "hideRankLabel": "Hide rank",
 
   "playersTableLevelContent": "Lvl",
   "playersTableCharacterContent": "Character",
+  "playersTableGuildContent": "Guild",
+
+  "lfgLastUpdateContent": "Last data update: ",
+  "lfgLastUpdateHourAgo": " h ago",
+  "lfgLastUpdateMinuteAgo": " min ago",
+  "lfgLastUpdateLessThanMinuteAgo": "less than 1 min ago",
+  "lfgWarningContent": "*This page may contain outdated or incorrect data.",
 
   "chartTitle": " Players"
 }

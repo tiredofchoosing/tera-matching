@@ -1,10 +1,11 @@
 (function() {
 
-    const autoupdateTimer = 10000;
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
-
-    let autoupdateTimerId = -1;
+    const navbarBgColors = {
+        'dark-green': 'rgb(23, 24, 32)',
+        'classic-light': 'rgb(131, 145, 187)'
+    };
 
     function saveData(element, value = null, forSession = true) {
         let storage = forSession ? window.sessionStorage : window.localStorage;
@@ -29,78 +30,53 @@
     function checkLevel(level, searchVal) {
         if (searchVal === '') {
             return true;
-        } else if (searchVal.endsWith('+')) {
+        } else if (searchVal.match(/^[\d]+[\s]*[\+]$/g)) {
             return level >= parseInt(searchVal);
-        } else if (searchVal.endsWith('-')) {
+        } else if (searchVal.match(/^[\d]+[\s]*[\-]$/g)) {
             return level <= parseInt(searchVal);
-        } else if (searchVal.includes('-')) {
-            let [min, max] = searchVal.split('-').map(Number);
+        } else if (searchVal.match(/^[\d]+[\s]*[\-][\s]*[\d]+$/g)) {
+            const [min, max] = searchVal.split('-').map(Number);
             return level >= min && level <= max;
         } else {
             return level === parseInt(searchVal);
         }
     }
 
-    function setAutoupdate(_, save = true, elem = null) {
-        elem = elem ?? this;
-        save && saveData(elem, elem.checked);
+    function updateTheme(save = true) {
+        const theme = styleLink.dataset.value;
+        save && saveData(styleLink, theme, false);
 
-        if (elem.checked) {
-            autoupdateTimerId = setTimeout(() => location.reload(), autoupdateTimer);
-        }
-        else if (autoupdateTimerId !== -1) {
-            clearTimeout(autoupdateTimerId);
-            autoupdateTimerId = -1;
-        }
+        styleLink.href = `/static/css/${theme}.css`
+        themeColor.content = navbarBgColors[theme];
     }
 
-    function toggleLang() {
-        let lang = this.value === 'ru' ? 'en' : 'ru';
-        let date = new Date();
-        date.setFullYear(date.getFullYear() + 1);
-        document.cookie = `lang=${lang};expires=${date.toUTCString()};path=/;`;
-        location.reload();
+    function customSplitFilter(splitChar) {
+        return this.toLowerCase().split(splitChar).map(s => s.trim()).filter(Boolean);
     }
 
-    function toggleStyle() {
-        let styles = [ 'dark-green', 'classic-light' ];
-        let newStyle = styles[(styles.indexOf(styleLink.dataset.value) - 1 + styles.length) % styles.length];
-        styleLink.href = `/static/css/${newStyle}.css`
-        styleLink.dataset.value = newStyle;
-        saveData(styleLink, newStyle, false);
-
-        updateThemeColor();
+    function customSomeFilter(filterFunc) {
+        return this.length === 0 || this.some(filterFunc);
     }
 
-    function updateThemeColor() {
-        let navbarBgColors = {
-            'dark-green': 'rgb(23, 24, 32)',
-            'classic-light': 'rgb(131, 145, 187)'
-        };
-        themeColor.content = navbarBgColors[styleLink.dataset.value];
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeSelectForm = document.getElementById('themeSelect');
+        themeSelectForm.elements['themeOption'].value = styleLink.dataset.value;
 
-    document.addEventListener("readystatechange", (event) => {
-        if (event.target.readyState === "interactive") {
-            document.getElementById('toggleLang').addEventListener('click', toggleLang);
-            document.getElementById('toggleStyle').addEventListener('click', toggleStyle);
-        }
-        else if (event.target.readyState === 'complete') {
-            let checkboxes = Array.from(document.getElementsByClassName('form-check-input'));
-            checkboxes.forEach(e => e.classList.remove('no-transition'));
-        }
+        themeSelectForm.addEventListener('change', function () {
+            const theme = this.elements['themeOption'].value;
+            styleLink.dataset.value = theme;
+            updateTheme();
+        });
     });
 
-    let style = loadData(styleLink, false);
-    if (style != null) {
-        styleLink.href = `/static/css/${style}.css`;
-        styleLink.dataset.value = style;
-    }
-    updateThemeColor();
+    styleLink.dataset.value = loadData(styleLink, false) ?? styleLink.dataset.value;
+    updateTheme(false);
 
     window.saveData = saveData;
     window.loadData = loadData;
-    window.setAutoupdate = setAutoupdate;
     window.checkLevel = checkLevel;
+
+    window.String.prototype.customSplitFilter = customSplitFilter;
+    window.Array.prototype.customSomeFilter = customSomeFilter;
 
 })();

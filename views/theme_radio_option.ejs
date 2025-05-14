@@ -1,0 +1,14 @@
+<%
+    let themeStrId = theme.toLowerCase().replace(/-([a-z])/g, function(match, letter) {
+        return letter.toUpperCase();
+    });
+    themeStrId += 'ThemeLabel';
+    const checkedStr = (typeof checked === 'undefined' || checked == null) ? '' : 'checked';
+%>
+<label>
+    <input class="theme-radio-option" type="radio" name="themeOption" value="<%= theme %>" <%= checkedStr %>>
+    <div class="theme-radio-container">
+        <img src="/static/img/icons/<%= theme %>-preview.jpg" alt="<%= strings[themeStrId] %>">
+        <span class="theme-radio-label"><%= strings[themeStrId] %></span>
+    </div>
+</label>
