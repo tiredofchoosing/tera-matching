@@ -85,5 +85,8 @@
   "lfgLastUpdateLessThanMinuteAgo": "меньше минуты назад",
   "lfgWarningContent": "*Страница может содержать устаревшие или некорректные данные.",
 
-  "chartTitle": " Игроков"
+  "classChartTitle": "Классы",
+  "guildChartTitle": "Гильдии",
+  "noGuildTitle": "Без гильдии",
+  "playersLabelTitle": " Игроков"
 }

@@ -84,7 +84,7 @@ export async function online(req, res, partialContent = false) {
     if (!response)
         return res.type('txt').send('error');
 
-    let respJson = await response.json();
+    const respJson = await response.json();
     const data = {
         data: respJson,
         strings: globalization[lang],
@@ -131,20 +131,23 @@ export async function lfg(req, res, partialContent = false) {
     render(res, data, page, partialContent);
 }
 
-export async function stats(req, res) {
-    const lang = changeLang(req)
+export async function stats(req, res, partialContent = false) {
+    const lang = changeLang(req);
+    const page = 'stats';
 
     const response = await fetch(config.get('online'));
     if (!response)
-        return res.type('txt').send('error')
+        return res.type('txt').send('error');
 
-    let respJson = await response.json();
-    res.render('stats', {
+    const respJson = await response.json();
+    const data = {
         data: respJson,
         strings: globalization[lang],
         classes: classes[lang],
-        roles,
         lang,
-        online: respJson?.length || null
-    })
+        online: respJson?.length || null,
+        page
+    };
+
+    render(res, data, page, partialContent);
 }

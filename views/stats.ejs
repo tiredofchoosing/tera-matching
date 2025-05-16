@@ -1,54 +1,37 @@
-<% const page = 'stats'; %>
-<%- include('layout_begin.ejs', { page }) %>
-<%- include('header.ejs') %>
+<%- include('layout_begin') %>
 <div id="main">
 	<div class="container">
 		<div class="row justify-content-start">
-			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12">
-				<div class="d-lg-block collapse navbar-collapse" id="navigationMenu">
+			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12" id="filterContainer">
+				<div class="d-lg-block" id="filterContent">
 					<div class="navigation-menu col-12">
-						<div class="navigation-checkbox">
-							<div class="form-check form-switch">
-								<input class="form-check-input no-transition" type="checkbox" id="autoupdateCheck" role="switch">
-								<label class="form-check-label" for="autoupdateCheck"><%= strings.autoupdateCheckLabel %></label>
-							</div>
+						<div class="navigation-select">
+							<select id="selectPlayerSort" title="<%= strings.selectSort %>">
+								<option value="default" selected="selected"><%= strings.statsDefaultSortContent %></option>
+								<option value="nameDesc"><%= strings.nameDescContent %></option>
+								<option value="nameAsc"><%= strings.nameAscContent %></option>
+								<option value="playersDesc"><%= strings.playersDescContent %></option>
+								<option value="playersAsc"><%= strings.playersAscContent %></option>
+							</select>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
 				<div id="content">
-					<%
-						const isEmpty = data.length === 0;
-						if (isEmpty) {
-					%>
-					<%- include('empty.ejs', { page, isEmpty }) %>
-					<% } else { %>
+					<%- include(page + '_content') %>
+				</div>
+				<div id="contentList">
 					<div class="card chart-container">
-						<%
-							const count = Array(classes.length).fill(0);
-							const list = data.map((e) => e.class);
-							list.forEach(e => { count[e] += 1; });
-						%>
-						<canvas id="chart_class" height="<%= 34 * (classes.length + 1) %>px" data-labels="<%= classes.join(',') %>" data-values="<%= count.join(',') %>" data-title="<%= strings.chartTitle %>"></canvas>
+						<canvas id="classChart" data-title="<%= strings.classChartTitle %>" data-bar-label="<%= strings.playersLabelTitle %>"></canvas>
 					</div>
 					<div class="card chart-container">
-						<%
-							const guilds = [];
-							data.forEach(p => { if (p.guildName && guilds.indexOf(p.guildName) === -1) { guilds.push(p.guildName) } });
-							guilds.sort();
-							guilds.unshift('No guild');
-							const guildCount = Array(guilds.length).fill(0);
-							const guildList = data.map(p => p.guildName ?? 'No guild');
-							guildList.forEach(g => guildCount[guilds.indexOf(g)] += 1);
-						%>
-						<canvas id="chart_guild" height="<%= 34 * (guilds.length + 1) %>px" data-labels="<%= guilds.join(',') %>" data-values="<%= guildCount.join(',') %>" data-title="<%= strings.chartTitle %>"></canvas>
+						<canvas id="guildChart" data-title="<%= strings.guildChartTitle %>" data-bar-label="<%= strings.playersLabelTitle %>"></canvas>
 					</div>
-					<% } %>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-<%- include('layout_end.ejs', { page }) %>
+<%- include('layout_end') %>

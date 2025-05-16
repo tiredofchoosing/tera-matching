@@ -85,5 +85,8 @@
   "lfgLastUpdateLessThanMinuteAgo": "less than 1 min ago",
   "lfgWarningContent": "*This page may contain outdated or incorrect data.",
 
-  "chartTitle": " Players"
+  "classChartTitle": "Classes",
+  "guildChartTitle": "Guilds",
+  "noGuildTitle": "No guild",
+  "playersLabelTitle": " Players"
 }
