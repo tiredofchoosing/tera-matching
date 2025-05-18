@@ -177,21 +177,6 @@ let MyCharts;
                 return sub;
             }
         }
-
-        #mergeObject(target, source) {
-            for (const key in source) {
-                if (source.hasOwnProperty(key)) {
-                    if (source[key] instanceof Object && !Array.isArray(source[key]) &&
-                        target[key] instanceof Object && !Array.isArray(target[key])) {
-                        deepMerge(target[key], source[key]);
-                    }
-                    else {
-                        target[key] = source[key];
-                    }
-                }
-            }
-            return target;
-        }
     }
 
 
