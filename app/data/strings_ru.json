@@ -3,12 +3,13 @@
   "battlegroundsPageTitle": "Подбор арен",
   "onlinePageTitle": "Список игроков",
   "lfgPageTitle": "Поиск группы",
-  "statsPageTitle": "Статистика по классам",
+  "statsPageTitle": "Статистика онлайна",
 
   "dungeonsHeaderLinkContent": "Подземелья",
   "battlegroundsHeaderLinkContent": "Арены",
   "onlineHeaderLinkContent": "Онлайн",
   "lfgHeaderLinkContent": "Поиск группы",
+  "statsHeaderLinkContent": "Статистика",
   "toggleStyleTitle": "Сменить тему оформления",
 
   "emptyMatchingContent": "Список подбора пуст",

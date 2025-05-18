@@ -3,12 +3,13 @@
   "battlegroundsPageTitle": "Battlefield matching",
   "onlinePageTitle": "Player list",
   "lfgPageTitle": "LFG list",
-  "statsPageTitle": "Stats by classes",
+  "statsPageTitle": "Online statistics",
 
   "dungeonsHeaderLinkContent": "Dungeons",
   "battlegroundsHeaderLinkContent": "Battlefields",
   "onlineHeaderLinkContent": "Online",
   "lfgHeaderLinkContent": "LFG",
+  "statsHeaderLinkContent": "Statistics",
   "toggleStyleTitle": "Switch page theme",
 
   "emptyMatchingContent": "Matching queue is empty",
