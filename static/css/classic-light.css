@@ -53,4 +53,13 @@
     --accent-background-color: rgb(255, 255, 255);
     --players-tbl-delimiter: rgba(116, 116, 116, 0.1);
     --empty-bg-color: rgb(169, 180, 214);
+
+    --chart-font-size: 16;
+    --chart-title-font-size: 20;
+    --chart-font-family: 'Montserrat', sans-serif;
+    --chart-font-color: rgba(0, 0, 0, 0.8);
+    --chart-axis-color: rgba(0, 0, 0, 0.2);
+    --chart-grid-color: rgba(0, 0, 0, 0.1);
+    --chart-bar-bg-color: rgba(173, 68, 68, 0.5);
+    --chart-bar-border-color: rgba(0, 0, 0, 0.3);
 }

@@ -921,6 +921,6 @@ details {
 .card {
     background-color: var(--empty-bg-color);
     backdrop-filter: var(--bg-backdrop-filter);
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
     margin-bottom: 1rem;
 }
