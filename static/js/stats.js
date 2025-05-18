@@ -1,41 +1,16 @@
-let MyCharts;
 (function() {
 
     const content = document.getElementById('content');
     const chartNames = ['classChart', 'guildChart'];
     const charts = [];
-    MyCharts = charts;
 
     class MyChart {
+        chart = null;
         labels = [];
         values = [];
         styles = {};
-        chart = null;
+        chartOptions = {};
         maxChartLabelWidth = 150;
-        chartOptions = {
-            indexAxis: 'y',
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    ticks: {
-                        precision: 0,
-                        stepSize: 1
-                    }
-                },
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    padding: {
-                        top: 0,
-                        bottom: 8
-                    },
-                },
-                tooltip: {
-                    displayColors: false
-                }
-            }
-        };
 
         constructor(name) {
             this.name = name;
@@ -43,11 +18,12 @@ let MyCharts;
             this.context = this.canvas.getContext('2d');
             this.rootStyles = window.getComputedStyle(document.documentElement);
 
-            this.#setDefaults();
             this.#updateDatasets();
             this.#updateVisibility();
             this.#loadStyles();
+            this.#initOptions();
             this.initChart();
+            this.#updateHeight();
         }
 
         initChart() {
@@ -56,21 +32,15 @@ let MyCharts;
                 data: {
                     labels: this.labels,
                     datasets: [{
+                        data: this.values,
                         label: this.canvas.dataset.barLabel,
                         borderWidth: 1,
-                        data: this.values
+                        backgroundColor: this.styles.barBgColor,
+                        borderColor: this.styles.barBorderColor
                     }]
                 },
                 options: this.chartOptions
             });
-            this.chart.options.plugins.title.text = this.canvas.dataset.title;
-            const truncLabel = this.#truncLabel();
-            this.chart.options.scales.y.ticks.callback = function (value) {
-                const lbl = this.getLabelForValue(value);
-                return truncLabel(lbl);
-            };
-            this.#updateStyles();
-            this.#updateHeight();
         }
 
         updateChartData() {
@@ -84,6 +54,85 @@ let MyCharts;
         updateStyles() {
             this.#loadStyles();
             this.#updateStyles();
+
+            this.chart.update();
+        }
+
+        #initOptions() {
+            Chart.defaults.maintainAspectRatio = false;
+            Chart.defaults.plugins.legend.display = false;
+            // Chart.defaults.animation.duration = 0;
+
+            const truncLabel = this.#truncLabel();
+            const callback = function (value) {
+                const lbl = this.getLabelForValue(value);
+                return truncLabel(lbl);
+            };
+            this.chartOptions = {
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0,
+                            stepSize: 1
+                        },
+                        grid: {
+                            color: this.styles.gridColor,
+                            border: this.styles.axisColor
+                        },
+                        ticks: {
+                            color: this.styles.fontColor,
+                            font: {
+                                size: this.styles.fontSize,
+                                family: this.styles.fontFamily
+                            }
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: this.styles.gridColor,
+                            border: this.styles.axisColor
+                        },
+                        ticks: {
+                            color: this.styles.fontColor,
+                            font: {
+                                size: this.styles.fontSize,
+                                family: this.styles.fontFamily
+                            },
+                            callback: callback
+                        }
+                    },
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: this.canvas.dataset.title,
+                        color: this.styles.fontColor,
+                        font: {
+                            size: this.styles.titleFontSize,
+                            family: this.styles.fontFamily
+                        },
+                        padding: {
+                            top: 0,
+                            bottom: 8
+                        },
+                    },
+                    tooltip: {
+                        displayColors: false,
+                        titleColor: this.styles.fontColor,
+                        titleFont: {
+                            size: this.styles.fontSize,
+                            family: this.styles.fontFamily
+                        },
+                        bodyColor: this.styles.fontColor,
+                        bodyFont: {
+                            size: this.styles.fontSize,
+                            family: this.styles.fontFamily
+                        },
+                    }
+                }
+            };
         }
 
         #updateVisibility() {
@@ -104,12 +153,6 @@ let MyCharts;
         #updateHeight() {
             this.canvas.parentNode.style.height = `${30 * (this.labels.length) + 65 +50}px`;
             this.chart?.update();
-        }
-
-        #setDefaults() {
-            Chart.defaults.maintainAspectRatio = false;
-            Chart.defaults.plugins.legend.display = false;
-            // Chart.defaults.animation.duration = 0;
         }
 
         #loadStyles() {
@@ -167,8 +210,6 @@ let MyCharts;
 
             this.chart.data.datasets[0].backgroundColor = this.styles.barBgColor;
             this.chart.data.datasets[0].borderColor = this.styles.barBorderColor;
-
-            this.chart.update();
         }
 
         #truncLabel() {
@@ -199,7 +240,6 @@ let MyCharts;
             }
         }
     }
-
 
     document.fonts.ready.then(() => {
         chartNames.forEach(name => charts.push(new MyChart(name)));
