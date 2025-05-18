@@ -213,7 +213,7 @@ let MyCharts;
     }
 
     function refreshStyle() {
-        charts.forEach(chart => chart.updateStyles());
+        setTimeout(() => charts.forEach(chart => chart.updateStyles()), 100);
     }
 
     // register event handlers
