@@ -30,6 +30,9 @@ let MyCharts;
                         top: 0,
                         bottom: 8
                     },
+                },
+                tooltip: {
+                    displayColors: false
                 }
             }
         };
@@ -43,6 +46,7 @@ let MyCharts;
             this.#setDefaults();
             this.#updateDatasets();
             this.#updateVisibility();
+            this.#loadStyles();
             this.initChart();
         }
 
@@ -65,7 +69,7 @@ let MyCharts;
                 const lbl = this.getLabelForValue(value);
                 return truncLabel(lbl);
             };
-            this.updateStyles();
+            this.#updateStyles();
             this.#updateHeight();
         }
 
@@ -75,6 +79,11 @@ let MyCharts;
             this.chart.data.datasets[0].data = this.values;
             this.chart.data.labels = this.labels;
             this.#updateHeight();
+        }
+
+        updateStyles() {
+            this.#loadStyles();
+            this.#updateStyles();
         }
 
         #updateVisibility() {
@@ -103,55 +112,67 @@ let MyCharts;
             // Chart.defaults.animation.duration = 0;
         }
 
-        updateStyles() {
+        #loadStyles() {
+            this.styles = {
+                fontColor: this.rootStyles.getPropertyValue('--chart-font-color').trim(),
+                fontFamily: this.rootStyles.getPropertyValue('--chart-font-family').trim(),
+                fontSize: this.rootStyles.getPropertyValue('--chart-font-size').trim(),
+                titleFontSize: this.rootStyles.getPropertyValue('--chart-title-font-size').trim(),
+                axisColor: this.rootStyles.getPropertyValue('--chart-axis-color').trim(),
+                gridColor: this.rootStyles.getPropertyValue('--chart-grid-color').trim(),
+                barBgColor: this.rootStyles.getPropertyValue('--chart-bar-bg-color').trim(),
+                barBorderColor: this.rootStyles.getPropertyValue('--chart-bar-border-color').trim(),
+            }
+        }
+
+        #updateStyles() {
             if (this.chart == null)
                 return;
 
-            const fontColor = this.rootStyles.getPropertyValue('--chart-font-color').trim();
-            const fontFamily = this.rootStyles.getPropertyValue('--chart-font-family').trim();
-            const fontSize = this.rootStyles.getPropertyValue('--chart-font-size').trim();
-            const titleFontSize = this.rootStyles.getPropertyValue('--chart-title-font-size').trim();
-            const axisColor = this.rootStyles.getPropertyValue('--chart-axis-color').trim();
-            const gridColor = this.rootStyles.getPropertyValue('--chart-grid-color').trim();
-            const barBgColor = this.rootStyles.getPropertyValue('--chart-bar-bg-color').trim();
-            const barBorderColor = this.rootStyles.getPropertyValue('--chart-bar-border-color').trim();
-
             this.chart.options.scales.x.grid = {
-                color: gridColor,
-                border: axisColor
+                color: this.styles.gridColor,
+                border: this.styles.axisColor
             }
             this.chart.options.scales.y.grid = {
-                color: gridColor,
-                border: axisColor
+                color: this.styles.gridColor,
+                border: this.styles.axisColor
             }
-            this.chart.options.scales.x.ticks.color = fontColor;
+            this.chart.options.scales.x.ticks.color = this.styles.fontColor;
             this.chart.options.scales.x.ticks.font = {
-                size: fontSize,
-                family: fontFamily
+                size: this.styles.fontSize,
+                family: this.styles.fontFamily
             };
-            this.chart.options.scales.y.ticks.color = fontColor;
+            this.chart.options.scales.y.ticks.color = this.styles.fontColor;
             this.chart.options.scales.y.ticks.font = {
-                size: fontSize,
-                family: fontFamily
+                size: this.styles.fontSize,
+                family: this.styles.fontFamily
             };
 
-            this.chart.options.plugins.title.color = fontColor;
+            this.chart.options.plugins.title.color = this.styles.fontColor;
             this.chart.options.plugins.title.font = {
-                size: titleFontSize,
-                family: fontFamily
+                size: this.styles.titleFontSize,
+                family: this.styles.fontFamily
             };
 
-            this.chart.data.datasets[0].backgroundColor = barBgColor;
-            this.chart.data.datasets[0].borderColor = barBorderColor;
+            this.chart.options.plugins.tooltip.titleColor = this.styles.fontColor;
+            this.chart.options.plugins.tooltip.titleFont = {
+                size: this.styles.fontSize,
+                family: this.styles.fontFamily
+            };
+            this.chart.options.plugins.tooltip.bodyColor = this.styles.fontColor;
+            this.chart.options.plugins.tooltip.bodyFont = {
+                size: this.styles.fontSize,
+                family: this.styles.fontFamily
+            };
 
-            this.styles.fontSize = fontSize;
-            this.styles.fontFamily = fontFamily;
+            this.chart.data.datasets[0].backgroundColor = this.styles.barBgColor;
+            this.chart.data.datasets[0].borderColor = this.styles.barBorderColor;
 
             this.chart.update();
         }
 
         #truncLabel() {
-            const fontSize = this.styles.fontSize;
+            const fontSize = this.styles.fontSize + 'px';
             const fontFamily = this.styles.fontFamily;
             const maxChartLabelWidth = Math.min(this.maxChartLabelWidth, Math.floor(this.canvas.offsetWidth / 3));
 
