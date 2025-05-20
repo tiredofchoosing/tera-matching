@@ -14,7 +14,6 @@
 		const guilds = [];
 		const noGuild = strings.noGuildTitle;
 		data.forEach(p => { if (p.guildName && guilds.indexOf(p.guildName) === -1) { guilds.push(p.guildName) } });
-		guilds.sort();
 		guilds.unshift(noGuild);
 		const guildCount = Array(guilds.length).fill(0);
 		const guildList = data.map(p => p.guildName ?? noGuild);

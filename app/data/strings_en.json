@@ -49,6 +49,7 @@
   "playerGuildAscContent": "Guild (asc)",
   "dungeonRankDescContent": "Rank (desc)",
   "dungeonRankAscContent": "Rank (asc)",
+  "defaultSortContent": "By default",
 
   "classSelectDefaultContent": "All classes",
   "selectDungeonRankDefaultContent": "Any rank",
@@ -75,6 +76,7 @@
   "hideLevelLabel": "Hide required level",
   "hideItemLevelLabel": "Hide required item level",
   "hideRankLabel": "Hide rank",
+  "hideNoGuildLabel": "Hide players with no guild",
 
   "playersTableLevelContent": "Lvl",
   "playersTableCharacterContent": "Character",
@@ -88,6 +90,6 @@
 
   "classChartTitle": "Classes",
   "guildChartTitle": "Guilds",
-  "noGuildTitle": "No guild",
+  "noGuildTitle": "[No guild]",
   "playersLabelTitle": " Players"
 }

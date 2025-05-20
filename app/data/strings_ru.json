@@ -49,6 +49,7 @@
   "playerGuildAscContent": "Гильдия (возр.)",
   "dungeonRankDescContent": "Ранг (убыв.)",
   "dungeonRankAscContent": "Ранг (возр.)",
+  "defaultSortContent": "По умолчанию",
 
   "classSelectDefaultContent": "Все классы",
   "selectDungeonRankDefaultContent": "Любой ранг",
@@ -75,6 +76,7 @@
   "hideLevelLabel": "Скрыть требуемый уровень",
   "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
   "hideRankLabel": "Скрыть ранг",
+  "hideNoGuildLabel": "Скрыть игроков без гильдии",
 
   "playersTableLevelContent": "Ур.",
   "playersTableCharacterContent": "Персонаж",
@@ -88,6 +90,6 @@
 
   "classChartTitle": "Классы",
   "guildChartTitle": "Гильдии",
-  "noGuildTitle": "Без гильдии",
+  "noGuildTitle": "[Без гильдии]",
   "playersLabelTitle": " Игроков"
 }

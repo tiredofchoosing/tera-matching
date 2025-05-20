@@ -1,16 +1,26 @@
 (function() {
 
+    const hideNoGuildCheckbox = document.getElementById('hideNoGuild');
+    const sortSelect = document.getElementById('selectPlayerSort');
+    const clearNavigationButton = document.getElementById('clearNavigation');
     const content = document.getElementById('content');
+    const checkboxes = [hideNoGuildCheckbox];
+    const selects = [sortSelect];
+
     const chartNames = ['classChart', 'guildChart'];
     const charts = [];
+    const defaultSelectIndex = 0;
 
     class MyChart {
         chart = null;
+        initData = [];
         labels = [];
         values = [];
         styles = {};
         chartOptions = {};
         maxChartLabelWidth = 150;
+        disableFirstValue = false;
+        sortingCriteria = 'default';
 
         constructor(name) {
             this.name = name;
@@ -18,15 +28,18 @@
             this.context = this.canvas.getContext('2d');
             this.rootStyles = window.getComputedStyle(document.documentElement);
 
-            this.#updateDatasets();
+            this.refreshDatasets();
             this.#updateVisibility();
             this.#loadStyles();
             this.#initOptions();
-            this.initChart();
             this.#updateHeight();
+            //this.initChart();
         }
 
         initChart() {
+            if (this.chart != null)
+                return;
+
             this.chart = new Chart(this.context, {
                 type: 'bar',
                 data: {
@@ -43,15 +56,37 @@
             });
         }
 
+        refreshDatasets() {
+            const dataset = document.getElementById(this.name + 'DataContainer').dataset;
+
+            const labels = dataset.labels?.split(',') ?? [];
+            const values = dataset.values?.split(',') ?? [];
+
+            this.labels = labels;
+            this.values = values;
+            this.initData = labels.map((label, i) => ({
+                label: label,
+                value: values[i]
+            }));
+        }
+
         updateChartData() {
-            this.#updateDatasets();
+            this.#filterAndSortData();
             this.#updateVisibility();
+            this.#updateHeight();
+
+            if (this.chart == null)
+                return;
+
             this.chart.data.datasets[0].data = this.values;
             this.chart.data.labels = this.labels;
-            this.#updateHeight();
+            this.chart.update();
         }
 
         updateStyles() {
+            if (this.chart == null)
+                return;
+
             this.#loadStyles();
             this.#updateStyles();
 
@@ -73,15 +108,13 @@
                 scales: {
                     x: {
                         beginAtZero: true,
-                        ticks: {
-                            precision: 0,
-                            stepSize: 1
-                        },
                         grid: {
                             color: this.styles.gridColor,
                             border: this.styles.axisColor
                         },
                         ticks: {
+                            precision: 0,
+                            stepSize: 1,
                             color: this.styles.fontColor,
                             font: {
                                 size: this.styles.fontSize,
@@ -144,15 +177,8 @@
             }
         }
 
-        #updateDatasets() {
-            const dataset = document.getElementById(this.name + 'DataContainer').dataset;
-            this.labels = dataset.labels?.split(',') ?? [];
-            this.values = dataset.values?.split(',') ?? [];
-        }
-
         #updateHeight() {
             this.canvas.parentNode.style.height = `${30 * (this.labels.length) + 65 +50}px`;
-            this.chart?.update();
         }
 
         #loadStyles() {
@@ -239,17 +265,84 @@
                 return sub;
             }
         }
+
+        #filterAndSortData() {
+            let labels = this.initData.map(d => d.label);
+            let values = this.initData.map(d => d.value);
+            if (this.disableFirstValue) {
+                labels.shift();
+                values.shift();
+            }
+
+            if (this.sortingCriteria !== 'default') {
+                const tempData = labels.map((label, i) => ({
+                    label,
+                    value: values[i]
+                }));
+
+                tempData.sort((a, b) => {
+                    const labelA = a.label.toLowerCase();
+                    const labelB = b.label.toLowerCase();
+                    const valueA = a.value;
+                    const valueB = b.value;
+
+                    switch (this.sortingCriteria) {
+                        case 'labelDesc':
+                            return labelB.localeCompare(labelA);
+                        case 'labelAsc':
+                            return labelA.localeCompare(labelB);
+                        case 'valueDesc':
+                            return valueB - valueA;
+                        case 'valueAsc':
+                            return valueA - valueB;
+                    }
+                });
+
+                labels = tempData.map(d => d.label);
+                values = tempData.map(d => d.value);
+            }
+
+            this.labels = labels;
+            this.values = values;
+        }
     }
 
+    chartNames.forEach(name => charts.push(new MyChart(name)));
+
     document.fonts.ready.then(() => {
-        chartNames.forEach(name => charts.push(new MyChart(name)));
-        //charts.forEach(chart => chart.initChart());
+        charts.forEach(chart => chart.initChart());
     });
 
+    function sortCharts(_, save = true) {
+        save && saveData(sortSelect, sortSelect.selectedIndex);
+
+        charts.forEach(chart => {
+            chart.sortingCriteria = sortSelect.value;
+            chart.updateChartData();
+        });
+    }
+
+    function hideNoGuild(_, save = true) {
+        save && saveData(hideNoGuildCheckbox, hideNoGuildCheckbox.checked, false);
+
+        charts[1].disableFirstValue = hideNoGuildCheckbox.checked;
+        if (_ != null) {
+            // to not call #filterAndSortData twice
+            charts[1].updateChartData();
+        }
+    }
+
     function refreshContent() {
-        charts.forEach(chart => chart.updateChartData());
-        // initVariables();
-        // loadState();
+        charts.forEach(chart => {
+            chart.refreshDatasets();
+            chart.updateChartData();
+        });
+        //loadState();
+    }
+
+    function loadState() {
+        hideNoGuild(null, false);
+        sortCharts(null, false);
     }
 
     function refreshStyle() {
@@ -257,9 +350,25 @@
     }
 
     // register event handlers
+    sortSelect.addEventListener('change', sortCharts);
+    hideNoGuildCheckbox.addEventListener('change', hideNoGuild);
     content.addEventListener('contentUpdated', refreshContent);
     document.addEventListener('styleChanged', refreshStyle);
 
+    clearNavigationButton.addEventListener('click', function() {
+        sortSelect.selectedIndex = defaultSelectIndex;
+
+        sortCharts(null, true);
+    });
+
     // restore session data
+    selects.forEach(e => e.selectedIndex = loadData(e) ?? e.selectedIndex);
+    checkboxes.forEach(e => {
+        const checked = loadData(e, false);
+        if (checked != null)
+            e.checked = checked === 'true';
+    });
+
+    loadState();
 
 })();
