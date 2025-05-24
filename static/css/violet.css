@@ -1,0 +1,63 @@
+:root {
+    --font-color-primary: rgba(255, 255, 255, 0.8);
+    --font-color-secondary: rgba(255, 255, 255, 0.5);
+
+    --scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
+    --background: center/cover no-repeat url('/static/img/bgs/background1.png');
+
+    --background-disabled: rgb(65, 56, 78);
+    --bg-backdrop-filter: blur(15px);
+
+    --navbar-bg-color: rgb(38, 33, 48);
+    --header-font-weight: inherit;
+    --header-logo-opacity: 0.8;
+    --header-logo-padding: 0.5rem;
+    --header-logo-content: url(/static/img/icons/icon.svg);
+    --header-btn-hov-bg-color: rgba(255, 255, 255, 0.1);
+    --header-btn-img-filter: none;
+    --header-ul-border-color: rgb(255, 255, 255, 0.05);
+    --header-shadow-color: rgba(0, 0, 0, 0.075);
+    --header-style-btn-content: url(/static/img/icons/theme_sun.svg);
+
+    --close-button-content: url(/static/img/icons/close-l.svg);
+    --dungeon-rank-content: url(/static/img/icons/star-l.svg);
+
+    --menu-bg-color: rgba(38, 33, 48, 0.7);
+    --menu-select-option-color: rgb(66, 62, 95);
+    --menu-child-bg-color: rgba(255, 255, 255, 0.05);
+    --menu-input-plh-color: rgb(255, 255, 255, 0.6);
+    --menu-btn-hov-bg-color: rgba(255, 255, 255, 0.2);
+    --menu-btn-act-bg-color: rgba(255, 255, 255, 0.2);
+    --menu-btn-img-filter: none;
+    --menu-chk-bg-color: rgb(255, 255, 255);
+    --menu-search-bg-img: url(/static/img/icons/search-l.svg);
+    --menu-sort-bg-img: url(/static/img/icons/sort-l.svg);
+
+    --dungeon-lvl-bg-color: rgba(255, 255, 255, 0.05);
+    --dungeon-players-bg-color: rgba(255, 255, 255, 0.05);
+    --dungeon-dtl-bg: rgba(23, 24, 32, 0.6);
+    --dungeon-sum-bg: rgba(23, 24, 32, 0.2);
+    --dungeon-role-tank-content: url(/static/img/icons/tank.svg);
+    --dungeon-role-tank-margin: initial;
+    --dungeon-role-dmg-content: url(/static/img/icons/dmg.svg);
+    --dungeon-role-heal-content: url(/static/img/icons/heal.svg);
+
+    --party-sum-span-border-color: rgb(255, 255, 255, 0.3);
+    --party-dtl-content-bg-color: rgba(255, 255, 255, 0.05);
+    --party-del-color: rgb(255, 255, 255, 0.15);
+    --party-leader-content: url(/static/img/icons/leader.svg);
+
+    --players-tbl-th-bg-color: rgb(23, 24, 32, 0.7);
+    --players-tbl-tr1-bg-color: rgba(23, 24, 32, 0.5);
+    --players-tbl-tr2-bg-color: rgba(255, 255, 255, 0.1);
+    --players-tbl-guild-background-color: rgba(255, 255, 255, 0.2);
+
+    --accent-text-color: rgba(136, 111, 165);
+    --accent-background-color: rgb(59, 47, 71);
+
+    --players-tbl-delimiter: rgba(255, 255, 255, 0.05);
+    --players-tbl-guild-color: rgba(255, 255, 255, 0.6);
+
+    --border: rgba(136, 111, 165, 0.24);
+    --empty-bg-color: rgba(23, 24, 32, 0.7);
+}
