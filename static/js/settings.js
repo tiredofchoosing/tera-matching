@@ -15,15 +15,25 @@
     const updateEvent = new CustomEvent('contentUpdated');
 
     let autoupdateTimerId = -1;
+    let eTag = '';
 
     // functions
     async function updatePageContent() {
         try {
             const path = window.location.pathname;
             const partialPath = '/partial' + path;
-            const response = await fetch(partialPath);
-            if (!response.ok)
-                throw new Error('Update failed');
+            const response = await fetch(partialPath, {
+                headers: {
+                    'If-None-Match': eTag
+                }
+            });
+
+            if (!(response && (response.ok || response.status === 304)))
+                throw `Request failed for '${partialPath}' with status: ${response?.status}`;
+
+            eTag = response.headers.get('ETag');
+            if (response.status === 304)
+                return;
 
             const html = await response.text();
             const tempDiv = document.createElement('div');
