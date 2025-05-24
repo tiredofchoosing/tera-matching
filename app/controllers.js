@@ -125,6 +125,7 @@ export async function lfg(req, res, partialContent = false) {
         classes: classes[lang],
         lang,
         online: respOnlineJson?.length || null,
+        teralogs_url: teralogs_provider,
         page
     };
 

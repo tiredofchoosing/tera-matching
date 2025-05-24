@@ -27,8 +27,10 @@
 		if (data[key].hasOwnProperty('messages')) {
 			data[key].messages.forEach(msg => { %>
 	<details class="lfg-details flex-wrap justify-content-between align-items-center" data-lfg-id="<%= msg.player?.playerId ?? '0' %>">
-		<summary class="d-flex flex-wrap justify-content-between align-items-center w-100">
-			<span class="lfg-message"><%= msg.message %></span>
+		<summary class=" d-flex flex-wrap justify-content-between align-items-center w-100 ">
+			<span class="lfg-message" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+				<%= msg.message %>
+			</span>
 			<span class="lfg-player-count ms-auto text-end">
 				<%= msg.playerCount %> / <%= msg.maxPlayers %>
 			</span>
@@ -37,19 +39,37 @@
 			</div>
 		</summary>
 		<% if (msg.player != null) { %>
-		<div class="party-detailed-content detailed-player">
-			<span class="player-level"><%= msg.player.level %></span>
-			<span class="player-itemLevel"><%= Math.trunc(msg.player.itemLevel) %></span>
-			<img class="party-player-class-icon" src="/static/img/icons/class/<%= msg.player.class %>.png" title="<%= classes[msg.player.class] %>" draggable="false">
-			<%= msg.leaderName %>
-			<% if (msg.player.guildName != null) { %>
-			<span class="party-content-guild-text"><%= msg.player.guildName %></span>
-			<% } %>
+		<!-- <div class="party-detailed-content detailed-player"> -->
+		<div class="party-detailed-content">
+			<table>
+				<tr class="party-player-detailed-content">
+					<td class="td-player-level">
+						<span class="player-level"><%= msg.player.level %></span>
+					</td>
+					<td class="td-player-itemLevel">
+						<span class="player-itemLevel"><%= Math.trunc(msg.player.itemLevel) %></span>
+					</td>
+					<td>
+						<img class="party-player-class-icon" src="/static/img/icons/class/<%= msg.player.class %>.png" title="<%= classes[msg.player.class] %>" draggable="false">
+						<a class="party-content-player-name" title="teralogs - <%= msg.leaderName %>" href="<%= teralogs_url %><%= msg.leaderName %>" target="_blank"><%= msg.leaderName %></a>
+                        
+
+						<% if (msg.player.guildName != null) { %>
+						<span class="party-content-guild-text"><%= msg.player.guildName %></span>
+						<% } %>
+					</td>
+				</tr>
+			</table>
 		</div>
+
 		<% } %>
 	</details>
 	<% }); } } %>
 </div>
+
+
+
+
 <div class="last-update">
 	<% if (data['0'] != null) { %>
 	<div class="out-update-time">
