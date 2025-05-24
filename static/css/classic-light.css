@@ -4,7 +4,7 @@
 
     --scrollbar-color: initial;
     --background: rgb(135, 150, 197);
-    --background-disabled:  rgb(184, 194, 224);
+    --background-disabled: rgb(184, 194, 224);
     --bg-backdrop-filter: none;
 
     --navbar-bg-color: rgb(169, 180, 214);
@@ -50,8 +50,10 @@
     --players-tbl-tr2-bg-color: rgba(255, 255, 255, 0.2);
     --players-tbl-guild-background-color: rgba(255, 255, 255, 0.7);
 
-    --accent-text-color: #3A4978;
+    --accent-text-color: rgb(58, 74, 120);
     --accent-background-color: rgb(255, 255, 255);
     --players-tbl-delimiter: rgba(116, 116, 116, 0.1);
     --empty-bg-color: rgb(169, 180, 214);
+
+    --border: rgba(58, 74, 120, 0.3);
 }

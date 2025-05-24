@@ -142,6 +142,7 @@ header {
     color: var(--font-color-primary);
     padding: 0;
     border-radius: 10px;
+    border: 1px solid var(--border);
 }
 
 .dropdown-item {
@@ -203,23 +204,24 @@ header {
     align-items: center;
     cursor: pointer;
     padding: 0.25rem;
-    border: 2px solid transparent;
-    transition: border-color 0.3s;
-    border-radius: 4px;
     font-size: small;
+    margin: 1em 0;
 }
 
 .theme-radio-container img {
     width: 100px;
     height: auto;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
 }
 
 .theme-radio-option {
     display: none;
 }
 
-.theme-radio-option:checked+.theme-radio-container {
-    border-color: #007bff;
+.theme-radio-option:checked+.theme-radio-container img {
+    border-color: #abd4ff;
 }
 
 /* search / sort / settings menu */
@@ -230,6 +232,7 @@ header {
     background-color: var(--menu-bg-color);
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
+    border: 1px solid var(--border);
 }
 .offcanvas-body .navigation-menu {
     padding: 0;
@@ -255,6 +258,7 @@ header {
 #selectPlayerClass,
 #selectDungeonRank {
     background-image: var(--menu-search-bg-img);
+    border: 1px solid var(--border);
 }
 
 .navigation-search input,
@@ -267,6 +271,7 @@ header {
     color: var(--font-color-primary);
     background-color: var(--menu-child-bg-color);
     font-weight: 450;
+    border: 1px solid var(--border);
 }
 
 .navigation-search input,
@@ -340,6 +345,7 @@ details {
     background: var(--dungeon-dtl-bg);
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
+    border: 1px solid var(--border);
 }
 
 .dungeon-details[open] {
@@ -364,6 +370,7 @@ details {
     border-radius: 6px;
     background-color: var(--dungeon-lvl-bg-color);
     height: fit-content;
+    border: 1px solid var(--border);
 }
 
 .dungeon-name {
@@ -379,6 +386,7 @@ details {
     background-color: var(--dungeon-players-bg-color);
     height: fit-content;
     text-wrap: nowrap;
+    border: 1px solid var(--border);
 }
 
 .dungeon-role img {
@@ -429,13 +437,19 @@ details {
 
 .party-detailed-content {
     background-color: var(--party-dtl-content-bg-color);
-    padding: 0.3em 0;
+    padding: 0.6em;
     border-radius: 6px;
+    line-height: 2;
+    border: 1px solid var(--border);
 }
 
 .party-player-detailed-content {
     /* padding: 0.3em 0.5em; */
     margin: 0.3em 0;
+}
+
+.party-player-detailed-content td {
+    border-spacing: 15px;
 }
 
 .party-player-info {
@@ -448,10 +462,11 @@ details {
 }
 
 .party-player-class-icon {
-    margin: -0.13em 0.2em -0.13em 0em;
+    margin: 0 0.2em 0.2em 0em;
     vertical-align: bottom;
     width: 1.6em;
     height: auto;
+    align-items: center;
 }
 
 .party-leader {
@@ -483,9 +498,8 @@ details {
     border-radius: 6px;
     background-color: var(--players-tbl-guild-background-color);
     font-size: 0.8rem;
-
-    margin-top: 0.3em;
     opacity: 80%;
+    border: 1px solid var(--border);
 }
 
 .player-level {}
@@ -549,6 +563,7 @@ details {
     color: var(--font-color-primary);
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
+    border: 1px solid var(--border);
 }
 
 .player-details {
@@ -649,9 +664,11 @@ details {
     padding: 0 3px 0 0;
     display: inline-block;
     min-width: var(--name-width);
+    transition: 0.3s;
 }
 
 .party-content-player-name:hover {
+    opacity: 70%;
     color: var(--font-color-primary);
 }
 
@@ -665,6 +682,7 @@ details {
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
     margin-bottom: 0.5em;
+    border: 1px solid var(--border);
 }
 
 .empty img {
@@ -763,7 +781,7 @@ details {
 }
 
 .detailed-player {
-    padding: 0.6em 1em;
+    /* padding: 0.6em 1em; */
     margin: 0.6em;
     border-radius: 6px;
 }
@@ -900,7 +918,7 @@ details {
         margin-right: auto;
         max-width: 100%;
         margin: 0;
-        height: 100%; 
+        height: 100%;
     }
 }
 
@@ -929,5 +947,19 @@ details {
 @media (min-width: 1200px) {
     .modal-dialog {
         max-width: 660px;
+    }
+}
+
+@media (max-width: 991px) {
+
+    .navigation-menu {
+        background-color: none !important;
+        border: none !important;
+    }
+
+    .navigation-search input,
+    .navigation-select select,
+    .navigation-button button {
+        border: none !important;
     }
 }
