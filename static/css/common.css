@@ -280,6 +280,9 @@ header {
     box-sizing: border-box;
 }
 
+.navigation-select option {
+    background-color: var(--color-option);
+}
 .navigation-search input::placeholder {
     opacity: 1;
     color: var(--menu-input-plh-color);

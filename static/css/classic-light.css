@@ -30,6 +30,7 @@
     --menu-chk-bg-color: white;
     --menu-search-bg-img: url(/static/img/icons/search-d.svg);
     --menu-sort-bg-img: url(/static/img/icons/sort-d.svg);
+    --color-option:rgb(224, 227, 235);
 
     --dungeon-lvl-bg-color: rgba(255, 255, 255, 0.4);
     --dungeon-players-bg-color: rgba(255, 255, 255, 0.4);
