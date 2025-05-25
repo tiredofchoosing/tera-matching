@@ -35,8 +35,8 @@
 
     --dungeon-lvl-bg-color: rgba(0, 0, 0, 0.3);
     --dungeon-players-bg-color: rgba(0, 0, 0, 0.3);
-    --dungeon-dtl-bg: linear-gradient(to right, rgba(38, 63, 32, 0.7), rgba(30, 43, 31, 0.7), rgba(30, 43, 31, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7));
-    --dungeon-sum-bg: linear-gradient(to right, rgb(38, 63, 32, 0.7), rgba(30, 43, 31, 0.7), rgb(30, 43, 31, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7));
+    --dungeon-dtl-bg: linear-gradient(to right, rgba(38, 63, 32, 0.7),  rgba(30, 43, 31, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7));
+    --dungeon-sum-bg: linear-gradient(to right, rgb(38, 63, 32, 0.7), rgb(30, 43, 31, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7));
     --dungeon-role-tank-content: url(/static/img/icons/tank.svg);
     --dungeon-role-tank-margin: initial;
     --dungeon-role-dmg-content: url(/static/img/icons/dmg.svg);
