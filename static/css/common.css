@@ -612,12 +612,12 @@ details {
 }
 
 .players-table tr:nth-child(odd) {
-    background-color: var(--players-tbl-tr1-bg-color);
+    background: var(--players-tbl-tr1-bg-color);
 }
 
 .players-table tr:nth-child(even) {
-    background-color: var(--players-tbl-tr2-bg-color);
-    background-color: var(--players-tbl-tr1-bg-color);
+    background: var(--players-tbl-tr2-bg-color);
+    background: var(--players-tbl-tr1-bg-color);
 }
 
 .players-table tbody tr {
