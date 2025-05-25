@@ -26,21 +26,24 @@
 	<% for (let key in data) {
 		if (data[key].hasOwnProperty('messages')) {
 			data[key].messages.forEach(msg => { %>
-	<details class="lfg-details flex-wrap justify-content-between align-items-center" data-lfg-id="<%= msg.player?.playerId ?? '0' %>">
-		<summary class=" d-flex flex-wrap justify-content-between align-items-center w-100 ">
-			<span class="lfg-message" style="word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
-				<%= msg.message %>
-			</span>
-			<span class="lfg-player-count ms-auto text-end">
-				<%= msg.playerCount %> / <%= msg.maxPlayers %>
-			</span>
-			<div class="lfg-summary">
+	<details class="lfg-details" data-lfg-id="<%= msg.player?.playerId ?? '0' %>">
+		<summary class="lfg-summary">
+			<div class="">
+				<span class="lfg-message">
+					<%= msg.message %>
+				</span>
 				<span class="lfg-leader-name"><%= msg.leaderName %></span>
 			</div>
+			<span class="lfg-player-count text-end">
+				<%= msg.playerCount %> / <%= msg.maxPlayers %>
+			</span>
 		</summary>
+
+
 		<% if (msg.player != null) { %>
 		<!-- <div class="party-detailed-content detailed-player"> -->
-		<div class="party-detailed-content">
+
+		<div class="party-detailed-content overflow-auto">
 			<table>
 				<tr class="party-player-detailed-content">
 					<td class="td-player-level">
@@ -52,7 +55,6 @@
 					<td>
 						<img class="party-player-class-icon" src="/static/img/icons/class/<%= msg.player.class %>.png" title="<%= classes[msg.player.class] %>" draggable="false">
 						<a class="party-content-player-name" title="teralogs - <%= msg.leaderName %>" href="<%= teralogs_url %><%= msg.leaderName %>" target="_blank"><%= msg.leaderName %></a>
-                        
 
 						<% if (msg.player.guildName != null) { %>
 						<span class="party-content-guild-text"><%= msg.player.guildName %></span>
@@ -61,6 +63,7 @@
 				</tr>
 			</table>
 		</div>
+
 
 		<% } %>
 	</details>

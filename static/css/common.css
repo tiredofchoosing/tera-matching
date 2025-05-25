@@ -444,11 +444,13 @@ details {
     border-radius: 6px;
     line-height: 2;
     border: 1px solid var(--border);
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .party-player-detailed-content {
     /* padding: 0.3em 0.5em; */
-    margin: 0.3em 0;
 }
 
 .party-player-detailed-content td {
@@ -508,10 +510,8 @@ details {
 .player-level {}
 
 .player-itemLevel {
-    /* background-color: rgba(133, 133, 133, 0.1); */
-    min-width: 4ch;
     text-align: center;
-
+    margin-right: 0.25em;
 }
 
 .party-content-guild-text {
@@ -730,28 +730,36 @@ details {
 .lfg-message {
     margin: 0 0.4em;
     padding: 0.2em;
-    max-width: 100%;
+    /* max-width: 100%; */
+    word-break: break-word;
+    flex-grow: 1;
+    display: inline-block;
 }
 
 .lfg-player-count {
     padding: 0.175em 0.4em;
     border-radius: 6px;
     background-color: var(--dungeon-lvl-bg-color);
-    min-width: 2ch;
-    text-align: center;
+    height: fit-content;
+    text-wrap: nowrap;
     border: 1px solid var(--border);
+    margin-left: auto
 }
 
 .lfg-summary {
     width: 100%;
     margin-bottom: 0.3em;
+    display: flex;
 }
 
 .lfg-leader-name {
-    padding: 0.4em;
+    padding: 0 0.4em;
     margin: 0.3em;
     opacity: 70%;
     font-weight: 500;
+    word-break: break-word;
+    white-space: normal;
+    display: block;
 }
 
 .last-update {
