@@ -15,7 +15,7 @@
 								<option value="default" selected="selected"><%= strings.selectDungeonRankDefaultContent %></option>
 								<% const maxRank = Math.max(...(Object.values(instances_info).map(d => d.rank))) %>
 								<% for(let i = 1; i <= maxRank; i++) { %>
-								<option value="<%= i %>"><%= '⭐'.repeat(i) %></option>
+								<option value="<%= i %>"><%= '★'.repeat(i) %></option>
 								<% } %>
 							</select>
 							<select id="selectDungeonSort" title="<%= strings.selectSort %>">

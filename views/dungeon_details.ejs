@@ -15,7 +15,15 @@
         <% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
         <span class="dungeon-name"><%= dungeonProps.name %></span>
         <% if (page === 'dungeons') { %>
-        <span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>"><%= '⭐'.repeat(dungeonProps.rank) %></span>
+        <!-- <span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>"><%= '⭐'.repeat(dungeonProps.rank) %></span> -->
+        <span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>">
+            <% for (let i = 0; i < dungeonProps.rank; i++) { %>
+            <span class="dungeon-rank-icon col" title="Ранг <%= i + 1 %>">
+                <img src="/static/img/icons/rank-star.png" width="20px" height="20px" draggable="false">
+            </span>
+            <% } %>
+        </span>
+
         <% } %>
         <span class="dungeon-players">
             <% if (page === 'dungeons') { %>
@@ -50,41 +58,34 @@
         </summary>
         <div class="party-detailed-content">
             <table>
-            <% Object.keys(party.players).forEach(id => { %>
-            <% let player = party.players[id]; %>
-            <tr class="party-player-detailed-content<%= player.level >= 65 ? ' level65' : ''%>">
-            <!-- <div class="party-player-detailed-content<%= player.level >= 65 ? ' level65' : ''%>"> -->
-                <!-- <div class="party-player-info">
-                    <div class="party-content-scroll"> -->
-                            <td>
-                                <span class="player-level"><%= player.level %></span>
-                            </td>
-                            <td>
-                                <span class="player-itemLevel"><%= Math.trunc(player.itemLevel) %></span>
-                            </td>
-                            <td>
-                                <!-- <span class="player-name"> -->
-                                <img class="party-player-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
-                            </td>
-                            <td>
-                                <a class="party-content-player-name" title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank">
-                                    <%= player.name %>
-                                    <% if (player.isLeaderRequired) { %>
-                                    <img class="party-player-icon party-leader" width="20px" height="20px">
-                                    <% } %>
-                                </a>
-                            </td>
-                            <td>
-                                <% if (player.guildName != null) { %>
-                                <span class="party-content-guild-text"><%= player.guildName %></span>
-                                <% } %>
-                                <!-- </span> -->
-                            </td>
-                    <!-- </div>
-                </div>
-            </div> -->
-            </tr>
-            <% }); %>
+                <% Object.keys(party.players).forEach(id => { %>
+                <% let player = party.players[id]; %>
+                <tr class="party-player-detailed-content<%= player.level >= 65 ? ' level65' : ''%>">
+
+                    <td class="td-player-level marker-lvl">
+                        <span class="player-level"><%= player.level %></span>
+                    </td>
+                    <td class="td-player-itemLevel marker-lvl">
+                        <span class="player-itemLevel"><%= Math.trunc(player.itemLevel) %></span>
+                    </td>
+                    <td>
+                        <img class="party-player-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
+                    </td>
+                    <td>
+                        <a class="party-content-player-name" title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank">
+                            <%= player.name %>
+                            <% if (player.isLeaderRequired) { %>
+                            <img class="party-player-icon party-leader" width="20px" height="20px">
+                            <% } %>
+                        </a>
+                    </td>
+                    <td>
+                        <% if (player.guildName != null) { %>
+                        <span class="party-content-guild-text"><%= player.guildName %></span>
+                        <% } %>
+                    </td>
+                </tr>
+                <% }); %>
             </table>
         </div>
     </details>
