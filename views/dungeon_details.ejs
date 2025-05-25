@@ -1,94 +1,71 @@
 <% for (let dungeonId in data) { %>
 <% let dungeon = data[dungeonId]; dungeonProps = instances_info[dungeonId]; %>
 <% if (dungeonProps == undefined) { 
-        dungeonProps = { 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' }; 
-        if (page === 'dungeons') { dungeonProps.minItemLevel = 0; } 
-    } %>
+		dungeonProps = { 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' }; 
+		if (page === 'dungeons') { dungeonProps.minItemLevel = 0; } 
+	} %>
 <details open class="dungeon-details" id="<%= dungeonId %>">
-    <summary class="dungeon-summary">
-        <span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
-        <% if (page === 'dungeons') { %>
-        <span class="dungeon-ilvl"><%= dungeonProps.minItemLevel %></span>
-        <% } %>
-        <% let countTank = 0; dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length); %>
-        <% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
-        <% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
-        <span class="dungeon-name"><%= dungeonProps.name %></span>
-        <% if (page === 'dungeons') { %>
-        <!-- <span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>"><%= '⭐'.repeat(dungeonProps.rank) %></span> -->
-        <span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>">
-            <% for (let i = 0; i < dungeonProps.rank; i++) { %>
-            <span class="dungeon-rank-icon col" title="Ранг <%= i + 1 %>">
-                <img src="/static/img/icons/rank-star.png" width="20px" height="20px" draggable="false">
-            </span>
-            <% } %>
-        </span>
+	<summary class="dungeon-summary">
+		<span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
+		<% if (page === 'dungeons') { %>
+		<span class="dungeon-ilvl"><%= dungeonProps.minItemLevel %></span>
+		<% } %>
+		<% let countTank = 0; dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length); %>
+		<% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
+		<% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
+		<span class="dungeon-name"><%= dungeonProps.name %></span>
+		<% if (page === 'dungeons') { %>
+		<!-- <span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>"><%= '⭐'.repeat(dungeonProps.rank) %></span> -->
+		<span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>">
+			<% for (let i = 0; i < dungeonProps.rank; i++) { %>
+			<span class="dungeon-rank-icon col" title="Ранг <%= i + 1 %>">
+				<img src="/static/img/icons/rank-star.png" width="20px" height="20px" draggable="false">
+			</span>
+			<% } %>
+		</span>
 
-        <% } %>
-        <span class="dungeon-players">
-            <% if (page === 'dungeons') { %>
-            <span class="dungeon-role"><img class="dungeon-role-tank" width="20px" height="20px"> <%= countTank %></span>
-            <% } %>
-            <span class="dungeon-role"><img class="dungeon-role-dmg" width="20px" height="20px"> <%= countDmg %></span>
-            <span class="dungeon-role"><img class="dungeon-role-heal" width="20px" height="20px"> <%= countHeal %></span>
-        </span>
-    </summary>
+		<% } %>
+		<span class="dungeon-players">
+			<% if (page === 'dungeons') { %>
+			<span class="dungeon-role"><img class="dungeon-role-tank" width="20px" height="20px"> <%= countTank %></span>
+			<% } %>
+			<span class="dungeon-role"><img class="dungeon-role-dmg" width="20px" height="20px"> <%= countDmg %></span>
+			<span class="dungeon-role"><img class="dungeon-role-heal" width="20px" height="20px"> <%= countHeal %></span>
+		</span>
+	</summary>
 
-    <% dungeon.parties.forEach(party => { %>
-    <% const playerCount = Object.keys(party.players).length; %>
-    <% let maxNameLength = 0; %>
-    <% if (playerCount > 1) { %>
-    <% const playerNames = Object.values(party.players).map(p => p.name.length + (p.isLeaderRequired ? 3 : 0)); %>
-    <% maxNameLength = Math.max(...playerNames); %>
-    <% } %>
+	<% dungeon.parties.forEach(party => { %>
+	<% const playerCount = Object.keys(party.players).length; %>
+	<% let maxNameLength = 0; %>
+	<% if (playerCount > 1) { %>
+	<% const playerNames = Object.values(party.players).map(p => p.name.length + (p.isLeaderRequired ? 3 : 0)); %>
+	<% maxNameLength = Math.max(...playerNames); %>
+	<% } %>
 
-    <div class="delimiter"></div>
-    <details class="party-details" data-party-id="<%= dungeonId + '_' + party.players[0].playerId %>">
-        <summary class="party-summary row row-cols-auto">
-            <% Object.keys(party.players).forEach(id => { %>
-            <% let player = party.players[id]; %>
-            <span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>">
-                <img class="party-player-icon dungeon-role-<%= roles[player.role] %>" width="20px" height="20px">
-                <%= player.name %>
-                <% if (player.isLeaderRequired) { %>
-                <img class="party-player-icon party-leader" width="20px" height="20px">
-                <% } %>
-            </span>
-            <% }); %>
-        </summary>
-        <div class="party-detailed-content">
-            <table>
-                <% Object.keys(party.players).forEach(id => { %>
-                <% let player = party.players[id]; %>
-                <tr class="party-player-detailed-content<%= player.level >= 65 ? ' level65' : ''%>">
-
-                    <td class="td-player-level marker-lvl">
-                        <span class="player-level"><%= player.level %></span>
-                    </td>
-                    <td class="td-player-itemLevel marker-lvl">
-                        <span class="player-itemLevel"><%= Math.trunc(player.itemLevel) %></span>
-                    </td>
-                    <td>
-                        <img class="party-player-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
-                    </td>
-                    <td>
-                        <a class="party-content-player-name" title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank">
-                            <%= player.name %>
-                            <% if (player.isLeaderRequired) { %>
-                            <img class="party-player-icon party-leader" width="20px" height="20px">
-                            <% } %>
-                        </a>
-                    </td>
-                    <td>
-                        <% if (player.guildName != null) { %>
-                        <span class="party-content-guild-text"><%= player.guildName %></span>
-                        <% } %>
-                    </td>
-                </tr>
-                <% }); %>
-            </table>
-        </div>
-    </details>
-    <% }); %>
+	<div class="delimiter"></div>
+	<details class="party-details" data-party-id="<%= dungeonId + '_' + party.players[0].playerId %>">
+		<summary class="party-summary row row-cols-auto">
+			<% Object.keys(party.players).forEach(id => { %>
+			<% let player = party.players[id]; %>
+			<span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>">
+				<img class="party-player-icon dungeon-role-<%= roles[player.role] %>" width="20px" height="20px">
+				<%= player.name %>
+				<% if (player.isLeaderRequired) { %>
+				<img class="party-player-icon party-leader" width="20px" height="20px">
+				<% } %>
+			</span>
+			<% }); %>
+		</summary>
+		<div class="party-detailed-content overflow-auto">
+			<table>
+                <tbody>
+                    <% Object.keys(party.players).forEach(id => { %>
+                    <%- include('party_player_detailed', { player: party.players[id] }) %>
+                    <% }); %>
+                </tbody>
+			</table>
+		</div>
+	</details>
+	<% }); %>
 </details>
 <% } %>

@@ -38,41 +38,18 @@
 				<%= msg.playerCount %> / <%= msg.maxPlayers %>
 			</span>
 		</summary>
-
-
 		<% if (msg.player != null) { %>
-		<!-- <div class="party-detailed-content detailed-player"> -->
-
 		<div class="party-detailed-content overflow-auto">
 			<table>
-				<tr class="party-player-detailed-content">
-					<td class="td-player-level">
-						<span class="player-level"><%= msg.player.level %></span>
-					</td>
-					<td class="td-player-itemLevel">
-						<span class="player-itemLevel"><%= Math.trunc(msg.player.itemLevel) %></span>
-					</td>
-					<td>
-						<img class="party-player-class-icon" src="/static/img/icons/class/<%= msg.player.class %>.png" title="<%= classes[msg.player.class] %>" draggable="false">
-						<a class="party-content-player-name" title="teralogs - <%= msg.leaderName %>" href="<%= teralogs_url %><%= msg.leaderName %>" target="_blank"><%= msg.leaderName %></a>
-
-						<% if (msg.player.guildName != null) { %>
-						<span class="party-content-guild-text"><%= msg.player.guildName %></span>
-						<% } %>
-					</td>
-				</tr>
+                <tbody>
+                    <%- include('party_player_detailed', { player: msg.player }) %>
+                </tbody>
 			</table>
 		</div>
-
-
 		<% } %>
 	</details>
 	<% }); } } %>
 </div>
-
-
-
-
 <div class="last-update">
 	<% if (data['0'] != null) { %>
 	<div class="out-update-time">
