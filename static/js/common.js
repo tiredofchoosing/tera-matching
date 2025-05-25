@@ -8,9 +8,9 @@
     };
 
     function saveData(element, value = null, forSession = true) {
-        let storage = forSession ? window.sessionStorage : window.localStorage;
+        const storage = forSession ? window.sessionStorage : window.localStorage;
         if (storage) {
-            let id = typeof(element) === 'string' ? element : element.id;
+            const id = typeof(element) === 'string' ? element : element.id;
             if (value != null)
                 storage.setItem(id, value);
             else
@@ -19,9 +19,9 @@
     }
 
     function loadData(element, forSession = true) {
-        let storage = forSession ? window.sessionStorage : window.localStorage;
+        const storage = forSession ? window.sessionStorage : window.localStorage;
         if (storage) {
-            let id = typeof(element) === 'string' ? element : element.id;
+            const id = typeof(element) === 'string' ? element : element.id;
             return storage.getItem(id);
         }
         return null;
@@ -46,7 +46,7 @@
         const theme = styleLink.dataset.value;
         save && saveData(styleLink, theme, false);
 
-        styleLink.href = `/static/css/${theme}.css`
+        styleLink.href = `/static/css/${theme}.css`;
         themeColor.content = navbarBgColors[theme];
     }
 
