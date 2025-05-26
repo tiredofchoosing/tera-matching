@@ -609,14 +609,21 @@ details {
     padding-left: 0.5rem;
 }
 
-.players-table td:nth-child(5) {
+.players-table td:nth-child(5),
+.players-table td:nth-child(6) {
     padding: 0.5rem 0 0.5rem 0.5rem;
-  
 }
 
-.players-table td:nth-child(-n + 3),
-.players-table th:nth-child(-n + 3) {
+.players-table td:nth-child(1),
+.players-table th:nth-child(1) {
     padding: 0.6rem 0.3rem 0.6rem 0.7rem;
+}
+
+.players-table td:nth-child(2),
+.players-table th:nth-child(2),
+.players-table td:nth-child(3),
+.players-table th:nth-child(3) {
+    padding: 0.6rem 0.3rem 0.6rem 0.4rem;
 }
 
 .players-table td:nth-child(-n + 4) {
