@@ -57,6 +57,8 @@
         players.sort((a, b) => {
             const levelA = parseInt(a.getElementsByClassName('player-lvl')[0].textContent);
             const levelB = parseInt(b.getElementsByClassName('player-lvl')[0].textContent);
+            const itemLevelA = parseInt(a.getElementsByClassName('player-itemlvl')[0].textContent);
+            const itemLevelB = parseInt(b.getElementsByClassName('player-itemlvl')[0].textContent);
             const nameA = a.getElementsByClassName('player-name')[0].textContent;
             const nameB = b.getElementsByClassName('player-name')[0].textContent;
             const classA = parseInt(a.getElementsByClassName('player-class')[0].dataset.playerClass);
@@ -71,6 +73,10 @@
                     return levelB - levelA;
                 case 'levelAsc':
                     return levelA - levelB;
+                case 'itemLevelDesc':
+                    return itemLevelB - itemLevelA;
+                case 'itemLevelAsc':
+                    return itemLevelA - itemLevelB;
                 case 'nameDesc':
                     return nameB.localeCompare(nameA);
                 case 'nameAsc':

@@ -39,6 +39,8 @@
   "loginTimeAscContent": "Время входа (возр.)",
   "playerLevelDescContent": "Уровень (убыв.)",
   "playerLevelAscContent": "Уровень (возр.)",
+  "playerItemLevelDescContent": "Снаряжение (убыв.)",
+  "playerItemLevelAscContent": "Снаряжение (возр.)",
   "playerClassDescContent": "Класс (убыв.)",
   "playerClassAscContent": "Класс (возр.)",
   "playerNameDescContent": "Имя персонажа (убыв.)",

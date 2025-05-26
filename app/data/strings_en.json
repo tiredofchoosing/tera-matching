@@ -39,6 +39,8 @@
   "loginTimeAscContent": "Login time (asc)",
   "playerLevelDescContent": "Level (desc)",
   "playerLevelAscContent": "Level (asc)",
+  "playerItemLevelDescContent": "Gear (desc)",
+  "playerItemLevelAscContent": "Gear (asc)",
   "playerClassDescContent": "Class (desc)",
   "playerClassAscContent": "Class (asc)",
   "playerNameDescContent": "Name (desc)",
