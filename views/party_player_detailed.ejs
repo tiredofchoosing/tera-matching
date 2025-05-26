@@ -1,9 +1,9 @@
 <tr class="party-player-detailed-content<%= (page !== 'lfg' && player.level >= 65) ? ' level65' : ''%>">
 	<td>
-		<span class="party-player-level"><%= player.level %></span>
+		<div class="party-player-level"><%= player.level %></div>
 	</td>
 	<td>
-		<span class="party-player-item-level"><%= Math.trunc(player.itemLevel) %></span>
+		<div class="party-player-item-level"><%= Math.trunc(player.itemLevel) %></div>
 	</td>
 	<td>
 		<img class="party-player-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
