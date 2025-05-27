@@ -15,13 +15,8 @@
 		<% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
 		<span class="dungeon-name"><%= dungeonProps.name %></span>
 		<% if (page === 'dungeons') { %>
-		<!-- <span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>"><%= '⭐'.repeat(dungeonProps.rank) %></span> -->
 		<span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>">
-			<% for (let i = 0; i < dungeonProps.rank; i++) { %>
-			<span class="dungeon-rank-icon col" title="Ранг <%= i + 1 %>">
-				<img src="/static/img/icons/rank-star.png" width="20px" height="20px" draggable="false">
-			</span>
-			<% } %>
+			<img class="dungeon-rank-<%= dungeonProps.rank %>" draggable="false">
 		</span>
 
 		<% } %>
