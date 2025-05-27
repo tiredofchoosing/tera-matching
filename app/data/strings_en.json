@@ -69,6 +69,7 @@
   "classicLightThemeLabel": "Classic light",
   "violetThemeLabel": "Violet",
   "darkThemeLabel": "Dark",
+  "lightThemeLabel": "Light",
 
   "autoupdateCheckLabel": "Refresh the list automatically",
   "disableBackgroundLabel": "Disable background image",
