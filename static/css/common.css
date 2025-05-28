@@ -317,6 +317,14 @@ header {
     filter: var(--menu-btn-img-filter);
 }
 
+#toggleDetails[data-value="true"] img {
+    content: url(/static/img/icons/collapse.svg);
+}
+
+#toggleDetails[data-value="false"] img {
+    content: url(/static/img/icons/expand.svg);
+}
+
 .no-transition {
     transition: none !important;
 }
