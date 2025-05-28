@@ -8,7 +8,6 @@
   "battlegroundsHeaderLinkContent": "Battlefields",
   "onlineHeaderLinkContent": "Online",
   "lfgHeaderLinkContent": "LFG",
-  "toggleStyleTitle": "Switch page theme",
 
   "emptyMatchingContent": "Matching queue is empty",
   "emptyPlayersContent": "Player list is empty",
@@ -72,7 +71,7 @@
   "lightThemeLabel": "Light",
 
   "autoupdateCheckLabel": "Refresh the list automatically",
-  "disableBackgroundLabel": "Disable background image",
+  "blurBackgroundLabel": "Blur background",
   "saveCollapsedLabel": "Save collapsed items",
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
   "hideLevelLabel": "Hide required level",

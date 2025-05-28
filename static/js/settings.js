@@ -1,7 +1,7 @@
 (function() {
 
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
-    const disableBackgroundCheckbox = document.getElementById('disableBackground');
+    const blurBackgroundCheckbox = document.getElementById('blurBackground');
     const background = document.getElementById('background');
     const switchLangButton = document.getElementById('switchLang');
     const offcanvasElement = document.getElementById('offcanvasRight');
@@ -10,7 +10,7 @@
     const filterContainer = document.getElementById('filterContainer');
     const offcanvasFilterContainer = offcanvasElement.querySelector('#offcanvasFilterContainer');
 
-    const checkboxes = [autoupdateCheckbox, disableBackgroundCheckbox];
+    const checkboxes = [autoupdateCheckbox, blurBackgroundCheckbox];
     const autoupdateTimer = 5000;
     const updateEvent = new CustomEvent('contentUpdated');
 
@@ -79,11 +79,11 @@
         }
     }
 
-    function disableBackground(_, save = true) {
-        const elem = disableBackgroundCheckbox;
+    function blurBackground(_, save = true) {
+        const elem = blurBackgroundCheckbox;
         save && saveData(elem, elem.checked, false);
 
-        const className = 'disabled';
+        const className = 'blurred';
         if (elem.checked && !background.classList.contains(className)) {
             background.classList.add(className);
         }
@@ -127,7 +127,7 @@
 
     // register event handlers
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
-    disableBackgroundCheckbox.addEventListener('change', disableBackground);
+    blurBackgroundCheckbox.addEventListener('change', blurBackground);
     switchLangButton.addEventListener('click', switchLang);
     window.addEventListener('resize', resizeHandler);
 
@@ -138,7 +138,7 @@
             e.checked = checked === 'true';
     });
 
-    disableBackground(null, false);
+    blurBackground(null, false);
     checkMoveFilter();
     setAutoupdate(null, false);
 

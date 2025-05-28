@@ -28,14 +28,14 @@
                             <div>
                                 <form id="themeSelect">
                                     <%- include('theme_radio_option', { theme: 'dark-green', checked: true } ) %>
-                                    <%- include('theme_radio_option', { theme: 'classic-light' } ) %>
                                     <%- include('theme_radio_option', { theme: 'violet' } ) %>
                                     <%- include('theme_radio_option', { theme: 'dark' } ) %>
                                     <%- include('theme_radio_option', { theme: 'light' } ) %>
+                                    <%- include('theme_radio_option', { theme: 'classic-light' } ) %>
                                 </form>
                             </div>
                         </div>
-                        <%- include('checkbox', { name: 'disableBackground' }) %>
+                        <%- include('checkbox', { name: 'blurBackground' }) %>
                     </div>
                 </div>
                 <% if (page === 'dungeons' || page === 'battlegrounds') { %>

@@ -4,8 +4,8 @@
 
     --scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
     --background: center/cover no-repeat url('/static/img/bgs/background1.png');
-
-    --background-disabled: rgb(65, 56, 78);
+    --background-blurred-filter: blur(20px);
+    --background-blurred-transform: scale(1.08);
     --bg-backdrop-filter: blur(15px);
 
     --navbar-bg-color: rgb(38, 33, 48);

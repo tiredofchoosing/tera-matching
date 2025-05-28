@@ -8,7 +8,6 @@
   "battlegroundsHeaderLinkContent": "Арены",
   "onlineHeaderLinkContent": "Онлайн",
   "lfgHeaderLinkContent": "Поиск группы",
-  "toggleStyleTitle": "Сменить тему оформления",
 
   "emptyMatchingContent": "Список подбора пуст",
   "emptyPlayersContent": "Список игроков пуст",
@@ -72,7 +71,7 @@
   "lightThemeLabel": "Светлая",
 
   "autoupdateCheckLabel": "Автоматически обновлять список",
-  "disableBackgroundLabel": "Отключить фоновое изображение",
+  "blurBackgroundLabel": "Размыть фон",
   "saveCollapsedLabel": "Сохранять свернутые элементы",
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
   "hideLevelLabel": "Скрыть требуемый уровень",

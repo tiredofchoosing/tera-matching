@@ -23,8 +23,9 @@ body {
     z-index: -1;
 }
 
-#background.disabled {
-    background: var(--background-disabled);
+#background.blurred {
+    filter: var(--background-blurred-filter);
+    transform: var(--background-blurred-transform);
 }
 
 summary,
@@ -737,6 +738,7 @@ details {
 .lfg-details,
 .last-update {
     backdrop-filter: var(--bg-backdrop-filter);
+    -webkit-backdrop-filter: var(--bg-backdrop-filter);
     color: var(--font-color-primary);
     border-radius: 6px;
     border: 1px solid var(--border);
@@ -839,6 +841,7 @@ details {
 .card {
     background-color: var(--empty-bg-color);
     backdrop-filter: var(--bg-backdrop-filter);
+    -webkit-backdrop-filter: var(--bg-backdrop-filter);
     padding: 1.5rem 1rem;
 }
 
