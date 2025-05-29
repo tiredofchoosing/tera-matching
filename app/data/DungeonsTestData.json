@@ -1,0 +1,299 @@
+{
+    "9809": {
+        "parties": [
+            {
+                "players": [
+                    {
+                        "playerId": 76190,
+                        "name": "Элии",
+                        "level": 70,
+                        "itemLevel": 504.92,
+                        "class": 8,
+                        "role": 1,
+                        "isLeaderRequired": true,
+                        "guildName": "CUTE"
+                    }
+                ]
+            },
+            {
+                "players": [
+                    {
+                        "playerId": 104964,
+                        "name": "Мявмя",
+                        "level": 70,
+                        "itemLevel": 500.03,
+                        "class": 8,
+                        "role": 1,
+                        "isLeaderRequired": true,
+                        "guildName": "CUTE"
+                    },
+                    {
+                        "playerId": 110125,
+                        "name": "Пума",
+                        "level": 70,
+                        "itemLevel": 489.84,
+                        "class": 11,
+                        "role": 1,
+                        "isLeaderRequired": false,
+                        "guildName": "DarkAvengers"
+                    }
+                ]
+            }
+        ]
+    },
+    "9739": {
+        "parties": [
+            {
+                "players": [
+                    {
+                        "playerId": 106851,
+                        "name": "Хатар",
+                        "level": 68,
+                        "itemLevel": 500.15,
+                        "class": 12,
+                        "role": 1,
+                        "isLeaderRequired": true,
+                        "guildName": "HeadHunters"
+                    },
+                    {
+                        "playerId": 104524,
+                        "name": "Уке",
+                        "level": 70,
+                        "itemLevel": 510.00,
+                        "class": 3,
+                        "role": 1,
+                        "isLeaderRequired": false,
+                        "guildName": "FlameOfWar"
+                    },
+                    {
+                        "playerId": 110504,
+                        "name": "Rani",
+                        "level": 70,
+                        "itemLevel": 500.97,
+                        "class": 2,
+                        "role": 0,
+                        "isLeaderRequired": false,
+                        "guildName": "Лапки"
+                    }
+                ]
+            }
+        ]
+    },
+    "9781": {
+        "parties": [
+            {
+                "players": [
+                    {
+                        "playerId": 7717,
+                        "name": "doktor",
+                        "level": 70,
+                        "itemLevel": 480.66,
+                        "class": 6,
+                        "role": 2,
+                        "isLeaderRequired": false,
+                        "guildName": "Вьюга"
+                    },
+                    {
+                        "playerId": 12135,
+                        "name": "WALAMBA",
+                        "level": 70,
+                        "itemLevel": 490.08,
+                        "class": 12,
+                        "role": 1,
+                        "isLeaderRequired": true,
+                        "guildName": null
+                    },
+                    {
+                        "playerId": 105896,
+                        "name": "Nirwen",
+                        "level": 70,
+                        "itemLevel": 500.97,
+                        "class": 9,
+                        "role": 1,
+                        "isLeaderRequired": false,
+                        "guildName": "DarkAvengers"
+                    },
+                    {
+                        "playerId": 107450,
+                        "name": "xxxVUDUxxx",
+                        "level": 70,
+                        "itemLevel": 500.27,
+                        "class": 7,
+                        "role": 2,
+                        "isLeaderRequired": false,
+                        "guildName": "Realm0Fshadows"
+                    }
+                ]
+            }
+        ]
+    },
+    "9939": {
+        "parties": [
+            {
+                "players": [
+                    {
+                        "playerId": 12483,
+                        "name": "ЮГУСяка",
+                        "level": 70,
+                        "itemLevel": 490.49,
+                        "class": 10,
+                        "role": 1,
+                        "isLeaderRequired": true,
+                        "guildName": "Вьюга"
+                    },
+                    {
+                        "playerId": 97350,
+                        "name": "МимикаФуоми",
+                        "level": 70,
+                        "itemLevel": 507.94,
+                        "class": 11,
+                        "role": 1,
+                        "isLeaderRequired": false,
+                        "guildName": "NyaWorld"
+                    }
+                ]
+            },
+            {
+                "players": [
+                    {
+                        "playerId": 96710,
+                        "name": "Бледнаялуна",
+                        "level": 70,
+                        "itemLevel": 506.79,
+                        "class": 3,
+                        "role": 1,
+                        "isLeaderRequired": false,
+                        "guildName": "DarkAvengers"
+                    }
+                ]
+            }
+        ]
+    },    "9044": {
+        "parties": [
+            {
+                "players": [
+                    {
+                        "playerId": 106292,
+                        "name": "1TOUDA1",
+                        "level": 70,
+                        "itemLevel": 507.94,
+                        "class": 9,
+                        "role": 1,
+                        "isLeaderRequired": true,
+                        "guildName": "FairyTail"
+                    },
+                    {
+                        "playerId": 97942,
+                        "name": "KudaZhmat",
+                        "level": 70,
+                        "itemLevel": 505.34,
+                        "class": 9,
+                        "role": 1,
+                        "isLeaderRequired": false,
+                        "guildName": "Invincible"
+                    },
+                    {
+                        "playerId": 110387,
+                        "name": "Fredrinn",
+                        "level": 70,
+                        "itemLevel": 507.35,
+                        "class": 3,
+                        "role": 0,
+                        "isLeaderRequired": false,
+                        "guildName": "RealmOfShadows"
+                    },
+                    {
+                        "playerId": 104964,
+                        "name": "Мявмя",
+                        "level": 70,
+                        "itemLevel": 500.03,
+                        "class": 8,
+                        "role": 2,
+                        "isLeaderRequired": false,
+                        "guildName": "CUTE"
+                    }
+                ]
+            }
+        ]
+    },
+    "9982": {
+        "parties": [
+            {
+                "players": [
+                    {
+                        "playerId": 110125,
+                        "name": "Пума",
+                        "level": 70,
+                        "itemLevel": 489.84,
+                        "class": 11,
+                        "role": 1,
+                        "isLeaderRequired": true,
+                        "guildName": "DarkAvengers"
+                    },
+                    {
+                        "playerId": 12483,
+                        "name": "ЮГУСяка",
+                        "level": 70,
+                        "itemLevel": 490.49,
+                        "class": 10,
+                        "role": 1,
+                        "isLeaderRequired": false,
+                        "guildName": "Вьюга"
+                    },
+                    {
+                        "playerId": 7717,
+                        "name": "doktor",
+                        "level": 70,
+                        "itemLevel": 480.66,
+                        "class": 6,
+                        "role": 2,
+                        "isLeaderRequired": false,
+                        "guildName": "Вьюга"
+                    }
+                ]
+            }
+        ]
+    },
+    "3023": {
+        "parties": [
+            {
+                "players": [
+                    {
+                        "playerId": 96710,
+                        "name": "Бледнаялуна",
+                        "level": 70,
+                        "itemLevel": 506.79,
+                        "class": 3,
+                        "role": 0,
+                        "isLeaderRequired": true,
+                        "guildName": "DarkAvengers"
+                    },
+                    {
+                        "playerId": 105896,
+                        "name": "Nirwen",
+                        "level": 70,
+                        "itemLevel": 500.97,
+                        "class": 9,
+                        "role": 1,
+                        "isLeaderRequired": false,
+                        "guildName": "DarkAvengers"
+                    }
+                ]
+            },
+            {
+                "players": [
+                    {
+                        "playerId": 106851,
+                        "name": "Хатар",
+                        "level": 68,
+                        "itemLevel": 500.15,
+                        "class": 12,
+                        "role": 1,
+                        "isLeaderRequired": true,
+                        "guildName": "HeadHunters"
+                    }
+                ]
+            }
+        ]
+    }
+}

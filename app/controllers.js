@@ -2,8 +2,11 @@ import fetch from 'node-fetch';
 import config from 'config';
 import crypto from 'crypto';
 import {classes, roles, dungeons_info, battlegrounds_info, globalization, teralogs_provider} from './data.js';
+import {testData} from './data.js';
 
+const useTestData = true;
 const lang_default = 'ru';
+
 function changeLang(req) {
     const clientAcceptLang = req.headers['accept-language']?.split(',')[0].split('-')[0];
     const lang = req.cookies.lang ?? clientAcceptLang;
@@ -35,7 +38,12 @@ function isResponceModified(req, res, viewData) {
 async function fetchMany(res, pages) {
     try {
         const data = {};
-        await Promise.all(pages.map(async (page) => {   
+        if (useTestData) {
+            pages.forEach(p => data[p] = testData[p]);
+            return data;
+        }
+
+        await Promise.all(pages.map(async (page) => {
             const addr = config.get(page)
             const response = await fetch(addr);
             if (!response || !response.ok)
