@@ -4,7 +4,7 @@ import crypto from 'crypto';
 import {classes, roles, dungeons_info, battlegrounds_info, globalization, teralogs_provider} from './data.js';
 import {testData} from './data.js';
 
-const useTestData = true;
+const useTestData = false;
 const lang_default = 'ru';
 
 function changeLang(req) {
