@@ -6,6 +6,8 @@ import str_ru from './data/strings_ru.json' with { type: 'json' }
 import str_en from './data/strings_en.json' with { type: 'json' }
 import onlineTestData from './data/OnlineTestData.json' with { type: 'json' }
 import dungeonsTestData from './data/DungeonsTestData.json' with { type: 'json' }
+import battlegroundsTestData from './data/BattlegroundsTestData.json' with { type: 'json' }
+import lfgTestData from './data/LfgTestData.json' with { type: 'json' }
 
 export const dungeons_info = { ru: dg_ru, en: dg_en }
 export const battlegrounds_info = { ru: bg_ru, en: bg_en }
@@ -17,4 +19,9 @@ export const classes = {
 }
 export const roles = ['tank', 'dmg', 'heal']
 export const teralogs_provider = 'https://teralogs.com/asura/search/'
-export const testData = { online: onlineTestData, dungeons: dungeonsTestData }
+export const testData = {
+    online: onlineTestData,
+    dungeons: dungeonsTestData,
+    battlegrounds: battlegroundsTestData,
+    lfg: lfgTestData
+ }
