@@ -10,11 +10,12 @@
   "onlineHeaderLinkContent": "Online",
   "lfgHeaderLinkContent": "LFG",
   "statsHeaderLinkContent": "Statistics",
-  "toggleStyleTitle": "Switch page theme",
 
   "emptyMatchingContent": "Matching queue is empty",
   "emptyPlayersContent": "Player list is empty",
   "emptyLfgContent": "LFG list is empty",
+  "emptyFilteredContent": "No results found for the selected filters",
+  "emptyFilteredClearContent": "Reset filters",
 
   "searchDungeonNamePlaceholder": "Dungeon name",
   "searchBattlegroundNamePlaceholder": "Battlefield name",
@@ -41,6 +42,8 @@
   "loginTimeAscContent": "Login time (asc)",
   "playerLevelDescContent": "Level (desc)",
   "playerLevelAscContent": "Level (asc)",
+  "playerItemLevelDescContent": "Gear (desc)",
+  "playerItemLevelAscContent": "Gear (asc)",
   "playerClassDescContent": "Class (desc)",
   "playerClassAscContent": "Class (asc)",
   "playerNameDescContent": "Name (desc)",
@@ -68,9 +71,12 @@
   "changeThemeTitle": "Change theme",
   "darkGreenThemeLabel": "Dark green",
   "classicLightThemeLabel": "Classic light",
+  "violetThemeLabel": "Violet",
+  "darkThemeLabel": "Dark",
+  "lightThemeLabel": "Light",
 
   "autoupdateCheckLabel": "Refresh the list automatically",
-  "disableBackgroundLabel": "Disable background image",
+  "blurBackgroundLabel": "Blur background",
   "saveCollapsedLabel": "Save collapsed items",
   "mergeSupportMatchingLabel": "Show <b>$</b> as separate item",
   "hideLevelLabel": "Hide required level",
@@ -79,6 +85,7 @@
   "hideNoGuildLabel": "Hide players with no guild",
 
   "playersTableLevelContent": "Lvl",
+  "playersTableItemLevelContent": "Gear",
   "playersTableCharacterContent": "Character",
   "playersTableGuildContent": "Guild",
 

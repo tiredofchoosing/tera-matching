@@ -3,6 +3,7 @@
     const searchMessageInput = document.getElementById('searchLfgMessage');
     const sortSelect = document.getElementById('selectLfgSort');
     const clearNavigationButton = document.getElementById('clearNavigation');
+    const clearEmptyButton = document.getElementById('clearEmptyButton');
     const content = document.getElementById('content');
     const searchInputs = [searchMessageInput];
 
@@ -33,11 +34,16 @@
             l.style.display = show ? '' : 'none';
             any ||= show;
         });
-        checkIfEmpty(any);
+        checkIfEmpty(!any);
     }
 
-    function checkIfEmpty(any) {
-        emptyContainer.hidden = any;
+    function checkIfEmpty(isEmpty) {
+        if (lfgList.children.length === 0)
+            return;
+
+        emptyContainer.hidden = !isEmpty;
+        emptyContainer.querySelector('#initialEmpty').hidden = isEmpty;
+        emptyContainer.querySelector('#filteredEmpty').hidden = !isEmpty;
     }
 
     function sortLfgs(_, save = true) {
@@ -75,6 +81,12 @@
         }
     }
 
+    function clearFilters() {
+        searchInputs.forEach(e => e.value = '');
+        sortLfgs(null, true);
+        filterLfgs(null, true);
+    }
+
     function refresh() {
         initVariables();
         loadState();
@@ -96,12 +108,10 @@
     lfgs.forEach(l => l.addEventListener('toggle', lfgDetailsToggleHandler));
     content.addEventListener('contentUpdated', refresh);
 
+    clearEmptyButton.addEventListener('click', clearFilters);
     clearNavigationButton.addEventListener('click', function() {
-        searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
-
-        sortLfgs(null, true);
-        filterLfgs(null, true);
+        clearFilters();
     });
 
     // restore session data

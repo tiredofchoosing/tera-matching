@@ -10,11 +10,12 @@
   "onlineHeaderLinkContent": "Онлайн",
   "lfgHeaderLinkContent": "Поиск группы",
   "statsHeaderLinkContent": "Статистика",
-  "toggleStyleTitle": "Сменить тему оформления",
 
   "emptyMatchingContent": "Список подбора пуст",
   "emptyPlayersContent": "Список игроков пуст",
   "emptyLfgContent": "Список поиска группы пуст",
+  "emptyFilteredContent": "По выбранным фильтрам ничего не найдено",
+  "emptyFilteredClearContent": "Сбросить фильтры",
 
   "searchDungeonNamePlaceholder": "Название подземелья",
   "searchBattlegroundNamePlaceholder": "Название арены",
@@ -41,6 +42,8 @@
   "loginTimeAscContent": "Время входа (возр.)",
   "playerLevelDescContent": "Уровень (убыв.)",
   "playerLevelAscContent": "Уровень (возр.)",
+  "playerItemLevelDescContent": "Снаряжение (убыв.)",
+  "playerItemLevelAscContent": "Снаряжение (возр.)",
   "playerClassDescContent": "Класс (убыв.)",
   "playerClassAscContent": "Класс (возр.)",
   "playerNameDescContent": "Имя персонажа (убыв.)",
@@ -68,9 +71,12 @@
   "changeThemeTitle": "Сменить тему",
   "darkGreenThemeLabel": "Темно-зеленая",
   "classicLightThemeLabel": "Классическая светлая",
+  "violetThemeLabel": "Фиолетовая",
+  "darkThemeLabel": "Темная",
+  "lightThemeLabel": "Светлая",
 
   "autoupdateCheckLabel": "Автоматически обновлять список",
-  "disableBackgroundLabel": "Отключить фоновое изображение",
+  "blurBackgroundLabel": "Размыть фон",
   "saveCollapsedLabel": "Сохранять свернутые элементы",
   "mergeSupportMatchingLabel": "Показывать <b>$</b> отдельной строкой",
   "hideLevelLabel": "Скрыть требуемый уровень",
@@ -79,6 +85,7 @@
   "hideNoGuildLabel": "Скрыть игроков без гильдии",
 
   "playersTableLevelContent": "Ур.",
+  "playersTableItemLevelContent": "Снар.",
   "playersTableCharacterContent": "Персонаж",
   "playersTableGuildContent": "Гильдия",
 

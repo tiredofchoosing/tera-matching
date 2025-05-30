@@ -1,0 +1,62 @@
+:root {
+    --font-color-primary: rgb(0, 0, 0);
+    --font-color-secondary: rgba(255, 255, 255, 0.5);
+
+    --scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
+    --background: #F2F2F2;
+    --background-blurred-filter: none;
+    --background-blurred-transform: none;
+    --bg-backdrop-filter: none;
+
+    --navbar-bg-color: #ffffff;
+    --header-font-weight: inherit;
+    --header-logo-opacity: 0.8;
+    --header-logo-padding: 0.5rem;
+    --header-logo-content: url(/static/img/icons/icon-l.svg);
+    --header-btn-hov-bg-color: #F0F0F0;
+    --header-btn-img-filter: invert(0.9);
+    --header-ul-border-color: rgba(0, 0, 0, 0.05);
+    --header-shadow-color: rgba(0, 0, 0, 0.05);
+    --header-style-btn-content: url(/static/img/icons/theme_sun.svg);
+
+    --close-button-content: url(/static/img/icons/close-d.svg);
+    --dungeon-rank-content: url(/static/img/icons/star-d.svg);
+
+    --menu-bg-color: #ffffff;
+    --menu-child-bg-color: #F2F2F2;
+    --menu-input-plh-color: rgba(0, 0, 0, 0.6);
+    --menu-btn-hov-bg-color: rgba(0, 0, 0, 0.1);
+    --menu-btn-act-bg-color: rgba(0, 0, 0, 0.1);
+    --menu-btn-img-filter: invert(0.9);
+    --menu-chk-bg-color: white;
+    --menu-search-bg-img: url(/static/img/icons/search-d.svg);
+    --menu-sort-bg-img: url(/static/img/icons/sort-d.svg);
+    --color-option: #F2F2F2;
+
+    --dungeon-lvl-bg-color: #F2F2F2;
+    --dungeon-players-bg-color: #F2F2F2;
+    --dungeon-dtl-bg: #ffffff;
+    --dungeon-sum-bg: #ffffff;
+    --dungeon-role-tank-content: url(/static/img/icons/tank-d.svg);
+    --dungeon-role-tank-margin: initial;
+    --dungeon-role-dmg-content: url(/static/img/icons/dmg-d.svg);
+    --dungeon-role-heal-content: url(/static/img/icons/heal-d.svg);
+
+    --party-sum-span-border-color: rgba(0, 0, 0, 0.3);
+    --party-dtl-content-bg-color: #F2F2F2;
+    --party-del-color: rgba(0, 0, 0, 0.15);
+    --party-leader-content: url(/static/img/icons/leader-d.svg);
+
+    --players-tbl-th-bg-color: #F2F2F2;
+    --players-tbl-tr1-bg-color: #ffffff;
+    --players-tbl-tr2-bg-color: #F2F2F2;
+    --players-tbl-guild-background-color: #E6E6E6;
+
+    --accent-text-color: rgb(0, 0, 0);
+    --accent-background-color: rgba(0, 0, 0, 0.1);
+
+    --players-tbl-delimiter: rgba(0, 0, 0, 0.03);
+    --empty-bg-color: #ffffff;
+
+    --border: rgba(0, 0, 0, 0.1);
+}

@@ -1,18 +1,11 @@
 (function() {
 
-    let disableToggle = true;
-    function isToggleEnabled() {
-        return !disableToggle;
-    }
-
-    // to not handle 'toggle' on default open attribute
-    window.addEventListener('load', () => disableToggle = false);
-
     const searchNameInput = document.getElementById('searchBattlegroundName');
     const searchMinLevelInput = document.getElementById('searchBattlegroundLevel');
     const sortSelect = document.getElementById('selectBattlegroundSort');
     const toggleDetailsButton = document.getElementById('toggleDetails');
     const clearNavigationButton = document.getElementById('clearNavigation');
+    const clearEmptyButton = document.getElementById('clearEmptyButton');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const hideLevelCheckbox = document.getElementById('hideLevel');
     const body = document.body;
@@ -29,7 +22,8 @@
     let dungeonList, emptyContainer, dungeons, parties;
     initVariables();
 
-    let collapsedElements = null;
+    let collapsedElements = [];
+    let collapseAll = false;
     let pinchInitDist = 0;
     let pinchCurrentIndex = pinchFontSizes.indexOf(window.getComputedStyle(dungeonList).fontSize);
     let openedParties = [];
@@ -59,7 +53,7 @@
             d.style.display = show ? '' : 'none';
             any ||= show;
         });
-        checkIfEmpty(any);
+        checkIfEmpty(!any);
     }
 
     function sortDungeons(_, save = true) {
@@ -92,33 +86,51 @@
         dungeons.forEach(d => dungeonList.appendChild(d));
     }
 
+    function dungeonDetailsClickHandler() {
+        const detail = this.parentElement;
+        const dungeonId = detail.id;
+        const index = collapsedElements.indexOf(dungeonId);
+        const opened = !detail.open; // click before toggle
+        if (!opened && index === -1) {
+            collapsedElements.push(dungeonId);
+        }
+        else if (opened && index !== -1) {
+            collapsedElements.splice(index, 1);
+        }
+        collapseAll = false;
+        saveDetailsCollapsed();
+    }
+
     function saveDetailsCollapsed(_, save = true) {
         save && saveData(saveCollapsedCheckbox, saveCollapsedCheckbox.checked, false);
 
         if (saveCollapsedCheckbox.checked) {
-            if (dungeons.every(d => !d.open)) {
-                collapsedElements = 'all';
-            }
-            else if (dungeons.every(d => d.open)) {
-                collapsedElements = null;
-            }
-            else {
-                let ids = dungeons.filter(d => !d.open).map(d => d.getAttribute('id')).join(',');
-                collapsedElements = ids;
-            }
-            saveData(saveCollapsedId, collapsedElements);
-            saveData(toggleDetailsButton, toggleDetailsButton.value);
+            const value = collapseAll && 'all' || collapsedElements.join(',');
+            saveData(saveCollapsedId, value);
+            saveData(toggleDetailsButton, toggleDetailsButton.dataset.value);
         }
         else {
-            collapsedElements = null;
             saveData(saveCollapsedId, null);
             saveData(toggleDetailsButton, null);
         }
     }
 
-    function dungeonDetailsToggleHandler() {
-        if (isToggleEnabled())
+    function toggleAllDungeons() {
+        const isOpen = this.dataset.value === 'true';
+        this.dataset.value = !isOpen;
+        collapseAll = isOpen;
+
+        collapsedElements = [];
+        dungeons.forEach(d => {
+            d.open = !collapseAll;
+            if (collapseAll) {
+                collapsedElements.push(d.id);
+            }
+        });
+
+        if (saveCollapsedCheckbox.checked) {
             saveDetailsCollapsed(null, false);
+        }
     }
 
     function partyDetailsToggleHandler() {
@@ -132,13 +144,13 @@
         }
     }
 
-    function checkIfEmpty(any) {
-        emptyContainer.hidden = any;
-    }
+    function checkIfEmpty(isEmpty) {
+        if (dungeonList.children.length === 0)
+            return;
 
-    function updateCollapseIcon() {
-        const value = toggleDetailsButton.value === 'true';
-        toggleDetailsButton.firstElementChild.src = `/static/img/icons/${value ? 'collapse' : 'expand'}.svg`;
+        emptyContainer.hidden = !isEmpty;
+        emptyContainer.querySelector('#initialEmpty').hidden = isEmpty;
+        emptyContainer.querySelector('#filteredEmpty').hidden = !isEmpty;
     }
 
     function hideLevel(_, save = true) {
@@ -155,14 +167,17 @@
         }
     }
 
+    function clearFilters() {
+        searchInputs.forEach(e => e.value = '');
+        sortDungeons(null, true);
+        filterDungeons(null, true);
+    }
+
     function refresh() {
         initVariables();
         loadState();
 
-        disableToggle = true;
-        dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
-        setTimeout(() => { disableToggle = false }, 0);
-
+        dungeons.forEach(d => d.querySelector('.dungeon-summary').addEventListener('click', dungeonDetailsClickHandler));
         parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
     }
 
@@ -172,17 +187,14 @@
 
         dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
 
-        if (collapsedElements === 'all') {
-            dungeons.forEach(d => d.open = false);
+        if (collapseAll) {
+            collapsedElements = dungeons.map(d => d.id);
         }
-        else if (collapsedElements != null) {
-            collapsedElements.split(',').forEach(id => {
-                const d = document.getElementById(id);
-                if (d != null)
-                    d.open = false;
-            });
-            saveDetailsCollapsed(null, false);
+        else {
+            collapsedElements = collapsedElements.filter(e => dungeons.some(d => d.id === e));
         }
+        dungeons.forEach(d => d.open = collapsedElements.indexOf(d.id) === -1);
+        saveDetailsCollapsed(null, false);
 
         hideLevel(null, false);
         parties.forEach(p => p.open = openedParties.indexOf(p.dataset.partyId) !== -1);
@@ -193,31 +205,17 @@
     sortSelect.addEventListener('change', sortDungeons);
     searchNameInput.addEventListener('input', filterDungeons);
     searchMinLevelInput.addEventListener('input', filterDungeons);
-    dungeons.forEach(d => d.addEventListener('toggle', dungeonDetailsToggleHandler));
+    dungeons.forEach(d => d.querySelector('.dungeon-summary').addEventListener('click', dungeonDetailsClickHandler));
     parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     hideLevelCheckbox.addEventListener('change', hideLevel);
     content.addEventListener('contentUpdated', refresh);
+    toggleDetailsButton.addEventListener('click', toggleAllDungeons);
 
+    clearEmptyButton.addEventListener('click', clearFilters);
     clearNavigationButton.addEventListener('click', function() {
-        searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
-
-        sortDungeons(null, true);
-        filterDungeons(null, true);
-    });
-
-    toggleDetailsButton.addEventListener('click', function() {
-        const isOpen = this.value === 'true';
-        this.value = !isOpen;
-        if (saveCollapsedCheckbox.checked)
-            saveData(this, this.value);
-
-        disableToggle = true;
-        dungeons.forEach(d => d.open = !isOpen);
-        disableToggle = false;
-        saveDetailsCollapsed(null, false);
-        updateCollapseIcon();
+        clearFilters();
     });
 
     // change font size of dungeon list on touch pinch
@@ -265,12 +263,18 @@
             e.checked = checked === 'true';
     });
     sortSelect.selectedIndex = loadData(sortSelect) ?? sortSelect.selectedIndex;
-    toggleDetailsButton.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.value;
+    toggleDetailsButton.dataset.value = loadData(toggleDetailsButton) ?? toggleDetailsButton.dataset.value;
 
-    collapsedElements = loadData(saveCollapsedId);
+    const collapsed = loadData(saveCollapsedId);
+    if (collapsed === 'all') {
+        collapseAll = true;
+    }
+    else {
+        collapsedElements = collapsed?.split(',') ?? [];
+    }
+
     pinchCurrentIndex = loadData(pinchSaveId, false) ?? pinchCurrentIndex;
 
     loadState();
-    updateCollapseIcon();
 
 })();

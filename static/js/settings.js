@@ -1,7 +1,7 @@
 (function() {
 
     const autoupdateCheckbox = document.getElementById('autoupdateCheck');
-    const disableBackgroundCheckbox = document.getElementById('disableBackground');
+    const blurBackgroundCheckbox = document.getElementById('blurBackground');
     const background = document.getElementById('background');
     const switchLangButton = document.getElementById('switchLang');
     const offcanvasElement = document.getElementById('offcanvasRight');
@@ -10,20 +10,30 @@
     const filterContainer = document.getElementById('filterContainer');
     const offcanvasFilterContainer = offcanvasElement.querySelector('#offcanvasFilterContainer');
 
-    const checkboxes = [autoupdateCheckbox, disableBackgroundCheckbox];
+    const checkboxes = [autoupdateCheckbox, blurBackgroundCheckbox];
     const autoupdateTimer = 5000;
     const updateEvent = new CustomEvent('contentUpdated');
 
     let autoupdateTimerId = -1;
+    let eTag = '';
 
     // functions
     async function updatePageContent() {
         try {
             const path = window.location.pathname;
             const partialPath = '/partial' + path;
-            const response = await fetch(partialPath);
-            if (!response.ok)
-                throw new Error('Update failed');
+            const response = await fetch(partialPath, {
+                headers: {
+                    'If-None-Match': eTag
+                }
+            });
+
+            if (!(response && (response.ok || response.status === 304)))
+                throw `Request failed for '${partialPath}' with status: ${response?.status}`;
+
+            eTag = response.headers.get('ETag');
+            if (response.status === 304)
+                return;
 
             const html = await response.text();
             const tempDiv = document.createElement('div');
@@ -69,11 +79,11 @@
         }
     }
 
-    function disableBackground(_, save = true) {
-        const elem = disableBackgroundCheckbox;
+    function blurBackground(_, save = true) {
+        const elem = blurBackgroundCheckbox;
         save && saveData(elem, elem.checked, false);
 
-        const className = 'disabled';
+        const className = 'blurred';
         if (elem.checked && !background.classList.contains(className)) {
             background.classList.add(className);
         }
@@ -117,7 +127,7 @@
 
     // register event handlers
     autoupdateCheckbox.addEventListener('change', setAutoupdate);
-    disableBackgroundCheckbox.addEventListener('change', disableBackground);
+    blurBackgroundCheckbox.addEventListener('change', blurBackground);
     switchLangButton.addEventListener('click', switchLang);
     window.addEventListener('resize', resizeHandler);
 
@@ -128,7 +138,7 @@
             e.checked = checked === 'true';
     });
 
-    disableBackground(null, false);
+    blurBackground(null, false);
     checkMoveFilter();
     setAutoupdate(null, false);
 

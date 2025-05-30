@@ -1,0 +1,23 @@
+{
+    "0": {
+        "messages": [
+            {
+                "leaderId": 123,
+                "leaderName": "Exux",
+                "playerCount": 2,
+                "maxPlayers": 5,
+                "isRaid": false,
+                "message": "Продам гараж"
+            },
+            {
+                "leaderId": 99497,
+                "leaderName": "МАТЬ",
+                "playerCount": 1,
+                "maxPlayers": 5,
+                "isRaid": false,
+                "message": "Куплю гараж"
+            }
+        ],
+        "lastUpdate": "2025-05-30T04:20:00.000"
+    }
+}

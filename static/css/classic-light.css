@@ -4,7 +4,8 @@
 
     --scrollbar-color: initial;
     --background: rgb(135, 150, 197);
-    --background-disabled:  rgb(184, 194, 224);
+    --background-blurred-filter: none;
+    --background-blurred-transform: none;
     --bg-backdrop-filter: none;
 
     --navbar-bg-color: rgb(169, 180, 214);
@@ -19,6 +20,7 @@
     --header-style-btn-content: url(/static/img/icons/theme_moon.svg);
 
     --close-button-content: url(/static/img/icons/close-d.svg);
+    --dungeon-rank-content: url(/static/img/icons/star-d.svg);
 
     --menu-bg-color: rgb(169, 180, 214);
     --menu-child-bg-color: rgb(224, 227, 235);
@@ -29,6 +31,7 @@
     --menu-chk-bg-color: white;
     --menu-search-bg-img: url(/static/img/icons/search-d.svg);
     --menu-sort-bg-img: url(/static/img/icons/sort-d.svg);
+    --color-option:rgb(224, 227, 235);
 
     --dungeon-lvl-bg-color: rgba(255, 255, 255, 0.4);
     --dungeon-players-bg-color: rgba(255, 255, 255, 0.4);
@@ -49,10 +52,12 @@
     --players-tbl-tr2-bg-color: rgba(255, 255, 255, 0.2);
     --players-tbl-guild-background-color: rgba(255, 255, 255, 0.7);
 
-    --accent-text-color: #3A4978;
+    --accent-text-color: rgb(58, 74, 120);
     --accent-background-color: rgb(255, 255, 255);
     --players-tbl-delimiter: rgba(116, 116, 116, 0.1);
     --empty-bg-color: rgb(169, 180, 214);
+
+    --border: rgba(58, 74, 120, 0.3);
 
     --chart-font-size: 16;
     --chart-title-font-size: 20;

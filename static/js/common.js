@@ -3,15 +3,18 @@
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
     const navbarBgColors = {
-        'dark-green': 'rgb(23, 24, 32)',
-        'classic-light': 'rgb(131, 145, 187)'
+        'dark-green': 'rgb(21, 22, 30)',
+        'violet': 'rgb(38, 33, 48)',
+        'dark': '#1A1A1A',
+        'light': '#ffffff',
+        'classic-light': 'rgb(169, 180, 214)'
     };
     const styleChangedEvent = new CustomEvent('styleChanged');
 
     function saveData(element, value = null, forSession = true) {
-        let storage = forSession ? window.sessionStorage : window.localStorage;
+        const storage = forSession ? window.sessionStorage : window.localStorage;
         if (storage) {
-            let id = typeof(element) === 'string' ? element : element.id;
+            const id = typeof(element) === 'string' ? element : element.id;
             if (value != null)
                 storage.setItem(id, value);
             else
@@ -20,9 +23,9 @@
     }
 
     function loadData(element, forSession = true) {
-        let storage = forSession ? window.sessionStorage : window.localStorage;
+        const storage = forSession ? window.sessionStorage : window.localStorage;
         if (storage) {
-            let id = typeof(element) === 'string' ? element : element.id;
+            const id = typeof(element) === 'string' ? element : element.id;
             return storage.getItem(id);
         }
         return null;
@@ -47,7 +50,7 @@
         const theme = styleLink.dataset.value;
         save && saveData(styleLink, theme, false);
 
-        styleLink.href = `/static/css/${theme}.css`
+        styleLink.href = `/static/css/${theme}.css`;
         themeColor.content = navbarBgColors[theme];
         document.dispatchEvent(styleChangedEvent);
     }
