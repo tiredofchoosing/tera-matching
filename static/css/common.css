@@ -949,7 +949,7 @@ details {
     filter: var(--dungeon-rank-img-filter);
     height: 2.75em;
     margin: -0.5em 0;
-    opacity: 15%;
+    opacity: var(--rank-opacity);
     position: absolute;
     right: 0.2em;
 }

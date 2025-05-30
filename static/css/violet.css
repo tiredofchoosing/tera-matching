@@ -3,7 +3,7 @@
     --font-color-secondary: rgba(255, 255, 255, 0.5);
 
     --scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
-    --background: center/cover no-repeat url('/static/img/bgs/background1.png');
+    --background: center/cover no-repeat url('/static/img/bgs/background1.jpg');
     --background-blurred-filter: blur(20px);
     --background-blurred-transform: scale(1.08);
     --bg-backdrop-filter: blur(15px);
@@ -33,12 +33,15 @@
     --color-option:rgb(53, 46, 66);
 
     --dungeon-lvl-bg-color: rgba(255, 255, 255, 0.05);
-    --dungeon-rank-img-filter: invert(1);
-    --dungeon-rank-1-content: url(/static/img/icons/rank1-d.svg);
-    --dungeon-rank-2-content: url(/static/img/icons/rank2-d.svg);
-    --dungeon-rank-3-content: url(/static/img/icons/rank3-d.svg);
-    --dungeon-rank-4-content: url(/static/img/icons/rank4-d.svg);
-    --dungeon-rank-5-content: url(/static/img/icons/rank5-d.svg);
+    /* --dungeon-rank-img-filter: invert(1); */
+    --dungeon-rank-img-filter: 0;
+    --dungeon-rank-1-content: url(/static/img/icons/rank-icons/rank1-v.svg);
+    --dungeon-rank-2-content: url(/static/img/icons/rank-icons/rank2-v.svg);
+    --dungeon-rank-3-content: url(/static/img/icons/rank-icons/rank3-v.svg);
+    --dungeon-rank-4-content: url(/static/img/icons/rank-icons/rank4-v.svg);
+    --dungeon-rank-5-content: url(/static/img/icons/rank-icons/rank5-v.svg);
+    --rank-opacity:25%;
+
     --dungeon-players-bg-color: rgba(255, 255, 255, 0.05);
     --dungeon-dtl-bg: rgba(23, 24, 32, 0.6);
     --dungeon-sum-bg: rgba(23, 24, 32, 0.2);

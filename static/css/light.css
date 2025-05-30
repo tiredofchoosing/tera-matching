@@ -1,6 +1,6 @@
 :root {
     --font-color-primary: rgb(0, 0, 0);
-    --font-color-secondary: rgba(255, 255, 255, 0.5);
+    --font-color-secondary: rgba(0, 0, 0, 0.5);
 
     --scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
     --background: #F2F2F2;
@@ -20,7 +20,6 @@
     --header-style-btn-content: url(/static/img/icons/theme_sun.svg);
 
     --close-button-content: url(/static/img/icons/close-d.svg);
-    --dungeon-rank-content: url(/static/img/icons/star-d.svg);
 
     --menu-bg-color: #ffffff;
     --menu-child-bg-color: #F2F2F2;
@@ -32,6 +31,14 @@
     --menu-search-bg-img: url(/static/img/icons/search-d.svg);
     --menu-sort-bg-img: url(/static/img/icons/sort-d.svg);
     --color-option: #F2F2F2;
+
+    --dungeon-rank-img-filter: invert(1); 
+    --dungeon-rank-1-content: url(/static/img/icons//rank-icons/rank1-l.svg);
+    --dungeon-rank-2-content: url(/static/img/icons/rank-icons/rank2-l.svg);
+    --dungeon-rank-3-content: url(/static/img/icons/rank-icons/rank3-l.svg);
+    --dungeon-rank-4-content: url(/static/img/icons/rank-icons/rank4-l.svg);
+    --dungeon-rank-5-content: url(/static/img/icons/rank-icons/rank5-l.svg);
+    --rank-opacity:25%;
 
     --dungeon-lvl-bg-color: #F2F2F2;
     --dungeon-players-bg-color: #F2F2F2;

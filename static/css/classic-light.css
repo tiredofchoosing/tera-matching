@@ -20,7 +20,6 @@
     --header-style-btn-content: url(/static/img/icons/theme_moon.svg);
 
     --close-button-content: url(/static/img/icons/close-d.svg);
-    --dungeon-rank-content: url(/static/img/icons/star-d.svg);
 
     --menu-bg-color: rgb(169, 180, 214);
     --menu-child-bg-color: rgb(224, 227, 235);
@@ -32,6 +31,14 @@
     --menu-search-bg-img: url(/static/img/icons/search-d.svg);
     --menu-sort-bg-img: url(/static/img/icons/sort-d.svg);
     --color-option:rgb(224, 227, 235);
+
+    --dungeon-rank-img-filter: 0;
+    --dungeon-rank-1-content: url(/static/img/icons/rank-icons/rank1-y.svg);
+    --dungeon-rank-2-content: url(/static/img/icons/rank-icons/rank2-y.svg);
+    --dungeon-rank-3-content: url(/static/img/icons/rank-icons/rank3-y.svg);
+    --dungeon-rank-4-content: url(/static/img/icons/rank-icons/rank4-y.svg);
+    --dungeon-rank-5-content: url(/static/img/icons/rank-icons/rank5-y.svg);
+    --rank-opacity:30%;
 
     --dungeon-lvl-bg-color: rgba(255, 255, 255, 0.4);
     --dungeon-players-bg-color: rgba(255, 255, 255, 0.4);
