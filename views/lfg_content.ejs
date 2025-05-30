@@ -1,15 +1,11 @@
 <%
-	const lastUp = data[0]?.lastUpdate || null;
+	const lastUp = data[0]?.lastUpdate;
 	let time = '';
 
 	if (lastUp) {
-		let lastUpDate = new Date(lastUp);
-		let timeNow = new Date();
-		let diffMs = timeNow - lastUpDate;
-		let diffSec = Math.floor(diffMs / 1000);
-		let minutes = Math.floor(diffSec / 60);
-		let hours = Math.floor(minutes / 60);
-		let seconds = diffSec % 60;
+		const diffMs = Date.now() - new Date(lastUp);
+		const minutes = Math.floor(diffMs / 60000);
+		const hours = Math.floor(minutes / 60);
 
 		if (hours >= 1) {
 			time = hours + strings.lfgLastUpdateHourAgo;
@@ -22,16 +18,15 @@
 %>
 <%- include('empty.ejs', { isEmpty: Object.values(data).length === 0 }) %>
 <div id="lfgList" class="lfg-list">
-	<% let id = 1 %>
-	<% for (let key in data) {
-		if (data[key].hasOwnProperty('messages')) {
-			data[key].messages.forEach(msg => { %>
+	<%
+		for (let key in data) {
+			if (data[key].hasOwnProperty('messages')) {
+				data[key].messages.forEach(msg => {
+	%>
 	<details class="lfg-details" data-lfg-id="<%= msg.player?.playerId ?? '0' %>">
 		<summary class="lfg-summary">
-			<div class="">
-				<span class="lfg-message">
-					<%= msg.message %>
-				</span>
+			<div>
+				<span class="lfg-message"><%= msg.message %></span>
 				<span class="lfg-leader-name"><%= msg.leaderName %></span>
 			</div>
 			<span class="lfg-player-count text-end">
@@ -41,9 +36,9 @@
 		<% if (msg.player != null) { %>
 		<div class="party-detailed-content overflow-auto">
 			<table>
-                <tbody>
-                    <%- include('party_player_detailed', { player: msg.player }) %>
-                </tbody>
+				<tbody>
+					<%- include('party_player_detailed', { player: msg.player }) %>
+				</tbody>
 			</table>
 		</div>
 		<% } %>
