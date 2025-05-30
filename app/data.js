@@ -4,10 +4,10 @@ import bg_ru from './data/BattlegroundsInfo_ru.json' with { type: 'json' }
 import bg_en from './data/BattlegroundsInfo_en.json' with { type: 'json' }
 import str_ru from './data/strings_ru.json' with { type: 'json' }
 import str_en from './data/strings_en.json' with { type: 'json' }
-import onlineTestData from './data/OnlineTestData.json' with { type: 'json' }
-import dungeonsTestData from './data/DungeonsTestData.json' with { type: 'json' }
-import battlegroundsTestData from './data/BattlegroundsTestData.json' with { type: 'json' }
-import lfgTestData from './data/LfgTestData.json' with { type: 'json' }
+import onlineTestData from './data/test_data/online.json' with { type: 'json' }
+import dungeonsTestData from './data/test_data/dungeons.json' with { type: 'json' }
+import battlegroundsTestData from './data/test_data/battlegrounds.json' with { type: 'json' }
+import lfgTestData from './data/test_data/lfg.json' with { type: 'json' }
 
 export const dungeons_info = { ru: dg_ru, en: dg_en }
 export const battlegrounds_info = { ru: bg_ru, en: bg_en }
@@ -24,4 +24,4 @@ export const testData = {
     dungeons: dungeonsTestData,
     battlegrounds: battlegroundsTestData,
     lfg: lfgTestData
- }
+}
