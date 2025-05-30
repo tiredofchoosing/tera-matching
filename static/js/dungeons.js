@@ -7,6 +7,7 @@
     const rankSelect = document.getElementById('selectDungeonRank');
     const toggleDetailsButton = document.getElementById('toggleDetails');
     const clearNavigationButton = document.getElementById('clearNavigation');
+    const clearEmptyButton = document.getElementById('clearEmptyButton');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const mergeSupportCheckbox = document.getElementById('mergeSupportMatching');
     const hideLevelCheckbox = document.getElementById('hideLevel');
@@ -68,7 +69,7 @@
             d.style.display = show ? '' : 'none';
             any ||= show;
         });
-        checkIfEmpty(any);
+        checkIfEmpty(!any);
     }
 
     function sortDungeons(_, save = true) {
@@ -274,8 +275,13 @@
         }
     }
 
-    function checkIfEmpty(any) {
-        emptyContainer.hidden = any;
+    function checkIfEmpty(isEmpty) {
+        if (dungeonList.children.length === 0)
+            return;
+
+        emptyContainer.hidden = !isEmpty;
+        emptyContainer.querySelector('#initialEmpty').hidden = isEmpty;
+        emptyContainer.querySelector('#filteredEmpty').hidden = !isEmpty;
     }
 
     function hideLevel(_, save = true) {
@@ -305,6 +311,12 @@
         for (const rank of ranks) {
             rank.hidden = hideRankCheckbox.checked;
         }
+    }
+
+    function clearFilters() {
+        searchInputs.forEach(e => e.value = '');
+        sortDungeons(null, true);
+        filterDungeons(null, true);
     }
 
     function refresh() {
@@ -355,13 +367,11 @@
     content.addEventListener('contentUpdated', refresh);
     toggleDetailsButton.addEventListener('click', toggleAllDungeons);
 
+    clearEmptyButton.addEventListener('click', clearFilters);
     clearNavigationButton.addEventListener('click', function() {
-        searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
         rankSelect.selectedIndex = defaultRankSelectIndex;
-
-        sortDungeons(null, true);
-        filterDungeons(null, true);
+        clearFilters();
     });
 
     // change font size of dungeon list on touch pinch

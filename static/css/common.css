@@ -733,6 +733,10 @@ details {
     margin: 0 auto;
 }
 
+.empty h4 {
+    text-wrap: balance;
+}
+
 /* lfg */
 
 .lfg-details,

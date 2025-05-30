@@ -1,17 +1,31 @@
 <div id="empty" class="empty" <%= isEmpty ? '' : 'hidden' %>>
-	<% let text = ''
-	switch (page) {
-		case 'online':
-			text = strings.emptyPlayersContent
-			break
-		case 'lfg':
-			text = strings.emptyLfgContent
-			break
-		default:
-			text = strings.emptyMatchingContent
-			break
-	} %>
-	<h4 id="initialEmpty"><%= text %></h4>
-	<br>
-	<img src="/static/img/bgs/empty.png" draggable="false">
+	<%
+		const filteredEmptyText = strings.emptyFilteredContent;
+		const cleatFilterText = strings.emptyFilteredClearContent;
+		let initialEmptyText = '';
+		switch (page) {
+			case 'online':
+				initialEmptyText = strings.emptyPlayersContent
+				break
+			case 'lfg':
+				initialEmptyText = strings.emptyLfgContent
+				break
+			default:
+				initialEmptyText = strings.emptyMatchingContent
+				break
+		}
+	%>
+	<div id="initialEmpty">
+		<h4><%= initialEmptyText %></h4>
+		<br>
+		<img src="/static/img/bgs/empty.png" draggable="false">
+	</div>
+	<div id="filteredEmpty" hidden>
+		<h4><%= strings.emptyFilteredContent %></h4>
+		<button class="modal-button" id="clearEmptyButton">
+			<span class="lang-title"><%= strings.emptyFilteredClearContent %></span>
+		</button>
+		<br>
+		<img src="/static/img/bgs/empty-filters.png" draggable="false">
+	</div>
 </div>

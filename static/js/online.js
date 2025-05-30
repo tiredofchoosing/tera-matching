@@ -6,6 +6,7 @@
     const sortSelect = document.getElementById('selectPlayerSort');
     const classSelect = document.getElementById('selectPlayerClass');
     const clearNavigationButton = document.getElementById('clearNavigation');
+    const clearEmptyButton = document.getElementById('clearEmptyButton');
     const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchLevelInput, searchGuildInput];
     const selects = [sortSelect, classSelect];
@@ -111,8 +112,16 @@
         if (playersTableRoot.children.length === 0)
             return;
 
-        emptyContainer.hidden = playersList.children.length !== 0;
-        playersTableRoot.hidden = playersList.children.length === 0;
+        const isEmpty = playersList.children.length === 0;
+        playersTableRoot.hidden = isEmpty;
+        emptyContainer.hidden = !isEmpty;
+        emptyContainer.querySelector('#initialEmpty').hidden = isEmpty;
+        emptyContainer.querySelector('#filteredEmpty').hidden = !isEmpty;
+    }
+
+    function clearFilters() {
+        searchInputs.forEach(e => e.value = '');
+        filterPlayers(null, true);
     }
 
     function refresh() {
@@ -122,7 +131,6 @@
 
     function loadState() {
         filterPlayers(null, true);
-        // sortPlayers(null, true); // called in filter
     }
 
     // register event handlers
@@ -133,13 +141,11 @@
     searchGuildInput.addEventListener('input', filterPlayers);
     content.addEventListener('contentUpdated', refresh);
 
+    clearEmptyButton.addEventListener('click', clearFilters);
     clearNavigationButton.addEventListener('click', function() {
-        searchInputs.forEach(e => e.value = '');
         sortSelect.selectedIndex = defaultSelectIndex;
         classSelect.selectedIndex = defaultClassSelectIndex;
-
-        filterPlayers(null, true);
-        // sortPlayers(null, true); // called in filter
+        clearFilters();
     });
 
     // restore session data

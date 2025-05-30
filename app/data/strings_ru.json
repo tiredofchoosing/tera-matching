@@ -12,6 +12,8 @@
   "emptyMatchingContent": "Список подбора пуст",
   "emptyPlayersContent": "Список игроков пуст",
   "emptyLfgContent": "Список поиска группы пуст",
+  "emptyFilteredContent": "По выбранным фильтрам ничего не найдено",
+  "emptyFilteredClearContent": "Сбросить фильтры",
 
   "searchDungeonNamePlaceholder": "Название подземелья",
   "searchBattlegroundNamePlaceholder": "Название арены",

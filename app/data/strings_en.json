@@ -12,6 +12,8 @@
   "emptyMatchingContent": "Matching queue is empty",
   "emptyPlayersContent": "Player list is empty",
   "emptyLfgContent": "LFG list is empty",
+  "emptyFilteredContent": "No results found for the selected filters",
+  "emptyFilteredClearContent": "Reset filters",
 
   "searchDungeonNamePlaceholder": "Dungeon name",
   "searchBattlegroundNamePlaceholder": "Battlefield name",
