@@ -62,7 +62,7 @@
 
     --chart-font-size: 16;
     --chart-title-font-size: 20;
-    --chart-font-family: 'Montserrat', sans-serif;
+    --chart-font-family: 'Montserrat', system-ui, sans-serif;
     --chart-font-color: rgba(255, 255, 255, 0.8);
     --chart-axis-color: rgba(255, 255, 255, 0.2);
     --chart-grid-color: rgba(255, 255, 255, 0.1);
