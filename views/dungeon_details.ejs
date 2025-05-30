@@ -1,18 +1,26 @@
-<% for (let dungeonId in data) { %>
-<% let dungeon = data[dungeonId]; dungeonProps = instances_info[dungeonId]; %>
-<% if (dungeonProps == undefined) { 
-		dungeonProps = { 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' }; 
-		if (page === 'dungeons') { dungeonProps.minItemLevel = 0; } 
-	} %>
+<%
+	for (let dungeonId in data) {
+		const dungeon = data[dungeonId]; dungeonProps = instances_info[dungeonId];
+		if (dungeonProps == undefined) { 
+			dungeonProps = { 'minLevel': 0, 'maxLevel': 0, 'name': dungeonId + ' - ???' }; 
+			if (page === 'dungeons')
+			{
+				dungeonProps.minItemLevel = 0;
+			} 
+		}
+%>
 <details open class="dungeon-details" id="<%= dungeonId %>">
 	<summary class="dungeon-summary">
 		<span class="dungeon-lvl"><%= dungeonProps.minLevel %></span>
 		<% if (page === 'dungeons') { %>
 		<span class="dungeon-ilvl"><%= dungeonProps.minItemLevel %></span>
 		<% } %>
-		<% let countTank = 0; dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length); %>
-		<% let countDmg = 0; dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length); %>
-		<% let countHeal = 0; dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length); %>
+		<%
+			let countTank = 0, countDmg = 0, countHeal = 0;
+			dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length);
+			dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length);
+			dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length);
+		%>
 		<span class="dungeon-name"><%= dungeonProps.name %></span>
 		<% if (page === 'dungeons') { %>
 		<span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>">
@@ -29,19 +37,23 @@
 		</span>
 	</summary>
 
-	<% dungeon.parties.forEach(party => { %>
-	<% const playerCount = Object.keys(party.players).length; %>
-	<% let maxNameLength = 0; %>
-	<% if (playerCount > 1) { %>
-	<% const playerNames = Object.values(party.players).map(p => p.name.length + (p.isLeaderRequired ? 3 : 0)); %>
-	<% maxNameLength = Math.max(...playerNames); %>
-	<% } %>
+	<%
+		dungeon.parties.forEach(party => {
+			const playerCount = Object.keys(party.players).length;
+			let maxNameLength = 0;
+			if (playerCount > 1) {
+				const playerNames = Object.values(party.players).map(p => p.name.length + (p.isLeaderRequired ? 3 : 0));
+				maxNameLength = Math.max(...playerNames);
+			}
+	%>
 
 	<div class="delimiter"></div>
 	<details class="party-details" data-party-id="<%= dungeonId + '_' + party.players[0].playerId %>">
 		<summary class="party-summary row row-cols-auto">
-			<% Object.keys(party.players).forEach(id => { %>
-			<% let player = party.players[id]; %>
+			<%
+				Object.keys(party.players).forEach(id => {
+					const player = party.players[id];
+			%>
 			<span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>">
 				<img class="party-player-icon dungeon-role-<%= roles[player.role] %>" width="20px" height="20px">
 				<%= player.name %>
@@ -53,11 +65,11 @@
 		</summary>
 		<div class="party-detailed-content overflow-auto">
 			<table>
-                <tbody>
-                    <% Object.keys(party.players).forEach(id => { %>
-                    <%- include('party_player_detailed', { player: party.players[id] }) %>
-                    <% }); %>
-                </tbody>
+				<tbody>
+					<% Object.keys(party.players).forEach(id => { %>
+					<%- include('party_player_detailed', { player: party.players[id] }) %>
+					<% }); %>
+				</tbody>
 			</table>
 		</div>
 	</details>
