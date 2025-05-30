@@ -3,8 +3,11 @@
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
     const navbarBgColors = {
-        'dark-green': 'rgb(23, 24, 32)',
-        'classic-light': 'rgb(131, 145, 187)'
+        'dark-green': 'rgb(21, 22, 30)',
+        'violet': 'rgb(38, 33, 48)',
+        'dark': '#1A1A1A',
+        'light': '#ffffff',
+        'classic-light': 'rgb(169, 180, 214)'
     };
 
     function saveData(element, value = null, forSession = true) {
