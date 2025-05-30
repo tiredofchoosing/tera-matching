@@ -1,52 +1,52 @@
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="true" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content dropdown-menu">
-            <div class="modal-header">
-                <h5><%= strings.settingsTitle %></h5>
-                <button type="button" class="close-button" data-bs-dismiss="modal" aria-label="Close">
-                    <img width="20" height="20">
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row modal-delimiter modal-sections">
-                    <div class="col-4 modal-sections-title"><%= strings.settingsGeneralTitle %></div>
-                    <div class="col modal-sections-body">
-                        <div>
-                            <%= strings.changeLanguageTitle %>
-                            <button class="modal-button" id="switchLang" value="<%= lang %>">
-                                <span class="lang-title"><%- strings.changeLanguageContent %></span>
-                            </button>
-                        </div>
-                        <%- include('checkbox', { name: 'autoupdateCheck' }) %>
-                    </div>
-                </div>
-                <div class="row modal-delimiter modal-sections">
-                    <div class="col-4 modal-sections-title"><%= strings.settingsThemeTitle %></div>
-                    <div class="col modal-sections-body">
-                        <div>
-                            <span><%= strings.changeThemeTitle %></span>
-                            <div>
-                                <form id="themeSelect">
-                                    <%- include('theme_radio_option', { theme: 'dark-green', checked: true } ) %>
-                                    <%- include('theme_radio_option', { theme: 'violet' } ) %>
-                                    <%- include('theme_radio_option', { theme: 'dark' } ) %>
-                                    <%- include('theme_radio_option', { theme: 'light' } ) %>
-                                    <%- include('theme_radio_option', { theme: 'classic-light' } ) %>
-                                </form>
-                            </div>
-                        </div>
-                        <%- include('checkbox', { name: 'blurBackground' }) %>
-                    </div>
-                </div>
-                <% if (page === 'dungeons' || page === 'battlegrounds') { %>
-                <div class="row modal-sections">
-                    <div class="col-4 modal-sections-title"><%= strings.settingsCurrentListTitle %></div>
-                    <div class="col modal-sections-body">
-                        <%- include(page + '_settings') %>
-                    </div>
-                </div>
-                <% } %>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog">
+		<div class="modal-content dropdown-menu">
+			<div class="modal-header">
+				<h5><%= strings.settingsTitle %></h5>
+				<button type="button" class="close-button" data-bs-dismiss="modal" aria-label="Close">
+					<img width="20" height="20">
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row modal-delimiter modal-sections">
+					<div class="col-4 modal-sections-title"><%= strings.settingsGeneralTitle %></div>
+					<div class="col modal-sections-body">
+						<div>
+							<%= strings.changeLanguageTitle %>
+							<button class="modal-button" id="switchLang" value="<%= lang %>">
+								<span class="lang-title"><%- strings.changeLanguageContent %></span>
+							</button>
+						</div>
+						<%- include('checkbox', { name: 'autoupdateCheck' }) %>
+					</div>
+				</div>
+				<div class="row modal-delimiter modal-sections">
+					<div class="col-4 modal-sections-title"><%= strings.settingsThemeTitle %></div>
+					<div class="col modal-sections-body">
+						<div>
+							<span><%= strings.changeThemeTitle %></span>
+							<div>
+								<form id="themeSelect">
+									<%- include('theme_radio_option', { theme: 'dark-green', checked: true } ) %>
+									<%- include('theme_radio_option', { theme: 'violet' } ) %>
+									<%- include('theme_radio_option', { theme: 'dark' } ) %>
+									<%- include('theme_radio_option', { theme: 'light' } ) %>
+									<%- include('theme_radio_option', { theme: 'classic-light' } ) %>
+								</form>
+							</div>
+						</div>
+						<%- include('checkbox', { name: 'blurBackground' }) %>
+					</div>
+				</div>
+				<% if (page === 'dungeons' || page === 'battlegrounds') { %>
+				<div class="row modal-sections">
+					<div class="col-4 modal-sections-title"><%= strings.settingsCurrentListTitle %></div>
+					<div class="col modal-sections-body">
+						<%- include(page + '_settings') %>
+					</div>
+				</div>
+				<% } %>
+			</div>
+		</div>
+	</div>
 </div>

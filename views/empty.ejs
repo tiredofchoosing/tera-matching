@@ -1,17 +1,17 @@
 <div id="empty" class="empty" <%= isEmpty ? '' : 'hidden' %>>
-    <% let text = ''
-    switch (page) {
-        case 'online':
-            text = strings.emptyPlayersContent
-            break
-        case 'lfg':
-            text = strings.emptyLfgContent
-            break
-        default:
-            text = strings.emptyMatchingContent
-            break
-    } %>
-    <h4 id="initialEmpty"><%= text %></h4>
-    <br>
-    <img src="/static/img/bgs/empty.png" draggable="false">
+	<% let text = ''
+	switch (page) {
+		case 'online':
+			text = strings.emptyPlayersContent
+			break
+		case 'lfg':
+			text = strings.emptyLfgContent
+			break
+		default:
+			text = strings.emptyMatchingContent
+			break
+	} %>
+	<h4 id="initialEmpty"><%= text %></h4>
+	<br>
+	<img src="/static/img/bgs/empty.png" draggable="false">
 </div>
