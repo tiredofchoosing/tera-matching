@@ -606,16 +606,20 @@ details {
 }
 
 /* players table */
+#playersTableRoot {
+    border: 1px solid var(--border);
+    border-collapse: collapse;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
 .players-table {
     width: 100%;
-    margin-bottom: 1rem;
     border-radius: 6px;
-    border: none;
     overflow: hidden;
     color: var(--font-color-primary);
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
-    border: 1px solid var(--border);
 }
 
 .player-details {
