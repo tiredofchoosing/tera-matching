@@ -1,6 +1,6 @@
 :root {
     --font-color-primary: rgb(206, 206, 206);
-    --font-color-secondary: rgb(255, 255, 255);
+    --font-color-secondary: rgb(165, 165, 165);
 
     --scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
     --background: center/cover no-repeat url('/static/img/bgs/background.jpg');
