@@ -2,7 +2,7 @@
     --font-color-primary: rgba(255, 255, 255, 0.8);
     --font-color-secondary: rgba(255, 255, 255, 0.5);
 
-    --scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
+    --scrollbar-color: rgb(23, 24, 32) rgb(38, 33, 48);
     --background: center/cover no-repeat url('/static/img/bgs/background1.jpg');
     --background-blurred-filter: blur(20px);
     --background-blurred-transform: scale(1.08);
