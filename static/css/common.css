@@ -959,6 +959,23 @@ details {
     padding: 2px 5px;
     border-radius: 6px;
     line-height: 2em;
+    transition: 0.3s;
+}
+
+.lang-title:hover
+{
+    filter: brightness(1.1);
+}
+
+.filteredEmpty .lang-title
+{
+    font-weight: 700;
+    padding: 0.5em 2em;
+}
+
+.filteredEmpty .modal-button
+{
+    margin: 1em 0;
 }
 
 .dungeon-rank {
