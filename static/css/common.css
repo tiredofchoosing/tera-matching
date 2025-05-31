@@ -68,6 +68,11 @@ header {
     background-color: var(--navbar-bg-color);
 }
 
+.offcanvasFilterContainer-title {
+    color: var(--font-color-primary);
+    padding: 1rem 0 0 0.5rem;
+}
+
 .header-logo {
     opacity: var(--header-logo-opacity);
     padding: var(--header-logo-padding);
