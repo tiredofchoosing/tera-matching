@@ -12,12 +12,12 @@
     --header-font-weight: inherit;
     --header-logo-opacity: 0.8;
     --header-logo-padding: 0.5rem;
+    --header-logo-content-filter: none;
     --header-logo-content: url(/static/img/icons/icon-l.svg);
     --header-btn-hov-bg-color: #F0F0F0;
     --header-btn-img-filter: invert(0.9);
     --header-ul-border-color: rgba(0, 0, 0, 0.05);
     --header-shadow-color: rgba(0, 0, 0, 0.05);
-    --header-style-btn-content: url(/static/img/icons/theme_sun.svg);
 
     --close-button-content: url(/static/img/icons/close-d.svg);
 

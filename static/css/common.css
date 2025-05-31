@@ -79,6 +79,7 @@ header {
     margin-right: 1rem;
     content: var(--header-logo-content);
     transition: none;
+    filter: var(--header-logo-content-filter);
 }
 
 .header-page-link {

@@ -12,12 +12,12 @@
     --header-font-weight: 550;
     --header-logo-opacity: 1;
     --header-logo-padding: 0.325rem;
-    --header-logo-content: url(/static/img/icons/icon-d.svg);
+    --header-logo-content-filter: invert(0.2);
+    --header-logo-content: url(/static/img/icons/icon-l.svg);
     --header-btn-hov-bg-color: rgba(255, 255, 255, 0.3);
     --header-btn-img-filter: invert(0.9);
     --header-ul-border-color: rgba(0, 0, 0, 0.1);
     --header-shadow-color: rgba(0, 0, 0, 0.075);
-    --header-style-btn-content: url(/static/img/icons/theme_moon.svg);
 
     --close-button-content: url(/static/img/icons/close-d.svg);
 
