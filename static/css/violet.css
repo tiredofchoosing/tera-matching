@@ -32,8 +32,8 @@
     --menu-sort-bg-img: url(/static/img/icons/sort-l.svg);
     --color-option:rgb(53, 46, 66);
 
-    --check-color:rgba(136, 111, 165);
-    --check-focus-color:rgba(136, 111, 165, 0.4);
+    --check-color: rgba(136, 111, 165);
+    --check-focus-color: rgba(136, 111, 165, 0.4);
 
     --dungeon-lvl-bg-color: rgba(255, 255, 255, 0.05);
     /* --dungeon-rank-img-filter: invert(1); */
