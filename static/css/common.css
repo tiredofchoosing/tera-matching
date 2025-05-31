@@ -68,7 +68,7 @@ header {
     background-color: var(--navbar-bg-color);
 }
 
-.offcanvasFilterContainer-title {
+.offcanvas-body h5 {
     color: var(--font-color-primary);
     padding: 1rem 0 0 0.5rem;
 }
