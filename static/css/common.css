@@ -222,7 +222,16 @@ header {
 }
 
 .theme-radio-option:checked+.theme-radio-container img {
-    border-color: #abd4ff;
+    border-color: var(--accent-text-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--check-color);
+    border-color: var(--check-color);
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem var(--check-focus-color);
 }
 
 /* search / sort / settings menu */
