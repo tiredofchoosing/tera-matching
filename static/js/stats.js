@@ -109,8 +109,10 @@
                     x: {
                         beginAtZero: true,
                         grid: {
-                            color: this.styles.gridColor,
-                            border: this.styles.axisColor
+                            color: this.styles.gridColor
+                        },
+                        border: {
+                            color: this.styles.axisColor
                         },
                         ticks: {
                             precision: 0,
@@ -124,8 +126,10 @@
                     },
                     y: {
                         grid: {
-                            color: this.styles.gridColor,
-                            border: this.styles.axisColor
+                            color: this.styles.gridColor
+                        },
+                        border: {
+                            color: this.styles.axisColor
                         },
                         ticks: {
                             color: this.styles.fontColor,
@@ -198,19 +202,15 @@
             if (this.chart == null)
                 return;
 
-            this.chart.options.scales.x.grid = {
-                color: this.styles.gridColor,
-                border: this.styles.axisColor
-            }
-            this.chart.options.scales.y.grid = {
-                color: this.styles.gridColor,
-                border: this.styles.axisColor
-            }
+            this.chart.options.scales.x.grid.color = this.styles.gridColor;
+            this.chart.options.scales.x.border.color = this.styles.axisColor;
             this.chart.options.scales.x.ticks.color = this.styles.fontColor;
             this.chart.options.scales.x.ticks.font = {
                 size: this.styles.fontSize,
                 family: this.styles.fontFamily
             };
+            this.chart.options.scales.y.grid.color = this.styles.gridColor;
+            this.chart.options.scales.y.border.color = this.styles.axisColor;
             this.chart.options.scales.y.ticks.color = this.styles.fontColor;
             this.chart.options.scales.y.ticks.font = {
                 size: this.styles.fontSize,
