@@ -16,7 +16,7 @@
     --header-logo-content: url(/static/img/icons/icon-l.svg);
     --header-btn-hov-bg-color: #F0F0F0;
     --header-btn-img-filter: invert(0.9);
-    --header-ul-border-color: rgba(0, 0, 0, 0.05);
+    --header-ul-border-color: rgba(0, 0, 0, 0.2);
     --header-shadow-color: rgba(0, 0, 0, 0.05);
 
     --close-button-content: url(/static/img/icons/close-d.svg);
