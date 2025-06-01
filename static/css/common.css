@@ -1031,6 +1031,12 @@ details {
         max-width: 100%;
         margin: 0;
         height: 100%;
+       
+    }
+    
+    .modal-content
+    {
+        border-radius: 0 !important;
     }
 }
 
