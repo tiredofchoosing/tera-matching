@@ -157,6 +157,7 @@
                     },
                     tooltip: {
                         displayColors: false,
+                        backgroundColor: this.styles.tooltipBgColor,
                         titleColor: this.styles.fontColor,
                         titleFont: {
                             size: this.styles.fontSize,
@@ -195,6 +196,7 @@
                 gridColor: this.rootStyles.getPropertyValue('--chart-grid-color').trim(),
                 barBgColor: this.rootStyles.getPropertyValue('--chart-bar-bg-color').trim(),
                 barBorderColor: this.rootStyles.getPropertyValue('--chart-bar-border-color').trim(),
+                tooltipBgColor: this.rootStyles.getPropertyValue('--chart-tooltip-bg-color').trim(),
             }
         }
 
@@ -223,6 +225,7 @@
                 family: this.styles.fontFamily
             };
 
+            this.chart.options.plugins.tooltip.backgroundColor = this.styles.tooltipBgColor;
             this.chart.options.plugins.tooltip.titleColor = this.styles.fontColor;
             this.chart.options.plugins.tooltip.titleFont = {
                 size: this.styles.fontSize,
