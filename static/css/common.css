@@ -257,14 +257,15 @@ header {
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
     border: 1px solid var(--border);
 }
+
 .offcanvas-body .navigation-menu {
     padding: 0;
 }
 
-.offcanvas-body
-{
+.offcanvas-body {
     padding-top: 0 !important;
 }
+
 #filterContent {
     position: sticky;
     top: 4.5rem;
@@ -310,6 +311,7 @@ header {
 .navigation-select option {
     background-color: var(--color-option);
 }
+
 .navigation-search input::placeholder {
     opacity: 1;
     color: var(--menu-input-plh-color);
@@ -352,16 +354,15 @@ header {
     transition: none !important;
 }
 
-.offcanvas-title
-{
+.offcanvas-title {
     color: var(--font-color-primary);
 }
 
-.offcanvas-header
-{
-    padding: 0.5rem 1rem 0.5rem 1.7rem; 
+.offcanvas-header {
+    padding: 0.5rem 1rem 0.5rem 1.7rem;
     text-align: center;
 }
+
 /* matching main content */
 .content {
     margin-top: 1rem;
@@ -557,7 +558,7 @@ details {
 
 .party-player-item-level {
     text-align: center;
-    margin:0 0.25em;
+    margin: 0 0.25em;
 }
 
 .party-player-guild {
@@ -1038,9 +1039,8 @@ details {
         max-width: 100%;
         margin: 0;
         height: 100%;
-       
     }
-    
+
     .modal-content
     {
         border-radius: 0 !important;
