@@ -61,11 +61,14 @@
     --border: rgba(0, 0, 0, 0.1);
 
     --chart-font-size: 16;
-    --chart-title-font-size: 20;
+    --chart-title-font-size: 18;
     --chart-font-family: 'Montserrat', system-ui, sans-serif;
-    --chart-font-color: rgba(255, 255, 255, 0.8);
-    --chart-axis-color: rgba(255, 255, 255, 0.2);
-    --chart-grid-color: rgba(255, 255, 255, 0.1);
-    --chart-bar-bg-color: rgba(86, 136, 92, 0.5);
-    --chart-bar-border-color: rgba(255, 255, 255, 0.3);
+    --chart-font-color: rgb(0, 0, 0);
+    --chart-tooltip-bg-color: #F2F2F2;
+
+    --chart-axis-color: rgb(0, 0, 0, 0.1);
+    --chart-grid-color: rgba(0, 0, 0, 0.1);
+
+    --chart-bar-bg-color: rgba(0, 0, 0, 0.1);
+    --chart-bar-border-color: rgba(0, 0, 0, 0.5);
 }
