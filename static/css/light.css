@@ -23,7 +23,8 @@
 
     --menu-bg-color: #ffffff;
     --menu-child-bg-color: #F2F2F2;
-    --menu-input-plh-color: rgba(0, 0, 0, 0.6);
+    --menu-child-bg-color-offcanvas: #F2F2F2;
+    --menu-input-plh-color: rgba(0, 0, 0, 0.3);
     --menu-btn-hov-bg-color: rgba(0, 0, 0, 0.1);
     --menu-btn-act-bg-color: rgba(0, 0, 0, 0.1);
     --menu-btn-img-filter: invert(0.9);

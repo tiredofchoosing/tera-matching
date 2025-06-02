@@ -1093,6 +1093,7 @@ details {
     .navigation-search input,
     .navigation-select select,
     .navigation-button button {
-        border: none !important;
+        /* border: none !important; */
+        background-color: var(--menu-child-bg-color-offcanvas);
     }
 }

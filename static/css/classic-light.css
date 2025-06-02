@@ -22,8 +22,9 @@
     --close-button-content: url(/static/img/icons/close-d.svg);
 
     --menu-bg-color: rgb(169, 180, 214);
-    --menu-child-bg-color: rgb(224, 227, 235);
-    --menu-input-plh-color: rgb(125, 133, 151);
+    --menu-child-bg-color: rgb(255, 255, 255, 0.5);
+    --menu-child-bg-color-offcanvas: rgba(255, 255, 255, 0.4);
+    --menu-input-plh-color: rgba(0, 0, 0, 0.4);
     --menu-btn-hov-bg-color: rgb(198, 204, 219);
     --menu-btn-act-bg-color: rgb(173, 180, 197);
     --menu-btn-img-filter: invert(1) opacity(0.8);
