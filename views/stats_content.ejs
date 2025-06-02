@@ -1,0 +1,24 @@
+<%
+	const isEmpty = data.length === 0;
+	if (isEmpty) {
+%>
+<%- include('empty', { isEmpty }) %>
+<div id="classChartDataContainer" hidden></div>
+<div id="guildChartDataContainer" hidden></div>
+<%
+	} else {
+		const count = Array(classes.length).fill(0);
+		const list = data.map((e) => e.class);
+		list.forEach(e => { count[e] += 1; });
+
+		const guilds = [];
+		const noGuild = strings.noGuildTitle;
+		data.forEach(p => { if (p.guildName && guilds.indexOf(p.guildName) === -1) { guilds.push(p.guildName) } });
+		guilds.unshift(noGuild);
+		const guildCount = Array(guilds.length).fill(0);
+		const guildList = data.map(p => p.guildName ?? noGuild);
+		guildList.forEach(g => guildCount[guilds.indexOf(g)] += 1);
+%>
+<div id="classChartDataContainer" hidden data-labels="<%= classes.join(',') %>" data-values="<%= count.join(',') %>"></div>
+<div id="guildChartDataContainer" hidden data-labels="<%= guilds.join(',') %>" data-values="<%= guildCount.join(',') %>"></div>
+<% } %>

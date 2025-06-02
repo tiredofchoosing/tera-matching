@@ -128,7 +128,6 @@ export async function online(req, res, partialContent = false) {
         data: data[page],
         strings: globalization[lang],
         classes: classes[lang],
-        roles,
         lang,
         online: data.online?.length,
         teralogs_url: teralogs_provider,
@@ -163,6 +162,27 @@ export async function lfg(req, res, partialContent = false) {
         lang,
         online: data.online?.length,
         teralogs_url: teralogs_provider,
+        page
+    };
+
+    if (isResponceModified(req, res, viewData)) {
+        render(res, viewData, page, partialContent);
+    }
+}
+
+export async function stats(req, res, partialContent = false) {
+    const lang = changeLang(req);
+    const page = 'stats';
+
+    const data = await fetchMany(res, ['online']);
+    if (!data) return;
+
+    const viewData = {
+        data: data.online,
+        strings: globalization[lang],
+        classes: classes[lang],
+        lang,
+        online: data.online?.length,
         page
     };
 

@@ -9,6 +9,7 @@
         'light': '#ffffff',
         'classic-light': 'rgb(169, 180, 214)'
     };
+    const styleChangedEvent = new CustomEvent('styleChanged');
 
     function saveData(element, value = null, forSession = true) {
         const storage = forSession ? window.sessionStorage : window.localStorage;
@@ -51,6 +52,7 @@
 
         styleLink.href = `/static/css/${theme}.css`;
         themeColor.content = navbarBgColors[theme];
+        document.dispatchEvent(styleChangedEvent);
     }
 
     function customSplitFilter(splitChar) {

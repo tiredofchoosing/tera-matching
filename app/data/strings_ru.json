@@ -3,11 +3,13 @@
   "battlegroundsPageTitle": "Подбор арен",
   "onlinePageTitle": "Список игроков",
   "lfgPageTitle": "Поиск группы",
+  "statsPageTitle": "Статистика онлайна",
 
   "dungeonsHeaderLinkContent": "Подземелья",
   "battlegroundsHeaderLinkContent": "Арены",
   "onlineHeaderLinkContent": "Онлайн",
   "lfgHeaderLinkContent": "Поиск группы",
+  "statsHeaderLinkContent": "Статистика",
 
   "emptyMatchingContent": "Список подбора пуст",
   "emptyPlayersContent": "Список игроков пуст",
@@ -50,6 +52,7 @@
   "playerGuildAscContent": "Гильдия (возр.)",
   "dungeonRankDescContent": "Ранг (убыв.)",
   "dungeonRankAscContent": "Ранг (возр.)",
+  "defaultSortContent": "По умолчанию",
 
   "classSelectDefaultContent": "Все классы",
   "selectDungeonRankDefaultContent": "Любой ранг",
@@ -80,6 +83,7 @@
   "hideLevelLabel": "Скрыть требуемый уровень",
   "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
   "hideRankLabel": "Скрыть ранг",
+  "hideNoGuildLabel": "Скрыть строку [Без гильдии]",
 
   "playersTableLevelContent": "Ур.",
   "playersTableItemLevelContent": "Снар.",
@@ -90,5 +94,10 @@
   "lfgLastUpdateHourAgo": " ч. назад",
   "lfgLastUpdateMinuteAgo": " мин. назад",
   "lfgLastUpdateLessThanMinuteAgo": "меньше минуты назад",
-  "lfgWarningContent": "*Страница может содержать устаревшие или некорректные данные."
+  "lfgWarningContent": "*Страница может содержать устаревшие или некорректные данные.",
+
+  "classChartTitle": "Онлайн по классам",
+  "guildChartTitle": "Онлайн по гильдиям",
+  "noGuildTitle": "[Без гильдии]",
+  "playersLabelTitle": " Игроков"
 }

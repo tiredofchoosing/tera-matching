@@ -3,11 +3,13 @@
   "battlegroundsPageTitle": "Battlefield matching",
   "onlinePageTitle": "Player list",
   "lfgPageTitle": "LFG list",
+  "statsPageTitle": "Online statistics",
 
   "dungeonsHeaderLinkContent": "Dungeons",
   "battlegroundsHeaderLinkContent": "Battlefields",
   "onlineHeaderLinkContent": "Online",
   "lfgHeaderLinkContent": "LFG",
+  "statsHeaderLinkContent": "Statistics",
 
   "emptyMatchingContent": "Matching queue is empty",
   "emptyPlayersContent": "Player list is empty",
@@ -50,6 +52,7 @@
   "playerGuildAscContent": "Guild (asc)",
   "dungeonRankDescContent": "Rank (desc)",
   "dungeonRankAscContent": "Rank (asc)",
+  "defaultSortContent": "By default",
 
   "classSelectDefaultContent": "All classes",
   "selectDungeonRankDefaultContent": "Any rank",
@@ -80,6 +83,7 @@
   "hideLevelLabel": "Hide required level",
   "hideItemLevelLabel": "Hide required item level",
   "hideRankLabel": "Hide rank",
+  "hideNoGuildLabel": "Hide [No guild] line",
 
   "playersTableLevelContent": "Lvl",
   "playersTableItemLevelContent": "Gear",
@@ -90,5 +94,10 @@
   "lfgLastUpdateHourAgo": " h ago",
   "lfgLastUpdateMinuteAgo": " min ago",
   "lfgLastUpdateLessThanMinuteAgo": "less than 1 min ago",
-  "lfgWarningContent": "*This page may contain outdated or incorrect data."
+  "lfgWarningContent": "*This page may contain outdated or incorrect data.",
+
+  "classChartTitle": "Online by class",
+  "guildChartTitle": "Online by guild",
+  "noGuildTitle": "[No guild]",
+  "playersLabelTitle": " Players"
 }

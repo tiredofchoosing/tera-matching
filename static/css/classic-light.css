@@ -69,4 +69,16 @@
     --empty-bg-color: rgb(169, 180, 214);
 
     --border: rgba(58, 74, 120, 0.3);
+
+    --chart-font-size: 16;
+    --chart-title-font-size: 18;
+    --chart-font-family: 'Montserrat', system-ui, sans-serif;
+    --chart-font-color: rgb(0, 0, 0);
+    --chart-tooltip-bg-color: #CBD2E6;
+
+    --chart-axis-color: rgb(58, 74, 120, 0.15);
+    --chart-grid-color: rgba(58, 74, 120, 0.15);
+
+    --chart-bar-bg-color: rgba(58, 74, 120, 0.3);
+    --chart-bar-border-color: rgba(58, 74, 120, 0.8);
 }

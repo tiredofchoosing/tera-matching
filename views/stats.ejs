@@ -1,0 +1,42 @@
+<%- include('layout_begin') %>
+<div id="main">
+	<div class="container">
+		<div class="row justify-content-start">
+			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12" id="filterContainer">
+				<div class="d-lg-block" id="filterContent">
+					<div class="navigation-menu col-12">
+						<div class="navigation-select">
+							<select id="selectPlayerSort" title="<%= strings.selectSort %>">
+								<option value="default" selected="selected"><%= strings.defaultSortContent %></option>
+								<option value="labelDesc"><%= strings.nameDescContent %></option>
+								<option value="labelAsc"><%= strings.nameAscContent %></option>
+								<option value="valueDesc"><%= strings.playersDescContent %></option>
+								<option value="valueAsc"><%= strings.playersAscContent %></option>
+							</select>
+						</div>
+						<div class="navigation-button d-flex flex-sm-row">
+							<button id="clearNavigation" class="flex-fill text-center ml-lg-2" title="<%= strings.clearNavigationTitle %>">
+								<img src="/static/img/icons/reset.svg" width="20px" height="20px" draggable="false">
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12">
+				<div id="content">
+					<%- include(page + '_content') %>
+				</div>
+				<div id="contentList">
+					<div class="card chart-container">
+						<canvas id="classChart" data-title="<%= strings.classChartTitle %>" data-bar-label="<%= strings.playersLabelTitle %>"></canvas>
+					</div>
+					<div class="card chart-container">
+						<canvas id="guildChart" data-title="<%= strings.guildChartTitle %>" data-bar-label="<%= strings.playersLabelTitle %>"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<%- include('layout_end') %>
