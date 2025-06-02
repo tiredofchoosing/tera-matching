@@ -82,7 +82,7 @@
   "hideLevelLabel": "Скрыть требуемый уровень",
   "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
   "hideRankLabel": "Скрыть ранг",
-  "hideNoGuildLabel": "Скрыть игроков без гильдии",
+  "hideNoGuildLabel": "Скрыть строку [Без гильдии]",
 
   "playersTableLevelContent": "Ур.",
   "playersTableItemLevelContent": "Снар.",
@@ -95,8 +95,8 @@
   "lfgLastUpdateLessThanMinuteAgo": "меньше минуты назад",
   "lfgWarningContent": "*Страница может содержать устаревшие или некорректные данные.",
 
-  "classChartTitle": "Классы",
-  "guildChartTitle": "Гильдии",
+  "classChartTitle": "Онлайн по классам",
+  "guildChartTitle": "Онлайн по гильдиям",
   "noGuildTitle": "[Без гильдии]",
   "playersLabelTitle": " Игроков"
 }

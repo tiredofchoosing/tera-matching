@@ -82,7 +82,7 @@
   "hideLevelLabel": "Hide required level",
   "hideItemLevelLabel": "Hide required item level",
   "hideRankLabel": "Hide rank",
-  "hideNoGuildLabel": "Hide players with no guild",
+  "hideNoGuildLabel": "Hide [No guild] line",
 
   "playersTableLevelContent": "Lvl",
   "playersTableItemLevelContent": "Gear",
@@ -95,8 +95,8 @@
   "lfgLastUpdateLessThanMinuteAgo": "less than 1 min ago",
   "lfgWarningContent": "*This page may contain outdated or incorrect data.",
 
-  "classChartTitle": "Classes",
-  "guildChartTitle": "Guilds",
+  "classChartTitle": "Online by class",
+  "guildChartTitle": "Online by guild",
   "noGuildTitle": "[No guild]",
   "playersLabelTitle": " Players"
 }
