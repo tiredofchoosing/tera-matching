@@ -168,6 +168,8 @@
                             size: this.styles.fontSize,
                             family: this.styles.fontFamily
                         },
+                        borderColor: this.styles.axisColor,
+                        borderWidth: 1
                     }
                 }
             };
@@ -226,6 +228,7 @@
             };
 
             this.chart.options.plugins.tooltip.backgroundColor = this.styles.tooltipBgColor;
+            this.chart.options.plugins.tooltip.borderColor = this.styles.axisColor;
             this.chart.options.plugins.tooltip.titleColor = this.styles.fontColor;
             this.chart.options.plugins.tooltip.titleFont = {
                 size: this.styles.fontSize,
