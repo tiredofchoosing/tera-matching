@@ -61,6 +61,7 @@
   "toggleDetailsTitle": "Collapse / expand list",
 
   "menuTitle": "Menu",
+  "menuFilterTitle": "Filters",
   "settingsTitle": "Settings",
   "settingsGeneralTitle": "General",
   "settingsThemeTitle": "Theme",
@@ -70,7 +71,7 @@
   "changeLanguageContent": "переключить на <b>Русский</b>",
   "changeThemeTitle": "Change theme",
   "darkGreenThemeLabel": "Dark green",
-  "classicLightThemeLabel": "Classic light",
+  "classicLightThemeLabel": "Light blue",
   "violetThemeLabel": "Violet",
   "darkThemeLabel": "Dark",
   "lightThemeLabel": "Light",

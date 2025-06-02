@@ -68,12 +68,19 @@ header {
     background-color: var(--navbar-bg-color);
 }
 
+.offcanvas-body h5 {
+    color: var(--font-color-primary);
+    padding: 0.5rem 0 0 0.5rem;
+    margin-bottom: -0.5rem;
+}
+
 .header-logo {
     opacity: var(--header-logo-opacity);
     padding: var(--header-logo-padding);
     margin-right: 1rem;
     content: var(--header-logo-content);
     transition: none;
+    filter: var(--header-logo-content-filter);
 }
 
 .header-page-link {
@@ -168,6 +175,8 @@ header {
     .navbar-nav {
         border-top: 2px solid var(--header-ul-border-color);
         border-bottom: 2px solid var(--header-ul-border-color);
+        padding: 0.5em 0 1em 0;
+        margin-bottom: 1em;
     }
 
     .header-page-link {
@@ -199,30 +208,51 @@ header {
     font-weight: 600;
 }
 
-.theme-radio-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    padding: 0.25rem;
-    font-size: small;
-    margin: 1em 0;
-}
-
-.theme-radio-container img {
-    width: 100px;
-    height: auto;
-    border-radius: 6px;
-    border: 2px solid transparent;
-    transition: border-color 0.3s;
+.theme-radio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 0.5rem;
+    align-items: start;
 }
 
 .theme-radio-option {
     display: none;
 }
 
+.theme-radio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    font-size: small;
+    margin: 0.5em 0;
+}
+
+.theme-radio-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
 .theme-radio-option:checked+.theme-radio-container img {
-    border-color: #abd4ff;
+    border-color: var(--accent-text-color);
+}
+
+.theme-radio-label {
+    padding: 0.25em 0;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.form-check-input:checked {
+    background-color: var(--check-color);
+    border-color: var(--check-color);
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem var(--check-focus-color);
 }
 
 /* search / sort / settings menu */
@@ -235,14 +265,15 @@ header {
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
     border: 1px solid var(--border);
 }
+
 .offcanvas-body .navigation-menu {
     padding: 0;
 }
 
-.offcanvas-body
-{
+.offcanvas-body {
     padding-top: 0 !important;
 }
+
 #filterContent {
     position: sticky;
     top: 4.5rem;
@@ -288,6 +319,7 @@ header {
 .navigation-select option {
     background-color: var(--color-option);
 }
+
 .navigation-search input::placeholder {
     opacity: 1;
     color: var(--menu-input-plh-color);
@@ -330,16 +362,15 @@ header {
     transition: none !important;
 }
 
-.offcanvas-title
-{
+.offcanvas-title {
     color: var(--font-color-primary);
 }
 
-.offcanvas-header
-{
-    padding: 0.5rem 1rem 0.5rem 1.7rem; 
+.offcanvas-header {
+    padding: 0.5rem 1rem 0.5rem 1.75rem;
     text-align: center;
 }
+
 /* matching main content */
 .content {
     margin-top: 1rem;
@@ -404,6 +435,7 @@ details {
     word-break: break-word;
     flex-grow: 1;
     padding: 0.2em;
+    z-index: 1;
 }
 
 .dungeon-players {
@@ -451,11 +483,12 @@ details {
 
 .party-player {
     white-space: nowrap;
+    line-height: 1.7;
 }
 
 .party-player-icon {
     margin-left: 0.2em;
-    vertical-align: bottom;
+    /* vertical-align: bottom; */
     width: 1.25em;
     height: 1.25em;
 }
@@ -533,7 +566,7 @@ details {
 
 .party-player-item-level {
     text-align: center;
-    margin:0 0.25em;
+    margin: 0 0.25em;
 }
 
 .party-player-guild {
@@ -590,16 +623,20 @@ details {
 }
 
 /* players table */
+#playersTableRoot {
+    border: 1px solid var(--border);
+    border-collapse: collapse;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
 .players-table {
     width: 100%;
-    margin-bottom: 1rem;
     border-radius: 6px;
-    border: none;
     overflow: hidden;
     color: var(--font-color-primary);
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
-    border: 1px solid var(--border);
 }
 
 .player-details {
@@ -939,6 +976,23 @@ details {
     padding: 2px 5px;
     border-radius: 6px;
     line-height: 2em;
+    transition: 0.3s;
+}
+
+.lang-title:hover
+{
+    filter: brightness(1.1);
+}
+
+.filteredEmpty .lang-title
+{
+    font-weight: 700;
+    padding: 0.5em 2em;
+}
+
+.filteredEmpty .modal-button
+{
+    margin: 1em 0;
 }
 
 .dungeon-rank {
@@ -949,7 +1003,7 @@ details {
     filter: var(--dungeon-rank-img-filter);
     height: 2.75em;
     margin: -0.5em 0;
-    opacity: 15%;
+    opacity: var(--rank-opacity);
     position: absolute;
     right: 0.2em;
 }
@@ -994,6 +1048,11 @@ details {
         margin: 0;
         height: 100%;
     }
+
+    .modal-content
+    {
+        border-radius: 0 !important;
+    }
 }
 
 @media (min-width: 576px) {
@@ -1034,7 +1093,8 @@ details {
     .navigation-search input,
     .navigation-select select,
     .navigation-button button {
-        border: none !important;
+        /* border: none !important; */
+        background-color: var(--menu-child-bg-color-offcanvas);
     }
 }
 

@@ -2,7 +2,7 @@
     --font-color-primary: black;
     --font-color-secondary: rgba(0, 0, 0, 0.5);
 
-    --scrollbar-color: initial;
+    --scrollbar-color: rgb(135, 150, 197) rgb(169, 180, 214);
     --background: rgb(135, 150, 197);
     --background-blurred-filter: none;
     --background-blurred-transform: none;
@@ -12,19 +12,19 @@
     --header-font-weight: 550;
     --header-logo-opacity: 1;
     --header-logo-padding: 0.325rem;
-    --header-logo-content: url(/static/img/icons/icon-d.svg);
+    --header-logo-content-filter: invert(0.2);
+    --header-logo-content: url(/static/img/icons/icon-l.svg);
     --header-btn-hov-bg-color: rgba(255, 255, 255, 0.3);
     --header-btn-img-filter: invert(0.9);
-    --header-ul-border-color: rgba(0, 0, 0, 0.1);
+    --header-ul-border-color: rgba(58, 74, 120, 0.3);
     --header-shadow-color: rgba(0, 0, 0, 0.075);
-    --header-style-btn-content: url(/static/img/icons/theme_moon.svg);
 
     --close-button-content: url(/static/img/icons/close-d.svg);
-    --dungeon-rank-content: url(/static/img/icons/star-d.svg);
 
     --menu-bg-color: rgb(169, 180, 214);
-    --menu-child-bg-color: rgb(224, 227, 235);
-    --menu-input-plh-color: rgb(125, 133, 151);
+    --menu-child-bg-color: rgb(255, 255, 255, 0.5);
+    --menu-child-bg-color-offcanvas: rgba(255, 255, 255, 0.4);
+    --menu-input-plh-color: rgba(0, 0, 0, 0.4);
     --menu-btn-hov-bg-color: rgb(198, 204, 219);
     --menu-btn-act-bg-color: rgb(173, 180, 197);
     --menu-btn-img-filter: invert(1) opacity(0.8);
@@ -32,6 +32,17 @@
     --menu-search-bg-img: url(/static/img/icons/search-d.svg);
     --menu-sort-bg-img: url(/static/img/icons/sort-d.svg);
     --color-option:rgb(224, 227, 235);
+
+    --check-color: rgb(58, 74, 120);
+    --check-focus-color: rgba(58, 74, 120, 0.5);
+
+    --dungeon-rank-img-filter: 0;
+    --dungeon-rank-1-content: url(/static/img/icons/rank-icons/rank1-y.svg);
+    --dungeon-rank-2-content: url(/static/img/icons/rank-icons/rank2-y.svg);
+    --dungeon-rank-3-content: url(/static/img/icons/rank-icons/rank3-y.svg);
+    --dungeon-rank-4-content: url(/static/img/icons/rank-icons/rank4-y.svg);
+    --dungeon-rank-5-content: url(/static/img/icons/rank-icons/rank5-y.svg);
+    --rank-opacity:30%;
 
     --dungeon-lvl-bg-color: rgba(255, 255, 255, 0.4);
     --dungeon-players-bg-color: rgba(255, 255, 255, 0.4);
@@ -53,7 +64,7 @@
     --players-tbl-guild-background-color: rgba(255, 255, 255, 0.7);
 
     --accent-text-color: rgb(58, 74, 120);
-    --accent-background-color: rgb(255, 255, 255);
+    --accent-background-color: rgb(241, 241, 241);
     --players-tbl-delimiter: rgba(116, 116, 116, 0.1);
     --empty-bg-color: rgb(169, 180, 214);
 

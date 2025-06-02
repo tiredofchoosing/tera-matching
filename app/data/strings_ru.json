@@ -61,6 +61,7 @@
   "toggleDetailsTitle": "Свернуть / развернуть список",
 
   "menuTitle": "Меню",
+  "menuFilterTitle": "Фильтры",
   "settingsTitle": "Настройки",
   "settingsGeneralTitle": "Общее",
   "settingsThemeTitle": "Тема",
@@ -70,7 +71,7 @@
   "changeLanguageContent": "switch to <b>English</b>",
   "changeThemeTitle": "Сменить тему",
   "darkGreenThemeLabel": "Темно-зеленая",
-  "classicLightThemeLabel": "Классическая светлая",
+  "classicLightThemeLabel": "Светло-синяя",
   "violetThemeLabel": "Фиолетовая",
   "darkThemeLabel": "Темная",
   "lightThemeLabel": "Светлая",

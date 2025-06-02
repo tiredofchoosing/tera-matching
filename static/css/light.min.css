@@ -23,8 +23,7 @@
 
     --menu-bg-color: #ffffff;
     --menu-child-bg-color: #F2F2F2;
-    --menu-child-bg-color-offcanvas: #F2F2F2;
-    --menu-input-plh-color: rgba(0, 0, 0, 0.3);
+    --menu-input-plh-color: rgba(0, 0, 0, 0.6);
     --menu-btn-hov-bg-color: rgba(0, 0, 0, 0.1);
     --menu-btn-act-bg-color: rgba(0, 0, 0, 0.1);
     --menu-btn-img-filter: invert(0.9);
@@ -70,16 +69,4 @@
     --empty-bg-color: #ffffff;
 
     --border: rgba(0, 0, 0, 0.1);
-
-    --chart-font-size: 16;
-    --chart-title-font-size: 18;
-    --chart-font-family: 'Montserrat', system-ui, sans-serif;
-    --chart-font-color: rgb(0, 0, 0);
-    --chart-tooltip-bg-color: #F2F2F2;
-
-    --chart-axis-color: rgb(0, 0, 0, 0.1);
-    --chart-grid-color: rgba(0, 0, 0, 0.1);
-
-    --chart-bar-bg-color: rgba(0, 0, 0, 0.1);
-    --chart-bar-border-color: rgba(0, 0, 0, 0.5);
 }
