@@ -8,24 +8,18 @@
     const clearEmptyButton = document.getElementById('clearEmptyButton');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const hideLevelCheckbox = document.getElementById('hideLevel');
-    const body = document.body;
     const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchMinLevelInput];
     const checkboxes = [saveCollapsedCheckbox, hideLevelCheckbox];
 
     const defaultSelectIndex = 4;
     const saveCollapsedId = 'battlegroundDetailsCollapsed';
-    const pinchFontSizes = [ '13px', '14px', '16px' ];
-    const pinchDelta = 30;
-    const pinchSaveId = 'pinchDungeonList';
 
     let dungeonList, emptyContainer, dungeons, parties;
     initVariables();
 
     let collapsedElements = [];
     let collapseAll = false;
-    let pinchInitDist = 0;
-    let pinchCurrentIndex = pinchFontSizes.indexOf(window.getComputedStyle(dungeonList).fontSize);
     let openedParties = [];
 
     // functions
@@ -185,8 +179,6 @@
         sortDungeons(null, false);
         filterDungeons(null, false);
 
-        dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
-
         if (collapseAll) {
             collapsedElements = dungeons.map(d => d.id);
         }
@@ -218,43 +210,6 @@
         clearFilters();
     });
 
-    // change font size of dungeon list on touch pinch
-    body.addEventListener('touchstart', function(e) {
-        if (e.touches.length === 2) {
-            pinchInitDist = Math.hypot(
-                e.touches[0].pageX - e.touches[1].pageX,
-                e.touches[0].pageY - e.touches[1].pageY
-            );
-        }
-    });
-
-    body.addEventListener('touchmove', function(e) {
-        if (e.touches.length === 2) {
-            const distance = Math.hypot(
-                e.touches[0].pageX - e.touches[1].pageX,
-                e.touches[0].pageY - e.touches[1].pageY
-            );
-            if (distance - pinchInitDist > pinchDelta) {
-                pinchCurrentIndex = Math.min(pinchCurrentIndex + 1, pinchFontSizes.length - 1);
-            }
-            else if (pinchInitDist - distance > pinchDelta) {
-                pinchCurrentIndex = Math.max(pinchCurrentIndex - 1, 0);
-            }
-            else
-                return;
-
-            dungeonList.style.fontSize = pinchFontSizes[pinchCurrentIndex];
-            pinchInitDist = distance;
-            saveData(pinchSaveId, pinchCurrentIndex, false);
-        }
-    });
-    
-    body.addEventListener('touchend', function(e) {
-        if (e.touches.length < 2) {
-            pinchInitDist = 0;
-        }
-    });
-
     // restore session data
     searchInputs.forEach(e => e.value = loadData(e) ?? e.value);
     checkboxes.forEach(e => {
@@ -272,8 +227,6 @@
     else {
         collapsedElements = collapsed?.split(',') ?? [];
     }
-
-    pinchCurrentIndex = loadData(pinchSaveId, false) ?? pinchCurrentIndex;
 
     loadState();
 
