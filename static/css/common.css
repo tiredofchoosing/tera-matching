@@ -383,6 +383,7 @@ header {
 
 @media (max-width: 550px) {
     .dungeon-list,
+    .players-table,
     .lfg-list {
         font-size: 14px;
     }
@@ -640,13 +641,18 @@ details {
 }
 
 .player-details {
-    height: 2.5rem;
+    height: 2.5em;
 }
 
 .players-table th {
     border: none;
     background-color: var(--players-tbl-th-bg-color);
     font-weight: 600;
+    padding: 0.6em 0.5em 0.6em 0.5em;
+}
+
+.players-table th:nth-child(-n + 3) {
+    text-align: center;
 }
 
 .players-table td {
@@ -654,40 +660,32 @@ details {
 }
 
 .players-table td:nth-child(1) {
-    font-size: 0.75rem;
+    font-size: 0.75em;
     color: var(--font-color-secondary);
-    min-width: 2.8rem;
+    min-width: 2.8em;
+    text-align: center;
+    padding: 0.6em 0.75em 0.6em 0.5em;
+    width: 0;
 }
 
 .players-table td:nth-child(2),
 .players-table td:nth-child(3) {
-    min-width: 2.85rem;
-}
-
-.players-table th:nth-child(4),
-.players-table td:nth-child(4) {
-    padding-left: 0.5rem;
-}
-
-.players-table td:nth-child(5),
-.players-table td:nth-child(6) {
-    padding: 0.5rem 0 0.5rem 0.5rem;
-}
-
-.players-table td:nth-child(1),
-.players-table th:nth-child(1) {
-    padding: 0.6rem 0.3rem 0.6rem 0.7rem;
-}
-
-.players-table td:nth-child(2),
-.players-table th:nth-child(2),
-.players-table td:nth-child(3),
-.players-table th:nth-child(3) {
-    padding: 0.6rem 0.3rem 0.6rem 0.4rem;
-}
-
-.players-table td:nth-child(-n + 4) {
+    min-width: 2.85em;
+    padding: 0.6em 0.25em 0.6em 0.25em;
     width: 0;
+}
+
+.players-table td:nth-child(4) {
+    padding-left: 0.5em;
+    width: 0;
+}
+
+.players-table td:nth-child(5) {
+    padding: 0.6em 0 0.6em 0.5em;
+}
+
+.players-table td:nth-child(6) {
+    padding: 0.6em 0.5em;
 }
 
 .players-table tr:nth-child(odd) {
@@ -695,7 +693,6 @@ details {
 }
 
 .players-table tr:nth-child(even) {
-    background: var(--players-tbl-tr2-bg-color);
     background: var(--players-tbl-tr1-bg-color);
 }
 
@@ -707,20 +704,16 @@ details {
     content: "";
     position: absolute;
     bottom: 0;
-    left: 15px;
-    right: 15px;
+    left: 1em;
+    right: 1em;
     height: 2px;
     background-color: var(--players-tbl-delimiter);
 }
 
 .player-class img {
-    width: 1.75rem;
+    width: 1.75em;
     height: auto;
     margin: auto;
-}
-
-.player-name {
-    padding-left: 0.4em;
 }
 
 .players-table tr a {
@@ -742,9 +735,10 @@ details {
 .table-guild-text {
     background-color: var(--players-tbl-tr2-bg-color);
     opacity: 75%;
-    border-radius: 10px;
-    padding: 2px 10px;
+    border-radius: 0.625em;
+    padding: 0.125em 0.625em;
 }
+
 .player-lvl,
 .player-itemlvl {
     width: 100%;
@@ -775,7 +769,6 @@ details {
 }
 
 /* lfg */
-
 .lfg-details,
 .last-update {
     backdrop-filter: var(--bg-backdrop-filter);
