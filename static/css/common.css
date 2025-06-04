@@ -943,7 +943,7 @@ details {
     content: var(--close-button-content);
 }
 
-.modal-delimiter {
+.modal-delimiter:not(:last-child) {
     border-bottom: 2px solid var(--header-ul-border-color);
 }
 
