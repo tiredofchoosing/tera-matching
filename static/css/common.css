@@ -447,6 +447,10 @@ details {
     z-index: 1;
 }
 
+.dungeon-lvl[hidden]~.dungeon-ilvl[hidden]~.dungeon-name {
+    margin-left: 0;
+}
+
 .dungeon-players {
     padding: 0.175em 0.4em;
     border-radius: 6px;
