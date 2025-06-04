@@ -1,5 +1,6 @@
 (function() {
 
+    const cssVer = 'css?v=0.3';
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
     const navbarBgColors = {
@@ -56,7 +57,7 @@
         const theme = styleLink.dataset.value;
         save && saveData(styleLink, theme, false);
 
-        styleLink.href = `/static/css/${theme}.css`;
+        styleLink.href = `/static/css/${theme}.${cssVer}`;
         themeColor.content = navbarBgColors[theme];
         document.dispatchEvent(styleChangedEvent);
     }
