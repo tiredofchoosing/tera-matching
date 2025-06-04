@@ -60,11 +60,8 @@ async function fetchMany(res, pages) {
 }
 
 function render(res, viewData, page, partialContent) {
-    if (partialContent) {
-        res.render('partial_content', viewData);
-    } else {
-        res.render(page, viewData);
-    }
+    const template = partialContent ? 'common/partial_content' : 'layout';
+    res.render(template, viewData);
 }
 
 export async function dungeons(req, res, partialContent = false) {

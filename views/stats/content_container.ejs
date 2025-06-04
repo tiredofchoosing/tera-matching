@@ -1,0 +1,13 @@
+<div class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12 font-size-default">
+	<div id="content">
+		<%- include('./content') %>
+	</div>
+	<div id="contentList">
+		<div class="card chart-container">
+			<canvas id="classChart" data-title="<%= strings.classChartTitle %>" data-bar-label="<%= strings.playersLabelTitle %>"></canvas>
+		</div>
+		<div class="card chart-container">
+			<canvas id="guildChart" data-title="<%= strings.guildChartTitle %>" data-bar-label="<%= strings.playersLabelTitle %>"></canvas>
+		</div>
+	</div>
+</div>

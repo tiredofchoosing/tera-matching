@@ -17,7 +17,7 @@
 								<span class="lang-title"><%- strings.changeLanguageContent %></span>
 							</button>
 						</div>
-						<%- include('checkbox', { name: 'autoupdateCheck' }) %>
+						<%- include('./checkbox', { name: 'autoupdateCheck' }) %>
 					</div>
 				</div>
 				<div class="row modal-delimiter modal-sections">
@@ -28,23 +28,23 @@
 							<div>
 								<form id="themeSelect">
         							<div class="theme-radio-grid">
-										<%- include('theme_radio_option', { theme: 'dark-green', checked: true } ) %>
-										<%- include('theme_radio_option', { theme: 'violet' } ) %>
-										<%- include('theme_radio_option', { theme: 'dark' } ) %>
-										<%- include('theme_radio_option', { theme: 'light' } ) %>
-										<%- include('theme_radio_option', { theme: 'classic-light' } ) %>
+										<%- include('./theme_radio_option', { theme: 'dark-green', checked: true } ) %>
+										<%- include('./theme_radio_option', { theme: 'violet' } ) %>
+										<%- include('./theme_radio_option', { theme: 'dark' } ) %>
+										<%- include('./theme_radio_option', { theme: 'light' } ) %>
+										<%- include('./theme_radio_option', { theme: 'classic-light' } ) %>
 									</div>
 								</form>
 							</div>
 						</div>
-						<%- include('checkbox', { name: 'blurBackground' }) %>
+						<%- include('./checkbox', { name: 'blurBackground' }) %>
 					</div>
 				</div>
 				<% if (page === 'dungeons' || page === 'battlegrounds' || page === 'stats') { %>
 				<div class="row modal-sections">
 					<div class="col-4 modal-sections-title"><%= strings.settingsCurrentListTitle %></div>
 					<div class="col modal-sections-body">
-						<%- include(page + '_settings') %>
+						<%- include(`../${page}/settings`) %>
 					</div>
 				</div>
 				<% } %>

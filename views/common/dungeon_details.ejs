@@ -67,7 +67,7 @@
 			<table>
 				<tbody>
 					<% Object.keys(party.players).forEach(id => { %>
-					<%- include('party_player_detailed', { player: party.players[id] }) %>
+					<%- include('./party_player_detailed', { player: party.players[id] }) %>
 					<% }); %>
 				</tbody>
 			</table>

@@ -1,0 +1,35 @@
+
+<div class="navigation-search">
+	<input type="text" id="searchDungeonName" placeholder="<%= strings.searchDungeonNamePlaceholder %>">
+	<input type="text" id="searchDungeonLevel" placeholder="<%= strings.searchLevelPlaceholder %>" title="<%= strings.searchLevelTitle %>">
+	<input type="text" id="searchDungeonItemLevel" placeholder="<%= strings.searchDungeonItemLevelPlaceholder %>" title="<%= strings.searchDungeonItemLevelTitle %>">
+</div>
+<div class="navigation-select">
+	<select id="selectDungeonRank" title="<%= strings.selectDungeonRankTitle %>">
+		<option value="default" selected="selected"><%= strings.selectDungeonRankDefaultContent %></option>
+		<% const maxRank = Math.max(...(Object.values(instances_info).map(d => d.rank))) %>
+		<% for(let i = 1; i <= maxRank; i++) { %>
+		<option value="<%= i %>"><%= '★'.repeat(i) %></option>
+		<% } %>
+	</select>
+	<select id="selectDungeonSort" title="<%= strings.selectSort %>">
+		<option value="minLevelDesc"><%= strings.minLevelDescContent %></option>
+		<option value="minLevelAsc"><%= strings.minLevelAscContent %></option>
+		<option value="minItemLevelDesc" selected="selected"><%= strings.minItemLevelDescContent %></option>
+		<option value="minItemLevelAsc"><%= strings.minItemLevelAscContent %></option>
+		<option value="nameDesc"><%= strings.nameDescContent %></option>
+		<option value="nameAsc"><%= strings.nameAscContent %></option>
+		<option value="playersDesc"><%= strings.playersDescContent %></option>
+		<option value="playersAsc"><%= strings.playersAscContent %></option>
+		<option value="rankDesc"><%= strings.dungeonRankDescContent %></option>
+		<option value="rankAsc"><%= strings.dungeonRankAscContent %></option>
+	</select>
+</div>
+<div class="navigation-button d-flex flex-sm-row">
+	<button id="toggleDetails" class="flex-fill text-center mr-lg-2" data-value="true" title="<%= strings.toggleDetailsTitle %>">
+		<img width="20px" height="20px" draggable="false">
+	</button>
+	<button id="clearNavigation" class="flex-fill text-center ml-lg-2" title="<%= strings.clearNavigationTitle %>">
+		<img src="/static/img/icons/reset.svg" width="20px" height="20px" draggable="false">
+	</button>
+</div>

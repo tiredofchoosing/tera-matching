@@ -16,7 +16,7 @@
 		}
 	}
 %>
-<%- include('empty.ejs', { isEmpty: Object.values(data).length === 0 }) %>
+<%- include('../common/empty', { isEmpty: Object.values(data).length === 0 }) %>
 <div id="lfgList" class="lfg-list">
 	<%
 		for (let key in data) {
@@ -37,7 +37,7 @@
 		<div class="party-detailed-content overflow-auto">
 			<table>
 				<tbody>
-					<%- include('party_player_detailed', { player: msg.player }) %>
+					<%- include('../common/party_player_detailed', { player: msg.player }) %>
 				</tbody>
 			</table>
 		</div>

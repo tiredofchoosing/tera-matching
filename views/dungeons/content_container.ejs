@@ -1,0 +1,12 @@
+<div id="content" class="content col-xxl-6 col-lg-8 col-md-10 col-sm-12 font-size-default">
+	<%- include('./content') %>
+</div>
+<% if (page === 'dungeons') { %>
+<div id="supportDungeon" hidden
+	data-id="9999"
+	data-min-level="<%= instances_info['9999'].minLevel %>"
+	data-min-item-level="<%= instances_info['9999'].minItemLevel %>"
+	data-name="<%= instances_info['9999'].name %>"
+	data-lowest-dungeon-level="20">
+</div>
+<% } %>

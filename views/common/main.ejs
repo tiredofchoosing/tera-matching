@@ -1,0 +1,14 @@
+<div id="main">
+	<div class="container">
+		<div class="row justify-content-start">
+			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12" id="filterContainer">
+				<div class="d-lg-block" id="filterContent">
+					<div class="navigation-menu col-12">
+						<%- include(`../${page}/filters`) %>
+					</div>
+				</div>
+			</div>
+			<%- include(`../${page}/content_container`) %>
+		</div>
+	</div>
+</div>

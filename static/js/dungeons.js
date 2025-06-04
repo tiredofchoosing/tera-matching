@@ -14,6 +14,7 @@
     const hideItemLevelCheckbox = document.getElementById('hideItemLevel');
     const hideRankCheckbox = document.getElementById('hideRank');
     const content = document.getElementById('content');
+    const suppDungeon = document.getElementById('supportDungeon');
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
     const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox, hideRankCheckbox];
     const selects = [sortSelect, rankSelect];
@@ -21,7 +22,6 @@
     const defaultSelectIndex = 2;
     const defaultRankSelectIndex = 0;
     const saveCollapsedId = 'dungeonDetailsCollapsed';
-    const suppDungeon = supportDungeonProps; // From html body
 
     let dungeonList, emptyContainer, dungeons, dungeonsOld, parties;
     initVariables();
@@ -127,7 +127,7 @@
             dungeons.forEach(d => dungeonList.appendChild(d));
         }
         else if (mergeSupportCheckbox.checked) {
-            let lowDungeon = dungeons.find(d => d.querySelector('.dungeon-lvl').innerText == suppDungeon.lowestDungeonLevel);
+            let lowDungeon = dungeons.find(d => d.querySelector('.dungeon-lvl').innerText == suppDungeon.dataset.lowestDungeonLevel);
             if (lowDungeon == null)
                 return false;
 
@@ -145,7 +145,7 @@
                 }));
             });
 
-            let supportDungeons = dungeons.filter(d => d.querySelector('.dungeon-lvl').innerText < suppDungeon.minLevel &&
+            let supportDungeons = dungeons.filter(d => d.querySelector('.dungeon-lvl').innerText < parseInt(suppDungeon.dataset.minLevel) &&
                 d.querySelector('.party-player-detailed-content.level65') != null);
 
             supportDungeons.forEach(function(sup) {
@@ -171,10 +171,10 @@
             });
 
             let newElem = lowDungeon.cloneNode(true);
-            newElem.setAttribute('id', '9999');
-            newElem.querySelector('.dungeon-lvl').innerText = suppDungeon.minLevel;
-            newElem.querySelector('.dungeon-ilvl').innerText = suppDungeon.minItemLevel;
-            newElem.querySelector('.dungeon-name').innerText = suppDungeon.name;
+            newElem.setAttribute('id', suppDungeon.dataset.id);
+            newElem.querySelector('.dungeon-lvl').innerText = suppDungeon.dataset.minLevel;
+            newElem.querySelector('.dungeon-ilvl').innerText = suppDungeon.dataset.minItemLevel;
+            newElem.querySelector('.dungeon-name').innerText = suppDungeon.dataset.name;
 
             let parties = Array.from(newElem.getElementsByClassName('party-details'));
             if (supporters.length !== parties.length) {

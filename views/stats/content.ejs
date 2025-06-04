@@ -2,7 +2,7 @@
 	const isEmpty = data.length === 0;
 	if (isEmpty) {
 %>
-<%- include('empty', { isEmpty }) %>
+<%- include('../common/empty', { isEmpty }) %>
 <div id="classChartDataContainer" hidden></div>
 <div id="guildChartDataContainer" hidden></div>
 <%
