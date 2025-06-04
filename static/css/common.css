@@ -381,19 +381,24 @@ header {
 }
 
 .font-size-default,
-.font-size-16 {
-    font-size: 16px;
-}
-.font-size-14 {
-    font-size: 14px;
-}
+.font-size-16,
+.font-size-14,
 .font-size-13 {
-    font-size: 13px;
+    font-size: 16px;
 }
 
 @media (max-width: 550px) {
     .font-size-default {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 992px) {
+    .font-size-14 {
+        font-size: 14px;
+    }
+    .font-size-13 {
+        font-size: 13px;
     }
 }
 
