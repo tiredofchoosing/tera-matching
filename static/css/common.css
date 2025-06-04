@@ -175,7 +175,6 @@ header {
     }
 
     .navbar-nav {
-        border-top: 2px solid var(--header-ul-border-color);
         border-bottom: 2px solid var(--header-ul-border-color);
         padding: 0.5rem 0 1rem 0;
         margin-bottom: 1rem;
@@ -373,6 +372,7 @@ header {
     text-align: center;
     height: 3.5rem;
     max-height: 3.5rem;
+    border-bottom: 2px solid var(--header-ul-border-color);
 }
 
 /* matching main content */
