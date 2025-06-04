@@ -37,7 +37,6 @@
     --check-focus-color: rgba(136, 111, 165, 0.4);
 
     --dungeon-lvl-bg-color: rgba(255, 255, 255, 0.05);
-    /* --dungeon-rank-img-filter: invert(1); */
     --dungeon-rank-img-filter: 0;
     --dungeon-rank-1-content: url(/static/img/icons/rank-icons/rank1-v.svg);
     --dungeon-rank-2-content: url(/static/img/icons/rank-icons/rank2-v.svg);
