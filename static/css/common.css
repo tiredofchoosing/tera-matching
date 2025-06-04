@@ -1,8 +1,7 @@
 /* base */
 html {
+    font-size: 16px;
     scrollbar-color: var(--scrollbar-color);
-    overflow-y: scroll;
-    font-size: medium;
 }
 
 body {
@@ -10,9 +9,7 @@ body {
     font-size: inherit;
     line-height: normal;
     font-weight: 500;
-    padding-right: 0 !important; /* fix bootstrap modal shit */
-    padding-right: 0 !important;
-    overflow: unset !important;
+    overflow-y: scroll;
 }
 
 #background {
@@ -39,8 +36,6 @@ select,
 header {
     background-color: var(--navbar-bg-color);
     box-shadow: 0 0.125rem 0.25rem var(--header-shadow-color);
-    padding-right: 0 !important;  /* fix bootstrap modal shit */
-    margin-right: 0 !important;
 }
 
 .header {
@@ -919,10 +914,6 @@ details {
 }
 
 /* modal */
-.modal {
-    padding-right: 0 !important; /* fix bootstrap modal shit */
-}
-
 .modal-dialog {
     margin-top: 4rem;
     border-radius: 6px;
@@ -1051,8 +1042,7 @@ details {
         height: 100%;
     }
 
-    .modal-content
-    {
+    .modal-content {
         border-radius: 0 !important;
     }
 }
