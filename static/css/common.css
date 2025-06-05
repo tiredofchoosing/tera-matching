@@ -378,6 +378,7 @@ header {
 /* matching main content */
 .content {
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .font-size-default,
@@ -645,7 +646,6 @@ details {
     border: 1px solid var(--border);
     border-collapse: collapse;
     border-radius: 6px;
-    margin-bottom: 1rem;
 }
 
 .players-table {
@@ -725,6 +725,10 @@ details {
     right: 1em;
     height: 2px;
     background-color: var(--players-tbl-delimiter);
+}
+
+.players-table tbody tr:last-child::after {
+    height: 0;
 }
 
 .player-class img {

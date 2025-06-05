@@ -1,7 +1,7 @@
 <div>
 	<% const isEmpty = data.length === 0; %>
 	<%- include('../common/empty', { isEmpty }) %>
-	<div id="playersTableRoot">
+	<div id="playersTableRoot" class="overflow-auto">
 		<% if (!isEmpty) { %>
 		<table class="players-table">
 			<thead>
