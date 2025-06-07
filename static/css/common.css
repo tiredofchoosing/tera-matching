@@ -413,7 +413,6 @@ details {
     min-width: 350px;
     margin-bottom: 0.35em;
     padding-bottom: 0;
-    border: none;
     background: var(--dungeon-dtl-bg);
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
@@ -705,11 +704,11 @@ details {
     padding: 0.6em 0.5em;
 }
 
-.players-table tr:nth-child(odd) {
+.players-table tbody tr:nth-child(odd) {
     background: var(--players-tbl-tr1-bg-color);
 }
 
-.players-table tr:nth-child(even) {
+.players-table tbody tr:nth-child(even) {
     background: var(--players-tbl-tr1-bg-color);
 }
 
@@ -740,6 +739,7 @@ details {
 .players-table tr a {
     color: var(--font-color-primary);
     text-decoration: none;
+    display: block;
     transition: 0.3s;
 }
 
@@ -807,7 +807,7 @@ details {
 
 .lfg-leader-name,
 .last-update {
-    font-size: 0.95em;
+    font-size: 14px;
 }
 
 .update-text,
@@ -882,7 +882,7 @@ details {
 .warning-update {
     padding-top: 0.5em;
     font-style: italic;
-    font-size: 0.8em;
+    font-size: 13px;
 }
 
 .detailed-player {
