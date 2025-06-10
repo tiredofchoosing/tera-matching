@@ -1,9 +1,4 @@
 ﻿{
-  "909": {
-    "minLevel": 25,
-    "maxLevel": 70,
-    "name": "Iron Battleground"
-  },
   "46": {
     "minLevel": 25,
     "maxLevel": 70,
@@ -20,12 +15,12 @@
     "name": "Kumasylum"
   },
   "10": {
-    "minLevel": 65,
+    "minLevel": 70,
     "maxLevel": 70,
     "name": "[Unified Gear] Corsairs\u0027 Stronghold"
   },
   "11": {
-    "minLevel": 65,
+    "minLevel": 70,
     "maxLevel": 70,
     "name": "Corsairs\u0027 Stronghold (20-player raid)"
   },
@@ -50,17 +45,17 @@
     "name": "Fraywind Canyon (15-player pre-made raid)"
   },
   "37": {
-    "minLevel": 65,
+    "minLevel": 70,
     "maxLevel": 70,
     "name": "[Personal Gear] Champions\u0027 Skyring"
   },
   "38": {
-    "minLevel": 65,
+    "minLevel": 70,
     "maxLevel": 70,
     "name": "[Unified Gear] Champions\u0027 Skyring (Solo)"
   },
   "39": {
-    "minLevel": 65,
+    "minLevel": 70,
     "maxLevel": 70,
     "name": "Champions\u0027 Skyring Mark V (Team)"
   },
@@ -70,7 +65,7 @@
     "name": "Champions\u0027 Skyring Mark V Equalized (Solo)"
   },
   "70": {
-    "minLevel": 65,
+    "minLevel": 70,
     "maxLevel": 70,
     "name": "[Unified Gear] Gridiron"
   },
@@ -84,11 +79,6 @@
     "maxLevel": 50,
     "name": "Monkeydrome"
   },
-  "111": {
-    "minLevel": 60,
-    "maxLevel": 70,
-    "name": "Monkeydrome (Lv. 60-65, Equalized)"
-  },
   "118": {
     "minLevel": 20,
     "maxLevel": 70,
@@ -100,8 +90,13 @@
     "name": "Kumas Royale"
   },
   "30": {
-    "minLevel": 65,
+    "minLevel": 70,
     "maxLevel": 70,
     "name": "[Personal Gear] Shore Hold"
+  },
+  "156": {
+    "minLevel": 1,
+    "maxLevel": 999,
+    "name": "Coin Scramble"
   }
 }

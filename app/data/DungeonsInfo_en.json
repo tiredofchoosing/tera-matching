@@ -97,10 +97,38 @@
     "rank": 1,
     "name": "Manaya\u0027s Core"
   },
+  "9126": {
+    "minLevel": 99,
+    "maxLevel": 99,
+    "minItemLevel": 999,
+    "rank": 0,
+    "name": "Pit of Petrax"
+  },
+  "9713": {
+    "minLevel": 99,
+    "maxLevel": 99,
+    "minItemLevel": 999,
+    "rank": 0,
+    "name": "Ghillieglade"
+  },
+  "9714": {
+    "minLevel": 99,
+    "maxLevel": 99,
+    "minItemLevel": 999,
+    "rank": 0,
+    "name": "Velik\u0027s Sanctuary"
+  },
+  "9053": {
+    "minLevel": 68,
+    "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 0,
+    "name": "Kezzel\u0027s Gorge (5-Person)"
+  },
   "9809": {
     "minLevel": 65,
     "maxLevel": 70,
-    "minItemLevel": 444,
+    "minItemLevel": 448,
     "rank": 1,
     "name": "Macellarius Catacombs"
   },
@@ -123,7 +151,7 @@
     "maxLevel": 70,
     "minItemLevel": 498,
     "rank": 2,
-    "name": "Velik\u0027s Hold (7-Person)"
+    "name": "Velik\u0027s Hold (5-Person)"
   },
   "9781": {
     "minLevel": 70,
@@ -145,13 +173,6 @@
     "minItemLevel": 460,
     "rank": 4,
     "name": "RK-9 Kennel (Hard)"
-  },
-  "9034": {
-    "minLevel": 70,
-    "maxLevel": 70,
-    "minItemLevel": 511,
-    "rank": 5,
-    "name": "Dreadspire"
   },
   "9739": {
     "minLevel": 68,
@@ -219,8 +240,8 @@
   "3102": {
     "minLevel": 70,
     "maxLevel": 70,
-    "minItemLevel": 503,
-    "rank": 3,
+    "minItemLevel": 507,
+    "rank": 4,
     "name": "Draakon Arena"
   },
   "3126": {
@@ -235,7 +256,7 @@
     "maxLevel": 70,
     "minItemLevel": 463,
     "rank": 4,
-    "name": "Forbidden Arena"
+    "name": "Forbidden Arena [Hagufna]"
   },
   "9754": {
     "minLevel": 70,
@@ -248,7 +269,7 @@
     "minLevel": 70,
     "maxLevel": 70,
     "minItemLevel": 456,
-    "rank": 2,
+    "rank": 3,
     "name": "Timescape"
   },
   "9056": {
@@ -269,14 +290,14 @@
     "minLevel": 65,
     "maxLevel": 70,
     "minItemLevel": 444,
-    "rank": 1,
+    "rank": 2,
     "name": "Kalivan\u0027s Dreadnaught"
   },
   "9029": {
     "minLevel": 65,
     "maxLevel": 70,
     "minItemLevel": 448,
-    "rank": 1,
+    "rank": 2,
     "name": "Vault of Kaprima"
   },
   "9794": {
@@ -328,12 +349,12 @@
     "rank": 4,
     "name": "Forsaken Island (Hard)"
   },
-  "9078": {
-    "minLevel": 58,
-    "maxLevel": 63,
-    "minItemLevel": 126,
-    "rank": 1,
-    "name": "Suryati\u0027s Peak"
+  "3030": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 450,
+    "rank": 3,
+    "name": "Commander’s Residence"
   },
   "9057": {
     "minLevel": 70,
@@ -424,6 +445,13 @@
     "maxLevel": 70,
     "minItemLevel": 511,
     "rank": 5,
-    "name": "Rampaging RK-9"
+    "name": "Rampaging RK-9 Kennel"
+  },
+  "3103": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
+    "name": "Forbidden Arena [Undying Warlord]"
   }
 }
