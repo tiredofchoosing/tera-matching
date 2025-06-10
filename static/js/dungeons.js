@@ -13,10 +13,11 @@
     const hideLevelCheckbox = document.getElementById('hideLevel');
     const hideItemLevelCheckbox = document.getElementById('hideItemLevel');
     const hideRankCheckbox = document.getElementById('hideRank');
+    const replaceRoleIconsCheckbox = document.getElementById('replaceRoleIcons');
     const content = document.getElementById('content');
     const suppDungeon = document.getElementById('supportDungeon');
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-    const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox, hideRankCheckbox];
+    const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox, hideRankCheckbox, replaceRoleIconsCheckbox];
     const selects = [sortSelect, rankSelect];
 
     const defaultSelectIndex = 2;
@@ -307,6 +308,25 @@
         }
     }
 
+    function replaceRoleIcons(_, save = true) {
+        save && saveData(replaceRoleIconsCheckbox, replaceRoleIconsCheckbox.checked, false);
+
+        const replace = replaceRoleIconsCheckbox.checked;
+        const roleIcons = dungeonList.getElementsByClassName('party-player-role-icon');
+        const classIcons = dungeonList.getElementsByClassName('party-player-class-icon');
+        const roleText = dungeonList.getElementsByClassName('party-player-role-text');
+
+        for (const e of roleIcons) {
+            e.hidden = replace;
+        }
+        for (const e of classIcons) {
+            e.hidden = !replace;
+        }
+        for (const e of roleText) {
+            e.hidden = !replace;
+        }
+    }
+
     function clearFilters() {
         searchInputs.forEach(e => e.value = '');
         sortDungeons(null, true);
@@ -339,6 +359,7 @@
         hideLevel(null, false);
         hideItemLevel(null, false);
         hideRank(null, false);
+        replaceRoleIcons(null, false);
         parties.forEach(p => p.open = openedParties.indexOf(p.dataset.partyId) !== -1);
         openedParties = openedParties.filter(e => parties.some(p => p.dataset.partyId === e));
     }
@@ -356,6 +377,7 @@
     hideLevelCheckbox.addEventListener('change', hideLevel);
     hideItemLevelCheckbox.addEventListener('change', hideItemLevel);
     hideRankCheckbox.addEventListener('change', hideRank);
+    replaceRoleIconsCheckbox.addEventListener('change', replaceRoleIcons);
     content.addEventListener('contentUpdated', refresh);
     toggleDetailsButton.addEventListener('click', toggleAllDungeons);
 

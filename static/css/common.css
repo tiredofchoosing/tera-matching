@@ -495,7 +495,7 @@ details {
     margin-bottom: 0.4em;
 }
 
-.party-summary span:not(:nth-last-child(1)) {
+.party-summary .party-player:not(:nth-last-child(1)) {
     border-right: solid 2px var(--party-sum-span-border-color);
 }
 
@@ -504,9 +504,32 @@ details {
     line-height: 1.7;
 }
 
-.party-player-icon {
+.party-player-role-icon {
     margin-left: 0.2em;
-    /* vertical-align: bottom; */
+    width: 1.25em;
+    height: 1.25em;
+    vertical-align: text-bottom;
+}
+
+.party-player-role-text {
+    opacity: 75%;
+    font-size: 0.75em;
+    border-radius: 0.25em;
+    padding: 0.125em 0.5em;
+    background-color: var(--players-tbl-tr2-bg-color);
+}
+
+.party-player-class-icon {
+    margin: -0.1875em 0 -0.1875em 0.2em;
+    width: 1.625em;
+    height: 1.625em;
+    vertical-align: text-bottom;
+}
+
+.party-player-leader-icon {
+    content: var(--party-leader-content);
+    margin: 0;
+    padding: 0 0.1em 0.2em 0.1em;
     width: 1.25em;
     height: 1.25em;
 }
@@ -522,24 +545,11 @@ details {
     -ms-overflow-style: none;
 }
 
-/* .party-player-detailed-content {
-    padding: 0.3em 0.5em;
-} */
-
 .party-player-detailed-content td {
     border-spacing: 15px;
 }
 
-/* .party-player-info {
-    margin-left: 0.5em;
-    transition: 0.3s;
-}
-
-.party-player-info:hover {
-    opacity: 50%;
-} */
-
-.party-player-class-icon {
+.party-player-dtl-class-icon {
     margin: 0 0.2em 0.2em 0.25em;
     vertical-align: bottom;
     width: 1.6em;
@@ -547,31 +557,8 @@ details {
     align-items: center;
 }
 
-.party-leader {
-    content: var(--party-leader-content);
-    margin: 0;
-    padding: 0 0.1em 0.2em 0.1em;
-}
-
-/* .span-content-player a {
-    color: var(--accent-text-color) !important;
-    color: var(--font-color-primary) !important;
-}
-
-.span-content-player {
-    transition: 0.3s;
-}
-
-.span-content-player:hover {
-    opacity: 50%;
-} */
-
-/* .itemLevel-icon {
-    content: var(--dungeon-role-itlvl-content);
-} */
-
-.party-player-item-level,
-.party-player-level {
+.party-player-dtl-ilvl,
+.party-player-dtl-lvl {
     padding: 0 0.375em;
     border-radius: 6px;
     background-color: var(--players-tbl-guild-background-color);
@@ -580,14 +567,12 @@ details {
     border: 1px solid var(--border);
 }
 
-/* .party-player-level {} */
-
-.party-player-item-level {
+.party-player-dtl-ilvl {
     text-align: center;
-    margin: 0;
+    margin: 0 0 0 0.1em;
 }
 
-.party-player-guild {
+.party-player-dtl-guild {
     margin-left: 0.375em;
     opacity: 70%;
     font-size: 0.85em;
@@ -595,33 +580,7 @@ details {
     /* color: var(--accent-text-color); */
 }
 
-/* .party-player-info {
-    padding: 0 0.5em;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    overflow: hidden;
-} */
-
-/* .party-content-scroll {
-    display: flex;
-    align-items: center;
-    gap: 0.3em;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    flex-shrink: 1;
-    flex-grow: 1;
-    min-width: 0;
-} */
-
-
-/* .party-content-scroll::-webkit-scrollbar {
-    display: none;
-} */
-
-.party-player-name {
+.party-player-dtl-name {
     color: var(--font-color-primary);
     text-decoration: none;
     padding: 0 0.1875em 0 0;
@@ -630,7 +589,7 @@ details {
     transition: 0.3s;
 }
 
-.party-player-name:hover {
+.party-player-dtl-name:hover {
     opacity: 70%;
     color: var(--font-color-primary);
 }

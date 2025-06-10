@@ -8,9 +8,10 @@
     const clearEmptyButton = document.getElementById('clearEmptyButton');
     const saveCollapsedCheckbox = document.getElementById('saveCollapsed');
     const hideLevelCheckbox = document.getElementById('hideLevel');
+    const replaceRoleIconsCheckbox = document.getElementById('replaceRoleIcons');
     const content = document.getElementById('content');
     const searchInputs = [searchNameInput, searchMinLevelInput];
-    const checkboxes = [saveCollapsedCheckbox, hideLevelCheckbox];
+    const checkboxes = [saveCollapsedCheckbox, hideLevelCheckbox, replaceRoleIconsCheckbox];
 
     const defaultSelectIndex = 4;
     const saveCollapsedId = 'battlegroundDetailsCollapsed';
@@ -161,6 +162,25 @@
         }
     }
 
+    function replaceRoleIcons(_, save = true) {
+        save && saveData(replaceRoleIconsCheckbox, replaceRoleIconsCheckbox.checked, false);
+
+        const replace = replaceRoleIconsCheckbox.checked;
+        const roleIcons = dungeonList.getElementsByClassName('party-player-role-icon');
+        const classIcons = dungeonList.getElementsByClassName('party-player-class-icon');
+        const roleText = dungeonList.getElementsByClassName('party-player-role-text');
+
+        for (const e of roleIcons) {
+            e.hidden = replace;
+        }
+        for (const e of classIcons) {
+            e.hidden = !replace;
+        }
+        for (const e of roleText) {
+            e.hidden = !replace;
+        }
+    }
+
     function clearFilters() {
         searchInputs.forEach(e => e.value = '');
         sortDungeons(null, true);
@@ -189,6 +209,7 @@
         saveDetailsCollapsed(null, false);
 
         hideLevel(null, false);
+        replaceRoleIcons(null, false);
         parties.forEach(p => p.open = openedParties.indexOf(p.dataset.partyId) !== -1);
         openedParties = openedParties.filter(o => parties.some(p => p.dataset.partyId === o));
     }
@@ -201,6 +222,7 @@
     parties.forEach(p => p.addEventListener('toggle', partyDetailsToggleHandler));
     saveCollapsedCheckbox.addEventListener('change', saveDetailsCollapsed);
     hideLevelCheckbox.addEventListener('change', hideLevel);
+    replaceRoleIconsCheckbox.addEventListener('change', replaceRoleIcons);
     content.addEventListener('contentUpdated', refresh);
     toggleDetailsButton.addEventListener('click', toggleAllDungeons);
 

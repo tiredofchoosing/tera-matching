@@ -83,6 +83,7 @@
   "hideLevelLabel": "Hide required level",
   "hideItemLevelLabel": "Hide required item level",
   "hideRankLabel": "Hide rank",
+  "replaceRoleIconsLabel": "Replace role icons with class icons",
   "hideNoGuildLabel": "Hide [No guild] line",
 
   "playersTableLevelContent": "Lvl",
