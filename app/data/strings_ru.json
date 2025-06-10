@@ -84,7 +84,7 @@
   "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
   "hideRankLabel": "Скрыть ранг",
   "replaceRoleIconsLabel": "Заменить иконки ролей на иконки классов",
-  "hideNoGuildLabel": "Скрыть строку [Без гильдии]",
+  "hideNoGuildLabel": "Скрыть строку <b>[Без гильдии]</b>",
 
   "playersTableLevelContent": "Ур.",
   "playersTableItemLevelContent": "Снар.",
