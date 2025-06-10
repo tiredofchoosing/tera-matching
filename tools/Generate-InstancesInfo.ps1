@@ -30,11 +30,11 @@ function Format-Json {
     return $result -join "`n"
 }
 
-$dungeonMatchingFile = "$DataCenterDir\DungeonMatching\DungeonMatching-00000.xml"
-$dungeonRecommendFile = "$DataCenterDir\DungeonRecommend\DungeonRecommend-00000.xml"
-$battlefieldDataFile = "$DataCenterDir\BattleFieldData\BattleFieldData-00000.xml"
-$dungeonStringFile = "$DataCenterDir\StrSheet_Dungeon\StrSheet_Dungeon-00000.xml"
-$battlefieldStringFile = "$DataCenterDir\StrSheet_BattleField\StrSheet_BattleField-00000.xml"
+$dungeonMatchingFile = Get-ChildItem -Path $DataCenterDir -Filter "DungeonMatching*.xml" -Recurse | select -ExpandProperty FullName -First 1
+$dungeonRecommendFile = Get-ChildItem -Path $DataCenterDir -Filter "DungeonRecommend*.xml" -Recurse | select -ExpandProperty FullName -First 1
+$battlefieldDataFile = Get-ChildItem -Path $DataCenterDir -Filter  "BattleFieldData*.xml" -Recurse | select -ExpandProperty FullName -First 1
+$dungeonStringFile = Get-ChildItem -Path $DataCenterDir -Filter "StrSheet_Dungeon-*.xml" -Recurse | select -ExpandProperty FullName -First 1
+$battlefieldStringFile = Get-ChildItem -Path $DataCenterDir -Filter "StrSheet_BattleField*.xml" -Recurse | select -ExpandProperty FullName -First 1
 
 $dungeonOutputFile = "$PSScriptRoot\DungeonsInfo.json"
 $battlefieldOutputFile = "$PSScriptRoot\BattlegroundsInfo.json"
