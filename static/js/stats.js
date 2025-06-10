@@ -1,7 +1,7 @@
 (function() {
 
     const hideNoGuildCheckbox = document.getElementById('hideNoGuild');
-    const sortSelect = document.getElementById('selectPlayerSort');
+    const sortSelect = document.getElementById('selectStatsSort');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const content = document.getElementById('content');
     const checkboxes = [hideNoGuildCheckbox];
