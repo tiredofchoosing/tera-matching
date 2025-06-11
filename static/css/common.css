@@ -499,12 +499,13 @@ details {
     border-right: solid 2px var(--party-sum-span-border-color);
 }
 
+.party-summary {
+    padding-left: 0.25em;
+}
+
 .party-player {
     white-space: nowrap;
     line-height: 1.7;
-}
-
-.party-player:not(:first-child) {
     padding-left: 0.5em;
 }
 
