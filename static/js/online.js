@@ -2,13 +2,14 @@
 
     const searchNameInput = document.getElementById('searchPlayerName');
     const searchLevelInput = document.getElementById('searchPlayerLevel');
+    const searchItemLevelInput = document.getElementById('searchPlayerItemLevel');
     const searchGuildInput = document.getElementById('searchPlayerGuild');
     const sortSelect = document.getElementById('selectPlayerSort');
     const classSelect = document.getElementById('selectPlayerClass');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const clearEmptyButton = document.getElementById('clearEmptyButton');
     const content = document.getElementById('content');
-    const searchInputs = [searchNameInput, searchLevelInput, searchGuildInput];
+    const searchInputs = [searchNameInput, searchLevelInput, searchItemLevelInput, searchGuildInput];
     const selects = [sortSelect, classSelect];
 
     const defaultSelectIndex = 1;
@@ -31,17 +32,20 @@
 
         const searchNameVal = searchNameInput.value.customSplitFilter(',');
         const searchLevelVal = searchLevelInput.value.customSplitFilter(',');
+        const searchItemLevelVal = searchItemLevelInput.value.customSplitFilter(',');
         const searchGuildVal = searchGuildInput.value.customSplitFilter(',');
         const classSelectVal = classSelect.value;
 
         players.forEach(p => {
             const name = p.getElementsByClassName('player-name')[0].textContent.toLowerCase();
             const level = parseInt(p.getElementsByClassName('player-lvl')[0].textContent);
+            const itemLevel = parseInt(p.getElementsByClassName('player-ilvl')[0].textContent);
             const guild = p.getElementsByClassName('player-guild')[0].textContent.trim().toLowerCase();
             const playerClass = p.getElementsByClassName('player-class')[0].dataset.playerClass;
 
             const show = searchNameVal.customSomeFilter(s => name.includes(s)) &&
                 searchLevelVal.customSomeFilter(s => checkLevel(level, s)) &&
+                searchItemLevelVal.customSomeFilter(s => checkLevel(itemLevel, s)) &&
                 searchGuildVal.customSomeFilter(s => guild.includes(s)) &&
                 (classSelectVal === 'default' || classSelectVal == playerClass);
 
@@ -58,8 +62,8 @@
         players.sort((a, b) => {
             const levelA = parseInt(a.getElementsByClassName('player-lvl')[0].textContent);
             const levelB = parseInt(b.getElementsByClassName('player-lvl')[0].textContent);
-            const itemLevelA = parseInt(a.getElementsByClassName('player-itemlvl')[0].textContent);
-            const itemLevelB = parseInt(b.getElementsByClassName('player-itemlvl')[0].textContent);
+            const itemLevelA = parseInt(a.getElementsByClassName('player-ilvl')[0].dataset.itemLevel);
+            const itemLevelB = parseInt(b.getElementsByClassName('player-ilvl')[0].dataset.itemLevel);
             const nameA = a.getElementsByClassName('player-name')[0].textContent;
             const nameB = b.getElementsByClassName('player-name')[0].textContent;
             const classA = parseInt(a.getElementsByClassName('player-class')[0].dataset.playerClass);
@@ -138,6 +142,7 @@
     classSelect.addEventListener('change', filterPlayers);
     searchNameInput.addEventListener('input', filterPlayers);
     searchLevelInput.addEventListener('input', filterPlayers);
+    searchItemLevelInput.addEventListener('input', filterPlayers);
     searchGuildInput.addEventListener('input', filterPlayers);
     content.addEventListener('contentUpdated', refresh);
 

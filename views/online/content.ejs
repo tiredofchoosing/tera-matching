@@ -19,7 +19,7 @@
 				<tr id="<%= id %>" class="player-details">
 					<td class="player-id"><%= id++ %></td>
 					<td><div class="player-lvl"><%= player.level %></div></td>
-					<td><div class="player-itemlvl"><%= Math.trunc(player.itemLevel) %></div></td>
+					<td><div class="player-ilvl"><%= Math.trunc(player.itemLevel) %></div></td>
 					<td class="player-class" title="<%= classes[player.class] %>" data-player-class="<%= player.class %>">
 						<img src="/static/img/icons/class/<%= player.class %>.png" width="24px" height="24px" draggable="false">
 					</td>

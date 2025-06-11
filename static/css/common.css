@@ -711,7 +711,7 @@ details {
 }
 
 .player-lvl,
-.player-itemlvl,
+.player-ilvl,
 .table-guild-text {
     background-color: var(--players-tbl-tr2-bg-color);
     opacity: 75%;
@@ -720,7 +720,7 @@ details {
 }
 
 .player-lvl,
-.player-itemlvl {
+.player-ilvl {
     width: 100%;
     text-align: center;
 }
