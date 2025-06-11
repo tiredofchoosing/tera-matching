@@ -83,6 +83,7 @@
   "hideLevelLabel": "Hide required level",
   "hideItemLevelLabel": "Hide required gear level",
   "hideRankLabel": "Hide rank",
+  "showShortNamesLabel": "Use short dungeon names",
   "replaceRoleIconsLabel": "Replace role icons with class icons",
   "hideNoGuildLabel": "Hide <b>[No guild]</b> line",
 

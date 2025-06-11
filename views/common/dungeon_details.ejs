@@ -20,8 +20,9 @@
 			dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length);
 			dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length);
 			dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length);
+			const shortName = dungeonProps.shortName != undefined ? dungeonProps.shortName : dungeonProps.name;
 		%>
-		<span class="dungeon-name"><%= dungeonProps.name %></span>
+		<span class="dungeon-name" title="<%= dungeonProps.name %>" data-dungeon-name="<%= dungeonProps.name %>" data-dungeon-short-name="<%= shortName %>"><%= dungeonProps.name %></span>
 		<% if (page === 'dungeons') { %>
 		<span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>">
 			<img class="dungeon-rank-<%= dungeonProps.rank %>" draggable="false">

@@ -14,10 +14,11 @@
     const hideItemLevelCheckbox = document.getElementById('hideItemLevel');
     const hideRankCheckbox = document.getElementById('hideRank');
     const replaceRoleIconsCheckbox = document.getElementById('replaceRoleIcons');
+    const showShortNamesCheckbox = document.getElementById('showShortNames');
     const content = document.getElementById('content');
     const suppDungeon = document.getElementById('supportDungeon');
     const searchInputs = [searchNameInput, searchMinLevelInput, searchMinItemLevelInput];
-    const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox, hideRankCheckbox, replaceRoleIconsCheckbox];
+    const checkboxes = [saveCollapsedCheckbox, mergeSupportCheckbox, hideLevelCheckbox, hideItemLevelCheckbox, hideRankCheckbox, replaceRoleIconsCheckbox, showShortNamesCheckbox];
     const selects = [sortSelect, rankSelect];
 
     const defaultSelectIndex = 2;
@@ -327,6 +328,15 @@
         }
     }
 
+    function toggleShortNames(_, save = true) {
+        save && saveData(showShortNamesCheckbox, showShortNamesCheckbox.checked);
+
+        const dungeonNames = dungeonList.getElementsByClassName('dungeon-name');
+        for (const name of dungeonNames) {
+            name.textContent = showShortNamesCheckbox.checked ? name.dataset.dungeonShortName : name.dataset.dungeonName;
+        }
+    }
+
     function clearFilters() {
         searchInputs.forEach(e => e.value = '');
         sortDungeons(null, true);
@@ -360,6 +370,7 @@
         hideItemLevel(null, false);
         hideRank(null, false);
         replaceRoleIcons(null, false);
+        toggleShortNames(null, false);
         parties.forEach(p => p.open = openedParties.indexOf(p.dataset.partyId) !== -1);
         openedParties = openedParties.filter(e => parties.some(p => p.dataset.partyId === e));
     }
@@ -378,6 +389,7 @@
     hideItemLevelCheckbox.addEventListener('change', hideItemLevel);
     hideRankCheckbox.addEventListener('change', hideRank);
     replaceRoleIconsCheckbox.addEventListener('change', replaceRoleIcons);
+    showShortNamesCheckbox.addEventListener('change', toggleShortNames);
     content.addEventListener('contentUpdated', refresh);
     toggleDetailsButton.addEventListener('click', toggleAllDungeons);
 
