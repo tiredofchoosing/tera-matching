@@ -329,7 +329,7 @@
     }
 
     function toggleShortNames(_, save = true) {
-        save && saveData(showShortNamesCheckbox, showShortNamesCheckbox.checked);
+        save && saveData(showShortNamesCheckbox, showShortNamesCheckbox.checked, false);
 
         const dungeonNames = dungeonList.getElementsByClassName('dungeon-name');
         for (const name of dungeonNames) {
