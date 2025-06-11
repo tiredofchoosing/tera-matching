@@ -46,7 +46,7 @@
             const show = searchNameVal.customSomeFilter(s => name.includes(s)) &&
                 searchLevelVal.customSomeFilter(s => checkLevel(level, s)) &&
                 searchItemLevelVal.customSomeFilter(s => checkLevel(itemLevel, s)) &&
-                searchGuildVal.customSomeFilter(s => guild.includes(s)) &&
+                searchGuildVal.customSomeFilter(s => (s === '-' && guild === '') || guild.includes(s)) &&
                 (classSelectVal === 'default' || classSelectVal == playerClass);
 
             p.style.display = show ? '' : 'none';
