@@ -495,7 +495,7 @@ details {
     margin-bottom: 0.4em;
 }
 
-.party-summary .party-player:not(:nth-last-child(1)) {
+.party-summary .party-player:not(:last-child) {
     border-right: solid 2px var(--party-sum-span-border-color);
 }
 
