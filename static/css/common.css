@@ -32,6 +32,15 @@ select,
     cursor: pointer;
 }
 
+details > summary {
+  list-style: none;
+}
+
+details > summary::marker, /* Chrome, Edge, Firefox */ 
+details > summary::-webkit-details-marker /* Safari */ {
+  display: none;
+}
+
 /* header */
 header {
     background-color: var(--navbar-bg-color);
@@ -495,10 +504,6 @@ details {
     margin-bottom: 0.4em;
 }
 
-.party-summary .party-player:not(:last-child) {
-    border-right: solid 2px var(--party-sum-span-border-color);
-}
-
 .party-summary {
     padding-left: 0.25em;
 }
@@ -507,6 +512,10 @@ details {
     white-space: nowrap;
     line-height: 1.7;
     padding-left: 0.5em;
+}
+
+.party-summary .party-player:not(:last-child) {
+    border-right: solid 2px var(--party-sum-span-border-color);
 }
 
 .party-player-role-icon {
