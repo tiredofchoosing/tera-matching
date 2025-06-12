@@ -974,6 +974,16 @@ details {
     margin: 1rem 0;
 }
 
+.filteredEmpty img
+{
+    max-width: 70%;
+}
+.filteredEmpty button
+{
+		top: 56%;
+        position: absolute;
+}
+
 .dungeon-rank {
     position: relative;
 }
