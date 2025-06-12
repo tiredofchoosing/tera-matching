@@ -58,7 +58,7 @@
     --party-del-color: rgb(255, 255, 255, 0.15);
     --party-leader-content: url(/static/img/icons/leader.svg);
 
-    --players-tbl-th-bg-color: rgba(21, 22, 30, 0.7);
+    --players-tbl-th-bg-color: linear-gradient(to right, rgb(38, 63, 32, 0.9), rgba(30, 43, 31, 0.9), rgb(30, 43, 31, 0.9), rgb(21, 22, 30, 0.9), rgb(21, 22, 30, 0.9), rgb(21, 22, 30, 0.9), rgb(21, 22, 30, 0.9), rgb(21, 22, 30, 0.9));
 
     /* --players-tbl-tr1-bg-color: rgba(21, 22, 30, 0.5); */
     --players-tbl-tr1-bg-color: linear-gradient(to right, rgb(38, 63, 32, 0.7), rgba(30, 43, 31, 0.7), rgb(30, 43, 31, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7));
