@@ -633,9 +633,12 @@ details {
     height: 2.5em;
 }
 
+.players-table thead {
+    background: var(--players-tbl-th-bg-color);
+}
+
 .players-table th {
     border: none;
-    background-color: var(--players-tbl-th-bg-color);
     font-weight: 600;
     padding: 0.6em 0.5em 0.6em 0.5em;
 }
@@ -689,17 +692,29 @@ details {
     position: relative;
 }
 
-.players-table tbody tr::after {
+.players-table tbody td {
+    position: relative;
+}
+
+.players-table tbody td::after {
     content: "";
     position: absolute;
     bottom: 0;
-    left: 1em;
-    right: 1em;
+    left: 0;
+    right: 0;
     height: 2px;
     background-color: var(--players-tbl-delimiter);
 }
 
-.players-table tbody tr:last-child::after {
+.players-table tbody td:first-child::after {
+    left: 1em;
+}
+
+.players-table tbody td:last-child::after {
+    right: 1em;
+}
+
+.players-table tbody tr:last-child td::after {
     height: 0;
 }
 
