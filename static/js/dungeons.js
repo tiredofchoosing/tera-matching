@@ -52,12 +52,13 @@
 
         let any = false;
         dungeons.forEach(d => {
-            const name = d.getElementsByClassName('dungeon-name')[0].textContent.toLowerCase();
+            const name = d.getElementsByClassName('dungeon-name')[0].dataset.name.toLowerCase();
+            const shortName = d.getElementsByClassName('dungeon-name')[0].dataset.shortName.toLowerCase();
             const minLevel = parseInt(d.getElementsByClassName('dungeon-lvl')[0].textContent);
             const minItemLevel = parseInt(d.getElementsByClassName('dungeon-ilvl')[0].textContent);
             const dungeonRank = d.getElementsByClassName('dungeon-rank')[0].dataset.dungeonRank;
 
-            const show = searchNameVal.customSomeFilter(s => name.includes(s)) &&
+            const show = searchNameVal.customSomeFilter(s => name.includes(s) || shortName.includes(s)) &&
                 searchMinLevelVal.customSomeFilter(s => checkLevel(minLevel, s)) &&
                 searchMinItemLevelVal.customSomeFilter(s => checkLevel(minItemLevel, s)) &&
                 (rankSelectVal === 'default' || rankSelectVal == dungeonRank);
@@ -333,7 +334,7 @@
 
         const dungeonNames = dungeonList.getElementsByClassName('dungeon-name');
         for (const name of dungeonNames) {
-            name.textContent = showShortNamesCheckbox.checked ? name.dataset.dungeonShortName : name.dataset.dungeonName;
+            name.textContent = showShortNamesCheckbox.checked ? name.dataset.shortName : name.dataset.name;
         }
     }
 

@@ -39,7 +39,7 @@
 
         let any = false;
         dungeons.forEach(d => {
-            const name = d.getElementsByClassName('dungeon-name')[0].textContent.toLowerCase();
+            const name = d.getElementsByClassName('dungeon-name')[0].dataset.name.toLowerCase();
             const minLevel = parseInt(d.getElementsByClassName('dungeon-lvl')[0].textContent);
 
             const show = searchNameVal.customSomeFilter(s => name.includes(s)) &&
