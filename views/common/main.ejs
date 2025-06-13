@@ -4,7 +4,9 @@
 			<div class="menu-content col-xxl-4 col-lg-4 col-md-10 col-sm-12" id="filterContainer">
 				<div class="d-lg-block" id="filterContent">
 					<div class="navigation-menu col-12">
-						<%- include(`../${page}/filters`) %>
+						<form name="filter-form">
+							<%- include(`../${page}/filters`) %>
+						</form>
 					</div>
 				</div>
 			</div>
