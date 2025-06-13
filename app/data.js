@@ -4,10 +4,15 @@ import bg_ru from './data/BattlegroundsInfo_ru.json' with { type: 'json' }
 import bg_en from './data/BattlegroundsInfo_en.json' with { type: 'json' }
 import str_ru from './data/strings_ru.json' with { type: 'json' }
 import str_en from './data/strings_en.json' with { type: 'json' }
+import dgShort_ru from './data/DungeonsInfoShort_ru.json' with { type: 'json' }
+import dgShort_en from './data/DungeonsInfoShort_en.json' with { type: 'json' }
 import onlineTestData from './data/test_data/online.json' with { type: 'json' }
 import dungeonsTestData from './data/test_data/dungeons.json' with { type: 'json' }
 import battlegroundsTestData from './data/test_data/battlegrounds.json' with { type: 'json' }
 import lfgTestData from './data/test_data/lfg.json' with { type: 'json' }
+
+for (var dg in dg_ru) { if (dgShort_ru.hasOwnProperty(dg)) { dg_ru[dg] = Object.assign(dg_ru[dg], dgShort_ru[dg]) } }
+for (var dg in dg_en) { if (dgShort_en.hasOwnProperty(dg)) { dg_en[dg] = Object.assign(dg_en[dg], dgShort_en[dg]) } }
 
 export const dungeons_info = { ru: dg_ru, en: dg_en }
 export const battlegrounds_info = { ru: bg_ru, en: bg_en }

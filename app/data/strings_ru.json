@@ -83,6 +83,7 @@
   "hideLevelLabel": "Скрыть требуемый уровень",
   "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
   "hideRankLabel": "Скрыть ранг",
+  "showShortNamesLabel": "Использовать сокращенные названия",
   "replaceRoleIconsLabel": "Заменить иконки ролей на иконки классов",
   "hideNoGuildLabel": "Скрыть строку <b>[Без гильдии]</b>",
 
