@@ -158,4 +158,23 @@
     window.String.prototype.customSplitFilter = customSplitFilter;
     window.Array.prototype.customSomeFilter = customSomeFilter;
 
+    // Google Analytics 4
+    const settingsKeys = {
+        theme: 'styleLink',
+        autoupdate: 'autoupdateCheck',
+        blurBackground: 'blurBackground',
+        hideLevel: 'hideLevel',
+        hideItemLevel: 'hideItemLevel',
+        hideRank: 'hideRank',
+        mergeSupportMatching: 'mergeSupportMatching',
+        saveCollapsed: 'saveCollapsed',
+        hideNoGuild: 'hideNoGuild',
+    };
+    const settingsValues = {};
+    Object.entries(settingsKeys).forEach(([k,v]) => settingsValues[k] = loadData(v, false) ?? 'not set');
+    gtag('event', 'settings_load', {
+        lang: document.documentElement.lang,
+        ...settingsValues
+    });
+
 })();

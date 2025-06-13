@@ -69,6 +69,7 @@
                 const updated = await updatePageContent();
                 if (updated && updated.length > 0) {
                     updated.forEach(e => e.dispatchEvent(updateEvent));
+                    gtag('event', 'content_refresh'); // Google Analytics 4
                 }
                 setAutoupdate(null, false);
             }, autoupdateTimer);
