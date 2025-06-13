@@ -970,14 +970,15 @@ details {
 .lang-title {
     color: var(--accent-text-color);
     background-color: var(--accent-background-color);
-    padding: 0.125rem 0.375rem;
-    border-radius: 6px;
+    padding: 0.125rem 0.375rem; 
+    border-radius: 6px; 
     line-height: 2rem;
-    transition: 0.3s;
+    transition: 0.3s; 
 }
 
-.lang-title:hover {
-    filter: brightness(1.1);
+.lang-title:hover,
+.filteredEmpty span:hover {
+  background-color:  var(--accent-background-color-hover);
 }
 
 .filteredEmpty .lang-title {
@@ -985,18 +986,18 @@ details {
     padding: 0.5rem 2rem;
 }
 
-.filteredEmpty .modal-button {
-    margin: 1rem 0;
+.filteredEmpty span {
+    color: var(--accent-text-color);
+    background-color: var(--accent-background-color);
+    padding: 0.125rem 0.375rem; 
+    border-radius: 6px;
+    transition: 0.3s; 
 }
 
 .filteredEmpty img
 {
+    max-width: 400px;
     max-width: 70%;
-}
-.filteredEmpty button
-{
-		top: 56%;
-        position: absolute;
 }
 
 .dungeon-rank {
