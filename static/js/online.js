@@ -124,6 +124,7 @@
     }
 
     function clearFilters() {
+        classSelect.selectedIndex = defaultClassSelectIndex;
         searchInputs.forEach(e => e.value = '');
         filterPlayers(null, true);
     }
@@ -149,7 +150,6 @@
     clearEmptyButton.addEventListener('click', clearFilters);
     clearNavigationButton.addEventListener('click', function() {
         sortSelect.selectedIndex = defaultSelectIndex;
-        classSelect.selectedIndex = defaultClassSelectIndex;
         clearFilters();
     });
 
