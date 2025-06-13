@@ -3,7 +3,7 @@
     --font-color-secondary: rgb(165, 165, 165);
 
     --scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
-    --background: center/cover no-repeat url('/static/img/bgs/background.jpg');
+    --background: center/cover no-repeat url('/static/img/bgs/background-dark-green.jpg');
     --background-blurred-filter: blur(20px);
     --background-blurred-transform: scale(1.08);
     --bg-backdrop-filter: blur(7px);
