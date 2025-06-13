@@ -13,7 +13,7 @@ const __dirname = path.resolve(),
 
 app.set('view engine', 'ejs');
 app.locals.rmWhitespace = true;
-app.use('/static', express.static(__dirname + '/static', { maxAge: 24*60*60*1000 }));
+app.use('/static', express.static(__dirname + '/static', { maxAge: 2*24*60*60*1000 }));
 app.use(cookieParser());
 app.use(cache('2 seconds'));
 app.use(router);
