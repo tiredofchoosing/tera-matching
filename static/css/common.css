@@ -269,7 +269,7 @@ header {
 .navigation-menu {
     margin-top: 1rem;
     padding: 1rem;
-    border-radius: 6px;
+    border-radius: 10px;
     background-color: var(--menu-bg-color);
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
@@ -414,7 +414,7 @@ header {
 
 details {
     padding: 0.5em;
-    border-radius: 6px;
+    border-radius: 10px;
     border: none;
 }
 
@@ -437,7 +437,7 @@ details {
     display: flex;
     margin: -0.5em -0.5em 0;
     padding: 0.5em 1em;
-    border-radius: 6px;
+    border-radius: 10px;
     font-weight: 600;
     color: var(--font-color-primary);
     background: var(--dungeon-sum-bg);
@@ -551,7 +551,7 @@ details {
 .party-detailed-content {
     background-color: var(--party-dtl-content-bg-color);
     padding: 0.6em;
-    border-radius: 6px;
+    border-radius: 8px;
     line-height: 2;
     border: 1px solid var(--border);
     white-space: nowrap;
@@ -617,12 +617,12 @@ details {
 #playersTableRoot {
     border: 1px solid var(--border);
     border-collapse: collapse;
-    border-radius: 6px;
+    border-radius: 10px;
 }
 
 .players-table {
     width: 100%;
-    border-radius: 6px;
+    border-radius: 10px;
     overflow: hidden;
     color: var(--font-color-primary);
     backdrop-filter: var(--bg-backdrop-filter);
@@ -757,7 +757,7 @@ details {
 /* empty list */
 .empty {
     padding: 2rem 2rem 3rem 2rem;
-    border-radius: 6px;
+    border-radius: 10px;
     text-align: center;
     color: var(--font-color-primary);
     background-color: var(--empty-bg-color);
@@ -783,7 +783,7 @@ details {
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
     color: var(--font-color-primary);
-    border-radius: 6px;
+    border-radius: 10px;
     border: 1px solid var(--border);
 }
 
@@ -856,7 +856,7 @@ details {
     inset: 0;
     opacity: 0.7;
     z-index: -1;
-    border-radius: 6px;
+    border-radius: 10px;
 }
 
 .out-update-time {
@@ -885,6 +885,7 @@ details {
     backdrop-filter: var(--bg-backdrop-filter);
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
     padding: 1.5rem 1rem;
+    border-radius: 10px;
 }
 
 @media (min-width: 992px) {
@@ -917,7 +918,7 @@ details {
 /* modal */
 .modal-dialog {
     margin-top: 4rem;
-    border-radius: 6px;
+    border-radius: 10px;
 }
 
 .modal-header {
