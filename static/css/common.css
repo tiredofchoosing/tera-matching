@@ -822,6 +822,7 @@ details {
     -webkit-backdrop-filter: var(--bg-backdrop-filter);
     margin-bottom: 0.5rem;
     border: 1px solid var(--border);
+    font-size: 16px;
 }
 
 .empty img {
@@ -837,9 +838,9 @@ details {
 .filteredEmpty span {
     color: var(--accent-text-color);
     background-color: var(--accent-background-color);
-    padding: 0.125rem 0.375rem; 
+    padding: 0.125rem 0.375rem;
     border-radius: 6px;
-    transition: 0.3s; 
+    transition: 0.3s;
 }
 
 .filteredEmpty span:hover {
@@ -848,7 +849,7 @@ details {
 
 .filteredEmpty img {
     max-width: 400px;
-    max-width: 70%;
+    width: 100%;
 }
 
 /* lfg */
