@@ -339,6 +339,7 @@
     }
 
     function clearFilters() {
+        rankSelect.selectedIndex = defaultRankSelectIndex;
         searchInputs.forEach(e => e.value = '');
         sortDungeons(null, true);
         filterDungeons(null, true);
@@ -397,7 +398,6 @@
     clearEmptyButton.addEventListener('click', clearFilters);
     clearNavigationButton.addEventListener('click', function() {
         sortSelect.selectedIndex = defaultSelectIndex;
-        rankSelect.selectedIndex = defaultRankSelectIndex;
         clearFilters();
     });
 
