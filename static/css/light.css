@@ -65,6 +65,7 @@
 
     --accent-text-color: rgb(0, 0, 0);
     --accent-background-color: rgb(216, 216, 216);
+    --accent-background-color-hover: rgba(0, 0, 0, 0.25);
 
     --players-tbl-delimiter: rgba(0, 0, 0, 0.03);
     --empty-bg-color: #ffffff;

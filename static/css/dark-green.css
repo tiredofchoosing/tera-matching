@@ -25,8 +25,8 @@
     --menu-child-bg-color: rgba(0, 0, 0, 0.15);
     --menu-child-bg-color-offcanvas: rgba(255, 255, 255, 0.05);
     --menu-input-plh-color: rgb(255, 255, 255, 0.3);
-    --menu-btn-hov-bg-color: rgba(0, 0, 0, 0.1);
-    --menu-btn-act-bg-color: rgba(0, 0, 0, 0.2);
+    --menu-btn-hov-bg-color: rgba(255, 255, 255, 0.1);
+    --menu-btn-act-bg-color: rgba(255, 255, 255, 0.2);
     --menu-btn-img-filter: none;
     --menu-chk-bg-color: rgb(255, 255, 255);
     --menu-search-bg-img: url(/static/img/icons/search-l.svg);
@@ -68,6 +68,7 @@
 
     --accent-text-color: rgb(105, 150, 93);
     --accent-background-color: rgba(63, 88, 56, 0.445);
+    --accent-background-color-hover: rgba(63, 88, 56, 0.7);
 
     --players-tbl-delimiter: rgba(255, 255, 255, 0.05);
     --empty-bg-color: rgba(21, 22, 30, 0.7);

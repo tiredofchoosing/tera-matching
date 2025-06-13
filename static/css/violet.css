@@ -25,7 +25,7 @@
     --menu-child-bg-color: rgba(255, 255, 255, 0.05);
     --menu-child-bg-color-offcanvas: rgba(255, 255, 255, 0.05);
     --menu-input-plh-color: rgb(255, 255, 255, 0.3);
-    --menu-btn-hov-bg-color: rgba(255, 255, 255, 0.2);
+    --menu-btn-hov-bg-color: rgba(255, 255, 255, 0.1);
     --menu-btn-act-bg-color: rgba(255, 255, 255, 0.2);
     --menu-btn-img-filter: none;
     --menu-chk-bg-color: rgb(255, 255, 255);
@@ -65,6 +65,7 @@
 
     --accent-text-color: rgba(136, 111, 165);
     --accent-background-color: rgb(59, 47, 71);
+    --accent-background-color-hover: rgb(69, 56, 85);
 
     --players-tbl-delimiter: rgba(255, 255, 255, 0.05);
     --players-tbl-guild-color: rgba(255, 255, 255, 0.6);
