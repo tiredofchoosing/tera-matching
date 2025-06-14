@@ -1,6 +1,6 @@
 (function() {
 
-    const cssVer = 'css?v=0.3.1';
+    const cssVer = 'min.css?v=0.3.1';
     const styleLink = document.getElementById('styleLink');
     const themeColor = document.getElementById('themeColor');
     const navbarBgColors = {
