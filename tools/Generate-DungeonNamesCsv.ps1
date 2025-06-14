@@ -1,19 +1,17 @@
 Set-Location $PSScriptRoot
 
-$ruData = Get-Content -Path "..\app\data\DungeonsInfo_ru.json" -Raw -Encoding UTF8 | ConvertFrom-Json
-$enData = Get-Content -Path "..\app\data\DungeonsInfo_en.json" -Raw -Encoding UTF8 | ConvertFrom-Json
-$ruShortData = Get-Content -Path "..\app\data\DungeonsInfoShort_ru.json" -Raw -Encoding UTF8 | ConvertFrom-Json
-$enShortData = Get-Content -Path "..\app\data\DungeonsInfoShort_en.json" -Raw -Encoding UTF8 | ConvertFrom-Json
+$infoData = Get-Content -Path "..\app\data\DungeonsInfo.json" -Raw -Encoding UTF8 | ConvertFrom-Json
+$shortData = Get-Content -Path "..\app\data\DungeonsInfoShort.json" -Raw -Encoding UTF8 | ConvertFrom-Json
 
 $results = @()
-$ruData.PSObject.Properties | foreach {
+$infoData.PSObject.Properties | foreach {
     $id = $_.Name
     $result = [PSCustomObject]@{
         id = $id
-        name_ru = $_.Value.name
-        name_en = $enData.$id.name
-        short_ru = $ruShortData.$id.shortName
-        short_en = $enShortData.$id.shortName
+        name_ru = $_.Value.name.ru
+        name_en = $_.Value.name.en
+        short_ru = $shortData.$id.shortName.ru
+        short_en = $shortData.$id.shortName.en
     }
     $results += $result
 }

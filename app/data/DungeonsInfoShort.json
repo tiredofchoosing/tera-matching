@@ -1,0 +1,278 @@
+﻿{
+  "9053": {
+    "shortName": {
+      "ru": "УК",
+      "en": "KG"
+    }
+  },
+  "9710": {
+    "shortName": {
+      "ru": "РАЛ",
+      "en": "BP"
+    }
+  },
+  "9981": {
+    "shortName": {
+      "ru": "СВХ",
+      "en": "VSH"
+    }
+  },
+  "9780": {
+    "shortName": {
+      "ru": "КВН",
+      "en": "VH"
+    }
+  },
+  "9781": {
+    "shortName": {
+      "ru": "СВН",
+      "en": "VS"
+    }
+  },
+  "9735": {
+    "shortName": {
+      "ru": "РКН",
+      "en": "RK9"
+    }
+  },
+  "9935": {
+    "shortName": {
+      "ru": "РКХ",
+      "en": "RKH"
+    }
+  },
+  "9739": {
+    "shortName": {
+      "ru": "ЛПН",
+      "en": "RR"
+    }
+  },
+  "9939": {
+    "shortName": {
+      "ru": "ЛПХ",
+      "en": "RRH"
+    }
+  },
+  "9920": {
+    "shortName": {
+      "ru": "ОАХ",
+      "en": "AAH"
+    }
+  },
+  "9982": {
+    "shortName": {
+      "ru": "МЛХ",
+      "en": "GLSH"
+    }
+  },
+  "9044": {
+    "shortName": {
+      "ru": "СБ",
+      "en": "Baha"
+    }
+  },
+  "3201": {
+    "shortName": {
+      "ru": "ГПХ",
+      "en": "GVH"
+    }
+  },
+  "3023": {
+    "shortName": {
+      "ru": "КБ",
+      "en": "AQ"
+    }
+  },
+  "3026": {
+    "shortName": {
+      "ru": "ЛКН",
+      "en": "CS"
+    }
+  },
+  "3202": {
+    "shortName": {
+      "ru": "КЦХ",
+      "en": "DAH"
+    }
+  },
+  "3102": {
+    "shortName": {
+      "ru": "КЦН",
+      "en": "DA"
+    }
+  },
+  "3126": {
+    "shortName": {
+      "ru": "ЛКХ",
+      "en": "CSH"
+    }
+  },
+  "3027": {
+    "shortName": {
+      "ru": "АБ",
+      "en": "FA"
+    }
+  },
+  "9754": {
+    "shortName": {
+      "ru": "ГХН",
+      "en": "BR"
+    }
+  },
+  "9756": {
+    "shortName": {
+      "ru": "ХПН",
+      "en": "TS"
+    }
+  },
+  "9056": {
+    "shortName": {
+      "ru": "ХПХ",
+      "en": "TSH"
+    }
+  },
+  "9916": {
+    "shortName": {
+      "ru": "КСХ",
+      "en": "SCH"
+    }
+  },
+  "9760": {
+    "shortName": {
+      "ru": "ККН",
+      "en": "KD"
+    }
+  },
+  "9029": {
+    "shortName": {
+      "ru": "СК",
+      "en": "VK"
+    }
+  },
+  "9794": {
+    "shortName": {
+      "ru": "ЛСН",
+      "en": "TR"
+    }
+  },
+  "9770": {
+    "shortName": {
+      "ru": "РАН",
+      "en": "RM"
+    }
+  },
+  "9769": {
+    "shortName": {
+      "ru": "ЗЛН",
+      "en": "LK"
+    }
+  },
+  "9777": {
+    "shortName": {
+      "ru": "Каналы",
+      "en": "CW"
+    }
+  },
+  "9055": {
+    "shortName": {
+      "ru": "АУ",
+      "en": "RG"
+    }
+  },
+  "9994": {
+    "shortName": {
+      "ru": "ЛАС",
+      "en": "TRH"
+    }
+  },
+  "9759": {
+    "shortName": {
+      "ru": "ОМХ",
+      "en": "FIH"
+    }
+  },
+  "3030": {
+    "shortName": {
+      "ru": "СР",
+      "en": "CR"
+    }
+  },
+  "9057": {
+    "shortName": {
+      "ru": "АПХ",
+      "en": "AIH"
+    }
+  },
+  "9067": {
+    "shortName": {
+      "ru": "ЛБХ",
+      "en": "DFH"
+    }
+  },
+  "9969": {
+    "shortName": {
+      "ru": "ЗКЛ",
+      "en": "LKH"
+    }
+  },
+  "9970": {
+    "shortName": {
+      "ru": "РАХ",
+      "en": "RMH"
+    }
+  },
+  "9066": {
+    "shortName": {
+      "ru": "РД",
+      "en": "DW"
+    }
+  },
+  "9070": {
+    "shortName": {
+      "ru": "ЗП",
+      "en": "MM"
+    }
+  },
+  "9983": {
+    "shortName": {
+      "ru": "КТТ",
+      "en": "DRCH"
+    }
+  },
+  "9782": {
+    "shortName": {
+      "ru": "МЛН",
+      "en": "GLS"
+    }
+  },
+  "3101": {
+    "shortName": {
+      "ru": "ГПН",
+      "en": "GV"
+    }
+  },
+  "9027": {
+    "shortName": {
+      "ru": "Манайа",
+      "en": "MCH"
+    }
+  },
+  "9766": {
+    "shortName": {
+      "ru": "ПФ",
+      "en": "SF"
+    }
+  },
+  "3034": {
+    "shortName": {
+      "ru": "РКО",
+      "en": "RRK"
+    }
+  },
+  "3103": {
+    "shortName": {
+      "ru": "Этерния",
+      "en": "FAUW"
+    }
+  }
+}
