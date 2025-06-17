@@ -99,6 +99,16 @@
       "en": "Ebon Tower"
     }
   },
+  "9773": {
+    "minLevel": 58,
+    "maxLevel": 64,
+    "minItemLevel": 200,
+    "rank": 2,
+    "name": {
+      "ru": "Эбеновая Башня (сложно)",
+      "en": "Ebon Tower (Hard)"
+    }
+  },
   "9075": {
     "minLevel": 58,
     "maxLevel": 64,

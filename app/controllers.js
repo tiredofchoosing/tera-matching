@@ -1,7 +1,8 @@
 import fetch from 'node-fetch';
 import config from 'config';
 import crypto from 'crypto';
-import {classes, roles, dungeons_info, battlegrounds_info, globalization, teralogs_provider} from './data.js';
+import {getDungeonsInfo, getBattlegroundsInfo} from './dynamicData.js';
+import {classes, roles, globalization, teralogs_provider} from './data.js';
 import {testData} from './data.js';
 
 const useTestData = false;
@@ -73,7 +74,7 @@ export async function dungeons(req, res, partialContent = false) {
 
     const viewData = {
         data: data[page],
-        instances_info: dungeons_info[lang],
+        instances_info: getDungeonsInfo()[lang],
         strings: globalization[lang],
         classes: classes[lang],
         roles,
@@ -97,7 +98,7 @@ export async function battlegrounds(req, res, partialContent = false) {
 
     const viewData = {
         data: data[page],
-        instances_info: battlegrounds_info[lang],
+        instances_info: getBattlegroundsInfo()[lang],
         strings: globalization[lang],
         classes: classes[lang],
         roles,
