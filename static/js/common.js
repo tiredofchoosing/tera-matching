@@ -169,6 +169,8 @@
         mergeSupportMatching: 'mergeSupportMatching',
         saveCollapsed: 'saveCollapsed',
         hideNoGuild: 'hideNoGuild',
+        replaceRoleIcons: 'replaceRoleIcons',
+        showShortNames: 'showShortNames',
     };
     const settingsValues = {};
     Object.entries(settingsKeys).forEach(([k,v]) => settingsValues[k] = loadData(v, false) ?? 'not set');
