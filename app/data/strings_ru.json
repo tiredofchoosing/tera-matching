@@ -21,10 +21,10 @@
   "searchBattlegroundNamePlaceholder": "Название арены",
   "searchPlayerNamePlaceholder": "Имя персонажа",
   "searchLevelPlaceholder": "Уровень",
+  "searchItemLevelPlaceholder": "Уровень снаряжения",
+  "searchItemLevelTitle": "Уровень снаряжения [ 510 / 490+ / 460- / 500-515 ]",
   "searchPlayerGuildPlaceholder": "Гильдия",
   "searchLevelTitle": "Уровень [ 70 / 65+ / 69- / 20-40 ]",
-  "searchDungeonItemLevelPlaceholder": "Уровень снаряжения",
-  "searchDungeonItemLevelTitle": "Уровень снаряжения [ 463 / 453+ / 460- / 444-450 ]",
   "searchLfgMessagePlaceholder": "Сообщение группы",
 
   "selectSort": "Сортировка",
@@ -75,6 +75,7 @@
   "violetThemeLabel": "Фиолетовая",
   "darkThemeLabel": "Темная",
   "lightThemeLabel": "Светлая",
+  "burgundyThemeLabel": "Бордовый",
 
   "autoupdateCheckLabel": "Автоматически обновлять список",
   "blurBackgroundLabel": "Размыть фон",
@@ -83,7 +84,9 @@
   "hideLevelLabel": "Скрыть требуемый уровень",
   "hideItemLevelLabel": "Скрыть требуемый уровень снаряжения",
   "hideRankLabel": "Скрыть ранг",
-  "hideNoGuildLabel": "Скрыть строку [Без гильдии]",
+  "showShortNamesLabel": "Использовать сокращенные названия",
+  "replaceRoleIconsLabel": "Заменить иконки ролей на иконки классов",
+  "hideNoGuildLabel": "Скрыть строку <b>[Без гильдии]</b>",
 
   "playersTableLevelContent": "Ур.",
   "playersTableItemLevelContent": "Снар.",

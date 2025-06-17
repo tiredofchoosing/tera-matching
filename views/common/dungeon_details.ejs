@@ -20,8 +20,9 @@
 			dungeon.parties.forEach(p => countTank += p.players.filter(p1 => p1.role === 0).length);
 			dungeon.parties.forEach(p => countDmg += p.players.filter(p1 => p1.role === 1).length);
 			dungeon.parties.forEach(p => countHeal += p.players.filter(p1 => p1.role === 2).length);
+			const shortName = dungeonProps.shortName != undefined ? dungeonProps.shortName : dungeonProps.name;
 		%>
-		<span class="dungeon-name"><%= dungeonProps.name %></span>
+		<span class="dungeon-name" title="<%= dungeonProps.name %>" data-name="<%= dungeonProps.name %>" data-short-name="<%= shortName %>"><%= dungeonProps.name %></span>
 		<% if (page === 'dungeons') { %>
 		<span class="dungeon-rank" data-dungeon-rank="<%= dungeonProps.rank %>">
 			<img class="dungeon-rank-<%= dungeonProps.rank %>" draggable="false">
@@ -55,10 +56,14 @@
 					const player = party.players[id];
 			%>
 			<span class="party-player col" title="<%= classes[player.class] %> - <%= player.level %>">
-				<img class="party-player-icon dungeon-role-<%= roles[player.role] %>" width="20px" height="20px">
+				<img class="party-player-role-icon dungeon-role-<%= roles[player.role] %>" width="20px" height="20px">
+				<img class="party-player-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="26px" height="26px" hidden>
 				<%= player.name %>
+				<% if (player.role === 0) { %>
+				<span class="party-player-role-text" hidden><%= roles[player.role].toUpperCase() %></span>
+				<% } %>
 				<% if (player.isLeaderRequired) { %>
-				<img class="party-player-icon party-leader" width="20px" height="20px">
+				<img class="party-player-leader-icon" width="20px" height="20px">
 				<% } %>
 			</span>
 			<% }); %>

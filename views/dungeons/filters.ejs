@@ -2,7 +2,7 @@
 <div class="navigation-search">
 	<input type="text" id="searchDungeonName" placeholder="<%= strings.searchDungeonNamePlaceholder %>">
 	<input type="text" id="searchDungeonLevel" placeholder="<%= strings.searchLevelPlaceholder %>" title="<%= strings.searchLevelTitle %>">
-	<input type="text" id="searchDungeonItemLevel" placeholder="<%= strings.searchDungeonItemLevelPlaceholder %>" title="<%= strings.searchDungeonItemLevelTitle %>">
+	<input type="text" id="searchDungeonItemLevel" placeholder="<%= strings.searchItemLevelPlaceholder %>" title="<%= strings.searchItemLevelTitle %>">
 </div>
 <div class="navigation-select">
 	<select id="selectDungeonRank" title="<%= strings.selectDungeonRankTitle %>">
@@ -26,10 +26,10 @@
 	</select>
 </div>
 <div class="navigation-button d-flex flex-sm-row">
-	<button id="toggleDetails" class="flex-fill text-center mr-lg-2" data-value="true" title="<%= strings.toggleDetailsTitle %>">
+	<button type="button" id="toggleDetails" class="flex-fill text-center mr-lg-2" data-value="true" title="<%= strings.toggleDetailsTitle %>">
 		<img width="20px" height="20px" draggable="false">
 	</button>
-	<button id="clearNavigation" class="flex-fill text-center ml-lg-2" title="<%= strings.clearNavigationTitle %>">
+	<button type="button" id="clearNavigation" class="flex-fill text-center ml-lg-2" title="<%= strings.clearNavigationTitle %>">
 		<img src="/static/img/icons/reset.svg" width="20px" height="20px" draggable="false">
 	</button>
 </div>

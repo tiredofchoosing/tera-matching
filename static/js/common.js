@@ -6,6 +6,7 @@
     const navbarBgColors = {
         'dark-green': 'rgb(21, 22, 30)',
         'violet': 'rgb(38, 33, 48)',
+        'burgundy': 'rgb(54, 26, 32)',
         'dark': '#1A1A1A',
         'light': '#ffffff',
         'classic-light': 'rgb(169, 180, 214)'

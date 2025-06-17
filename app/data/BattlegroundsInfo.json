@@ -1,0 +1,162 @@
+﻿{
+  "46": {
+    "minLevel": 25,
+    "maxLevel": 70,
+    "name": {
+      "ru": "Заснеженная равнина",
+      "en": "Wintera Snowfield"
+    }
+  },
+  "47": {
+    "minLevel": 25,
+    "maxLevel": 70,
+    "name": {
+      "ru": "Заснеженная равнина",
+      "en": "Wintera Snowfield"
+    }
+  },
+  "5": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": {
+      "ru": "Кумасшествие",
+      "en": "Kumasylum"
+    }
+  },
+  "10": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": {
+      "ru": "[Общее] Твердыня корсаров",
+      "en": "[Unified Gear] Corsairs\u0027 Stronghold"
+    }
+  },
+  "11": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": {
+      "ru": "Твердыня корсаров (20 игроков)",
+      "en": "Corsairs\u0027 Stronghold (20-player raid)"
+    }
+  },
+  "26": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": {
+      "ru": "Каньон Фрейвинд",
+      "en": "Fraywind Canyon"
+    }
+  },
+  "27": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": {
+      "ru": "Каньон Фрейвинд (готовый рейд для 15 игроков)",
+      "en": "Fraywind Canyon (15-player pre-made raid)"
+    }
+  },
+  "29": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": {
+      "ru": "Каньон Фрейвинд [сбалансированный]",
+      "en": "Fraywind Canyon—Equalized"
+    }
+  },
+  "28": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": {
+      "ru": "Каньон Фрейвинд (готовый рейд для 15 игроков)",
+      "en": "Fraywind Canyon (15-player pre-made raid)"
+    }
+  },
+  "37": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": {
+      "ru": "[Бойня] - Небесная Арена (группа)",
+      "en": "[Personal Gear] Champions\u0027 Skyring"
+    }
+  },
+  "38": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": {
+      "ru": "[Общее] Небесная Арена (соло)",
+      "en": "[Unified Gear] Champions\u0027 Skyring (Solo)"
+    }
+  },
+  "39": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": {
+      "ru": "Небесная Арена: знак V (команда)",
+      "en": "Champions\u0027 Skyring Mark V (Team)"
+    }
+  },
+  "40": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": {
+      "ru": "Небесная Арена: знак V [сбалансированная] (соло)",
+      "en": "Champions\u0027 Skyring Mark V Equalized (Solo)"
+    }
+  },
+  "70": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": {
+      "ru": "[Общее] Подземная арена",
+      "en": "[Unified Gear] Gridiron"
+    }
+  },
+  "71": {
+    "minLevel": 40,
+    "maxLevel": 64,
+    "name": {
+      "ru": "Тренировочная подземная арена",
+      "en": "Gridiron Academy"
+    }
+  },
+  "110": {
+    "minLevel": 50,
+    "maxLevel": 50,
+    "name": {
+      "ru": "Колизей",
+      "en": "Monkeydrome"
+    }
+  },
+  "118": {
+    "minLevel": 20,
+    "maxLevel": 70,
+    "name": {
+      "ru": "База кумасов",
+      "en": "Kumas Royale"
+    }
+  },
+  "119": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "name": {
+      "ru": "База кумасов",
+      "en": "Kumas Royale"
+    }
+  },
+  "30": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "name": {
+      "ru": "[Бойня] - Битва на побережье",
+      "en": "[Personal Gear] Shore Hold"
+    }
+  },
+  "156": {
+    "minLevel": 1,
+    "maxLevel": 999,
+    "name": {
+      "ru": "Состязание за золотые монеты",
+      "en": "Coin Scramble"
+    }
+  }
+}

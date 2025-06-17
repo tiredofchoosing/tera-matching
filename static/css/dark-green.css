@@ -3,7 +3,7 @@
     --font-color-secondary: rgb(165, 165, 165);
 
     --scrollbar-color: rgb(23, 24, 32) rgb(7, 8, 10);
-    --background: center/cover no-repeat url('/static/img/bgs/background.jpg');
+    --background: center/cover no-repeat url('/static/img/bgs/background-dark-green.jpg');
     --background-blurred-filter: blur(20px);
     --background-blurred-transform: scale(1.08);
     --bg-backdrop-filter: blur(7px);
@@ -25,8 +25,8 @@
     --menu-child-bg-color: rgba(0, 0, 0, 0.15);
     --menu-child-bg-color-offcanvas: rgba(255, 255, 255, 0.05);
     --menu-input-plh-color: rgb(255, 255, 255, 0.3);
-    --menu-btn-hov-bg-color: rgba(0, 0, 0, 0.1);
-    --menu-btn-act-bg-color: rgba(0, 0, 0, 0.2);
+    --menu-btn-hov-bg-color: rgba(255, 255, 255, 0.1);
+    --menu-btn-act-bg-color: rgba(255, 255, 255, 0.2);
     --menu-btn-img-filter: none;
     --menu-chk-bg-color: rgb(255, 255, 255);
     --menu-search-bg-img: url(/static/img/icons/search-l.svg);
@@ -58,9 +58,7 @@
     --party-del-color: rgb(255, 255, 255, 0.15);
     --party-leader-content: url(/static/img/icons/leader.svg);
 
-    --players-tbl-th-bg-color: rgba(21, 22, 30, 0.7);
-
-    /* --players-tbl-tr1-bg-color: rgba(21, 22, 30, 0.5); */
+    --players-tbl-th-bg-color: linear-gradient(to right, rgb(38, 63, 32, 0.9), rgba(30, 43, 31, 0.9), rgb(30, 43, 31, 0.9), rgb(21, 22, 30, 0.9), rgb(21, 22, 30, 0.9), rgb(21, 22, 30, 0.9), rgb(21, 22, 30, 0.9), rgb(21, 22, 30, 0.9));
     --players-tbl-tr1-bg-color: linear-gradient(to right, rgb(38, 63, 32, 0.7), rgba(30, 43, 31, 0.7), rgb(30, 43, 31, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7), rgb(21, 22, 30, 0.7));
 
     --players-tbl-tr2-bg-color: rgba(0, 0, 0, 0.3);
@@ -68,20 +66,21 @@
 
     --accent-text-color: rgb(105, 150, 93);
     --accent-background-color: rgba(63, 88, 56, 0.445);
+    --accent-background-color-hover: rgba(63, 88, 56, 0.7);
 
     --players-tbl-delimiter: rgba(255, 255, 255, 0.05);
     --empty-bg-color: rgba(21, 22, 30, 0.7);
 
-    /* --border: rgba(105, 150, 93, 0.2); */
     --border: rgba(255, 255, 255, 0.1);
 
     --chart-font-size: 16;
     --chart-title-font-size: 18;
     --chart-font-family: 'Montserrat', system-ui, sans-serif;
-    --chart-font-color: rgb(206, 206, 206);
-    --chart-tooltip-bg-color: rgb(21, 22, 30, 1);
+    --chart-font-color: var(--font-color-primary);
+    --chart-tooltip-bg-color: rgb(21, 22, 30);
+    --chart-tooltip-border-color: rgba(255, 255, 255, 0.25);
 
-    --chart-axis-color: rgb(255, 255, 255, 0.15);
+    --chart-axis-color: rgba(255, 255, 255, 0.15);
     --chart-grid-color: rgba(255, 255, 255, 0.15);
 
     --chart-bar-bg-color: rgba(105, 150, 93, 0.3);

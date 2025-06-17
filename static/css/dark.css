@@ -25,8 +25,8 @@
     --menu-child-bg-color: #252525;
     --menu-child-bg-color-offcanvas: #252525;
     --menu-input-plh-color: rgba(255, 255, 255, 0.3);
-    --menu-btn-hov-bg-color: #3A3A3A;
-    --menu-btn-act-bg-color: rgba(23, 24, 32, 0.6);
+    --menu-btn-hov-bg-color: rgba(255, 255, 255, 0.1);
+    --menu-btn-act-bg-color: rgba(255, 255, 255, 0.2);
     --menu-btn-img-filter: none;
     --menu-chk-bg-color: white;
     --menu-search-bg-img: url(/static/img/icons/search-l.svg);
@@ -65,6 +65,7 @@
 
     --accent-text-color: rgb(194, 194, 194);
     --accent-background-color: rgba(255, 255, 255, 0.1);
+    --accent-background-color-hover: rgba(255, 255, 255, 0.2);
 
     --players-tbl-delimiter: rgba(255, 255, 255, 0.05);
     --empty-bg-color: #1A1A1A;
@@ -74,10 +75,11 @@
     --chart-font-size: 16;
     --chart-title-font-size: 18;
     --chart-font-family: 'Montserrat', system-ui, sans-serif;
-    --chart-font-color: rgb(206, 206, 206);
+    --chart-font-color: var(--font-color-primary);
     --chart-tooltip-bg-color: #292929;
+    --chart-tooltip-border-color: rgba(255, 255, 255, 0.3);
 
-    --chart-axis-color: rgb(255, 255, 255, 0.1);
+    --chart-axis-color: rgba(255, 255, 255, 0.1);
     --chart-grid-color: rgba(255, 255, 255, 0.1);
 
     --chart-bar-bg-color: rgba(255, 255, 255, 0.1);

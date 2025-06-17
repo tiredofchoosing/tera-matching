@@ -65,6 +65,7 @@
 
     --accent-text-color: rgb(0, 0, 0);
     --accent-background-color: rgb(216, 216, 216);
+    --accent-background-color-hover: rgba(0, 0, 0, 0.25);
 
     --players-tbl-delimiter: rgba(0, 0, 0, 0.03);
     --empty-bg-color: #ffffff;
@@ -74,10 +75,11 @@
     --chart-font-size: 16;
     --chart-title-font-size: 18;
     --chart-font-family: 'Montserrat', system-ui, sans-serif;
-    --chart-font-color: rgb(0, 0, 0);
+    --chart-font-color: var(--font-color-primary);
     --chart-tooltip-bg-color: #F2F2F2;
+    --chart-tooltip-border-color: rgba(0, 0, 0, 0.25);
 
-    --chart-axis-color: rgb(0, 0, 0, 0.1);
+    --chart-axis-color: rgba(0, 0, 0, 0.1);
     --chart-grid-color: rgba(0, 0, 0, 0.1);
 
     --chart-bar-bg-color: rgba(0, 0, 0, 0.1);

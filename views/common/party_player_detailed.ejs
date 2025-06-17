@@ -1,24 +1,24 @@
 <tr class="party-player-detailed-content<%= (page !== 'lfg' && player.level >= 65) ? ' level65' : ''%>">
 	<td>
-		<div class="party-player-level"><%= player.level %></div>
+		<div class="party-player-dtl-lvl"><%= player.level %></div>
 	</td>
 	<td>
-		<div class="party-player-item-level"><%= Math.trunc(player.itemLevel) %></div>
+		<div class="party-player-dtl-ilvl"><%= Math.trunc(player.itemLevel) %></div>
 	</td>
 	<td>
-		<img class="party-player-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
+		<img class="party-player-dtl-class-icon" src="/static/img/icons/class/<%= player.class %>.png" width="20px" height="20px" title="<%= classes[player.class] %>" draggable="false">
 	</td>
 	<td>
-		<a class="party-player-name" title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank">
+		<a class="party-player-dtl-name" title="teralogs - <%= player.name %>" href="<%= teralogs_url %><%= player.name %>" target="_blank">
 			<%= player.name %>
 			<% if (player.isLeaderRequired) { %>
-			<img class="party-player-icon party-leader" width="20px" height="20px">
+			<img class="party-player-leader-icon" width="20px" height="20px">
 			<% } %>
 		</a>
 	</td>
 	<td>
 		<% if (player.guildName != null) { %>
-		<span class="party-player-guild"><%= player.guildName %></span>
+		<span class="party-player-dtl-guild"><%= player.guildName %></span>
 		<% } %>
 	</td>
 </tr>

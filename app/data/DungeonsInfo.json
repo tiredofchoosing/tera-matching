@@ -1,0 +1,652 @@
+﻿{
+  "9087": {
+    "minLevel": 20,
+    "maxLevel": 25,
+    "minItemLevel": 51,
+    "rank": 1,
+    "name": {
+      "ru": "Бастион Лока",
+      "en": "Bastion of Lok"
+    }
+  },
+  "9088": {
+    "minLevel": 26,
+    "maxLevel": 31,
+    "minItemLevel": 66,
+    "rank": 1,
+    "name": {
+      "ru": "Зловещий Особняк",
+      "en": "Sinestral Manor"
+    }
+  },
+  "9979": {
+    "minLevel": 32,
+    "maxLevel": 36,
+    "minItemLevel": 77,
+    "rank": 1,
+    "name": {
+      "ru": "Логово Сараваша",
+      "en": "Saravash\u0027s Ascent"
+    }
+  },
+  "9089": {
+    "minLevel": 35,
+    "maxLevel": 42,
+    "minItemLevel": 96,
+    "rank": 1,
+    "name": {
+      "ru": "Убежище Культистов",
+      "en": "Cultists\u0027 Refuge"
+    }
+  },
+  "9071": {
+    "minLevel": 41,
+    "maxLevel": 47,
+    "minItemLevel": 118,
+    "rank": 1,
+    "name": {
+      "ru": "Гробница Некроманта",
+      "en": "Necromancer Tomb"
+    }
+  },
+  "9072": {
+    "minLevel": 48,
+    "maxLevel": 53,
+    "minItemLevel": 146,
+    "rank": 1,
+    "name": {
+      "ru": "Золотой Лабиринт",
+      "en": "Golden Labyrinth"
+    }
+  },
+  "9093": {
+    "minLevel": 48,
+    "maxLevel": 54,
+    "minItemLevel": 146,
+    "rank": 1,
+    "name": {
+      "ru": "Убежище Акаши",
+      "en": "Akasha\u0027s Hideout"
+    }
+  },
+  "9094": {
+    "minLevel": 53,
+    "maxLevel": 57,
+    "minItemLevel": 166,
+    "rank": 1,
+    "name": {
+      "ru": "Небесный сад Салерона",
+      "en": "Saleron\u0027s Sky Garden"
+    }
+  },
+  "9076": {
+    "minLevel": 56,
+    "maxLevel": 58,
+    "minItemLevel": 200,
+    "rank": 1,
+    "name": {
+      "ru": "Лабиринт Ужаса",
+      "en": "Labyrinth of Terror"
+    }
+  },
+  "9073": {
+    "minLevel": 58,
+    "maxLevel": 64,
+    "minItemLevel": 200,
+    "rank": 1,
+    "name": {
+      "ru": "Эбеновая Башня",
+      "en": "Ebon Tower"
+    }
+  },
+  "9075": {
+    "minLevel": 58,
+    "maxLevel": 64,
+    "minItemLevel": 200,
+    "rank": 1,
+    "name": {
+      "ru": "Гнездо Келсаика",
+      "en": "Kelsaik\u0027s Nest"
+    }
+  },
+  "9025": {
+    "minLevel": 60,
+    "maxLevel": 70,
+    "minItemLevel": 242,
+    "rank": 1,
+    "name": {
+      "ru": "Храм Балдера",
+      "en": "Balder\u0027s Temple"
+    }
+  },
+  "9026": {
+    "minLevel": 60,
+    "maxLevel": 70,
+    "minItemLevel": 242,
+    "rank": 1,
+    "name": {
+      "ru": "Аргонские Залы",
+      "en": "Argon Corpus"
+    }
+  },
+  "9727": {
+    "minLevel": 64,
+    "maxLevel": 70,
+    "minItemLevel": 309,
+    "rank": 1,
+    "name": {
+      "ru": "Обитель Манайи",
+      "en": "Manaya\u0027s Core"
+    }
+  },
+  "9126": {
+    "minLevel": 99,
+    "maxLevel": 99,
+    "minItemLevel": 999,
+    "rank": 0,
+    "name": {
+      "ru": "Академия Петрэ",
+      "en": "Pit of Petrax"
+    }
+  },
+  "9713": {
+    "minLevel": 99,
+    "maxLevel": 99,
+    "minItemLevel": 999,
+    "rank": 0,
+    "name": {
+      "ru": "Поляна древней",
+      "en": "Ghillieglade"
+    }
+  },
+  "9714": {
+    "minLevel": 99,
+    "maxLevel": 99,
+    "minItemLevel": 999,
+    "rank": 0,
+    "name": {
+      "ru": "Святилище Велики",
+      "en": "Velik\u0027s Sanctuary"
+    }
+  },
+  "9053": {
+    "minLevel": 68,
+    "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 0,
+    "name": {
+      "ru": "Ущелье Кеззела (7 игроков)",
+      "en": "Kezzel\u0027s Gorge (5-Person)"
+    }
+  },
+  "9809": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "minItemLevel": 448,
+    "rank": 1,
+    "name": {
+      "ru": "Мясницкие Катакомбы",
+      "en": "Macellarius Catacombs"
+    }
+  },
+  "9710": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
+    "name": {
+      "ru": "Разрушенный алтарь Лакана",
+      "en": "Broken Prison"
+    }
+  },
+  "9981": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": {
+      "ru": "Разрушенное Святилище Велики",
+      "en": "Velik\u0027s Sanctuary (Hard)"
+    }
+  },
+  "9780": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
+    "name": {
+      "ru": "Вход в катакомбы Велики",
+      "en": "Velik\u0027s Hold (5-Person)"
+    }
+  },
+  "9781": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
+    "name": {
+      "ru": "Святилище Велики",
+      "en": "Velik\u0027s Sanctuary"
+    }
+  },
+  "9735": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
+    "name": {
+      "ru": "Ангар RK-9",
+      "en": "RK-9 Kennel"
+    }
+  },
+  "9935": {
+    "minLevel": 69,
+    "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
+    "name": {
+      "ru": "Ангар совершенного RK-9",
+      "en": "RK-9 Kennel (Hard)"
+    }
+  },
+  "9739": {
+    "minLevel": 68,
+    "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
+    "name": {
+      "ru": "Лагерь повстанцев",
+      "en": "Red Refuge"
+    }
+  },
+  "9939": {
+    "minLevel": 69,
+    "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
+    "name": {
+      "ru": "Секретный лагерь повстанцев",
+      "en": "Red Refuge (Hard)"
+    }
+  },
+  "9920": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": {
+      "ru": "Омут Бездушного Антароса",
+      "en": "Antaroth\u0027s Abyss (Hard)"
+    }
+  },
+  "9982": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
+    "name": {
+      "ru": "Заброшенная мастерская Леандра",
+      "en": "Grotto of Lost Souls (Hard)"
+    }
+  },
+  "9044": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": {
+      "ru": "Святилище Бахаара",
+      "en": "Bahaar\u0027s Sanctum"
+    }
+  },
+  "3201": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
+    "name": {
+      "ru": "Гнездо сверкающей Паркин",
+      "en": "Gossamer Vault (Hard)"
+    }
+  },
+  "3023": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
+    "name": {
+      "ru": "Секретное подземелье крепости Берарк",
+      "en": "Akalath Quarantine"
+    }
+  },
+  "3026": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 461,
+    "rank": 4,
+    "name": {
+      "ru": "Логово Келсаика",
+      "en": "Corrupted Skynest"
+    }
+  },
+  "3202": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": {
+      "ru": "Командный центр (сложно)",
+      "en": "Draakon Arena (Hard)"
+    }
+  },
+  "3102": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
+    "name": {
+      "ru": "Командный центр",
+      "en": "Draakon Arena"
+    }
+  },
+  "3126": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 480,
+    "rank": 5,
+    "name": {
+      "ru": "Логово Бессмертного Келсаика",
+      "en": "Corrupted Skynest (Hard) Entrance"
+    }
+  },
+  "3027": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 463,
+    "rank": 4,
+    "name": {
+      "ru": "[Бессмертный Воин] Арена безумия",
+      "en": "Forbidden Arena [Hagufna]"
+    }
+  },
+  "9754": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 498,
+    "rank": 2,
+    "name": {
+      "ru": "Глубинный Храм",
+      "en": "Bathysmal Rise"
+    }
+  },
+  "9756": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 456,
+    "rank": 3,
+    "name": {
+      "ru": "Хроноплоскость",
+      "en": "Timescape"
+    }
+  },
+  "9056": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
+    "name": {
+      "ru": "Хроноплоскость (сложно)",
+      "en": "Timescape (Hard)"
+    }
+  },
+  "9916": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 479,
+    "rank": 5,
+    "name": {
+      "ru": "Крейсер \"Стремление\" (Сложно)",
+      "en": "Sky Cruiser Endeavor (Hard)"
+    }
+  },
+  "9760": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "minItemLevel": 444,
+    "rank": 2,
+    "name": {
+      "ru": "Корабль Келивана",
+      "en": "Kalivan\u0027s Dreadnaught"
+    }
+  },
+  "9029": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "minItemLevel": 448,
+    "rank": 2,
+    "name": {
+      "ru": "Сокровищница Капримы",
+      "en": "Vault of Kaprima"
+    }
+  },
+  "9794": {
+    "minLevel": 68,
+    "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 2,
+    "name": {
+      "ru": "Лаборатория Сайрекса",
+      "en": "Thaumetal Refinery"
+    }
+  },
+  "9770": {
+    "minLevel": 68,
+    "maxLevel": 70,
+    "minItemLevel": 456,
+    "rank": 3,
+    "name": {
+      "ru": "Руины Абнукты",
+      "en": "Ruinous Manor"
+    }
+  },
+  "9769": {
+    "minLevel": 68,
+    "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 3,
+    "name": {
+      "ru": "Замок Лилит",
+      "en": "Lilith\u0027s Keep"
+    }
+  },
+  "9777": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "minItemLevel": 490,
+    "rank": 1,
+    "name": {
+      "ru": "Каналы (3 игрока)",
+      "en": "Channelworks (3-Person)"
+    }
+  },
+  "9055": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "minItemLevel": 490,
+    "rank": 1,
+    "name": {
+      "ru": "Алчное Ущелье (3 игрока)",
+      "en": "Ravenous Gorge (3-Person)"
+    }
+  },
+  "9994": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
+    "name": {
+      "ru": "Лаборатория Альфа-сайрекса",
+      "en": "Thaumetal Refinery (Hard)"
+    }
+  },
+  "9759": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 462,
+    "rank": 4,
+    "name": {
+      "ru": "Остров Мертвых (сложно)",
+      "en": "Forsaken Island (Hard)"
+    }
+  },
+  "3030": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 450,
+    "rank": 3,
+    "name": {
+      "ru": "Старая резиденция",
+      "en": "Commander’s Residence"
+    }
+  },
+  "9057": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 461,
+    "rank": 4,
+    "name": {
+      "ru": "Акероново пекло (сложно)",
+      "en": "Akeron\u0027s Inferno (Hard)"
+    }
+  },
+  "9067": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 461,
+    "rank": 4,
+    "name": {
+      "ru": "Лаборатория Берна (сложно)",
+      "en": "Demokron Factory (Hard)"
+    }
+  },
+  "9969": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
+    "name": {
+      "ru": "Замок Кошмарной Лилит",
+      "en": "Lilith\u0027s Keep (Hard)"
+    }
+  },
+  "9970": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": {
+      "ru": "Руины Кошмарной Абнукты",
+      "en": "Ruinous Manor (Hard)"
+    }
+  },
+  "9066": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 460,
+    "rank": 4,
+    "name": {
+      "ru": "Рулетка Демороса",
+      "en": "Demon\u0027s Wheel"
+    }
+  },
+  "9070": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 456,
+    "rank": 4,
+    "name": {
+      "ru": "Замок Парадоксов",
+      "en": "Manglemire"
+    }
+  },
+  "9983": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
+    "name": {
+      "ru": "Крепость Темного Тенебриса",
+      "en": "Dark Reach Citadel (Hard)"
+    }
+  },
+  "9782": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
+    "name": {
+      "ru": "Мастерская Леандра",
+      "en": "Grotto of Lost Souls"
+    }
+  },
+  "3101": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 503,
+    "rank": 3,
+    "name": {
+      "ru": "Гнездо Паркин",
+      "en": "Gossamer Vault"
+    }
+  },
+  "9027": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 5,
+    "name": {
+      "ru": "Обитель Манайи (сложно)",
+      "en": "Manaya\u0027s Core (Hard)"
+    }
+  },
+  "9766": {
+    "minLevel": 68,
+    "maxLevel": 70,
+    "minItemLevel": 452,
+    "rank": 3,
+    "name": {
+      "ru": "Погибший Флот",
+      "en": "Shattered Fleet"
+    }
+  },
+  "9999": {
+    "minLevel": 65,
+    "maxLevel": 70,
+    "minItemLevel": 444,
+    "rank": 1,
+    "name": {
+      "ru": "Грабители подземелий",
+      "en": "Blast from the Past"
+    }
+  },
+  "3034": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 511,
+    "rank": 5,
+    "name": {
+      "ru": "Ангар обезумевшего RK-9",
+      "en": "Rampaging RK-9 Kennel"
+    }
+  },
+  "3103": {
+    "minLevel": 70,
+    "maxLevel": 70,
+    "minItemLevel": 507,
+    "rank": 4,
+    "name": {
+      "ru": "[Этерния] Арена безумия",
+      "en": "Forbidden Arena [Undying Warlord]"
+    }
+  }
+}

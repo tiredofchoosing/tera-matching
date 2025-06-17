@@ -1,7 +1,7 @@
 (function() {
 
     const hideNoGuildCheckbox = document.getElementById('hideNoGuild');
-    const sortSelect = document.getElementById('selectPlayerSort');
+    const sortSelect = document.getElementById('selectStatsSort');
     const clearNavigationButton = document.getElementById('clearNavigation');
     const content = document.getElementById('content');
     const checkboxes = [hideNoGuildCheckbox];
@@ -148,7 +148,8 @@
                         color: this.styles.fontColor,
                         font: {
                             size: this.styles.titleFontSize,
-                            family: this.styles.fontFamily
+                            family: this.styles.fontFamily,
+                            weight: 600
                         },
                         padding: {
                             top: 0,
@@ -161,14 +162,15 @@
                         titleColor: this.styles.fontColor,
                         titleFont: {
                             size: this.styles.fontSize,
-                            family: this.styles.fontFamily
+                            family: this.styles.fontFamily,
+                            weight: 600
                         },
                         bodyColor: this.styles.fontColor,
                         bodyFont: {
                             size: this.styles.fontSize,
                             family: this.styles.fontFamily
                         },
-                        borderColor: this.styles.axisColor,
+                        borderColor: this.styles.tooltipBorderColor,
                         borderWidth: 1
                     }
                 }
@@ -199,6 +201,7 @@
                 barBgColor: this.rootStyles.getPropertyValue('--chart-bar-bg-color').trim(),
                 barBorderColor: this.rootStyles.getPropertyValue('--chart-bar-border-color').trim(),
                 tooltipBgColor: this.rootStyles.getPropertyValue('--chart-tooltip-bg-color').trim(),
+                tooltipBorderColor: this.rootStyles.getPropertyValue('--chart-tooltip-border-color').trim(),
             }
         }
 
@@ -228,7 +231,7 @@
             };
 
             this.chart.options.plugins.tooltip.backgroundColor = this.styles.tooltipBgColor;
-            this.chart.options.plugins.tooltip.borderColor = this.styles.axisColor;
+            this.chart.options.plugins.tooltip.borderColor = this.styles.tooltipBorderColor;
             this.chart.options.plugins.tooltip.titleColor = this.styles.fontColor;
             this.chart.options.plugins.tooltip.titleFont = {
                 size: this.styles.fontSize,

@@ -4,6 +4,7 @@ Web application for Tera Asura server that provides:
 - Dungeons and battlefields matching queue monitor
 - Online players list
 - LFG messages list
+- Charts with current online statistics
 
 ### Updating instance data
 To update DungeonsInfo.json and BattlegroundsInfo.json:
