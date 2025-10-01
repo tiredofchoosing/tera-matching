@@ -3,21 +3,10 @@ import config from 'config';
 import crypto from 'crypto';
 import {getDungeonsInfo, getBattlegroundsInfo} from './dynamicData.js';
 import {classes, roles, globalization, teralogs_provider} from './data.js';
+import {getLang} from './common.js';
 import {testData} from './data.js';
 
 const useTestData = false;
-const lang_default = 'ru';
-
-function changeLang(req) {
-    const clientAcceptLang = req.headers['accept-language']?.split(',')[0].split('-')[0];
-    const lang = req.cookies.lang ?? clientAcceptLang;
-
-    if (lang === 'en' || lang === 'ru') {
-        return lang;
-    } else {
-        return lang_default;
-    }
-}
 
 function generateETag(data) {
     return crypto.createHash('md5').update(JSON.stringify(data)).digest('hex');
@@ -66,7 +55,7 @@ function render(res, viewData, page, partialContent) {
 }
 
 export async function dungeons(req, res, partialContent = false) {
-    const lang = changeLang(req);
+    const lang = getLang(req);
     const page = 'dungeons';
 
     const data = await fetchMany(res, [page, 'online']);
@@ -90,7 +79,7 @@ export async function dungeons(req, res, partialContent = false) {
 }
 
 export async function battlegrounds(req, res, partialContent = false) {
-    const lang = changeLang(req);
+    const lang = getLang(req);
     const page = 'battlegrounds';
 
     const data = await fetchMany(res, [page, 'online']);
@@ -114,7 +103,7 @@ export async function battlegrounds(req, res, partialContent = false) {
 }
 
 export async function online(req, res, partialContent = false) {
-    const lang = changeLang(req);
+    const lang = getLang(req);
     const page = 'online';
 
     const data = await fetchMany(res, [page]);
@@ -136,7 +125,7 @@ export async function online(req, res, partialContent = false) {
 }
 
 export async function lfg(req, res, partialContent = false) {
-    const lang = changeLang(req);
+    const lang = getLang(req);
     const page = 'lfg';
 
     const data = await fetchMany(res, [page, 'online']);
@@ -167,7 +156,7 @@ export async function lfg(req, res, partialContent = false) {
 }
 
 export async function stats(req, res, partialContent = false) {
-    const lang = changeLang(req);
+    const lang = getLang(req);
     const page = 'stats';
 
     const data = await fetchMany(res, ['online']);

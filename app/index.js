@@ -4,9 +4,10 @@ import cookieParser  from 'cookie-parser';
 import config from 'config';
 import apicache from 'apicache';
 import router from './router.js';
+import {getLang} from './common.js';
 
 const cache = apicache.options({
-    appendKey: (req, res) => req.cookies.lang
+    appendKey: (req, res) => getLang(req)
 }).middleware;
 
 const __dirname = path.resolve(),
