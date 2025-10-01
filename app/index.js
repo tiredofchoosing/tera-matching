@@ -5,7 +5,10 @@ import config from 'config';
 import apicache from 'apicache';
 import router from './router.js';
 
-const cache = apicache.middleware;
+const cache = apicache.options({
+    appendKey: (req, res) => req.cookies.lang
+}).middleware;
+
 const __dirname = path.resolve(),
     port = config.get('port'),
     host = config.get('host'),
